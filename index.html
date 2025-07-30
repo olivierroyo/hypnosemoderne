@@ -1,335 +1,331 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hypnothérapie Moderne</title>
-  <link rel="icon" type="image/png" href="./icon/hand-holding-hand-solid.svg">
-    <link rel="stylesheet" href="style_v2.css" />
-  <link rel="stylesheet" href="style_form.css" />
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Olivier Royo Hypnothérapeute Vcard</title>
+      <link rel="icon" type="image/png" href="./av/favicon.png">
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+      <style>
+         .lang-content { display: none; }
+         .active { display: block !important; }
+         .flag-button {
+         cursor: pointer;
+         transition: transform 0.2s ease;
+         }
+         .flag-button:hover {
+         transform: scale(1.1);
+         }
+         .footer-section {
+         background-color: #f8f9fa;
+         padding: 20px 0;
+         }
+         .social-icons a {
+         margin: 0 10px;
+         color: #555;
+         font-size: 24px;
+         transition: color 0.3s ease;
+         }
+         .social-icons a:hover {
+         color: #007bff;
+         }
+         /* Exemples de couleurs spécifiques */
+         .Facebook-color { color: #3b5998; }
+         .Instagram-color { color: #e4405f; }
+         .Twitter-color { color: #1da1f2; }
+         .Linkedin-color { color: #0077b5; }
+         .Youtube-color { color: #ff0000; }
+         .Skype-color { color: #00aff0; }
+         .Website-color { color: #333; }
+         .profile-header {
+         background-color: #fff;
+         padding: 30px 0;
+         border-bottom: 1px solid #eee;
+         }
+         .profile-image img {
+         border: 4px solid #ddd;
+         object-fit: cover;
+         transition: transform 0.3s ease;
+         }
+         .profile-image img:hover {
+         transform: scale(1.05);
+         }
+      </style>
+   </head>
+   <body class="bg-gray-100 text-gray-800">
+      <div class="max-w-5xl mx-auto p-4">
+         <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+            <!-- Sélecteur avec icônes -->
+            <div class="flex justify-end space-x-4 p-4">
+               <img src="https://flagcdn.com/w40/fr.png" alt="Français" class="w-8 flag-button" data-lang="fr">
+               <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-8 flag-button" data-lang="en">
+               <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="w-8 flag-button" data-lang="de">
+            </div>
+            <!-- FRANÇAIS -->
+            <div class="lang-content lang-fr active">
+               <div class="p-6 text-center">
+                  <!-- Section profil  -->
+                  <div class="profile-header text-center">
+                     <div class="profile-image mx-auto w-40 h-40 rounded-full overflow-hidden border-4 border-blue-200 shadow-md transition-transform duration-300 hover:scale-105">
+                        <img src="./img/olivier_royo.png" alt="Profil Olivier Royo" class="w-full h-full object-cover">
+                     </div>
+                     <h1 class="mt-4 text-3xl font-bold text-blue-800">Olivier Royo</h1>
+                    
+                     <p class="text-gray-600 text-lg italic"> Pour une hypnose moderne, rapide, sur-mesure et à votre écoute</p>
+                    <!--  <p class="text-gray-600 text-lg italic">Magicien • Créateur • Conteur de rêves</p>-->
+                  </div>
+               </div>
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+                  <a href="img/papa_etan.png" target="_ext">
+                  <img src="img/papa_etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Nicolas" />
+                  </a>
+                  <a href="img/salome.png" target="_bale">
+                  <img src="img/salome.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Salome" />
+                  </a>
+                  <a href="img/etan.png" target="_back">
+                  <img src="img/etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="etan" />
+                  </a>
+               </div>
+               <div class="p-6 space-y-6">
+                  <h2 class="text-xl font-semibold">Présentation</h2>
+                  <p>Hypnothérapeute passionné, j’utilise l’hypnose rapide pour des changements profonds et rapides. Des séances courtes et efficaces, adaptées à votre rythme de vie, pour un mieux-être concret dès les premières rencontres.</p>
+                  <h2 class="text-xl font-semibold">Sur le Web</h2>
+                  <div class="space-y-1">
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-envelope text-gray-700"></i>
+                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne">Mon Site web</a>
+                     </p>
+                    <!-- <p class="flex items-center space-x-2">
+                        <i class="fas fa-link text-gray-700"></i>
+                        <a href="http://olivier.royo.free.fr/index.php" target="_magie">mon coté magique</a>
+                     </p>-->
+                  </div>
+                 
+                  <h2 class="text-xl font-semibold">Réseaux sociaux</h2>
+                  <div class="space-y-1">
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.youtube.com/@lovemobile2070" target="_youtube" class="slider-nav-item">
+                        <i class="fab fa-youtube Youtube-color text-2xl"></i> Youtube (TODO: mettre le bon compte)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.facebook.com/lovemobile2070" target="_facebook" class="slider-nav-item">
+                        <i class="fab fa-facebook Facebook-color text-2xl"></i> Facebook (TODO: mettre le bon compte)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.tiktok.com/@olivier.2070" target="_tiktok" class="slider-nav-item">
+                          <i class="fab fa-tiktok Tiktok-color text-2xl" ></i> Tik Tok (TODO: mettre le bon compte)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.instagram.com/royoolivier/" target="_instagram" class="slider-nav-item">
+                        <i class="fab fa-instagram Instagram-color text-2xl"></i> Instagram (TODO: mettre le bon compte)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.linkedin.com/in/olivier-royo-50479a99/" target="_linkedin" class="slider-nav-item">
+                        <i class="fab fa-linkedin Linkedin-color text-2xl"></i> Linkedin (TODO: mettre le bon compte)
+                        </a>
+                     </p>
+                  </div>
 
- <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
-  <!--  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" /> -->
-</head>
-<body>
+                   <h2 class="text-xl font-semibold">Contact</h2>
+                  <div class="space-y-1">
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-phone text-gray-700"></i>
+                        <a href="tel:+33663483300" class="text-blue-600">+33 6 63 48 33 00</a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-envelope text-gray-700"></i>
+                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600">olivier.royo@gmail.com</a>
+                     </p>
+                  </div>
 
-  <!-- Thème Switcher -->
-  <div class="theme-switcher">
-    <span>Changer de style :</span>
-    <button onclick="setTheme('blue')">Bleu nuit</button>
-    <button onclick="setTheme('beige')">Beige sable</button>
-    <button onclick="setTheme('petrol')">Bleu pétrole</button>
-  </div>
+               </div>
+            </div>
+            <!-- ENGLISH -->
+            <div class="lang-content lang-en">
+               <div class="p-6 text-center">
+                  <!-- Section profil  -->
+                  <div class="profile-header text-center">
+                     <div class="profile-image mx-auto w-40 h-40 rounded-full overflow-hidden border-4 border-blue-200 shadow-md transition-transform duration-300 hover:scale-105">
+                        <img src="./img/olivier_royo.png" alt="Profil Olivier Royo" class="w-full h-full object-cover">
+                     </div>
+                     <h1 class="mt-4 text-3xl font-bold text-blue-800">Olivier Royo</h1>
+                     <p class="text-gray-600 text-lg italic">For modern, fast, personalized hypnosis tailored to your needs</p>
+                  </div>
+               </div>
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+                  <a href="img/papa_etan.png" target="_ext">
+                  <img src="img/papa_etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Nicolas" />
+                  </a>
+                  <a href="img/salome.png" target="_bale">
+                  <img src="img/salome.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Salome" />
+                  </a>
+                  <a href="img/etan.png" target="_back">
+                  <img src="img/etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="etan" />
+                  </a>
+               </div>
+               <div class="p-6 space-y-6">
+                  <h2 class="text-xl font-semibold">Presentation</h2>
+                  <p>
+                     As a passionate hypnotherapist, I use rapid hypnosis for profound and rapid changes. Short and effective sessions, adapted to your lifestyle, for tangible improvements in well-being from the very first sessions.
+                  </p>
+                  <h2 class="text-xl font-semibold">On the Web</h2>
+                  <div class="space-y-1">
+                    <p class="flex items-center space-x-2">
+                        <i class="fas fa-envelope text-gray-700"></i>
+                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne">My Website</a>
+                     </p>
+                  </div>
+                 
+                  <h2 class="text-xl font-semibold mt-6">Social Medias</h2>
+                  <div class="space-y-1">
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.youtube.com/@lovemobile2070" target="_youtube" class="slider-nav-item">
+                        <i class="fab fa-youtube Youtube-color text-2xl"></i> Youtube (TODO: Enter the correct account)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.facebook.com/lovemobile2070" target="_facebook" class="slider-nav-item">
+                        <i class="fab fa-facebook Facebook-color text-2xl"></i> Facebook (TODO: Enter the correct account)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.tiktok.com/@olivier.2070" target="_tiktok" class="slider-nav-item">
+                          <i class="fab fa-tiktok Tiktok-color text-2xl" ></i> Tik Tok (TODO: Enter the correct account)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.instagram.com/royoolivier/" target="_instagram" class="slider-nav-item">
+                        <i class="fab fa-instagram Instagram-color text-2xl"></i> Instagram (TODO: Enter the correct account)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.linkedin.com/in/olivier-royo-50479a99/" target="_linkedin" class="slider-nav-item">
+                        <i class="fab fa-linkedin Linkedin-color text-2xl"></i> Linkedin (TODO: Enter the correct account)
+                        </a>
+                     </p>
+                  </div>
 
-  <header>
-    <div class="container">
-      <h1>Hypnose Moderne</h1>
-      <p>Transformez votre vie. Rapidement. Naturellement.</p>
-    </div>
-  </header>
+                   <h2 class="text-xl font-semibold">Contact</h2>
+                  <div class="space-y-1">
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-phone text-gray-700"></i>
+                        <a href="tel:+33663483300" class="text-blue-600">+33 6 63 48 33 00</a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-envelope text-gray-700"></i>
+                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600">olivier.royo@gmail.com</a>
+                     </p>
+                  </div>
 
-  <section class="container">
-    <h2>Spécialiste des phobies et de l’anxiété</h2>
-    <p>Des techniques d’hypnose nouvelle génération, douces et efficaces, pour des résultats rapides.</p>
-    <a href="https://calendly.com/olivier-royo" target="_rdv" class="btn">Réserver une séance</a>
-  </section>
+               </div>
+            </div>
+            <!-- DEUTSCH -->
+            <div class="lang-content lang-de">
+               <div class="p-6 text-center">
+                  <!-- Section profil  -->
+                  <div class="profile-header text-center">
+                     <div class="profile-image mx-auto w-40 h-40 rounded-full overflow-hidden border-4 border-blue-200 shadow-md transition-transform duration-300 hover:scale-105">
+                        <img src="./img/olivier_royo.png" alt="Profil Olivier Royo" class="w-full h-full object-cover">
+                     </div>
+                     <h1 class="mt-4 text-3xl font-bold text-blue-800">Olivier Royo</h1>
+                     <p class="text-gray-600 text-lg italic">Für moderne, schnelle und individuelle Hypnose, die auf Ihre Bedürfnisse zugeschnitten ist.</p>
+                  </div>
+               </div>
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+                  <a href="img/papa_etan.png" target="_ext">
+                  <img src="img/papa_etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Nicolas" />
+                  </a>
+                  <a href="img/salome.png" target="_bale">
+                  <img src="img/salome.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Salome" />
+                  </a>
+                  <a href="img/etan.png" target="_back">
+                  <img src="img/etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="etan" />
+                  </a>
+               </div>
+               <div class="p-6 space-y-6">
+                  <h2 class="text-xl font-semibold">Präsentation</h2>
+                  <p>
+                    Als leidenschaftliche Hypnotherapeutin nutze ich Schnellhypnose für tiefgreifende und schnelle Veränderungen. Kurze und effektive Sitzungen, angepasst an Ihren Lebensstil, für spürbares Wohlbefinden ab der ersten Sitzung.
+                  </p>
+                  <h2 class="text-xl font-semibold">Im Web</h2>
+                  <div class="space-y-1">
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-envelope text-gray-700"></i>
+                         <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne">Meine Website</a>
+                     </p>
 
-  <section class="container">
-    <h2>Approche</h2>
-    <p>J’utilise des techniques modernes : hypnose rapide, PNL, visualisation ciblée. Cette approche permet des résultats concrets dès les premières séances.
-Contrairement à l’image traditionnelle de l’hypnose longue et analytique, les séances sont ici courtes, ciblées et efficaces. Adaptée aux rythmes de vie actuels, cette hypnose contemporaine va droit à l’essentiel : un changement rapide, en profondeur, sans passer des mois en thérapie.</p>
-    <ul>
-      <li>Phobies (avion, araignées, espace clos...)</li>
-      <li>Anxiété, stress, angoisses</li>
-      <li>Confiance en soi & prise de parole</li>
-    </ul>
-  </section>
-
-  <section class="container">
-    <h2>Témoignages</h2>
-    <blockquote>“Incroyable mais vrai : une seule séance a suffi pour que je retrouve enfin le sommeil. Merci infiniment ! – Marie F.”</blockquote>
-    <blockquote>“En une seule séance, ma peur des oiseaux a disparu. 20 ans de phobie réglés en 45 minutes. Une semaine plus tard, je caresse une poule et j’envisage même d’adopter un couple pour avoir mes propres œufs frais. C’est incroyable à dire, mais cette expérience a réellement changé ma vie.
-– Marjolaine R.”</blockquote>
-    <blockquote>“Pas besoin de phrases ni de longs discours, ça change tout dedans, ça change tout autour. Finis les matins paupières en panne, lourdes comme les bouteilles de butane. – Françis C.”</blockquote>
-  </section>
-
-  <section class="container contact">
-    <h2>Contact</h2>
-    <p>📍 Cabinet à ILLTAL (68) — 💻 Séances en ligne possibles</p>
-    <p><i class="fas fa-phone" style="color: var(--button-bg);"></i> <a href="tel:+33663483300">+33(0)6.63.48.33.00</a> &nbsp;&nbsp; <i class="fas fa-envelope" style="color: var(--button-bg);"></i>&nbsp;<a href="mailto:olivier.royo@gmail.com?subject=Contact hypnoth&acute;rapie;body=Bonjour, ">olivier.royo@gmail.com</a></p>
-    <button class="btn" onclick="openModal()">Donner un avis</button>
-    <a href="https://calendly.com/olivier-royo" target="_rdv" class="btn">Prendre rendez-vous</a>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Hypnose Moderne – [Votre nom]. Tous droits réservés.</p>
-  </footer>
-
-  <!-- Modal feedback -->
-  <div id="feedbackModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Donnez votre avis</h2>
-      <form action="https://formspree.io/f/xwpqkgqk" method="POST" onsubmit="return showConfirmation(event)">
-        
-  <div class="fs-field">
-    <label class="fs-label" for="full-name">Full Name</label>
-    <input
-      class="fs-input"
-      id="full-name"
-      name="full-name"
-      placeholder="Enter your name (optional)"
-    />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="email-address">Email Address</label>
-    <input
-      class="fs-input"
-      id="email-address"
-      name="email-address"
-      placeholder="Enter your email address (optional)"
-    />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="company-name">Company Name</label>
-    <input
-      class="fs-input"
-      id="company-name"
-      name="company-name"
-      placeholder="Enter your company name (optional)"
-    />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="response-date">Date</label>
-    <input
-      type="date" 
-      min="2025-05-23"
-      class="fs-input"
-      id="response-date"
-      name="response-date"
-      placeholder="Select the date"
-      required
-    />
-  </div>
-  <div class="fs-field" style="margin-bottom: 2rem">
-    <label class="fs-label" for="nps-score">
-      How likely are you to recommend us to a friend or colleague? (0 &#x3D; Not
-      at all likely, 10 &#x3D; Extremely likely)
-    </label>
-    <input
-      class="fs-slider"
-      id="nps-score"
-      max="10"
-      min="0"
-      name="nps-score"
-      required
-      step="1"
-      type="range"
-      value="8"
-    />
-    <div class="slider-label-container">
-      <span class="slider-label-text">0</span>
-      <span class="slider-label-text">1</span>
-      <span class="slider-label-text">2</span>
-      <span class="slider-label-text">3</span>
-      <span class="slider-label-text">4</span>
-      <span class="slider-label-text">5</span>
-      <span class="slider-label-text">6</span>
-      <span class="slider-label-text">7</span>
-      <span class="slider-label-text">8</span>
-      <span class="slider-label-text">9</span>
-      <span class="slider-label-text">10</span>
-    </div>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="score-reason">
-      What is the primary reason for your score?
-    </label>
-    <textarea
-      class="fs-textarea"
-      id="score-reason"
-      name="score-reason"
-      placeholder="Explain why you gave us this score"
-      required
-    ></textarea>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="improvement-suggestion">
-      What could we do to improve your experience?
-    </label>
-    <textarea
-      class="fs-textarea"
-      id="improvement-suggestion"
-      name="improvement-suggestion"
-      placeholder="Let us know what we can improve (optional)"
-    ></textarea>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="positive-feedback">What did we do well?</label>
-    <textarea
-      class="fs-textarea"
-      id="positive-feedback"
-      name="positive-feedback"
-      placeholder="Tell us what worked well for you (optional)"
-    ></textarea>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label">Would you be open to sharing a testimonial?</label>
-    <div class="fs-radio-group">
-      <div class="fs-radio-field">
-        <div class="fs-radio-wrapper">
-          <input
-            class="fs-radio"
-            id="testimonial-consent-yes"
-            name="testimonial-consent"
-            required
-            type="radio"
-            value="yes"
-          />
-        </div>
-        <div>
-          <label class="fs-label" for="testimonial-consent-yes">Yes</label>
-        </div>
+                  </div>
+                  <h2 class="text-xl font-semibold mt-6">Soziale Medien</h2>
+                  <div class="space-y-1">
+                    <p class="flex items-center space-x-2">
+                        <a href="https://www.youtube.com/@lovemobile2070" target="_youtube" class="slider-nav-item">
+                        <i class="fab fa-youtube Youtube-color text-2xl"></i> Youtube (TODO: Richtiges Konto eingeben)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.facebook.com/lovemobile2070" target="_facebook" class="slider-nav-item">
+                        <i class="fab fa-facebook Facebook-color text-2xl"></i> Facebook (TODO: Richtiges Konto eingeben)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.tiktok.com/@olivier.2070" target="_tiktok" class="slider-nav-item">
+                          <i class="fab fa-tiktok Tiktok-color text-2xl" ></i> Tik Tok (TODO: Richtiges Konto eingeben)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.instagram.com/royoolivier/" target="_instagram" class="slider-nav-item">
+                        <i class="fab fa-instagram Instagram-color text-2xl"></i> Instagram (TODO: Richtiges Konto eingeben)
+                        </a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <a href="https://www.linkedin.com/in/olivier-royo-50479a99/" target="_linkedin" class="slider-nav-item">
+                        <i class="fab fa-linkedin Linkedin-color text-2xl"></i> Linkedin (TODO: Richtiges Konto eingeben)
+                        </a>
+                     </p>
+                  </div>
+                  <h2 class="text-xl font-semibold">Kontakt</h2>
+                  <div class="space-y-1">
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-phone text-gray-700"></i>
+                        <a href="tel:+33663483300" class="text-blue-600">+33 6 63 48 33 00</a>
+                     </p>
+                     <p class="flex items-center space-x-2">
+                        <i class="fas fa-envelope text-gray-700"></i>
+                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600">olivier.royo@gmail.com</a>
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
-      <div class="fs-radio-field">
-        <div class="fs-radio-wrapper">
-          <input
-            class="fs-radio"
-            id="testimonial-consent-no"
-            name="testimonial-consent"
-            required
-            type="radio"
-            value="no"
-          />
-        </div>
-        <div>
-          <label class="fs-label" for="testimonial-consent-no">No</label>
-        </div>
+      <footer class="footer-section">
+         <div class="container text-center">
+            <p class="text-muted small">© 2025 Olivier Royo. Tous droits réservés.</p>
+         </div>
+      </footer>
+      <div style="position: fixed; right: 50px; bottom: 40px; z-index: 1; margin-top: 40px;">
+         <a href="./vcard/olivier_royo_hypnotherapeute.vcf" class="btn btn-sm btn-dark animate-up-2 ml-3" style="box-shadow: 0px 10px 14.1px 0.9px rgb(0 0 0 / 24%), 0px 4px 19.6px 0.4px rgb(0 0 0 / 16%);"><i class="far fa-address-card" aria-hidden="true"></i>
+         Save Contact Data    </a>
       </div>
-    </div>
-  </div>
-  <div class="fs-checkbox-field">
-    <div class="fs-checkbox-wrapper">
-      <input
-        class="fs-checkbox"
-        id="follow-up-consent"
-        name="follow-up-consent"
-        type="checkbox"
-        value="yes"
-      />
-    </div>
-    <div>
-      <label class="fs-label" for="follow-up-consent">
-        May we contact you for follow-up?
-      </label>
-    </div>
-  </div>
-  <div class="fs-button-group">
-    <button class="fs-button" type="submit">Submit</button>
-  </div>
-
-      </form>
-    </div>
-  </div>
-
-  <!-- Script principal -->
-  <script>
-    // Changement de thème
-function setTheme(theme) {
-  localStorage.setItem("theme", theme);
-  document.documentElement.setAttribute("data-theme", theme);
-
-  if (theme === "blue") {
-    document.documentElement.style.setProperty("--main-bg", "#1c2c4c");
-    document.documentElement.style.setProperty("--accent", "#e8e9f3");
-    document.documentElement.style.setProperty("--button-bg", "#1c2c4c");
-    document.documentElement.style.setProperty("--button-text", "#ffffff");
-
-    // Pour style_from.css
-    document.documentElement.style.setProperty("--color-primary", "#1c2c4c");
-    document.documentElement.style.setProperty("--color-primary-active", "#162239");
-    document.documentElement.style.setProperty("--color-border-active", "#1c2c4c");
-    document.documentElement.style.setProperty("--color-highlight", "#1c2c4c");
-    document.documentElement.style.setProperty("--color-background", "#e6ecf5");
-    document.documentElement.style.setProperty("--color-background-alt", "#c4d3eb");
-  }
-
-  else if (theme === "beige") {
-    document.documentElement.style.setProperty("--main-bg", "#b38b6d");
-    document.documentElement.style.setProperty("--accent", "#f4ede5");
-    document.documentElement.style.setProperty("--button-bg", "#b38b6d");
-    document.documentElement.style.setProperty("--button-text", "#ffffff");
-
-    // Pour style_from.css
-    document.documentElement.style.setProperty("--color-primary", "#b38b6d");
-    document.documentElement.style.setProperty("--color-primary-active", "#8a6851");
-    document.documentElement.style.setProperty("--color-border-active", "#b38b6d");
-    document.documentElement.style.setProperty("--color-highlight", "#b38b6d");
-    document.documentElement.style.setProperty("--color-background", "#f5f2ed");
-    document.documentElement.style.setProperty("--color-background-alt", "#ded3c4");
-  }
-
-  else if (theme === "petrol") {
-    document.documentElement.style.setProperty("--main-bg", "#224957");
-    document.documentElement.style.setProperty("--accent", "#d7f1f7");
-    document.documentElement.style.setProperty("--button-bg", "#224957");
-    document.documentElement.style.setProperty("--button-text", "#ffffff");
-
-    // Pour style_from.css
-    document.documentElement.style.setProperty("--color-primary", "#224957");
-    document.documentElement.style.setProperty("--color-primary-active", "#1b3a45");
-    document.documentElement.style.setProperty("--color-border-active", "#224957");
-    document.documentElement.style.setProperty("--color-highlight", "#224957");
-    document.documentElement.style.setProperty("--color-background", "#e5f7fa");
-    document.documentElement.style.setProperty("--color-background-alt", "#b9e6ee");
-  }
-}
-
-
-    // Ouverture / fermeture modal
-    function openModal() {
-      document.getElementById("feedbackModal").style.display = "block";
-    }
-    function closeModal() {
-      document.getElementById("feedbackModal").style.display = "none";
-    }
-    window.onclick = function (event) {
-      const modal = document.getElementById("feedbackModal");
-      if (event.target === modal) closeModal();
-    };
-
-    // Confirmation d'envoi de formulaire
-    function showConfirmation(event) {
-      event.preventDefault();
-      const form = event.target;
-      fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      }).then((response) => {
-        if (response.ok) {
-          form.innerHTML = "<p>✅ Merci ! Votre message a été envoyé.</p>";
-        } else {
-          form.innerHTML = "<p>❌ Une erreur est survenue. Veuillez réessayer.</p>";
-        }
-      });
-      return false;
-    }
-
-    // Thème par défaut
-    setTheme("blue");
-  </script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const dateInput = document.getElementById("response-date");
-    if (dateInput) {
-      const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-      dateInput.setAttribute("max", today);
-    }
-  });
-</script>
-
-
-</body>
+      <script>
+         document.querySelectorAll('.flag-button').forEach(button => {
+           button.addEventListener('click', () => {
+             const lang = button.dataset.lang;
+         
+             // Cacher toutes les sections
+             document.querySelectorAll('.lang-content').forEach(content => {
+               content.classList.remove('active');
+             });
+         
+             // Afficher la section de la langue sélectionnée
+             document.querySelector(`.lang-${lang}`).classList.add('active');
+           });
+         });
+      </script>
+   </body>
 </html>
