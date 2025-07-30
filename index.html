@@ -21,12 +21,12 @@
     <button onclick="setTheme('petrol')">Bleu pétrole</button>
   </div>
 
-  <header>
-    <div class="container">
-      <h1>Hypnose Moderne</h1>
-      <p>Transformez votre vie. Rapidement. Naturellement.</p>
-    </div>
-  </header>
+<header class="hero">
+  <div class="container header-text">
+    <h1>Hypnose Moderne</h1>
+    <p>Transformez votre vie. Rapidement. Naturellement.</p>
+  </div>
+</header>
 
   <section class="container">
     <h2>Spécialiste des phobies et de l’anxiété</h2>
@@ -252,6 +252,7 @@ function setTheme(theme) {
     document.documentElement.style.setProperty("--color-highlight", "#1c2c4c");
     document.documentElement.style.setProperty("--color-background", "#e6ecf5");
     document.documentElement.style.setProperty("--color-background-alt", "#c4d3eb");
+    document.documentElement.style.setProperty("--hero-overlay", "rgba(28, 44, 76, 0.7)");
   }
 
   else if (theme === "beige") {
@@ -267,6 +268,8 @@ function setTheme(theme) {
     document.documentElement.style.setProperty("--color-highlight", "#b38b6d");
     document.documentElement.style.setProperty("--color-background", "#f5f2ed");
     document.documentElement.style.setProperty("--color-background-alt", "#ded3c4");
+
+    document.documentElement.style.setProperty("--hero-overlay", "rgba(179, 139, 109, 0.6)");
   }
 
   else if (theme === "petrol") {
@@ -282,6 +285,8 @@ function setTheme(theme) {
     document.documentElement.style.setProperty("--color-highlight", "#224957");
     document.documentElement.style.setProperty("--color-background", "#e5f7fa");
     document.documentElement.style.setProperty("--color-background-alt", "#b9e6ee");
+
+    document.documentElement.style.setProperty("--hero-overlay", "rgba(34, 73, 87, 0.65)");
   }
 }
 
