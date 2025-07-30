@@ -12,6 +12,7 @@
   --light-gray: #f5f7fa;
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   --radius: 12px;
+  --hero-overlay: rgba(28, 44, 76, 0.7); /* valeur par défaut pour thème blue */
   transition: all 0.3s ease-in-out;
 }
 
@@ -73,6 +74,19 @@ header h1 {
 header p {
   font-size: 1.2rem;
   opacity: 0.9;
+}
+
+.hero {
+  background: linear-gradient(to right, var(--hero-overlay), rgba(0, 0, 0, 0.2)),
+              url("img/brain.jpg") no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 120px 20px;
+  text-align: left;
+}
+
+.hero .header-text {
+  max-width: 600px;
 }
 
 /* Sections */
