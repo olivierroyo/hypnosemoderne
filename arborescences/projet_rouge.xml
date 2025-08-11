@@ -1,0 +1,38 @@
+<node label="Projet Rouge" _color="red">
+  <node label="Spécifications" _color="orange">
+    <node label="Cahier des charges.docx"/>
+    <node label="Maquettes.pdf"/>
+  </node>
+
+  <node label="Développement" _color="blue">
+    <node label="Frontend" _color="purple">
+      <node label="index.html"/>
+      <node label="app.js"/>
+    </node>
+    <node label="Backend">
+      <node label="api.js"/>
+    </node>
+  </node>
+
+  <node label="Tests" _color="green">
+    <node label="Plan de test.xlsx"/>
+    <node label="Résultats"/>
+ <node label="Dossier Rouge" _color="red">
+        <description><![CDATA[
+          <b>Description</b> : Exemple long<br/>
+          <ul>
+            <li>Un point</li>
+            <li>Deuxième</li>
+          </ul>
+        ]]></description>
+        <node label="Sous-dossier">
+          <description><![CDATA[
+            <b>Description</b> : Exemple long sous<br/>
+            <ul>
+              <li>Un point</li>
+              <li>Deuxième</li>
+            </ul>
+          ]]></description>
+          <node label="Image.jpg"/>
+        </node>
+      </node>
