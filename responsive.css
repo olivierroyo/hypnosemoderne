@@ -1,0 +1,69 @@
+@media (max-width: 768px) {
+  html::before {
+    content: "≤768px";
+    position: fixed; top: 8px; right: 8px;
+    background: #000; color: #fff; padding: 2px 6px; font-size: 12px; z-index: 9999;
+  }
+}
+
+/* For tablets and smaller devices */
+@media (max-width: 768px) {
+  body {
+    padding: 15px; /* Reduce body padding */
+  }
+
+  .tree-controls {
+    flex-direction: column; /* Stack search and button groups */
+    align-items: stretch; /* Stretch items to full width */
+  }
+
+  .tree-controls .search-group {
+    flex-direction: column; /* Stack search input and checkbox */
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .tree-controls input[type="text"] {
+    width: 100%; /* Make search input full width */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+
+  .tree-controls .button-group {
+    justify-content: center; /* Center the buttons */
+    width: 100%;
+  }
+
+  .tooltip-box {
+    max-width: 90vw; /* Make tooltip responsive */
+    left: 5vw !important; /* Center it roughly */
+    right: 5vw !important;
+    font-size: 14px;
+    padding: 12px 30px 12px 15px;
+  }
+}
+
+/* For very small mobile devices */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5em; /* Reduce heading size */
+  }
+
+  .tree-controls .button-group {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: stretch;
+  }
+
+  .tree-controls button {
+    width: 100%;
+    text-align: center;
+  }
+
+  label[for="tree-selector"], #tree-selector {
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+  #tree-selector {
+    margin-top: 5px;
+  }
+}
