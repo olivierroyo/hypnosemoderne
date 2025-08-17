@@ -50,18 +50,22 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     <div class="testimonial-carousel">
       <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
       <div class="testimonial-slider">
-        <blockquote>“Incroyable mais vrai : une seule séance a suffi pour que je retrouve enfin le sommeil. Merci infiniment ! – Marie F.”</blockquote>
-        <blockquote>“En une seule séance, ma peur des oiseaux a disparu. 20 ans de phobie réglés en 45 minutes. Une semaine plus tard, je caresse une poule et j’envisage même d’adopter un couple pour avoir mes propres œufs frais. C’est incroyable à dire, mais cette expérience a réellement changé ma vie. – Marjolaine R.”</blockquote>
-        <blockquote>“Pas besoin de phrases ni de longs discours, ça change tout dedans, ça change tout autour. Finis les matins paupières en panne, lourdes comme les bouteilles de butane. – Françis C.”</blockquote>
-        <blockquote>“Témoignage 1 – Jean D.”</blockquote>
-        <blockquote>“Témoignage 2 – Sophie L.”</blockquote>
-        <blockquote>“Témoignage 3 – Marie F.”</blockquote>
-        <blockquote>“Témoignage 4 – Marjolaine R.”</blockquote>
-        <blockquote>“Témoignage 5 – Françis C.”</blockquote>
-        <blockquote>“Témoignage 6 – Jean D.”</blockquote>
-        <blockquote>“Témoignage 7 – Sophie L.”</blockquote>
-        <blockquote>“Témoignage 8 – Marc P.”</blockquote>
-        <blockquote>“Témoignage 9 – Clara T.”</blockquote>
+        <div class="testimonial-slide">
+          <blockquote>“Incroyable mais vrai : une seule séance a suffi pour que je retrouve enfin le sommeil. Merci infiniment ! – Marie F.”</blockquote>
+          <blockquote>“En une seule séance, ma peur des oiseaux a disparu. 20 ans de phobie réglés en 45 minutes. Une semaine plus tard, je caresse une poule et j’envisage même d’adopter un couple pour avoir mes propres œufs frais. C’est incroyable à dire, mais cette expérience a réellement changé ma vie. – Marjolaine R.”</blockquote>
+          <blockquote>“Pas besoin de phrases ni de longs discours, ça change tout dedans, ça change tout autour. Finis les matins paupières en panne, lourdes comme les bouteilles de butane. – Françis C.”</blockquote>
+          <blockquote>“Témoignage 1 – Jean D.”</blockquote>
+          <blockquote>“Témoignage 2 – Sophie L.”</blockquote>
+          <blockquote>“Témoignage 3 – Marie F.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
+          <blockquote>“Témoignage 4 – Marjolaine R.”</blockquote>
+          <blockquote>“Témoignage 5 – Françis C.”</blockquote>
+          <blockquote>“Témoignage 6 – Jean D.”</blockquote>
+          <blockquote>“Témoignage 7 – Sophie L.”</blockquote>
+          <blockquote>“Témoignage 8 – Marc P.”</blockquote>
+          <blockquote>“Témoignage 9 – Clara T.”</blockquote>
+        </div>
       </div>
       <button class="carousel-btn next-btn" id="nextBtn">›</button>
     </div>
@@ -350,9 +354,9 @@ function setTheme(theme) {
 
   // Carousel script
   const slider = document.querySelector('.testimonial-slider');
+  const slides = document.querySelectorAll('.testimonial-slide');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const slides = document.querySelectorAll('.testimonial-slider blockquote');
   let currentIndex = 0;
   const totalSlides = slides.length;
 
@@ -376,12 +380,10 @@ function setTheme(theme) {
     showSlide(currentIndex - 1);
   });
 
-  // Automatic slide
   let slideInterval = setInterval(() => {
     showSlide(currentIndex + 1);
   }, 5000);
 
-  // Pause on hover
   const carousel = document.querySelector('.testimonial-carousel');
   carousel.addEventListener('mouseenter', () => {
     clearInterval(slideInterval);
