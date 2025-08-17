@@ -47,10 +47,17 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
 
   <section class="container">
     <h2>Témoignages</h2>
-    <blockquote>“Incroyable mais vrai : une seule séance a suffi pour que je retrouve enfin le sommeil. Merci infiniment ! – Marie F.”</blockquote>
-    <blockquote>“En une seule séance, ma peur des oiseaux a disparu. 20 ans de phobie réglés en 45 minutes. Une semaine plus tard, je caresse une poule et j’envisage même d’adopter un couple pour avoir mes propres œufs frais. C’est incroyable à dire, mais cette expérience a réellement changé ma vie.
-– Marjolaine R.”</blockquote>
-    <blockquote>“Pas besoin de phrases ni de longs discours, ça change tout dedans, ça change tout autour. Finis les matins paupières en panne, lourdes comme les bouteilles de butane. – Françis C.”</blockquote>
+    <div class="testimonial-carousel">
+      <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
+      <div class="testimonial-slider">
+        <blockquote>“Incroyable mais vrai : une seule séance a suffi pour que je retrouve enfin le sommeil. Merci infiniment ! – Marie F.”</blockquote>
+        <blockquote>“En une seule séance, ma peur des oiseaux a disparu. 20 ans de phobie réglés en 45 minutes. Une semaine plus tard, je caresse une poule et j’envisage même d’adopter un couple pour avoir mes propres œufs frais. C’est incroyable à dire, mais cette expérience a réellement changé ma vie. – Marjolaine R.”</blockquote>
+        <blockquote>“Pas besoin de phrases ni de longs discours, ça change tout dedans, ça change tout autour. Finis les matins paupières en panne, lourdes comme les bouteilles de butane. – Françis C.”</blockquote>
+        <blockquote>“Témoignage 4 – Jean D.”</blockquote>
+        <blockquote>“Témoignage 5 – Sophie L.”</blockquote>
+      </div>
+      <button class="carousel-btn next-btn" id="nextBtn">›</button>
+    </div>
   </section>
 
   <section class="container contact">
@@ -332,6 +339,51 @@ function setTheme(theme) {
       const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
       dateInput.setAttribute("max", today);
     }
+  });
+
+  // Carousel script
+  const slider = document.querySelector('.testimonial-slider');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const slides = document.querySelectorAll('.testimonial-slider blockquote');
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function showSlide(index) {
+    if (index >= totalSlides) {
+      currentIndex = 0;
+    } else if (index < 0) {
+      currentIndex = totalSlides - 1;
+    } else {
+      currentIndex = index;
+    }
+    const offset = -currentIndex * 100;
+    slider.style.transform = `translateX(${offset}%)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    showSlide(currentIndex + 1);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    showSlide(currentIndex - 1);
+  });
+
+  // Automatic slide
+  let slideInterval = setInterval(() => {
+    showSlide(currentIndex + 1);
+  }, 5000);
+
+  // Pause on hover
+  const carousel = document.querySelector('.testimonial-carousel');
+  carousel.addEventListener('mouseenter', () => {
+    clearInterval(slideInterval);
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    slideInterval = setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, 5000);
   });
 </script>
 

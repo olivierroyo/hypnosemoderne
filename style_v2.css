@@ -249,3 +249,58 @@ footer {
     transform: translateY(0);
   }
 }
+
+/* Testimonial Carousel */
+.testimonial-carousel {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.testimonial-slider {
+  display: flex;
+  animation: slide 30s linear infinite;
+}
+
+.testimonial-carousel:hover .testimonial-slider {
+  animation-play-state: paused;
+}
+
+.testimonial-slider blockquote {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-500%); /* 5 testimonials */
+  }
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  z-index: 10;
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
