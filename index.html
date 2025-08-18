@@ -88,62 +88,45 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
       <h2>Donnez votre avis</h2>
-      <form action="https://formspree.io/f/xwpqkgqk" method="POST" onsubmit="return showConfirmation(event)">
-        
+     <form
+  action="https://formspree.io/f/xyzpaavg"
+  class="fs-form"
+  target="_top"
+  method="POST"
+>
   <div class="fs-field">
-    <label class="fs-label" for="full-name">Full Name</label>
+    <label class="fs-label" for="full-name">Nom complet</label>
     <input
       class="fs-input"
       id="full-name"
       name="full-name"
-      placeholder="Enter your name (optional)"
+      placeholder="Entrez votre nom (facultatif)"
     />
   </div>
   <div class="fs-field">
-    <label class="fs-label" for="email-address">Email Address</label>
+    <label class="fs-label" for="email-address">Adresse e-mail</label>
     <input
       class="fs-input"
       id="email-address"
       name="email-address"
-      placeholder="Enter your email address (optional)"
-    />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="company-name">Company Name</label>
-    <input
-      class="fs-input"
-      id="company-name"
-      name="company-name"
-      placeholder="Enter your company name (optional)"
-    />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="response-date">Date</label>
-    <input
-      type="date" 
-      min="2025-05-23"
-      class="fs-input"
-      id="response-date"
-      name="response-date"
-      placeholder="Select the date"
-      required
+      placeholder="Entrez votre adresse e-mail (facultatif)"
     />
   </div>
   <div class="fs-field" style="margin-bottom: 2rem">
     <label class="fs-label" for="nps-score">
-      How likely are you to recommend us to a friend or colleague? (0 &#x3D; Not
-      at all likely, 10 &#x3D; Extremely likely)
+      Quelle est la probabilité que vous nous recommandiez à un ami ou à un collègue ?
+      (0 = Pas du tout probable, 5 = Extrêmement probable)
     </label>
     <input
       class="fs-slider"
       id="nps-score"
-      max="10"
+      max="5"
       min="0"
       name="nps-score"
       required
       step="1"
       type="range"
-      value="8"
+      value="3"
     />
     <div class="slider-label-container">
       <span class="slider-label-text">0</span>
@@ -152,47 +135,41 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
       <span class="slider-label-text">3</span>
       <span class="slider-label-text">4</span>
       <span class="slider-label-text">5</span>
-      <span class="slider-label-text">6</span>
-      <span class="slider-label-text">7</span>
-      <span class="slider-label-text">8</span>
-      <span class="slider-label-text">9</span>
-      <span class="slider-label-text">10</span>
     </div>
   </div>
   <div class="fs-field">
     <label class="fs-label" for="score-reason">
-      What is the primary reason for your score?
+      Voulez-vous publier votre avis sur le site ?
     </label>
     <textarea
       class="fs-textarea"
       id="score-reason"
       name="score-reason"
-      placeholder="Explain why you gave us this score"
-      required
+      placeholder="Cet avis sera publié sur le site (facultatif)"
     ></textarea>
   </div>
   <div class="fs-field">
     <label class="fs-label" for="improvement-suggestion">
-      What could we do to improve your experience?
+      Que pourrions-nous améliorer dans votre expérience ?
     </label>
     <textarea
       class="fs-textarea"
       id="improvement-suggestion"
       name="improvement-suggestion"
-      placeholder="Let us know what we can improve (optional)"
+      placeholder="Dites-nous ce que nous pourrions améliorer (facultatif)"
     ></textarea>
   </div>
   <div class="fs-field">
-    <label class="fs-label" for="positive-feedback">What did we do well?</label>
+    <label class="fs-label" for="positive-feedback">Qu’avons-nous bien fait ?</label>
     <textarea
       class="fs-textarea"
       id="positive-feedback"
       name="positive-feedback"
-      placeholder="Tell us what worked well for you (optional)"
+      placeholder="Dites-nous ce qui a bien fonctionné pour vous (facultatif)"
     ></textarea>
   </div>
   <div class="fs-field">
-    <label class="fs-label">Would you be open to sharing a testimonial?</label>
+    <label class="fs-label">Nous recommanderiez-vous à d’autres ?</label>
     <div class="fs-radio-group">
       <div class="fs-radio-field">
         <div class="fs-radio-wrapper">
@@ -206,7 +183,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
           />
         </div>
         <div>
-          <label class="fs-label" for="testimonial-consent-yes">Yes</label>
+          <label class="fs-label" for="testimonial-consent-yes">Oui</label>
         </div>
       </div>
       <div class="fs-radio-field">
@@ -221,7 +198,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
           />
         </div>
         <div>
-          <label class="fs-label" for="testimonial-consent-no">No</label>
+          <label class="fs-label" for="testimonial-consent-no">Non</label>
         </div>
       </div>
     </div>
@@ -238,15 +215,15 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     </div>
     <div>
       <label class="fs-label" for="follow-up-consent">
-        May we contact you for follow-up?
+        Pouvons-nous vous recontacter pour un suivi ?
       </label>
     </div>
   </div>
   <div class="fs-button-group">
-    <button class="fs-button" type="submit">Submit</button>
+    <button class="fs-button" type="submit">Envoyer</button>
   </div>
+</form>
 
-      </form>
     </div>
   </div>
 
