@@ -1,0 +1,107 @@
+<node label="Racine">
+  <node label="Spectacle: la 4eme dimension" _color="blue">
+    <description><![CDATA[
+       Le thème de la “4ᵉ dimension” ouvre plein de portes créatives</b> : illusions de temps, d’espace, de réalité parallèle…
+    ]]></description>
+    <node label="1. Accueil &amp; Mise en ambiance (5-10 min)">
+      <description><![CDATA[
+        <!--Son/Lumière : musique mystérieuse (style science-fiction, sons électroniques légers), salle dans une lumière bleutée.-->
+        <ul>
+          <li><b>Présentation du thème</b> : <i>“Et si, ce soir, nous franchissons ensemble la porte de la 4ᵉ dimension : là où le temps, l’espace et la réalité ne sont plus les mêmes.”</i></li>
+          <li>Explication rassurante et ludique de l’hypnose.</li>
+        </ul>
+      ]]></description>
+    </node>
+    <node label="2. Tests collectifs &amp; sélection (10 min)">
+      <description><![CDATA[
+        <ul>
+          <li>Jeux d’imagination pour identifier les plus réceptifs.(doigts aimantés)</li>
+          <li>Mise en valeur des plus réceptifs, appel sur scène (8 à 10 volontaires).</li>
+        </ul>
+        <!--Son/Lumière : crescendo musical doux + spot chaleureux sur scène.-->
+      ]]></description>
+    </node>
+    <node label="3. Induction &amp; mise en transe (10 min)">
+      <description><![CDATA[
+        <ul>
+          <li>Mise en hypnose collective.</li>
+          <li><b>Suggestion d’un “voyage”</b> : <i>“Vous franchissez une porte et entrez dans la 4ᵉ dimension, un monde où tout devient possible…”</i></li>
+          <li><b>super relax</b> : relaxé , pronfondément relaxé, dans in someil profond, complètement détendu.</li>
+          <li><b>Univers miroir</b> : tout le monde croit être leur double inversé.</li>
+        </ul>
+        <h3>approfondissement</h3>
+        La dimension du resssenti
+        <ul>
+          <li><b>super relax</b> : relaxé , pronfondément relaxé, dans in someil profond, complètement détendu...de plus en plus...decompte 5-> 0...</li>
+          <li><b>le contraire</b> : le bras raide, comme une barre d'acier, rigide impossible  à bouger.</li>
+        </ul>
+        <!--SSon/Lumière : baisse lumière salle, halo blanc/bleu, ambiance “porte qui s’ouvre” (effet sonore).-->
+      ]]></description>
+    </node>
+    <node label="4. Chapitre 1 – Le Temps (15-20 min)">
+      <description><![CDATA[
+        <ul>
+          <li><b>Voyage dans le passé</b> : retour en enfance, école primaire (ils écrivent au tableau, récitent).</li>
+          <li><b>Projection dans le futur</b> : chacun découvre son métier dans 20 ans (exagéré et drôle).</li>
+          <li><b>Temps accéléré / ralenti</b> : une minute leur paraît une heure, ou l’inverse.(scène banale (boire un verre d’eau) devient en ralenti ou accéléré.)</li>
+          <li><b>Scène comique</b> : ils répétent une action en boucle comme si le temps était bloqué.</li>
+        </ul>
+        Transition : “Le temps s’efface… et l’espace se déforme…”
+        <!--SSon/Lumière : sons de pendule + distorsion, lumière oscillante.-->
+      ]]></description>
+    </node>
+    <node label="5. Chapitre 2 – L’Espace(15-20 min)">
+      <description><![CDATA[
+        <ul>
+          <li><b>Gravité inversée</b> : tout semble lourd ou léger.(chaise, ballon, stylo)</li>
+          <li><b>Espace déformé</b> : la scène paraît immense ou minuscule.</li>
+          <li><b>Téléportation imaginaire</b> : ils pensent être dans un autre lieu (plage, montagne, espace).</li>
+          <li><b>Public invisible</b> : ils ne voient que des sièges vides.</li>
+        </ul>
+        Transition : “Mais il existe encore une dimension plus étrange : celle des mondes parallèles.”
+        <!--SSon/Lumière : bruit de “warp spatial”, stroboscope lent (effet vortex).
+      ]]></description>-->
+    </node>
+    <node label="6. Chapitre 3 – Réalités parallèles (20 min)">
+      <description><![CDATA[
+        <ul>
+          <li><b>Identités multiples</b> : chaque volontaire croit être une célébrité différente (acteur, sportif, chanteur).</li>
+          <li><b>Univers miroir</b> : tout le monde croit être leur double inversé.(gauche/droite inversées).</li>
+          <li><b>Langage étrange</b> : ils parlent une “langue extraterrestre” qu’ils comprennent parfaitement… mais pas le public.</li>
+          <li><b>Pouvoirs spéciaux</b> : télépathie, télékinésie, super-héros qui échouent dans leurs démonstrations.</li>
+          <li><b>Le goût</b> : un citron devient une succulente orange, un oignon une pomme délicieuse.</li>
+          <li><b>L'odeur'</b> : la personne A trouve le parfum de la personne B incroyablement bon MAIS B trouve que A pue.</li>
+          <li><b>La musique</b> : un petit bonhomme sur ton épaule chante des chansons d'amour.</li>
+        </ul>
+        Transition : “Et si la 4ᵉ dimension vous ramenait… mais dans un monde qui n’est pas tout à fait le vôtre ?”
+        <!--SSon/Lumière : musique épique + faisceau blanc balayant la scène.-->
+      ]]></description>
+    </node>
+    <node label="7. Grand final (10-15 min)">
+      <description><![CDATA[
+        <ul>
+          <li><b>Retour à la réalité inversé</b>: ils croient être revenus dans leur monde, mais tout semble encore “décalé”.
+                <ul>
+                  <li>Micro qui “parle seul” (jeu de l’hypnotiseur).</li>
+                  <li>chaise qui bouge.</li>
+                  <li>Ils voient le public habillé bizarrement.</li>
+                  <li>Standing ovation inversée (ils applaudissent le public).</li>
+                </ul>
+          </li>
+          <li><b>Révélation finale</b> : <i>“Vous venez de vivre un voyage dans la 4ᵉ dimension… et vous en revenez plus légers et épanouis.”</i></li>
+          <li><b>Réveil positif et énergisant → énergie, bonne humeur.</li>
+        </ul>
+        <!--SSon/Lumière : montée musicale lumineuse + retour plein feu public.-->
+      ]]></description>
+    </node>
+    <node label="8. Clôture (5 min)">
+      <description><![CDATA[
+        <ul>
+          <li>Valorisation des volontaires.</li>
+          <li><b>Message final</b> : <i>“La vraie 4ᵉ dimension, c’est l’imagination… et elle est infinie.”</i></li>
+        </ul>
+        <!--SSon : musique douce et inspirante pour sortie de salle.-->
+      ]]></description>
+    </node>
+  </node>
+</node>
