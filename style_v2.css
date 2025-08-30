@@ -30,24 +30,23 @@ body {
   font-size: 16px;
 }
 
-/* Menu sticky */
+/* --- NAVBAR --- */
 .navbar {
   position: sticky;
   top: 0;
   width: 100%;
   background: var(--main-bg);
-  padding: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   z-index: 999;
 }
 
 .nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
 }
 
 .logo {
@@ -63,11 +62,7 @@ body {
   gap: 1rem;
 }
 
-.nav-links li {
-  display: inline-block;
-}
-
-.nav-links a {
+.nav-links li a {
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -76,9 +71,19 @@ body {
   transition: background 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links li a:hover {
   background: var(--color-primary-active);
 }
+
+.hamburger {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--button-text);
+  cursor: pointer;
+}
+
 
 
 
