@@ -411,4 +411,43 @@ footer {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
+/* Introduction avec photo + texte */
+.flex-intro {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.intro-photo img {
+  max-width: 300px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.intro-text {
+  flex: 1;
+}
+
+
+/* Fun Fact / Anecdote */
+.fun-fact {
+  background-color: var(--light-gray);
+  border-left: 5px solid var(--main-bg);
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: var(--radius);
+}
+
+.fun-fact h2 {
+  margin-top: 0;
+  color: var(--main-bg);
+}
+
+.fun-fact p {
+  margin: 0.5rem 0 0 0;
+  font-style: italic;
+}
+
 
