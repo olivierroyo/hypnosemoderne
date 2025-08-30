@@ -8,48 +8,59 @@
   <link rel="stylesheet" href="responsive_main.css">
 </head>
 <body>
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="logo">Hypnose Moderne</a>
-    <button class="hamburger" id="hamburger">&#9776;</button>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="tarifs.html">Tarifs</a></li>
-      <li><a href="hypnose.html">Hypnose</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Hypnose Moderne</a>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="hypnose.html">Hypnose</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<header class="hero">
-  <div class="container header-text">
-    <h1>L'Hypnose Moderne</h1>
-    <p>Comprendre et expérimenter une approche contemporaine</p>
-  </div>
-</header>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container header-text">
+      <h1>L'Hypnose Moderne</h1>
+      <p>Découvrez une approche contemporaine, rapide et efficace</p>
+    </div>
+  </header>
 
-<section class="container">
-  <h2>Qu'est-ce que l'hypnose moderne ?</h2>
-  <p>
-    L’hypnose moderne repose sur des techniques rapides, efficaces et adaptées à notre rythme de vie. 
-    Contrairement à l’hypnose traditionnelle, elle se concentre sur des changements rapides et durables 
-    en quelques séances seulement.
-  </p>
-  <h3>Applications principales</h3>
-  <ul>
-    <li>Gestion des phobies et des peurs</li>
-    <li>Réduction de l’anxiété et du stress</li>
-    <li>Développement de la confiance en soi</li>
-  </ul>
-  <a href="index.html" class="btn">Retour à l'accueil</a>
-</section>
+  <!-- SECTION DESCRIPTION -->
+  <section class="container">
+    <h2>Qu'est-ce que l'hypnose moderne ?</h2>
+    <p>
+      L’hypnose moderne est une méthode thérapeutique qui utilise des techniques rapides et ciblées
+      pour obtenir des changements durables. Contrairement à l’hypnose classique, elle est plus
+      dynamique, adaptée aux besoins actuels et permet d’obtenir des résultats dès les premières séances.
+    </p>
+  </section>
 
-<footer>
-  <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
-</footer>
+  <!-- SECTION VIDEOS -->
+  <section class="container">
+    <h2>Vidéos Explicatives</h2>
+    <div class="video-grid">
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/U1SlY8KDUb0" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/ZfpsWYLHs_A" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/Bw1GGMW6YnI" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/nj7qV6iY8jA" frameborder="0" allowfullscreen></iframe>
+      <iframe width="100%" height="250" src="https://www.youtube.com/embed/JatxTXAjrqI" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
+  </footer>
+
+  <!-- SCRIPT HAMBURGER -->
   <script>
-  document.getElementById('hamburger').addEventListener('click', function () {
-    document.getElementById('nav-links').classList.toggle('show');
-  });
-</script>
+    document.getElementById('hamburger').addEventListener('click', function () {
+      document.getElementById('nav-links').classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
