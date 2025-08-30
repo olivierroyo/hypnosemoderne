@@ -354,3 +354,37 @@ footer {
 .next-btn {
   right: 10px;
 }
+
+
+.tarif-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.tarif-card {
+  background: var(--color-background-alt);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarif-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.tarif-card h3 {
+  margin-bottom: 10px;
+  color: var(--color-primary);
+}
+
+.tarif-card .price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--button-bg);
+  margin-bottom: 5px;
+}
