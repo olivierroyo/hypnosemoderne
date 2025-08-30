@@ -45,5 +45,17 @@
   .hamburger {
     display: block;
   }
+
+
+  .flex-intro {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-photo img {
+    max-width: 80%;
+  }
+
 }
 
