@@ -8,65 +8,66 @@
   <link rel="stylesheet" href="responsive_main.css">
 </head>
 <body>
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="logo">Hypnose Moderne</a>
-    <button class="hamburger" id="hamburger">&#9776;</button>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Accueil</a></li>
-      <li><a href="tarifs.html">Tarifs</a></li>
-      <li><a href="hypnose.html">Hypnose</a></li>
-    </ul>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="container header-text">
-    <h1>Tarifs</h1>
-    <p>Des séances adaptées à vos besoins et à votre rythme</p>
-  </div>
-</header>
-
-<section class="container">
-  <h2>Nos forfaits</h2>
-<section class="container tarifs">
-  <h2>Nos Tarifs</h2>
-  <div class="tarif-cards">
-    <div class="tarif-card">
-      <h3>Séance individuelle</h3>
-      <p class="price">80 €</p>
-      <p>Durée : 1 heure</p>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Hypnose Moderne</a>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="tarifs.html">Tarifs</a></li>
+        <li><a href="hypnose.html">Hypnose</a></li>
+      </ul>
     </div>
-    <div class="tarif-card">
-      <h3>Forfait 3 séances</h3>
-      <p class="price">220 €</p>
-      <p>Économisez 20 €</p>
-    </div>
-    <div class="tarif-card">
-      <h3>Forfait 5 séances</h3>
-      <p class="price">350 €</p>
-      <p>Économisez 50 €</p>
-    </div>
-    <div class="tarif-card">
-      <h3>Tarif étudiant</h3>
-      <p class="price">60 €</p>
-      <p>Sur présentation d'un justificatif</p>
-    </div>
-  </div>
-  <a href="index.html" class="btn">Retour à l'accueil</a>
-</section>
+  </nav>
 
-  <p>Les séances en ligne sont proposées au même tarif.</p>
-  <a href="index.html" class="btn">Retour à l'accueil</a>
-</section>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container header-text">
+      <h1>Nos Tarifs</h1>
+      <p>Des solutions adaptées à vos besoins et à votre budget</p>
+    </div>
+  </header>
 
-<footer>
-  <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
-</footer>
+  <!-- SECTION TARIFS -->
+  <section class="container tarifs">
+    <h2>Offres et Forfaits</h2>
+    <div class="tarif-cards">
+      <div class="tarif-card">
+        <h3>Séance individuelle</h3>
+        <p class="price">80 €</p>
+        <p>Durée : 1 heure</p>
+      </div>
+      <div class="tarif-card">
+        <h3>Forfait 3 séances</h3>
+        <p class="price">220 €</p>
+        <p>Économisez 20 €</p>
+      </div>
+      <div class="tarif-card">
+        <h3>Forfait 5 séances</h3>
+        <p class="price">350 €</p>
+        <p>Économisez 50 €</p>
+      </div>
+      <div class="tarif-card">
+        <h3>Tarif étudiant</h3>
+        <p class="price">60 €</p>
+        <p>Sur présentation d'un justificatif</p>
+      </div>
+    </div>
+    <p style="margin-top:20px;">Les séances en ligne sont proposées au même tarif.</p>
+    <a href="index.html" class="btn">Retour à l'accueil</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
+  </footer>
+
+  <!-- SCRIPT HAMBURGER -->
   <script>
-  document.getElementById('hamburger').addEventListener('click', function () {
-    document.getElementById('nav-links').classList.toggle('show');
-  });
-</script>
+    document.getElementById('hamburger').addEventListener('click', function () {
+      document.getElementById('nav-links').classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
