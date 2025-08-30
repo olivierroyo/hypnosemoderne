@@ -24,4 +24,26 @@
     width: 100%;
     margin: 10px 0;
   }
+  
+/* --- NAVBAR RESPONSIVE --- */
+   .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    flex-direction: column;
+    background: var(--main-bg);
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }
+
