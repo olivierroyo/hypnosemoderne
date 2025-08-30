@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>À propos de moi - Hypnose Moderne</title>
+  <link rel="stylesheet" href="style_v2.css" />
+  <link rel="stylesheet" href="responsive_main.css" />
+  <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">Hypnose Moderne</a>
+    <button class="hamburger" id="hamburger">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="tarifs.html">Tarifs</a></li>
+      <li><a href="hypnose.html">Hypnose</a></li>
+      <li><a href="apropos.html">À propos de moi</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero / Header -->
+<header class="hero hero-small">
+  <div class="container header-text">
+    <h1>À propos de moi</h1>
+    <p>Découvrez mon parcours, mes compétences et mon approche en hypnose</p>
+  </div>
+</header>
+
+<!-- Introduction avec photo côte à côte -->
+<section class="container intro flex-intro">
+  <div class="intro-photo">
+    <img src="images/olivier.jpg" alt="Olivier, hypnothérapeute">
+  </div>
+  <div class="intro-text">
+    <h2>Bonjour, je suis Olivier</h2>
+    <p>Hypnothérapeute spécialisé dans les phobies, l’anxiété et le développement personnel, j’accompagne mes clients grâce à des techniques modernes d’hypnose, rapides et efficaces. Mon objectif est de créer des changements concrets dès les premières séances, tout en respectant le rythme et la personnalité de chacun.</p>
+  </div>
+</section>
+
+<!-- Parcours -->
+<section class="container parcours">
+  <h2>Mon parcours</h2>
+  <ul>
+    <li>Formation certifiée en hypnose thérapeutique</li>
+    <li>Pratique de la PNL et visualisations ciblées</li>
+    <li>Expérience avec des centaines de clients satisfaits</li>
+  </ul>
+</section>
+
+<!-- Compétences -->
+<section class="container competences">
+  <h2>Compétences</h2>
+  <ul>
+    <li>Gestion du stress et de l’anxiété</li>
+    <li>Résolution de phobies (avion, araignées, serpents…)</li>
+    <li>Confiance en soi et prise de parole</li>
+    <li>Hypnose rapide et efficace adaptée au quotidien</li>
+  </ul>
+</section>
+
+<!-- Vidéos et contenus ludiques -->
+<section class="container videos">
+  <h2>Vidéos et contenus ludiques</h2>
+  <p>Sur ce site, vous trouverez des vidéos illustrant mes compétences. Elles ont une vocation ludique ou découverte et ne remplacent pas une séance thérapeutique. Chaque accompagnement reste toujours personnalisé selon la personne.</p>
+</section>
+
+<!-- Fun Fact / Anecdote -->
+<section class="container fun-fact">
+  <h2>Fun Fact</h2>
+  <p>J’ai moi-même une petite phobie des araignées… ce qui rend les séances sur les phobies encore plus passionnantes ! J’aime transformer mes expériences personnelles en apprentissages pour mes clients, toujours avec humour et bienveillance.</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
+</footer>
+
+<!-- Script hamburger -->
+<script>
+  document.getElementById('hamburger').addEventListener('click', function () {
+    document.getElementById('nav-links').classList.toggle('show');
+  });
+</script>
+
+<style>
+/* Styles spécifiques à la page À propos */
+.hero-small {
+  min-height: 200px;
+  background: var(--main-bg);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container {
+  margin: 2rem auto;
+  max-width: 900px;
+  padding: 0 1rem;
+}
+
+h2 {
+  color: var(--main-bg);
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 1.5rem;
+}
+
+.fun-fact {
+  background-color: #f4f4f9;
+  border-left: 5px solid var(--main-bg);
+  padding: 1rem 1.5rem;
+  margin-top: 1.5rem;
+  border-radius: 8px;
+}
+
+.fun-fact h2 {
+  margin-top: 0;
+  color: var(--main-bg)
