@@ -3,20 +3,28 @@
 /** Variables **/
 
 :root {
-  --color-background: #cbd5e1;
-  --color-background-alt: #8ec6ff;
-  --color-border-active: #173db6;
+  --color-background: #e6ecf5;
+  --color-background-alt: #c4d3eb;
+  --color-border-active: #1c2c4c;
   --color-border-default: #94a3b8;
-  --color-highlight: #8ec6ff;
-  --color-primary: #144be1;
-  --color-primary-active: #19388f;
+  --color-highlight: #1c2c4c;
+  --color-primary: #1c2c4c;
+  --color-primary-active: #162239;
   --color-text-default: #0f172a;
   --color-text-muted: #475569;
-
+  --main-bg: #1c2c4c;
+  --accent: #e8e9f3;
+  --button-bg: #1c2c4c;
+  --button-text: #ffffff;
+  --hero-overlay: rgba(28, 44, 76, 0.7);
+  
   --font-family-body: "Inter", sans-serif;
   --font-family-display: "Nunito Sans", sans-serif;
   transition: all 0.3s ease-in-out;
 }
+
+
+
 
 /** Base **/
 
