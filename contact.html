@@ -46,7 +46,8 @@
     >
       <div class="fs-field">
         <label class="fs-label" for="name">Nom</label>
-        <input class="fs-input" id="name" name="name" required placeholder="Entrez votre nom complet"/>
+        <input class="fs-input" id="name" name="name" required placeholder="Entrez votre nom complet"   oninvalid="this.setCustomValidity('Veuillez remplir ce champ')"
+  oninput="this.setCustomValidity('')"/>
       </div>
       <div class="fs-field">
         <label class="fs-label" for="email">Adresse email</label>
