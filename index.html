@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hypnothérapie Moderne</title>
   <link rel="icon" type="image/png" href="./icon/hand-holding-hand-solid.svg">
-    <link rel="stylesheet" href="style_v2.css" />
+  <link rel="stylesheet" href="style_v2.css" />
   <link rel="stylesheet" href="style_form.css" />
   <link rel="stylesheet" href="responsive_main.css" />
- <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
-  <!--  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" /> -->
+  <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav class="navbar">
@@ -29,9 +28,9 @@
   <!-- Thème Switcher -->
   <div class="theme-switcher">
     <span>Changer de style :</span>
-    <button onclick="setTheme('blue')">Bleu nuit</button>
-    <button onclick="setTheme('beige')">Beige sable</button>
-    <button onclick="setTheme('petrol')">Bleu pétrole</button>
+    <button onclick="setTheme('theme1')">🌿 Apaisant</button>
+    <button onclick="setTheme('theme2')">☀️ Lumineux</button>
+    <button onclick="setTheme('theme3')">🌙 Sombre</button>
   </div>
 
 <header class="hero">
@@ -69,16 +68,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
           <blockquote>“Pas besoin de phrases ni de longs discours, ça change tout dedans, ça change tout autour. Finis les matins paupières en panne, lourdes comme les bouteilles de butane. – Françis C.”</blockquote>
           <blockquote>“Ma phobie excessive des serpents a été réglée en 30 minutes. Je peux enfin regarder un reportage sans me cacher les yeux. – Marie P.”</blockquote>
           <blockquote>“Je rêve à nouveau après deux séances. Josian I”</blockquote>
-            <!--     <blockquote>“Témoignage 3 – Marie F.”</blockquote>-->
         </div>
-       <!-- <div class="testimonial-slide">
-          <blockquote>“Témoignage 4 – Marjolaine R.”</blockquote>
-          <blockquote>“Témoignage 5 – Françis C.”</blockquote>
-          <blockquote>“Témoignage 6 – Jean D.”</blockquote>
-          <blockquote>“Témoignage 7 – Sophie L.”</blockquote>
-          <blockquote>“Témoignage 8 – Marc P.”</blockquote>
-          <blockquote>“Témoignage 9 – Clara T.”</blockquote>
-        </div>-->
       </div>
       <button class="carousel-btn next-btn" id="nextBtn">›</button>
     </div>
@@ -92,7 +82,6 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     <a href="https://calendly.com/olivier-hypnose68" target="_rdv" class="btn">Prendre rendez-vous</a>
   </section>
 
-
   <footer>
     <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
   </footer>
@@ -102,203 +91,88 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
       <h2>Donnez votre avis</h2>
-     <form
-  action="https://formspree.io/f/xyzpaavg"
-  class="fs-form"
-  target="_top"
-  method="POST"
-   onsubmit="return showConfirmation(event)"
->
-  <div class="fs-field">
-    <label class="fs-label" for="full-name">Nom complet</label>
-    <input
-      class="fs-input"
-      id="full-name"
-      name="full-name"
-      placeholder="Entrez votre nom (facultatif)"
-    />
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="email-address">Adresse e-mail</label>
-    <input
-      class="fs-input"
-      id="email-address"
-      name="email-address"
-      placeholder="Entrez votre adresse e-mail (facultatif)"
-    />
-  </div>
-  <div class="fs-field" style="margin-bottom: 2rem">
-    <label class="fs-label" for="nps-score">
-      Satisfaction globale (1-5)
-    </label>
-    <input
-      class="fs-slider"
-      id="nps-score"
-      max="5"
-      min="0"
-      name="nps-score"
-      required
-      step="1"
-      type="range"
-      value="3"
-    />
-    <div class="slider-label-container">
-      <span class="slider-label-text">0</span>
-      <span class="slider-label-text">1</span>
-      <span class="slider-label-text">2</span>
-      <span class="slider-label-text">3</span>
-      <span class="slider-label-text">4</span>
-      <span class="slider-label-text">5</span>
-    </div>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="score-reason">
-      Voulez-vous publier votre avis sur le site ?
-    </label>
-    <textarea
-      class="fs-textarea"
-      id="score-reason"
-      name="score-reason"
-      placeholder="Cet avis sera publié sur le site (facultatif)"
-    ></textarea>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="improvement-suggestion">
-      Que pourrions-nous améliorer dans votre expérience ?
-    </label>
-    <textarea
-      class="fs-textarea"
-      id="improvement-suggestion"
-      name="improvement-suggestion"
-      placeholder="Dites-nous ce que nous pourrions améliorer (facultatif)"
-    ></textarea>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label" for="positive-feedback">Qu’avons-nous bien fait ?</label>
-    <textarea
-      class="fs-textarea"
-      id="positive-feedback"
-      name="positive-feedback"
-      placeholder="Dites-nous ce qui a bien fonctionné pour vous (facultatif)"
-    ></textarea>
-  </div>
-  <div class="fs-field">
-    <label class="fs-label">Nous recommanderiez-vous à d’autres ?</label>
-    <div class="fs-radio-group">
-      <div class="fs-radio-field">
-        <div class="fs-radio-wrapper">
-          <input
-            class="fs-radio"
-            id="testimonial-consent-yes"
-            name="testimonial-consent"
-            required
-            type="radio"
-            value="yes"
-          />
+      <form action="https://formspree.io/f/xyzpaavg" class="fs-form" target="_top" method="POST" onsubmit="return showConfirmation(event)">
+        <div class="fs-field">
+          <label class="fs-label" for="full-name">Nom complet</label>
+          <input class="fs-input" id="full-name" name="full-name" placeholder="Entrez votre nom (facultatif)" />
         </div>
-        <div>
-          <label class="fs-label" for="testimonial-consent-yes">Oui</label>
+        <div class="fs-field">
+          <label class="fs-label" for="email-address">Adresse e-mail</label>
+          <input class="fs-input" id="email-address" name="email-address" placeholder="Entrez votre adresse e-mail (facultatif)" />
         </div>
-      </div>
-      <div class="fs-radio-field">
-        <div class="fs-radio-wrapper">
-          <input
-            class="fs-radio"
-            id="testimonial-consent-no"
-            name="testimonial-consent"
-            required
-            type="radio"
-            value="no"
-          />
+        <div class="fs-field" style="margin-bottom: 2rem">
+          <label class="fs-label" for="nps-score">Satisfaction globale (1-5)</label>
+          <input class="fs-slider" id="nps-score" max="5" min="0" name="nps-score" required step="1" type="range" value="3" />
+          <div class="slider-label-container">
+            <span class="slider-label-text">0</span>
+            <span class="slider-label-text">1</span>
+            <span class="slider-label-text">2</span>
+            <span class="slider-label-text">3</span>
+            <span class="slider-label-text">4</span>
+            <span class="slider-label-text">5</span>
+          </div>
         </div>
-        <div>
-          <label class="fs-label" for="testimonial-consent-no">Non</label>
+        <div class="fs-field">
+          <label class="fs-label" for="score-reason">Voulez-vous publier votre avis sur le site ?</label>
+          <textarea class="fs-textarea" id="score-reason" name="score-reason" placeholder="Cet avis sera publié sur le site (facultatif)"></textarea>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="fs-checkbox-field">
-    <div class="fs-checkbox-wrapper">
-      <input
-        class="fs-checkbox"
-        id="follow-up-consent"
-        name="follow-up-consent"
-        type="checkbox"
-        value="yes"
-      />
-    </div>
-    <div>
-      <label class="fs-label" for="follow-up-consent">
-        Pouvons-nous vous recontacter pour un suivi ?
-      </label>
-    </div>
-  </div>
-  <div class="fs-button-group">
-    <button class="fs-button" type="submit">Envoyer</button>
-  </div>
-</form>
-
+        <div class="fs-field">
+          <label class="fs-label" for="improvement-suggestion">Que pourrions-nous améliorer dans votre expérience ?</label>
+          <textarea class="fs-textarea" id="improvement-suggestion" name="improvement-suggestion" placeholder="Dites-nous ce que nous pourrions améliorer (facultatif)"></textarea>
+        </div>
+        <div class="fs-field">
+          <label class="fs-label" for="positive-feedback">Qu’avons-nous bien fait ?</label>
+          <textarea class="fs-textarea" id="positive-feedback" name="positive-feedback" placeholder="Dites-nous ce qui a bien fonctionné pour vous (facultatif)"></textarea>
+        </div>
+        <div class="fs-field">
+          <label class="fs-label">Nous recommanderiez-vous à d’autres ?</label>
+          <div class="fs-radio-group">
+            <div class="fs-radio-field">
+              <div class="fs-radio-wrapper">
+                <input class="fs-radio" id="testimonial-consent-yes" name="testimonial-consent" required type="radio" value="yes" />
+              </div>
+              <div>
+                <label class="fs-label" for="testimonial-consent-yes">Oui</label>
+              </div>
+            </div>
+            <div class="fs-radio-field">
+              <div class="fs-radio-wrapper">
+                <input class="fs-radio" id="testimonial-consent-no" name="testimonial-consent" required type="radio" value="no" />
+              </div>
+              <div>
+                <label class="fs-label" for="testimonial-consent-no">Non</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fs-checkbox-field">
+          <div class="fs-checkbox-wrapper">
+            <input class="fs-checkbox" id="follow-up-consent" name="follow-up-consent" type="checkbox" value="yes" />
+          </div>
+          <div>
+            <label class="fs-label" for="follow-up-consent">Pouvons-nous vous recontacter pour un suivi ?</label>
+          </div>
+        </div>
+        <div class="fs-button-group">
+          <button class="fs-button" type="submit">Envoyer</button>
+        </div>
+      </form>
     </div>
   </div>
 
   <!-- Script principal -->
   <script>
-    // Changement de thème
-/*function setTheme(theme) {
-  localStorage.setItem("theme", theme);
-  document.documentElement.setAttribute("data-theme", theme);
+    // Gestion des thèmes
+    function setTheme(theme) {
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
+    }
 
-  if (theme === "blue") {
-    document.documentElement.style.setProperty("--main-bg", "#1c2c4c");
-    document.documentElement.style.setProperty("--accent", "#e8e9f3");
-    document.documentElement.style.setProperty("--button-bg", "#1c2c4c");
-    document.documentElement.style.setProperty("--button-text", "#ffffff");
-
-    // Pour style_from.css
-    document.documentElement.style.setProperty("--color-primary", "#1c2c4c");
-    document.documentElement.style.setProperty("--color-primary-active", "#162239");
-    document.documentElement.style.setProperty("--color-border-active", "#1c2c4c");
-    document.documentElement.style.setProperty("--color-highlight", "#1c2c4c");
-    document.documentElement.style.setProperty("--color-background", "#e6ecf5");
-    document.documentElement.style.setProperty("--color-background-alt", "#c4d3eb");
-    document.documentElement.style.setProperty("--hero-overlay", "rgba(28, 44, 76, 0.7)");
-  }
-
-  else if (theme === "beige") {
-    document.documentElement.style.setProperty("--main-bg", "#b38b6d");
-    document.documentElement.style.setProperty("--accent", "#f4ede5");
-    document.documentElement.style.setProperty("--button-bg", "#b38b6d");
-    document.documentElement.style.setProperty("--button-text", "#ffffff");
-
-    // Pour style_from.css
-    document.documentElement.style.setProperty("--color-primary", "#b38b6d");
-    document.documentElement.style.setProperty("--color-primary-active", "#8a6851");
-    document.documentElement.style.setProperty("--color-border-active", "#b38b6d");
-    document.documentElement.style.setProperty("--color-highlight", "#b38b6d");
-    document.documentElement.style.setProperty("--color-background", "#f5f2ed");
-    document.documentElement.style.setProperty("--color-background-alt", "#ded3c4");
-
-    document.documentElement.style.setProperty("--hero-overlay", "rgba(179, 139, 109, 0.6)");
-  }
-
-  else if (theme === "petrol") {
-    document.documentElement.style.setProperty("--main-bg", "#224957");
-    document.documentElement.style.setProperty("--accent", "#d7f1f7");
-    document.documentElement.style.setProperty("--button-bg", "#224957");
-    document.documentElement.style.setProperty("--button-text", "#ffffff");
-
-    // Pour style_from.css
-    document.documentElement.style.setProperty("--color-primary", "#224957");
-    document.documentElement.style.setProperty("--color-primary-active", "#1b3a45");
-    document.documentElement.style.setProperty("--color-border-active", "#224957");
-    document.documentElement.style.setProperty("--color-highlight", "#224957");
-    document.documentElement.style.setProperty("--color-background", "#e5f7fa");
-    document.documentElement.style.setProperty("--color-background-alt", "#b9e6ee");
-
-    document.documentElement.style.setProperty("--hero-overlay", "rgba(34, 73, 87, 0.65)");
-  }
-}*/
-
+    // Charger thème depuis localStorage
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "theme1";
+      setTheme(savedTheme);
+    })();
 
     // Ouverture / fermeture modal
     function openModal() {
@@ -330,67 +204,41 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
       return false;
     }
 
-    // Thème par défaut
-   // setTheme("blue");
+    // Carousel script
+    const slider = document.querySelector('.testimonial-slider');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      if (index >= totalSlides) {
+        currentIndex = 0;
+      } else if (index < 0) {
+        currentIndex = totalSlides - 1;
+      } else {
+        currentIndex = index;
+      }
+      const offset = -currentIndex * 100;
+      slider.style.transform = `translateX(${offset}%)`;
+    }
+
+    nextBtn.addEventListener('click', () => showSlide(currentIndex + 1));
+    prevBtn.addEventListener('click', () => showSlide(currentIndex - 1));
+
+    let slideInterval = setInterval(() => showSlide(currentIndex + 1), 5000);
+
+    const carousel = document.querySelector('.testimonial-carousel');
+    carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    carousel.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(() => showSlide(currentIndex + 1), 5000);
+    });
+
+    // Burger menu mobile
+    document.getElementById('hamburger').addEventListener('click', function () {
+      document.getElementById('nav-links').classList.toggle('show');
+    });
   </script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const dateInput = document.getElementById("response-date");
-    if (dateInput) {
-      const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-      dateInput.setAttribute("max", today);
-    }
-  });
-
-  // Carousel script
-  const slider = document.querySelector('.testimonial-slider');
-  const slides = document.querySelectorAll('.testimonial-slide');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let currentIndex = 0;
-  const totalSlides = slides.length;
-
-  function showSlide(index) {
-    if (index >= totalSlides) {
-      currentIndex = 0;
-    } else if (index < 0) {
-      currentIndex = totalSlides - 1;
-    } else {
-      currentIndex = index;
-    }
-    const offset = -currentIndex * 100;
-    slider.style.transform = `translateX(${offset}%)`;
-  }
-
-  nextBtn.addEventListener('click', () => {
-    showSlide(currentIndex + 1);
-  });
-
-  prevBtn.addEventListener('click', () => {
-    showSlide(currentIndex - 1);
-  });
-
-  let slideInterval = setInterval(() => {
-    showSlide(currentIndex + 1);
-  }, 5000);
-
-  const carousel = document.querySelector('.testimonial-carousel');
-  carousel.addEventListener('mouseenter', () => {
-    clearInterval(slideInterval);
-  });
-
-  carousel.addEventListener('mouseleave', () => {
-    slideInterval = setInterval(() => {
-      showSlide(currentIndex + 1);
-    }, 5000);
-  });
-</script>
-
-<script>
-  document.getElementById('hamburger').addEventListener('click', function () {
-    document.getElementById('nav-links').classList.toggle('show');
-  });
-</script>
 </body>
 </html>

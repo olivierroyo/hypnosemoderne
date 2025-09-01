@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact – Hypnothérapie Moderne</title>
+  <title>Contact — Hypnothérapie Moderne</title>
   <link rel="icon" type="image/png" href="./icon/hand-holding-hand-solid.svg">
   <link rel="stylesheet" href="style_v2.css" />
   <link rel="stylesheet" href="style_form.css" />
@@ -25,6 +25,14 @@
       </ul>
     </div>
   </nav>
+
+  <!-- Thème Switcher -->
+  <div class="theme-switcher">
+    <span>Changer de style :</span>
+    <button onclick="setTheme('theme1')">🌿 Apaisant</button>
+    <button onclick="setTheme('theme2')">☀️ Lumineux</button>
+    <button onclick="setTheme('theme3')">🌙 Sombre</button>
+  </div>
 
   <!-- HERO -->
   <header class="hero">
@@ -80,8 +88,6 @@
     <button class="btn" onclick="openModal()">Donner un avis</button>
     <a href="https://calendly.com/olivier-hypnose68" target="_rdv" class="btn">Prendre rendez-vous</a>
   </section>
-
-
 
  <!-- Modal feedback -->
 <div id="feedbackModal" class="modal">
@@ -160,7 +166,7 @@
                ></textarea>
          </div>
          <div class="fs-field">
-            <label class="fs-label" for="positive-feedback">Qu’avons-nous bien fait ?</label>
+            <label class="fs-label" for="positive-feedback">Qu'avons-nous bien fait ?</label>
             <textarea
                class="fs-textarea"
                id="positive-feedback"
@@ -169,7 +175,7 @@
                ></textarea>
          </div>
          <div class="fs-field">
-            <label class="fs-label">Nous recommanderiez-vous à d’autres ?</label>
+            <label class="fs-label">Nous recommanderiez-vous à d'autres ?</label>
             <div class="fs-radio-group">
                <div class="fs-radio-field">
                   <div class="fs-radio-wrapper">
@@ -227,16 +233,29 @@
 </div>
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
+    <p>&copy; 2025 Hypnose Moderne — Olivier Royo. Tous droits réservés.</p>
   </footer>
 
-  <!-- SCRIPT HAMBURGER -->
+  <!-- Script principal -->
   <script>
+    // Gestion des thèmes
+    function setTheme(theme) {
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+
+    // Charger thème depuis localStorage
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "theme1";
+      setTheme(savedTheme);
+    })();
+
+    // Burger menu mobile
     document.getElementById('hamburger').addEventListener('click', function () {
       document.getElementById('nav-links').classList.toggle('show');
     });
 
-      // Ouverture / fermeture modal
+    // Ouverture / fermeture modal
     function openModal() {
       document.getElementById("feedbackModal").style.display = "block";
     }
