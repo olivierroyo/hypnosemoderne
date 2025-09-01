@@ -1,41 +1,42 @@
+/* =========================
+   MOBILE & RESPONSIVE STYLES
+   ========================= */
 
 @media (max-width: 768px) {
-  .contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contact .btn {
-    margin-bottom: 15px;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .contact .btn:last-child {
-    margin-bottom: 0;
-  }
-
-  .testimonial-slide {
-    flex-direction: column;
-  }
-
-  .testimonial-slide blockquote {
-    width: 100%;
-    margin: 10px 0;
+  /* === THEME SWITCHER MOBILE === */
+  .theme-switcher {
+    top: 70px;
+    right: 10px;
+    padding: 10px;
+    transform: scale(0.9);
   }
   
-/* --- NAVBAR RESPONSIVE --- */
-   .nav-links {
+  .theme-switcher span {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+  
+  .theme-switcher button {
+    padding: 6px 8px;
+    font-size: 0.7rem;
+    margin: 2px;
+  }
+
+  /* === NAVIGATION MOBILE === */
+  .nav-links {
     display: none;
     position: absolute;
     top: 60px;
     right: 0;
     flex-direction: column;
-    background: var(--main-bg);
+    background: var(--nav-bg);
     width: 100%;
     text-align: center;
-    padding: 1rem 0;
+    padding: 20px 0;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid var(--border-color);
+    gap: 15px;
   }
 
   .nav-links.show {
@@ -44,18 +45,268 @@
 
   .hamburger {
     display: block;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 5px;
   }
 
+  /* === HERO SECTION MOBILE === */
+  .hero {
+    padding: 60px 0;
+  }
 
-  .flex-intro {
+  .hero h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    padding: 0 15px;
+  }
+
+  /* === CONTAINER MOBILE === */
+  .container {
+    margin-bottom: 20px;
+    padding: 40px 15px;
+    border-radius: 15px;
+  }
+
+  .container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .container p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+
+  /* === CONTACT SECTION MOBILE === */
+  .contact {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 15px;
+  }
+
+  .contact .btn {
+    margin: 5px 0;
+    width: 100%;
+    max-width: 320px;
+    padding: 12px 25px;
+  }
+
+  .contact .btn:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact p {
+    font-size: 1rem;
     text-align: center;
+    line-height: 1.6;
   }
 
-  .intro-photo img {
-    max-width: 80%;
+  /* === TESTIMONIAL CAROUSEL MOBILE === */
+  .testimonial-carousel {
+    padding: 20px 15px;
+    margin: 30px 0;
   }
 
+  .testimonial-slide {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .testimonial-slide blockquote {
+    width: 100%;
+    margin: 10px 0;
+    padding: 20px 15px;
+    font-size: 1rem;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .prev-btn {
+    left: 5px;
+  }
+
+  .next-btn {
+    right: 5px;
+  }
+
+  /* === MODAL MOBILE === */
+  .modal-content {
+    margin: 10% auto;
+    padding: 30px 20px;
+    width: 95%;
+    max-height: 85vh;
+    border-radius: 15px;
+  }
+
+  .close {
+    right: 15px;
+    top: 15px;
+    font-size: 1.8rem;
+  }
+
+  /* === BUTTONS MOBILE === */
+  .btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+    border-radius: 25px;
+  }
+
+  /* === LISTS MOBILE === */
+  .container ul li {
+    font-size: 1rem;
+    padding: 10px 0;
+    padding-left: 25px;
+  }
+
+  /* === FOOTER MOBILE === */
+  footer {
+    padding: 25px 15px;
+    font-size: 0.9rem;
+  }
 }
 
+/* =========================
+   TABLET RESPONSIVE (769px - 1024px)
+   ========================= */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .theme-switcher {
+    right: 15px;
+    padding: 12px;
+  }
+
+  .container {
+    padding: 50px 30px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .testimonial-carousel {
+    padding: 30px;
+  }
+
+  .contact .btn {
+    margin: 0 10px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (max-width: 480px)
+   ========================= */
+
+@media (max-width: 480px) {
+  .theme-switcher {
+    transform: scale(0.8);
+    top: 65px;
+    right: 5px;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 30px 10px;
+    margin-bottom: 15px;
+  }
+
+  .container h2 {
+    font-size: 1.5rem;
+  }
+
+  .testimonial-carousel {
+    padding: 15px 10px;
+  }
+
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .contact .btn {
+    max-width: 280px;
+    padding: 10px 20px;
+  }
+
+  .modal-content {
+    margin: 15% auto;
+    padding: 25px 15px;
+    width: 98%;
+  }
+}
+
+/* =========================
+   ACCESSIBILITY & INTERACTIONS
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .container:hover {
+    transform: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .testimonial-slider {
+    transition: none;
+  }
+
+  .carousel-btn:hover {
+    transform: translateY(-50%);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .container {
+    border: 2px solid var(--accent-color);
+  }
+
+  .btn {
+    border: 2px solid var(--button-text);
+  }
+
+  .testimonial-slide blockquote {
+    border-left-width: 6px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .theme-switcher,
+  .carousel-btn,
+  .hamburger {
+    display: none;
+  }
+
+  .container {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    page-break-inside: avoid;
+  }
+
+  .hero {
+    page-break-after: avoid;
+  }
+}

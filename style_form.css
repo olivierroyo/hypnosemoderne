@@ -1,22 +1,54 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
-/** Variables **/
+/* =========================
+   FORM VARIABLES - INTEGRATED WITH THEME SYSTEM
+   ========================= */
 
-:root {
-  --color-background: #e6ecf5;
-  --color-background-alt: #c4d3eb;
-  --color-border-active: #1c2c4c;
-  --color-border-default: #94a3b8;
-  --color-highlight: #1c2c4c;
-  --color-primary: #1c2c4c;
-  --color-primary-active: #c4d3eb;
-  --color-text-default: #0f172a;
-  --color-text-muted: #475569;
-
+/* Theme 1: Soothing (matches main theme) */
+[data-theme="theme1"] {
+  --form-bg: rgba(255, 255, 255, 0.95);
+  --form-bg-alt: rgba(240, 248, 245, 0.9);
+  --form-border-active: #52b373;
+  --form-border-default: #a8d4b8;
+  --form-highlight: #52b373;
+  --form-primary: #52b373;
+  --form-primary-active: #45a065;
+  --form-text-default: #2d5a3d;
+  --form-text-muted: #6b8a75;
+  --form-button-text: #ffffff;
 }
 
+/* Theme 2: Bright */
+[data-theme="theme2"] {
+  --form-bg: rgba(255, 255, 255, 0.95);
+  --form-bg-alt: rgba(255, 248, 240, 0.9);
+  --form-border-active: #ff7f3f;
+  --form-border-default: #ffb885;
+  --form-highlight: #ff8c42;
+  --form-primary: #ff7f3f;
+  --form-primary-active: #e66d2e;
+  --form-text-default: #8b4513;
+  --form-text-muted: #a0764d;
+  --form-button-text: #ffffff;
+}
 
-/** Base **/
+/* Theme 3: Dark */
+[data-theme="theme3"] {
+  --form-bg: rgba(26, 26, 46, 0.95);
+  --form-bg-alt: rgba(79, 79, 107, 0.3);
+  --form-border-active: #bb86fc;
+  --form-border-default: #4f4f6b;
+  --form-highlight: #bb86fc;
+  --form-primary: #bb86fc;
+  --form-primary-active: #a566e8;
+  --form-text-default: #e8eaed;
+  --form-text-muted: #9aa0a6;
+  --form-button-text: #1a1a2e;
+}
+
+/* =========================
+   BASE FORM STYLES
+   ========================= */
 
 *,
 ::before,
@@ -32,7 +64,7 @@
 
 body {
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font-family-body);
+  font-family: 'Nunito Sans', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
 }
@@ -68,12 +100,20 @@ textarea {
   outline: none;
 }
 
-/** Components **/
+/* =========================
+   FORM COMPONENTS
+   ========================= */
 
 .fs-form {
-  background-color: var(--color-background);
+  background: var(--form-bg);
+  border-radius: 15px;
+  padding: 30px;
   display: grid;
   row-gap: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--form-border-default);
+  transition: all 0.3s ease;
 }
 
 .fs-form:where(.fs-layout__2-column) {
@@ -85,6 +125,10 @@ fieldset {
   display: grid;
   margin: 1.5rem 0;
   row-gap: 1.5rem;
+  border: 1px solid var(--form-border-default);
+  border-radius: 10px;
+  padding: 20px;
+  background: var(--form-bg-alt);
 }
 
 .fs-form:where(.fs-layout__2-column) fieldset {
@@ -94,41 +138,44 @@ fieldset {
 }
 
 .fs-fieldset-title {
-  color: var(--color-text-default);
-  font-family: var(--font-family-display);
+  color: var(--form-text-default);
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 1.25rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.75rem;
   margin-bottom: 1.5rem;
   grid-column: 1 / -1;
+  text-align: center;
 }
 
 .fs-field {
   display: flex;
   flex-direction: column;
-  row-gap: 0.375rem;
+  row-gap: 0.5rem;
 }
 
 .fs-label {
-  color: var(--color-text-default);
+  color: var(--form-text-default);
   display: block;
-  font-family: var(--font-family-display);
+  font-family: 'Nunito Sans', sans-serif;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.25rem;
 }
 
 .fs-description {
-  color: var(--color-text-muted);
+  color: var(--form-text-muted);
   display: block;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  font-style: italic;
 }
 
 .fs-button-group {
   display: flex;
   flex-direction: row-reverse;
   column-gap: 1.5rem;
+  margin-top: 20px;
 }
 
 .fs-form:where(.fs-layout__2-column) .fs-button-group {
@@ -136,65 +183,88 @@ fieldset {
 }
 
 .fs-button {
-  background-color: var(--color-primary);
-  border-radius: 0.375rem;
-  color: white;
+  background: linear-gradient(45deg, var(--form-primary), var(--form-primary-active));
+  border-radius: 25px;
+  color: var(--form-button-text);
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
   line-height: 1rem;
-  padding: 1rem 2rem;
-  transition-duration: 200ms;
-  transition-property: background-color;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 15px 30px;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.fs-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.fs-button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .fs-button:hover {
-  background-color: var(--color-primary-active);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 .fs-button:focus-visible {
-  background-color: var(--color-primary-active);
-  outline: 3px solid var(--color-highlight);
+  outline: 3px solid var(--form-highlight);
+  outline-offset: 2px;
 }
 
 .fs-input,
 .fs-select {
   appearance: none;
-  border-radius: 0.375rem;
-  border-width: 0;
-  box-shadow: var(--color-border-default) 0 0 0 1px inset;
-  color: var(--color-text-default);
+  border-radius: 10px;
+  border: 2px solid var(--form-border-default);
+  background: var(--form-bg);
+  color: var(--form-text-default);
   font-size: 1rem;
-  height: 2.5rem;
+  height: 3rem;
   line-height: 1.5rem;
   outline: none;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding: 0 1rem;
+  transition: all 0.3s ease;
 }
 
 .fs-input:focus-visible,
 .fs-select:focus-visible {
-  box-shadow: var(--color-border-active) 0 0 0 1.5px inset;
-  outline: 3px solid var(--color-highlight);
-  outline-offset: 0;
+  border-color: var(--form-border-active);
+  box-shadow: 0 0 0 3px rgba(var(--form-highlight), 0.1);
+  transform: translateY(-1px);
 }
 
 .fs-input::placeholder {
-  color: var(--color-text-muted);
+  color: var(--form-text-muted);
+  font-style: italic;
 }
 
 .fs-checkbox-group,
 .fs-radio-group {
   display: flex;
   flex-direction: column;
-  row-gap: 0.5rem;
+  row-gap: 0.75rem;
 }
 
 .fs-checkbox-field,
 .fs-radio-field {
-  column-gap: 0.5rem;
+  column-gap: 0.75rem;
   display: flex;
+  align-items: flex-start;
 }
 
 :is(.fs-checkbox-field, .fs-radio-field) .fs-label + .fs-description {
@@ -206,31 +276,34 @@ fieldset {
   align-items: center;
   display: flex;
   height: 1.25rem;
+  margin-top: 2px;
 }
 
 .fs-checkbox,
 .fs-radio {
-  background-color: #fff;
-  border: 1px solid var(--color-text-default);
-  height: 1rem;
-  width: 1rem;
+  background: var(--form-bg);
+  border: 2px solid var(--form-border-default);
+  height: 1.25rem;
+  width: 1.25rem;
+  transition: all 0.3s ease;
 }
 
 .fs-checkbox {
-  border-radius: 0.25rem;
+  border-radius: 4px;
 }
 
 .fs-radio {
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .fs-checkbox:checked,
 .fs-radio:checked {
-  background-color: var(--color-primary);
+  background: var(--form-primary);
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  border-color: transparent;
+  background-size: 70% 70%;
+  border-color: var(--form-primary);
+  transform: scale(1.1);
 }
 
 .fs-checkbox:checked {
@@ -238,138 +311,209 @@ fieldset {
 }
 
 .fs-radio:checked {
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='4'/%3e%3c/svg%3e");
 }
 
 .fs-checkbox:focus-visible,
 .fs-radio:focus-visible {
-  outline: 3px solid var(--color-highlight);
-  outline-offset: 0;
+  outline: 3px solid var(--form-highlight);
+  outline-offset: 2px;
 }
 
 .fs-select {
-  background-color: #fff;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
+  background-position: right 1rem center;
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
+  padding-right: 3rem;
 }
 
 .fs-slider {
   background: transparent;
   cursor: pointer;
-  height: 1.25rem;
+  height: 1.5rem;
   width: 100%;
+  border-radius: 10px;
 }
 
 .fs-slider::-moz-range-track {
-  background-color: var(--color-background);
-  border-radius: 0.5rem;
+  background: var(--form-bg-alt);
+  border-radius: 10px;
   height: 0.5rem;
+  border: 1px solid var(--form-border-default);
 }
 
 .fs-slider::-webkit-slider-runnable-track {
-  background-color: var(--color-background);
-  border-radius: 0.5rem;
+  background: var(--form-bg-alt);
+  border-radius: 10px;
   height: 0.5rem;
+  border: 1px solid var(--form-border-default);
 }
 
 .fs-slider::-moz-range-thumb {
-  background-color: var(--color-primary);
-  border: none; /* Removes extra border that FF applies */
+  background: var(--form-primary);
+  border: none;
   border-radius: 50%;
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
 .fs-slider::-webkit-slider-thumb {
   appearance: none;
-  background-color: var(--color-primary);
+  background: var(--form-primary);
   border-radius: 50%;
-  height: 1.25rem;
-  margin-top: -0.375rem; /* Centers thumb on the track */
-  width: 1.25rem;
+  height: 1.5rem;
+  margin-top: -0.5rem;
+  width: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.fs-slider:hover::-moz-range-thumb,
+.fs-slider:hover::-webkit-slider-thumb {
+  transform: scale(1.1);
 }
 
 .fs-slider:focus-visible::-moz-range-thumb {
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid var(--form-highlight);
   outline-offset: 2px;
 }
 
 .fs-slider:focus-visible::-webkit-slider-thumb {
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid var(--form-highlight);
   outline-offset: 2px;
-}
-
-.fs-switch {
-  background-color: var(--color-background-alt);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='white'/%3e%3c/svg%3e");
-  background-position: left center;
-  background-repeat: no-repeat;
-  border-radius: 1.5rem;
-  cursor: pointer;
-  height: 1.5rem;
-  transition-duration: 200ms;
-  transition-property: background-color, background-position;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  width: 2.75rem;
-}
-
-.fs-switch:checked {
-  background-color: var(--color-primary);
-  background-position: right center;
-}
-
-.fs-switch:focus-visible {
-  outline: 3px solid var(--color-highlight);
-  outline-offset: 0;
 }
 
 .fs-textarea {
   appearance: none;
-  border-radius: 0.375rem;
-  border-width: 0;
-  box-shadow: var(--color-border-default) 0 0 0 1px inset;
-  color: var(--color-primary);
+  border-radius: 10px;
+  border: 2px solid var(--form-border-default);
+  background: var(--form-bg);
+  color: var(--form-text-default);
   font-size: 1rem;
   line-height: 1.5rem;
   outline: none;
-  padding: 0.5rem 0.75rem;
+  padding: 1rem;
   resize: vertical;
+  min-height: 120px;
+  transition: all 0.3s ease;
+  font-family: inherit;
 }
 
 .fs-textarea:focus-visible {
-  box-shadow: var(--color-border-active) 0 0 0 1.5px inset;
-  outline: 3px solid var(--color-highlight);
-  outline-offset: 0;
+  border-color: var(--form-border-active);
+  box-shadow: 0 0 0 3px rgba(var(--form-highlight), 0.1);
+  transform: translateY(-1px);
 }
 
 .fs-textarea::placeholder {
-  color: var(--color-text-muted);
+  color: var(--form-text-muted);
+  font-style: italic;
 }
 
-/** Utilities **/
-
-.col-span-full {
-  grid-column: 1 / -1;
-}
-
-.fs-textarea::placeholder {
-  color: var(--color-text-muted);
-}
+/* =========================
+   SLIDER LABELS
+   ========================= */
 
 .slider-label-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
+  padding: 0 0.25rem;
 }
 
 .slider-label-text {
   font-size: 0.75rem;
-  color: var(--color-text-muted);
+  color: var(--form-text-muted);
   text-align: center;
   white-space: nowrap;
+  font-weight: 500;
 }
 
+/* =========================
+   UTILITIES
+   ========================= */
+
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+/* =========================
+   RESPONSIVE FORM STYLES
+   ========================= */
+
+@media (max-width: 768px) {
+  .fs-form {
+    padding: 20px 15px;
+    row-gap: 1.25rem;
+  }
+
+  .fs-form:where(.fs-layout__2-column) {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .fs-button-group {
+    flex-direction: column;
+    row-gap: 1rem;
+  }
+
+  .fs-button {
+    width: 100%;
+    padding: 12px 25px;
+  }
+
+  fieldset {
+    padding: 15px;
+  }
+
+  .fs-fieldset-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .fs-checkbox-group,
+  .fs-radio-group {
+    row-gap: 0.5rem;
+  }
+
+  .fs-input,
+  .fs-select {
+    height: 2.75rem;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+
+  .fs-textarea {
+    min-height: 100px;
+  }
+
+  .slider-label-container {
+    margin-top: 0.25rem;
+  }
+
+  .slider-label-text {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .fs-form {
+    padding: 15px 10px;
+  }
+
+  .fs-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .fs-fieldset-title {
+    font-size: 1rem;
+  }
+
+  fieldset {
+    padding: 12px;
+  }
+}

@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hypnose – Hypnothérapie Moderne</title>
+  <title>Hypnose — Hypnothérapie Moderne</title>
   <link rel="icon" type="image/png" href="./icon/hand-holding-hand-solid.svg">
   <link rel="stylesheet" href="style_v2.css" />
   <link rel="stylesheet" href="style_form.css" />
   <link rel="stylesheet" href="responsive_main.css" />
- <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
-  <!--  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" /> -->
+  <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -27,6 +26,14 @@
   </div>
 </nav>
 
+  <!-- Thème Switcher -->
+  <div class="theme-switcher">
+    <span>Changer de style :</span>
+    <button onclick="setTheme('theme1')">🌿 Apaisant</button>
+    <button onclick="setTheme('theme2')">☀️ Lumineux</button>
+    <button onclick="setTheme('theme3')">🌙 Sombre</button>
+  </div>
+
   <!-- HERO -->
   <header class="hero">
     <div class="container header-text">
@@ -39,9 +46,9 @@
   <section class="container">
     <h2>Qu'est-ce que l'hypnose moderne ?</h2>
     <p>
-      L’hypnose moderne est une méthode thérapeutique qui utilise des techniques rapides et ciblées
-      pour obtenir des changements durables. Contrairement à l’hypnose classique, elle est plus
-      dynamique, adaptée aux besoins actuels et permet d’obtenir des résultats dès les premières séances.
+      L'hypnose moderne est une méthode thérapeutique qui utilise des techniques rapides et ciblées
+      pour obtenir des changements durables. Contrairement à l'hypnose classique, elle est plus
+      dynamique, adaptée aux besoins actuels et permet d'obtenir des résultats dès les premières séances.
     </p>
   </section>
 
@@ -49,14 +56,14 @@
    <h3>Applications principales</h3>
   <ul>
     <li>Gestion des phobies et des peurs</li>
-    <li>Réduction de l’anxiété et du stress</li>
+    <li>Réduction de l'anxiété et du stress</li>
     <li>Développement de la confiance en soi</li>
   </ul>
     </section>
   
   <!-- SECTION VIDEOS -->
   <section class="container">
-    <h2>Queslques démonstrations</h2>
+    <h2>Quelques démonstrations</h2>
      <p>
       Les vidéos présentées ci dessous ne portent pas sur des thèmes thérapeutiques, car ceux-ci sont personnels et propres à chaque individu. 
        Elles ont pour objectif de montrer les effets de l'hypnose de manière ludique ou exploratoire. 
@@ -87,8 +94,6 @@
     <button class="btn" onclick="openModal()">Donner un avis</button>
     <a href="https://calendly.com/olivier-hypnose68" target="_rdv" class="btn">Prendre rendez-vous</a>
   </section>
-
-
 
  <!-- Modal feedback -->
 <div id="feedbackModal" class="modal">
@@ -167,7 +172,7 @@
                ></textarea>
          </div>
          <div class="fs-field">
-            <label class="fs-label" for="positive-feedback">Qu’avons-nous bien fait ?</label>
+            <label class="fs-label" for="positive-feedback">Qu'avons-nous bien fait ?</label>
             <textarea
                class="fs-textarea"
                id="positive-feedback"
@@ -176,7 +181,7 @@
                ></textarea>
          </div>
          <div class="fs-field">
-            <label class="fs-label">Nous recommanderiez-vous à d’autres ?</label>
+            <label class="fs-label">Nous recommanderiez-vous à d'autres ?</label>
             <div class="fs-radio-group">
                <div class="fs-radio-field">
                   <div class="fs-radio-wrapper">
@@ -235,17 +240,29 @@
   
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Hypnose Moderne – Olivier Royo. Tous droits réservés.</p>
+    <p>&copy; 2025 Hypnose Moderne — Olivier Royo. Tous droits réservés.</p>
   </footer>
 
- 
+  <!-- Script principal -->
   <script>
-    //SCRIPT HAMBURGER 
+    // Gestion des thèmes
+    function setTheme(theme) {
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
+    }
+
+    // Charger thème depuis localStorage
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "theme1";
+      setTheme(savedTheme);
+    })();
+
+    // Burger menu mobile
     document.getElementById('hamburger').addEventListener('click', function () {
       document.getElementById('nav-links').classList.toggle('show');
     });
 
-      // Ouverture / fermeture modal
+    // Ouverture / fermeture modal
     function openModal() {
       document.getElementById("feedbackModal").style.display = "block";
     }
