@@ -490,6 +490,13 @@ body {
   text-decoration: underline;
 }
 
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
 /* =========================
    MODAL
    ========================= */
