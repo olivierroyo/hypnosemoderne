@@ -217,7 +217,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     const nextBtn = document.getElementById('nextBtn');
     const totalSlides = slides.length;
     let currentIndex = 0;
-    let slidesPerView = 5; // Default for desktop
+    let slidesPerView = 6; // Default for desktop
 
     function updateCarousel() {
       // Adjust slidesPerView for different screen sizes
@@ -226,7 +226,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
       } else if (window.innerWidth <= 768) {
         slidesPerView = 2;
       } else {
-        slidesPerView = 5;
+        slidesPerView = 6;
       }
 
       // Recalculate slide width and transform
