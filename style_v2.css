@@ -150,7 +150,7 @@ body {
   border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
-  z-index: 999;
+  z-index: 1001;
   transition: all 0.3s ease;
 }
 
@@ -587,7 +587,6 @@ footer {
 
   .nav-links.show {
     display: flex;
-    z-index: 1001;
   }
 
   .hamburger {
