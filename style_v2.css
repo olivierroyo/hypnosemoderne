@@ -398,10 +398,12 @@ body {
 .testimonial-slider {
   display: flex;
   transition: transform 0.5s ease;
+  gap: 20px;
 }
 
 .testimonial-slide {
-  min-width: 100%;
+  min-width: calc(20% - 16px);
+  flex-shrink: 0;
 }
 
 .testimonial-slide blockquote {
@@ -446,6 +448,13 @@ body {
 .carousel-btn:hover {
   transform: translateY(-50%) scale(1.1);
   box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: translateY(-50%); /* Keep original transform */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Keep original shadow */
 }
 
 .prev-btn {
