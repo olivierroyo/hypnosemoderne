@@ -4,6 +4,22 @@
    ENHANCED THEMES SYSTEM
    ========================= */
 
+:root {
+  --main-bg: linear-gradient(135deg, #f0f8f5 0%, #e8f5f0 100%);
+  --container-bg: rgba(255, 255, 255, 0.9);
+  --text-color: #2d5a3d;
+  --accent-color: #4a9d6b;
+  --button-bg: #52b373;
+  --button-hover: #45a065;
+  --button-text: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --hero-overlay: rgba(45, 90, 61, 0.1);
+  --testimonial-bg: rgba(255, 255, 255, 0.8);
+  --border-color: #a8d4b8;
+  --shadow: 0 8px 32px rgba(74, 157, 107, 0.1);
+  --gradient-accent: linear-gradient(45deg, #52b373, #68c985);
+}
+
 /* Theme 1: 🌿 Soothing (Calming nature-inspired) */
 [data-theme="theme1"] {
   --main-bg: linear-gradient(135deg, #f0f8f5 0%, #e8f5f0 100%);
@@ -571,6 +587,7 @@ footer {
 
   .nav-links.show {
     display: flex;
+    z-index: 1001;
   }
 
   .hamburger {
