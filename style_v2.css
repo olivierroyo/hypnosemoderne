@@ -402,9 +402,6 @@ body {
 
 .testimonial-slide {
   min-width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
 }
 
 .testimonial-slide blockquote {
