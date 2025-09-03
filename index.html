@@ -236,6 +236,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     const totalSlides = slides.length;
     let currentIndex = 0;
     let slidesPerView = 6; // Default for desktop
+    let totalPages = 1;
 
     function updateCarousel() {
       // Adjust slidesPerView for different screen sizes
@@ -246,6 +247,8 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
       } else {
         slidesPerView = 6;
       }
+
+      totalPages = Math.ceil(totalSlides / slidesPerView);
 
       // Recalculate slide width and transform
       const slideWidth = slides[0].offsetWidth;
@@ -261,21 +264,38 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     }
 
     function moveSlide(direction) {
-      const newIndex = currentIndex + direction;
+      let newIndex = currentIndex + direction * slidesPerView;
       
       // Check boundaries
-      if (newIndex >= 0 && newIndex <= totalSlides - slidesPerView) {
-        currentIndex = newIndex;
-        updateCarousel();
+      if (newIndex >= totalSlides) {
+        newIndex = 0;
       }
+      if (newIndex < 0) {
+        newIndex = (totalPages - 1) * slidesPerView;
+      }
+
+      // Ensure the new index doesn't go beyond the last possible starting slide
+      const lastPossibleIndex = totalSlides - slidesPerView;
+      if (newIndex > lastPossibleIndex && currentIndex !== lastPossibleIndex) {
+         // snap to the last page
+         newIndex = lastPossibleIndex;
+      } else if (newIndex > lastPossibleIndex) {
+         newIndex = 0; // if already on last page, loop to start
+      }
+
+
+      currentIndex = newIndex;
+      updateCarousel();
     }
 
     function createDots() {
-      for (let i = 0; i <= totalSlides - slidesPerView; i++) {
+      dotsContainer.innerHTML = '';
+      totalPages = Math.ceil(totalSlides / slidesPerView);
+      for (let i = 0; i < totalPages; i++) {
         const dot = document.createElement('button');
         dot.classList.add('dot');
         dot.addEventListener('click', () => {
-          currentIndex = i;
+          currentIndex = i * slidesPerView;
           updateCarousel();
         });
         dotsContainer.appendChild(dot);
@@ -284,8 +304,9 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
 
     function updateDots() {
       const dots = document.querySelectorAll('.dot');
+      const currentPage = Math.floor(currentIndex / slidesPerView);
       dots.forEach((dot, i) => {
-        if (i === currentIndex) {
+        if (i === currentPage) {
           dot.classList.add('active');
         } else {
           dot.classList.remove('active');
@@ -298,12 +319,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
 
     function startSlideInterval() {
       return setInterval(() => {
-        if (currentIndex >= totalSlides - slidesPerView) {
-          currentIndex = 0; // Loop back to the start
-        } else {
-          currentIndex++;
-        }
-        updateCarousel();
+        moveSlide(1);
       }, 3000);
     }
 
