@@ -276,7 +276,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
   <section class="container contact">
     <h2>Contact</h2>
     <p>📍 Cabinet à ILLTAL (68) — 💻 Séances en ligne possibles</p>
-    <p><i class="fas fa-phone" style="color: var(--button-bg);"></i> <a href="tel:+33663483300">+33(0)6.63.48.33.00</a> &nbsp;&nbsp; <i class="fas fa-envelope" style="color: var(--button-bg);"></i>&nbsp;<a href="mailto:olivier.hypnose68@gmail.com?subject=Contact hypnoth&eacute;rapie;body=Bonjour, ">olivier.hypnose68@gmail.com</a></p>
+    <p><i class="fas fa-phone icon-color"></i> <a href="tel:+33663483300">+33(0)6.63.48.33.00</a> &nbsp;&nbsp; <i class="fas fa-envelope icon-color"></i>&nbsp;<a href="mailto:olivier.hypnose68@gmail.com?subject=Contact hypnoth&eacute;rapie;body=Bonjour, ">olivier.hypnose68@gmail.com</a></p>
     <div class="contact-buttons">
       <a href="#" class="btn" onclick="openModal(); return false;">Donner un avis</a>
       <a href="https://calendly.com/olivier-hypnose68" target="_rdv" class="btn">Prendre rendez-vous</a>
@@ -404,87 +404,6 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
       });
       return false;
     }
-
-    // Carousel script
-   /* const slider = document.querySelector('.testimonial-slider');
-    const pages = document.querySelectorAll('.testimonial-page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('carousel-dots');
-    const totalPages = pages.length;
-    let currentPage = 0;
-
-    function updateCarousel() {
-      const offset = -currentPage * 100;
-      slider.style.transform = `translateX(${offset}%)`;
-
-      // Update button states
-      prevBtn.disabled = currentPage === 0;
-      nextBtn.disabled = currentPage === totalPages - 1;
-
-      updateDots();
-    }
-
-    function movePage(direction) {
-      const newPage = currentPage + direction;
-      
-      // Check boundaries and loop
-      if (newPage >= totalPages) {
-        currentPage = 0;
-      } else if (newPage < 0) {
-        currentPage = totalPages - 1;
-      } else {
-        currentPage = newPage;
-      }
-
-      updateCarousel();
-    }
-
-    function createDots() {
-      dotsContainer.innerHTML = '';
-      for (let i = 0; i < totalPages; i++) {
-        const dot = document.createElement('button');
-        dot.classList.add('dot');
-        dot.addEventListener('click', () => {
-          currentPage = i;
-          updateCarousel();
-        });
-        dotsContainer.appendChild(dot);
-      }
-    }
-
-    function updateDots() {
-      const dots = document.querySelectorAll('.dot');
-      dots.forEach((dot, i) => {
-        if (i === currentPage) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
-
-    nextBtn.addEventListener('click', () => movePage(1));
-    prevBtn.addEventListener('click', () => movePage(-1));
-
-    function startSlideInterval() {
-      return setInterval(() => {
-        movePage(1);
-      }, 3000);
-    }
-
-    let slideInterval = startSlideInterval();
-
-    const carousel = document.querySelector('.testimonial-carousel');
-    carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
-    carousel.addEventListener('mouseleave', () => {
-      slideInterval = startSlideInterval();
-    });*/
-    
-    // Initial setup
-    window.addEventListener('resize', updateCarousel);
-    createDots();
-    updateCarousel();
 
     // Burger menu mobile
     document.getElementById('hamburger').addEventListener('click', function () {
