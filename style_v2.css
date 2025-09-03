@@ -571,14 +571,14 @@ body {
   margin: 20px 0;
 }
 
-.contact a {
+.contact a:not(.btn) {
   color: var(--accent-color);
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
 }
 
-.contact a:hover {
+.contact a:not(.btn):hover {
   color: var(--button-hover);
   text-decoration: underline;
 }
