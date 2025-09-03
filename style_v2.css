@@ -484,15 +484,14 @@ body {
     /* NAVIGATION CONTROLS */
     .carousel-btn {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      top: 10px; /* Position from the top */
       background: var(--gradient-accent);
       color: var(--button-text);
       border: none;
-      width: 50px;
-      height: 50px;
+      width: 45px; /* Slightly smaller */
+      height: 45px;
       border-radius: 50%;
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -503,22 +502,24 @@ body {
     }
 
     .carousel-btn:hover {
-      transform: translateY(-50%) scale(1.1);
+      transform: scale(1.1); /* Adjusted transform */
       box-shadow: 0 6px 25px rgba(0,0,0,0.3);
     }
 
     .carousel-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      transform: translateY(-50%);
+      transform: none; /* Adjusted transform */
     }
 
     .prev-btn {
-      left: -25px;
+      left: 50%;
+      transform: translateX(-110%); /* Position relative to center */
     }
 
     .next-btn {
-      right: -25px;
+      left: 50%;
+      transform: translateX(10%); /* Position relative to center */
     }
 
     /* DOTS NAVIGATION */
