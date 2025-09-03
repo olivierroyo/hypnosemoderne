@@ -62,19 +62,36 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     <div class="testimonial-carousel">
       <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
       <div class="testimonial-slider">
+        <div class="testimonial-slide">
           <blockquote>“Incroyable mais vrai : une seule séance a suffi pour que je retrouve enfin le sommeil. Merci infiniment ! – Chritiane F.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“En une seule séance, ma peur des oiseaux a disparu. 20 ans de phobie réglés en 45 minutes. Une semaine plus tard, je caresse une poule et j’envisage même d’adopter un couple pour avoir mes propres œufs frais. C’est incroyable à dire, mais cette expérience a réellement changé ma vie. – Marjolaine R.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“Pas besoin de phrases ni de longs discours, ça change tout dedans, ça change tout autour. Finis les matins paupières en panne, lourdes comme les bouteilles de butane. – Françis C.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“Ma phobie excessive des serpents a été réglée en 30 minutes. Je peux enfin regarder un reportage sans me cacher les yeux. – Marie P.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“Je rêve à nouveau après deux séances. Josian I”</blockquote>
-          <blockquote>“Témoignage 4 – Marjolaine R.”</blockquote>
-          <blockquote>“Témoignage 5 – Françis C.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“Témoignage 6 – Jean D.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“Témoignage 7 – Sophie L.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“Témoignage 8 – Marc P.”</blockquote>
+        </div>
+        <div class="testimonial-slide">
           <blockquote>“Témoignage 9 – Clara T.”</blockquote>
+        </div>
       </div>
       <button class="carousel-btn next-btn" id="nextBtn">›</button>
+      <div class="carousel-dots" id="carousel-dots"></div>
     </div>
   </section>
 
@@ -215,6 +232,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     const slides = document.querySelectorAll('.testimonial-slide');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('carousel-dots');
     const totalSlides = slides.length;
     let currentIndex = 0;
     let slidesPerView = 6; // Default for desktop
@@ -238,6 +256,8 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
       // Update button states
       prevBtn.disabled = currentIndex === 0;
       nextBtn.disabled = currentIndex >= totalSlides - slidesPerView;
+
+      updateDots();
     }
 
     function moveSlide(direction) {
@@ -248,6 +268,29 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
         currentIndex = newIndex;
         updateCarousel();
       }
+    }
+
+    function createDots() {
+      for (let i = 0; i <= totalSlides - slidesPerView; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.dot');
+      dots.forEach((dot, i) => {
+        if (i === currentIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
     }
 
     nextBtn.addEventListener('click', () => moveSlide(1));
@@ -261,7 +304,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
           currentIndex++;
         }
         updateCarousel();
-      }, 5000);
+      }, 3000);
     }
 
     let slideInterval = startSlideInterval();
@@ -274,6 +317,7 @@ Contrairement à l’image traditionnelle de l’hypnose longue et analytique, l
     
     // Initial setup
     window.addEventListener('resize', updateCarousel);
+    createDots();
     updateCarousel();
 
     // Burger menu mobile
