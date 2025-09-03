@@ -401,9 +401,17 @@ body {
   gap: 20px;
 }
 
-.testimonial-slide {
-  min-width: calc(100% / 6);
+.testimonial-page {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  min-width: 100%;
   flex-shrink: 0;
+}
+
+.testimonial-slide {
+  /* No specific width needed as the grid handles it */
 }
 
 .carousel-dots {
