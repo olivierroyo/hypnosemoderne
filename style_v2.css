@@ -502,24 +502,30 @@ body {
     }
 
     .carousel-btn:hover {
-      transform: scale(1.1); /* Adjusted transform */
       box-shadow: 0 6px 25px rgba(0,0,0,0.3);
     }
 
     .carousel-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
-      transform: none; /* Adjusted transform */
     }
 
     .prev-btn {
       left: 50%;
-      transform: translateX(-110%); /* Position relative to center */
+      transform: translateX(-60px); /* Position relative to center */
     }
 
     .next-btn {
       left: 50%;
-      transform: translateX(10%); /* Position relative to center */
+      transform: translateX(15px); /* Position relative to center */
+    }
+
+    .prev-btn:hover {
+      transform: translateX(-60px) scale(1.1);
+    }
+
+    .next-btn:hover {
+      transform: translateX(15px) scale(1.1);
     }
 
     /* DOTS NAVIGATION */
