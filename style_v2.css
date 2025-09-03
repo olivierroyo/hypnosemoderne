@@ -402,8 +402,30 @@ body {
 }
 
 .testimonial-slide {
-  min-width: calc(20% - 16px);
+  min-width: calc(100% / 6);
   flex-shrink: 0;
+}
+
+.carousel-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: var(--border-color);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  border: none;
+}
+
+.dot.active,
+.dot:hover {
+  background-color: var(--accent-color);
 }
 
 .testimonial-slide blockquote {
