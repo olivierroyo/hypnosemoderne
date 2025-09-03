@@ -105,6 +105,9 @@
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
       }
+
+      .prev-btn { left: 10px; }
+      .next-btn { right: 10px; }
     }
 
     @media (max-width: 768px) {
@@ -129,6 +132,9 @@
         height: 40px;
         font-size: 16px;
       }
+
+      .prev-btn { left: 5px; }
+      .next-btn { right: 5px; }
     }
 
     @media (max-width: 480px) {
