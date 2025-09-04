@@ -7,6 +7,13 @@
       <style>
          /* — Styles existants (inchangés) — */
          body { font-family: sans-serif; background: #f9f9f9; padding: 30px; }
+         body > a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+         }
+          body > a:hover {
+            transform: scale(1.05);
+         }
          .tree ul { list-style-type: none; margin: 0; padding-left: 20px; position: relative; }
          .tree li { position: relative; padding-left: 30px; }
          .tree > ul > li:first-child:not([class*="color-"])::before{ display: none; }
@@ -115,7 +122,11 @@
          .icon-description {
          cursor: pointer;
          margin-left: 8px;
+         transition: transform 0.2s ease;
          /* Plus besoin de position relative */
+         }
+         .icon-description:hover {
+          transform: scale(1.2);
          }
          .node-link {
          text-decoration: underline;
