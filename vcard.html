@@ -30,6 +30,19 @@
          .social-icons a:hover {
          color: #007bff;
          }
+         .slider-nav-item, .text-link {
+            display: inline-block;
+            transition: transform 0.2s ease;
+         }
+         .slider-nav-item:hover, .text-link:hover {
+            transform: translateY(-2px);
+         }
+         .btn {
+            transition: transform 0.2s ease;
+         }
+         .btn:hover {
+            transform: translateY(-2px);
+         }
          /* Exemples de couleurs spécifiques */
          .Facebook-color { color: #3b5998; }
          .Instagram-color { color: #e4405f; }
@@ -50,6 +63,12 @@
          }
          .profile-image img:hover {
          transform: scale(1.05);
+         }
+         .grid a img {
+            transition: transform 0.3s ease;
+         }
+         .grid a:hover img {
+            transform: scale(1.05);
          }
       </style>
    </head>
@@ -94,7 +113,7 @@
                   <div class="space-y-1">
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne">Mon Site web</a>
+                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne" class="text-link">Mon Site web</a>
                      </p>
                     <!-- <p class="flex items-center space-x-2">
                         <i class="fas fa-link text-gray-700"></i>
@@ -103,7 +122,7 @@
                   </div>
                  
                   <h2 class="text-xl font-semibold">Réseaux sociaux</h2>
-                  <div class="space-y-1">
+                  <div class="space-y-1 social-icons">
                      <p class="flex items-center space-x-2">
                         <a href="https://www.youtube.com/@olivierhypnose" target="_youtube" class="slider-nav-item">
                         <i class="fab fa-youtube Youtube-color text-2xl"></i> @olivierhypnose
@@ -135,11 +154,11 @@
                   <div class="space-y-1">
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-phone text-gray-700"></i>
-                        <a href="tel:+33663483300" class="text-blue-600">+33 6 63 48 33 00</a>
+                        <a href="tel:+33663483300" class="text-blue-600 text-link">+33 6 63 48 33 00</a>
                      </p>
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="mailto:olivier.hypnose68@gmail.com?subject=Contact hypnothérapie;body=Bonjour, "" class="text-blue-600">olivier.hypnose68@gmail.com</a>
+                        <a href="mailto:olivier.hypnose68@gmail.com?subject=Contact hypnothérapie;body=Bonjour, "" class="text-blue-600 text-link">olivier.hypnose68@gmail.com</a>
                      </p>
                   </div>
 
@@ -177,12 +196,12 @@
                   <div class="space-y-1">
                     <p class="flex items-center space-x-2">
                         <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne">My Website</a>
+                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne" class="text-link">My Website</a>
                      </p>
                   </div>
                  
                   <h2 class="text-xl font-semibold mt-6">Social Medias</h2>
-                  <div class="space-y-1">
+                  <div class="space-y-1 social-icons">
                      <p class="flex items-center space-x-2">
                         <a href="https://www.youtube.com/@olivierhypnose" target="_youtube" class="slider-nav-item">
                         <i class="fab fa-youtube Youtube-color text-2xl"></i> @olivierhypnose
@@ -214,11 +233,11 @@
                   <div class="space-y-1">
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-phone text-gray-700"></i>
-                        <a href="tel:+33663483300" class="text-blue-600">+33 6 63 48 33 00</a>
+                        <a href="tel:+33663483300" class="text-blue-600 text-link">+33 6 63 48 33 00</a>
                      </p>
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600">olivier.royo@gmail.com</a>
+                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600 text-link">olivier.royo@gmail.com</a>
                      </p>
                   </div>
 
@@ -256,12 +275,12 @@
                   <div class="space-y-1">
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-envelope text-gray-700"></i>
-                         <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne">Meine Website</a>
+                         <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne" class="text-link">Meine Website</a>
                      </p>
 
                   </div>
                   <h2 class="text-xl font-semibold mt-6">Soziale Medien</h2>
-                  <div class="space-y-1">
+                  <div class="space-y-1 social-icons">
                     <p class="flex items-center space-x-2">
                         <a href="https://www.youtube.com/@olivierhypnose" target="_youtube" class="slider-nav-item">
                         <i class="fab fa-youtube Youtube-color text-2xl"></i> @olivierhypnose
@@ -292,11 +311,11 @@
                   <div class="space-y-1">
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-phone text-gray-700"></i>
-                        <a href="tel:+33663483300" class="text-blue-600">+33 6 63 48 33 00</a>
+                        <a href="tel:+33663483300" class="text-blue-600 text-link">+33 6 63 48 33 00</a>
                      </p>
                      <p class="flex items-center space-x-2">
                         <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600">olivier.royo@gmail.com</a>
+                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600 text-link">olivier.royo@gmail.com</a>
                      </p>
                   </div>
                </div>
