@@ -63,12 +63,19 @@
     margin-bottom: 15px;
     margin-left: 0;
     padding: 0 15px;
+    /* Remove gradient text for readability on mobile */
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+    background-clip: initial;
+    color: #ffffff;
   }
 
   .hero p {
     font-size: 1.1rem;
     padding: 0 15px;
     margin-left: 0;
+    color: #ffffff;
   }
 
   .hero::after {
@@ -78,12 +85,17 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.6); /* Increased opacity */
     z-index: 0;
   }
 
+  [data-theme="theme3"] .hero h1,
+  [data-theme="theme3"] .hero p {
+    color: #1a1a2e; /* Dark text for light overlay */
+  }
+
   [data-theme="theme3"] .hero::after {
-      background: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.6); /* Increased opacity */
   }
 
   .hero .header-text {
