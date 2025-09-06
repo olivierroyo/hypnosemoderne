@@ -231,6 +231,9 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+  max-width: 1200px;
+  margin: 40px auto;
+  border-radius: 20px;
 }
 
 .hero::before {
@@ -249,7 +252,7 @@ body {
 .hero-bg-image {
     position: absolute;
     top: 0;
-    right: 22px;
+    right: 0;
     width: 44%;
     height: 100%;
     object-fit: cover;
@@ -272,7 +275,7 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  margin-left: -30%;
+  margin-left: 0;
 }
 
 .hero p {
@@ -281,7 +284,6 @@ body {
   font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
-margin-left: 10%;
 }
 
 /* =========================
