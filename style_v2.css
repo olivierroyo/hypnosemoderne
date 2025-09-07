@@ -910,27 +910,55 @@ footer {
 /* =========================
    ARTICLE LAYOUT
    ========================= */
-.float-left {
+.article-section {
+  /* Container for the whole article */
+  padding: 20px;
+}
+
+.article-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--accent-color);
+}
+
+.article-body {
+  column-count: 2;
+  column-gap: 40px;
+  column-rule: 1px solid var(--border-color);
+  text-align: justify;
+}
+
+/* Drop cap effect */
+.article-body p:first-of-type::first-letter {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--accent-color);
   float: left;
-  margin: 0 20px 10px 0;
-  max-width: 40%;
+  line-height: 0.8;
+  margin-right: 10px;
+  padding-top: 5px;
+}
+
+.full-width-image {
+  width: 100%;
+  margin: 30px 0;
   border-radius: 15px;
   box-shadow: var(--shadow);
 }
 
-.float-right {
-  float: right;
-  margin: 0 0 10px 20px;
-  max-width: 40%;
+.column-image {
+  width: 100%;
+  break-inside: avoid; /* Prevents image from splitting across columns */
+  margin-bottom: 20px;
   border-radius: 15px;
   box-shadow: var(--shadow);
 }
 
-/* Clearfix for floated content */
-.clearfix::after {
-  content: "";
-  display: table;
-  clear: both;
+@media (max-width: 768px) {
+  .article-body {
+    column-count: 1;
+  }
 }
 
 /* =========================
