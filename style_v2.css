@@ -908,6 +908,32 @@ footer {
 }
 
 /* =========================
+   ARTICLE LAYOUT
+   ========================= */
+.float-left {
+  float: left;
+  margin: 0 20px 10px 0;
+  max-width: 40%;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+.float-right {
+  float: right;
+  margin: 0 0 10px 20px;
+  max-width: 40%;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+}
+
+/* Clearfix for floated content */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* =========================
    RESPONSIVE DESIGN
    ========================= */
 
