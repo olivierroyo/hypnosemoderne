@@ -18,7 +18,19 @@
   <link rel="stylesheet" href="responsive_main.css" />
   <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
 
+  <script>
+    // Gestion des thèmes
+    function setTheme(theme) {
+      localStorage.setItem("theme", theme);
+      document.documentElement.setAttribute("data-theme", theme);
+    }
 
+    // Charger thème depuis localStorage
+    (function () {
+      const savedTheme = localStorage.getItem("theme") || "theme1";
+      setTheme(savedTheme);
+    })();
+  </script>
 
 </head>
 <body>
@@ -391,18 +403,6 @@
 
   <!-- Script principal -->
   <script>
-    // Gestion des thèmes
-    function setTheme(theme) {
-      localStorage.setItem("theme", theme);
-      document.documentElement.setAttribute("data-theme", theme);
-    }
-
-    // Charger thème depuis localStorage
-    (function () {
-      const savedTheme = localStorage.getItem("theme") || "theme1";
-      setTheme(savedTheme);
-    })();
-
     // Ouverture / fermeture modal
     function openModal() {
       document.getElementById("feedbackModal").style.display = "block";
