@@ -75,7 +75,7 @@
     font-size: 1.1rem;
     padding: 0 15px;
     margin-left: 0;
-    color: #ffffff;
+   /* color: #ffffff;*/
   }
 
   .hero::after {
