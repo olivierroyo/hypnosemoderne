@@ -304,7 +304,6 @@ body {
 .hero p {
   font-size: 1.3rem;
   color: var(--text-color);
-  font-weight: 300;
   max-width: 600px;
   margin: 0 auto;
   margin-left: 10%;
