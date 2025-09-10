@@ -95,6 +95,17 @@
       width: 100%;
       right: 0;
        filter: brightness(0.5); /* 0.5 = 50% luminosité → plus sombre */
+
+     border-radius: 0; 
+
+    /* désactivation du masque */
+    -webkit-mask-image: none;
+    -webkit-mask-repeat: initial;
+    -webkit-mask-size: initial;
+
+    mask-image: none;
+    mask-repeat: initial;
+    mask-size: initial;
   }
 
   /* === CONTAINER MOBILE === */
