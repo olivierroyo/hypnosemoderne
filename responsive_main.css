@@ -70,6 +70,7 @@
     font-size: 1.1rem;
     padding: 0 15px;
     margin-left: 0;
+    filter: brightness(1.7); /* texte éclairci */
   }
 
 
@@ -80,7 +81,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.6); /* Increased opacity */
     z-index: 0;
   }
 
@@ -94,7 +94,7 @@
   .hero-bg-image {
       width: 100%;
       right: 0;
-      mask-image: none;
+       filter: brightness(0.5); /* 0.5 = 50% luminosité → plus sombre */
   }
 
   /* === CONTAINER MOBILE === */
