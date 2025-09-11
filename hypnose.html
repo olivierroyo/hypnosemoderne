@@ -14,22 +14,8 @@
   <meta property="og:type" content="website">
   <link rel="icon" type="image/png" href="./icon/hand-holding-hand-solid.svg">
   <link rel="stylesheet" href="style_v2.css" />
-  <link rel="stylesheet" href="style_form.css" />
-  <link rel="stylesheet" href="responsive_main.css" />
   <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
-  <script>
-    // Gestion des thèmes
-    function setTheme(theme) {
-      localStorage.setItem("theme", theme);
-      document.documentElement.setAttribute("data-theme", theme);
-    }
-
-    // Charger thème depuis localStorage
-    (function () {
-      const savedTheme = localStorage.getItem("theme") || "theme1";
-      setTheme(savedTheme);
-    })();
-  </script>
+  <script src="js/theme.js"></script>
 </head>
 <body>
   <!-- NAVBAR -->
@@ -435,42 +421,7 @@
   </footer>
 
   <!-- Script principal -->
-  <script>
-    // Burger menu mobile
-    document.getElementById('hamburger').addEventListener('click', function () {
-      document.getElementById('nav-links').classList.toggle('show');
-    });
-
-    // Ouverture / fermeture modal
-    function openModal() {
-      document.getElementById("feedbackModal").style.display = "block";
-    }
-    function closeModal() {
-      document.getElementById("feedbackModal").style.display = "none";
-    }
-    window.onclick = function (event) {
-      const modal = document.getElementById("feedbackModal");
-      if (event.target === modal) closeModal();
-    };
-
-    // Confirmation d'envoi de formulaire
-    function showConfirmation(event) {
-      event.preventDefault();
-      const form = event.target;
-      fetch(form.action, {
-        method: form.method,
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      }).then((response) => {
-        if (response.ok) {
-          form.innerHTML = "<p>✅ Merci ! Votre message a été envoyé.</p>";
-        } else {
-          form.innerHTML = "<p>❌ Une erreur est survenue. Veuillez réessayer.</p>";
-        }
-      });
-      return false;
-    }
-  </script>
+  <script src="js/main.js" defer></script>
   <script src="nav.js" defer></script>
 </body>
 </html>
