@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hypnolivier.com/sitemap.xml
