@@ -43,7 +43,7 @@
         <h3>Le texte d'ouverture dimensionnelle</h3>
         <div class="action"><strong>Se dirigeant lentement vers la porte</strong> :</div>
         <div class="dialogue">
-            "Car vous savez... Au-delà de cette porte se trouve une autre dimension : celle du son, celle de la vue, celle de l'esprit. Un monde d'ombre et de matière, de choses et d'idées."
+            "Car vous savez... Au-delà de cette porte se trouve une autre dimension : celle du son, celle de la vue, celle de l'esprit. Un monde de rêve et de matière, de choses et d'idées.""
         </div>
         
         <div class="action"><strong>Main sur la poignée</strong> :</div>
@@ -71,7 +71,7 @@
         
         <div class="action"><strong>Pause, regard bienveillant sur l'audience</strong> :</div>
         <div class="dialogue">
-            "L'hypnose révèle ce qu'il y a de plus beau en vous : votre créativité, votre capacité à rêver, à jouer, à vous émerveiller. Dans la 4ème dimension, vous n'êtes pas spectateurs... vous êtes les héros de l'aventure."
+            "L'hypnose révèle ce qu'il y a de plus beau en vous : votre créativité, votre capacité à rêver, à jouer, à vous émerveiller. Dans la 4ème dimension, vous n'êtes pas spectateurs... vous êtes les acteurs, les héros de l'aventure."
         </div>
 
         <h3>Transition</h3>
@@ -183,5 +183,6 @@
   </node>
 
 </node>
+
 
 
