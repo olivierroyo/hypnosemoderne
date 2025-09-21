@@ -66,7 +66,7 @@
         
         <div class="action"><strong>Sourire rassurant</strong> :</div>
         <div class="dialogue">
-            "Pensez à un rêve éveillé, à ces moments où vous regardez un film captivant et où vous oubliez tout ce qui vous entoure. Mais ce soir, c'est différent : votre imagination va créer votre propre film... et vous en serez l'acteur principal. Voilà ce que nous allons vivre ensemble."
+            "Pensez à un rêve éveillé, à ces moments où vous regardez un film captivant et où vous oubliez tout ce qui vous entoure. Mais ce soir, c'est différent : votre imagination va créer votre propre film... et vous ferez partie de ce film. Voilà ce que nous allons vivre ensemble."
         </div>
         
         <div class="action"><strong>Pause, regard bienveillant sur l'audience</strong> :</div>
@@ -183,6 +183,7 @@
   </node>
 
 </node>
+
 
 
 
