@@ -11,6 +11,78 @@
           <li>Explication rassurante et ludique de l’hypnose.</li>
         </ul>
       ]]></description>
+
+       <node label="texte">
+      <description><![CDATA[
+         <div class="container">
+        <h1>Spectacle d'Hypnose "La 4ème Dimension"</h1>
+        
+        <h2>Accueil & Mise en ambiance révisé <span class="timing">(5-10 min)</span></h2>
+        
+        <h3>Entrée en scène</h3>
+        <div class="action"><strong>Ambiance</strong> : Musique mystérieuse, éclairage tamisé, la porte est visible mais fermée</div>
+        
+        <div class="action"><strong>Première phrase d'accroche</strong> :</div>
+        <div class="dialogue">
+            "Mesdames et messieurs, bonsoir... Regardez bien cette porte derrière moi.<br>
+            Certains disent qu'il vaut mieux ne jamais franchir cette porte… D'autres disent qu'au contraire, c'est là que commence la véritable aventure…<br>
+            Mais si vous êtes ici, dans cette salle, c'est que vous avez déjà décidé de franchir son seuil. Ce soir, il ne s'agit plus de choisir… Ce soir, nous allons la franchir ensemble."
+        </div>
+
+        <h3>Présentation du thème <span class="timing">(2-3 min)</span></h3>
+        <div class="dialogue">
+            "Cette porte n'est pas ordinaire. Elle ne s'ouvre pas avec une clé de métal ou de plastique. Non..."
+        </div>
+        
+        <div class="action"><strong>Regard vers la porte, puis vers le public</strong></div>
+        
+        <div class="dialogue">
+            "Elle ne s'ouvre qu'avec la clé de l'imagination."
+        </div>
+
+        <h3>Le texte d'ouverture dimensionnelle</h3>
+        <div class="action"><strong>Se dirigeant lentement vers la porte</strong> :</div>
+        <div class="dialogue">
+            "Car vous savez... Au-delà de cette porte se trouve une autre dimension : celle du son, celle de la vue, celle de l'esprit. Un monde d'ombre et de matière, de choses et d'idées."
+        </div>
+        
+        <div class="action"><strong>Main sur la poignée</strong> :</div>
+        <div class="dialogue">
+            "Et ce soir, ensemble, nous allons franchir... <span class="emphasis">la Quatrième Dimension</span>."
+        </div>
+        
+        <div class="action"><strong>Action</strong> : Ouverture théâtrale de la porte avec effet d'éclairage/son</div>
+
+        <h3>Explication rassurante</h3>
+        <div class="action"><strong>Après l'ouverture de la porte, ton plus confidentiel et bienveillant</strong> :</div>
+        <div class="dialogue">
+            "L'hypnose sera notre véhicule pour ce voyage. Votre esprit, notre carburant... Mais rassurez-vous, vous restez toujours aux commandes de ce voyage."
+        </div>
+        
+        <div class="action"><strong>Se rapprochant du public</strong> :</div>
+        <div class="dialogue">
+            "L'hypnose, ce n'est pas perdre le contrôle. C'est au contraire découvrir que votre esprit a des pouvoirs extraordinaires que vous ne soupçonniez pas. Vous entendrez tout, vous sentirez tout. C'est simplement votre esprit qui accepte de jouer, de lâcher prise, d'explorer ses propres capacités extraordinaires."
+        </div>
+        
+        <div class="action"><strong>Sourire rassurant</strong> :</div>
+        <div class="dialogue">
+            "Pensez à un rêve éveillé, à ces moments où vous regardez un film captivant et où vous oubliez tout ce qui vous entoure. Mais ce soir, c'est différent : votre imagination va créer votre propre film... et vous en serez l'acteur principal. Voilà ce que nous allons vivre ensemble."
+        </div>
+        
+        <div class="action"><strong>Pause, regard bienveillant sur l'audience</strong> :</div>
+        <div class="dialogue">
+            "L'hypnose révèle ce qu'il y a de plus beau en vous : votre créativité, votre capacité à rêver, à jouer, à vous émerveiller. Dans la 4ème dimension, vous n'êtes pas spectateurs... vous êtes les héros de l'aventure."
+        </div>
+
+        <h3>Transition</h3>
+        <div class="dialogue">
+            "Fermez les yeux un instant… et imaginez la clé de cette porte. Chacun de vous la tient, mais elle n'existe que dans votre imagination. Quelle forme a-t-elle ? Quelle couleur ? Bien. Gardez-la précieusement… car dans un instant, nous allons l'utiliser ensemble.<br><br>
+            Et Souvenez-vous… <span class="emphasis">la clé est en vous</span>.<br><br>
+            <span class="action">(Ton plus fort, inspirant)</span> "Alors… êtes-vous prêts à franchir la porte de la Quatrième Dimension ?"
+        </div>
+    </div>
+      ]]></description>
+    </node>
     </node>
     <node label="2. Tests collectifs &amp; sélection (10 min)">
       <description><![CDATA[
@@ -111,4 +183,5 @@
   </node>
 
 </node>
+
 
