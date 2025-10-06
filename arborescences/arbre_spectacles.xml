@@ -120,7 +120,7 @@
           <li><b>Scène comique</b> : ils répétent une action en boucle comme si le temps était bloqué.</li>
         </ul>
         Transition : “Le temps s’efface… et l’espace se déforme…”
-        <!--SSon/Lumière : sons de pendule + distorsion, lumière oscillante.-->
+        <!--Son/Lumière : sons de pendule + distorsion, lumière oscillante.-->
       ]]></description>
     </node>
     <node label="5. Chapitre 2 – L’Espace et les perceptions (20-25 min)">
@@ -146,9 +146,25 @@
       <description><![CDATA[
         <ul>
           <li><b>Identités multiples</b> : chaque volontaire croit être une célébrité différente (acteur, sportif, chanteur).</li>
-          <li><b>Univers miroir</b> : tout le monde croit être leur double inversé.(gauche/droite inversées).</li>
+          <li><b>lois absurdes</b> : Chaque volontaire croit vivre dans un monde où une règle étrange est la norme.
+           <ol>
+              <li>A l'envers: tout le monde marche à reculons.</li>
+              <li>En chantant:  on ne peut communiquer qu’en chantant </li>
+              <li>Parler à l’envers : toutes les phrases doivent être prononcées à l’envers (mots ou syllabes).</li>
+              <li>Poete: impossible de parler snas faire de rimes</li>
+              <li>Toujours sautiller : impossible de poser les pieds au sol autrement que par bonds.</li>
+              <li>Communiquer par mimes : aucun mot ne peut être prononcé, uniquement gestes et expressions.</li>
+              <li>Répétition infinie : tout geste doit être répété trois fois avant d’être valide.</li>
+           </ol>
+          </li>
           <li><b>Langage étrange</b> : ils parlent une “langue extraterrestre” qu’ils comprennent parfaitement… mais pas le public.</li>
-          <li><b>Pouvoirs spéciaux</b> : télépathie, télékinésie, super-héros qui échouent dans leurs démonstrations.</li>
+          <li><b>Corps transformé</b> : Chaque volontaire croit qu’une partie de son corps n’est plus la même.
+            <ol>
+              <li>Bras trop longs / jambes minuscules.</li>
+              <li>Tête énorme / bouche minuscule.</li>
+              <li>Main qui n’obéit plus (elle se comporte “toute seule”).</li>
+            </ol>
+          </li>
           <li><b>seul au monde</b> : vous avez un autre prénom. alors que vos amis, votre carte d identité dit autre chose.</li>
         </ul>
         Transition : “Et si la 4ᵉ dimension vous ramenait… mais dans un monde qui n’est pas tout à fait le vôtre ?”
@@ -184,6 +200,7 @@
   </node>
 
 </node>
+
 
 
 
