@@ -1,5 +1,5 @@
 <node label="Racine">
-  <node label="Spectacle: la 4eme dimension" _color="blue" link="./spectacle_hynose.html">
+  <node label="Spectacle: la 4eme dimension" _color="blue" link="./arborescences/spectacle_hynose.html">
     <description><![CDATA[
        Le thème de la “4ᵉ dimension” ouvre plein de portes créatives</b> : illusions de temps, d’espace, de réalité parallèle…
     ]]></description>
@@ -202,6 +202,7 @@
   </node>
 
 </node>
+
 
 
 
