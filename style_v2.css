@@ -106,20 +106,6 @@ body {
   transition: all 0.3s ease;
 }
 
-.promo-banner {
-  background-color: #ffeb3b; /* couleur vive pour attirer l'attention */
-  color: #000;
-  text-align: center;
-  padding: 10px 0;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.promo-banner a {
-  text-decoration: underline;
-  color: #d32f2f;
-}
-
 /* =========================
    THEME SWITCHER
    ========================= */
