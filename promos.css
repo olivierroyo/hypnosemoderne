@@ -1,0 +1,13 @@
+.promo-section.halloween {
+  margin-top: 20px;
+  padding: 15px;
+  border: 2px dashed #6d4c41;
+  text-align: center;
+  background-color: #fff3e0; /* fond clair orangé */
+}
+
+.promo-section.halloween .btn-secondary {
+  background-color: #6d4c41;
+  color: white;
+  margin-top: 10px;
+}
