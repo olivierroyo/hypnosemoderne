@@ -914,6 +914,38 @@ footer {
   opacity: 0.8;
 }
 
+/* --- Promo spéciale --- */
+.tarif-card.promo {
+  background: linear-gradient(135deg, #fef6e4, #ffe5b4);
+  border: 2px solid #ff8800;
+  box-shadow: 0 0 12px rgba(255, 136, 0, 0.3);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarif-card.promo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(255, 136, 0, 0.5);
+}
+
+.promo-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #ff8800;
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 1rem;
+}
 /* =========================
    ARTICLE LAYOUT
    ========================= */
