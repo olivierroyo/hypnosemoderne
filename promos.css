@@ -1,24 +1,26 @@
-.promo-banner {
-  background-color: #ffeb3b; /* couleur vive pour attirer l'attention */
-  color: #000;
+.promo-banner, .promo-section {
   text-align: center;
   padding: 10px 0;
   font-weight: bold;
-  font-size: 1rem;
 }
 
-.promo-banner a {
+.promo-banner a, .promo-section a {
   text-decoration: underline;
   color: #d32f2f;
 }
 
-/* halloween */
+.promo-banner.tabac {
+  background-color: #ffeb3b;
+  color: #000;
+}
+
+/* Halloween */
 .promo-section.halloween {
   margin-top: 20px;
   padding: 15px;
   border: 2px dashed #6d4c41;
-  text-align: center;
-  background-color: #fff3e0; /* fond clair orangé */
+  background-color: #fff3e0;
+  color: #000;
 }
 
 .promo-section.halloween .btn-secondary {
