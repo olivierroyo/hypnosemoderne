@@ -915,38 +915,37 @@ footer {
 }
 
 /* --- Promo spéciale --- */
-/* === Carte promo spéciale Mois Sans Tabac === */
+/* === Carte promo Mois Sans Tabac (utilise variables par thème) === */
 .tarif-card.promo {
   position: relative;
-  border: 2px solid var(--accent-color);
-  background: var(--gradient-accent);
-  color: var(--button-text);
-  box-shadow: var(--shadow);
-  transform: scale(1);
+  border: 2px solid var(--promo-border);
+  background: var(--promo-bg);
+  color: var(--text-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .tarif-card.promo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 18px var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.15);
 }
 
 .tarif-card.promo .promo-badge {
   position: absolute;
   top: -10px;
   right: -10px;
-  background: var(--accent-color);
-  color: var(--button-text);
-  font-weight: bold;
+  background: var(--promo-badge-bg);
+  color: var(--promo-badge-text);
+  font-weight: 600;
   font-size: 0.8rem;
   padding: 6px 10px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .tarif-card.promo .old-price {
   text-decoration: line-through;
-  opacity: 0.8;
+  opacity: 0.7;
   font-size: 1rem;
 }
 
@@ -1020,6 +1019,10 @@ footer {
   --form-text-default: #2d5a3d;
   --form-text-muted: #6b8a75;
   --form-button-text: #ffffff;
+  --promo-bg: #f3fff6;
+  --promo-border: #4a9d6b;
+  --promo-badge-bg: #4a9d6b;
+  --promo-badge-text: #ffffff;
 }
 
 /* Theme 2: Bright */
@@ -1034,6 +1037,10 @@ footer {
   --form-text-default: #8b4513;
   --form-text-muted: #a0764d;
   --form-button-text: #ffffff;
+  --promo-bg: #fff5f6;
+  --promo-border: #ff3f6c; /* contraste rosé, différent du orange principal */
+  --promo-badge-bg: #ff3f6c;
+  --promo-badge-text: #ffffff;
 }
 
 /* Theme 3: Dark */
@@ -1048,6 +1055,10 @@ footer {
   --form-text-default: #e8eaed;
   --form-text-muted: #9aa0a6;
   --form-button-text: #1a1a2e;
+  --promo-bg: rgba(255, 255, 255, 0.08);
+  --promo-border: #64b5f6;
+  --promo-badge-bg: #64b5f6;
+  --promo-badge-text: #1a1a2e;
 }
 
 .fs-form {
