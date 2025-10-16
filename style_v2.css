@@ -928,6 +928,34 @@ footer {
 }
 
 /* --- Promo spéciale --- */
+/* === Section Promotions === */
+.promos {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 3rem 1rem;
+  border-radius: 1.5rem;
+  background: var(--container-bg);
+  box-shadow: var(--shadow);
+}
+
+.promos h2 {
+  text-align: center;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+}
+
+.promos .tarif-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+/* Ajuste l'espacement global entre promos et tarifs */
+.tarifs {
+  margin-top: 3rem;
+}
+
 .tarif-card.promo {
   position: relative;
   border: 2px solid var(--promo-border);
