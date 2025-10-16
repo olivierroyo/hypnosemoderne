@@ -35,8 +35,19 @@
 }
 
 .promo-section.tabac {
-  background-color: #c8e6c9;
-  color: #2e7d32;
+  background-color: #a5d6a7; /* vert plus vif */
+  color: #1b5e20; /* vert foncé pour le texte */
+  border: 2px solid #81c784; /* léger contour pour démarquer */
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.promo-section.tabac a {
+  color: #1b5e20;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .promo-section a {
