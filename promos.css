@@ -34,7 +34,7 @@
   font-weight: 700;
   text-decoration: none;
   color: var(--btn-text-color, #fff);
-  background: var(--btn-bg, linear-gradient(135deg, var(--primary-color), var(--accent-color)));
+  background: var(--btn-bg-theme, var(--btn-bg, linear-gradient(135deg, var(--primary-color), var(--accent-color))));
   transition: all 0.3s ease;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
@@ -63,6 +63,22 @@
   --btn-bg: linear-gradient(135deg, #2e7d32, #1b5e20);
   --btn-text-color: #fff;
   border: 2px solid #ffb74d;
+}
+
+/* === Theme-specific button backgrounds === */
+[data-theme="theme1"] .promo-section .btn-secondary {
+  --btn-bg-theme: linear-gradient(135deg, #52b373, #68c985);
+  --btn-text-color: #fff;
+}
+
+[data-theme="theme2"] .promo-section .btn-secondary {
+  --btn-bg-theme: linear-gradient(135deg, #ff7f3f, #ffab70);
+  --btn-text-color: #fff;
+}
+
+[data-theme="theme3"] .promo-section .btn-secondary {
+  --btn-bg-theme: linear-gradient(135deg, #4a148c, #7b1fa2); /* darker purple for dark mode */
+  --btn-text-color: #1a1a2e; /* readable text on dark background */
 }
 
 /* Liens textuels */
