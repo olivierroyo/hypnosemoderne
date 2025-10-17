@@ -55,13 +55,13 @@
 .promo-section.halloween {
   --promo-bg: linear-gradient(135deg, #ffe0b2, #ffcc80);
   --btn-bg: linear-gradient(135deg, #6d4c41, #4e342e);
-  --btn-text-color: #fff;
+  --btn-text-color: #fff !important;
 }
 
 .promo-section.tabac {
   --promo-bg: linear-gradient(135deg, #fff8e1, #ffe082);
   --btn-bg: linear-gradient(135deg, #2e7d32, #1b5e20);
-  --btn-text-color: #fff;
+  --btn-text-color: #fff !important;
   border: 2px solid #ffb74d;
 }
 
