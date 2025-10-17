@@ -62,8 +62,13 @@
   --promo-bg: linear-gradient(135deg, #fff8e1, #ffe082);
   --btn-bg: linear-gradient(135deg, #2e7d32, #1b5e20);
   --btn-text-color: #fff;
-  color:grey
   border: 2px solid #ffb74d;
+}
+
+/* Ensure text (like hero paragraph) is grey in the tabac promo */
+.promo-section.tabac p,
+.promo-section.tabac strong {
+  color: grey;
 }
 
 /* === Theme-specific button backgrounds === */
@@ -79,8 +84,8 @@
 
 [data-theme="theme3"] .promo-section .btn-secondary {
   --btn-bg-theme: linear-gradient(135deg, #4a148c, #7b1fa2); /* darker purple for dark mode */
-  /* --btn-text-color: #1a1a2e; readable text on dark background */
-
+  --btn-text-color: #1a1a2e; /* readable text on dark background */
+}
 
 /* Liens textuels */
 .promo-section a {
