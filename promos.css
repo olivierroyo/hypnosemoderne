@@ -78,7 +78,8 @@
 
 [data-theme="theme3"] .promo-section .btn-secondary {
   --btn-bg-theme: linear-gradient(135deg, #4a148c, #7b1fa2); /* darker purple for dark mode */
-  --btn-text-color: #1a1a2e; /* readable text on dark background */
+  /* --btn-text-color: #1a1a2e; readable text on dark background */
+  color:grey
 }
 
 /* Liens textuels */
