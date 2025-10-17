@@ -1,23 +1,41 @@
+/* === Section promo générale === */
 .promo-section {
+  position: relative; /* Pour le z-index et l’empilement */
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 8px;
-  font-weight: bold;
+  gap: 10px;
+  padding: 20px 15px;
+  margin: 20px auto;
+  border-radius: 10px;
+  font-weight: 600;
   font-size: 1rem;
+  max-width: 600px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Boutons communs */
+/* === Boutons promo === */
 .promo-section .btn-secondary {
   display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
+  margin-top: 8px;
+  padding: 10px 18px;
+  background-color: #1b5e20;
+  color: #fff !important;
+  border-radius: 6px;
   text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 
-/* Variantes couleurs */
+.promo-section .btn-secondary:hover {
+  background-color: #2e7d32;
+  transform: translateY(-2px);
+}
+
+/* === Couleurs selon thème === */
 .promo-section.premiere {
   background-color: #ffeb3b;
   color: #000;
@@ -31,26 +49,24 @@
 
 .promo-section.halloween .btn-secondary {
   background-color: #6d4c41;
-  color: #fff;
+  color: #fff !important;
 }
 
 .promo-section.tabac {
   background-color: #ffe082; /* jaune lumineux */
-  color: #bf360c; /* rouge foncé pour le texte */
-  border: 2px solid #ffb74d; /* léger contour orangé */
-  padding: 15px;
-  text-align: center;
-  border-radius: 8px;
-  margin: 15px 0;
-  font-weight: bold;
+  color: #bf360c; /* rouge foncé */
+  border: 2px solid #ffb74d;
 }
 
-.promo-section.tabac a {
+/* Liens dans le texte */
+.promo-section a {
   color: #1b5e20;
   text-decoration: underline;
-  font-weight: bold;
+  font-weight: 700;
 }
 
-.promo-section a {
-  text-decoration: underline;
+/* Pour éviter les problèmes de clics sur mobile */
+.hero-bg-image {
+  pointer-events: none;
+  z-index: 0;
 }
