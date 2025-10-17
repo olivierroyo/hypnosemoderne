@@ -25,7 +25,7 @@
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
 }
 
-/* === Boutons promo === */
+/* === Boutons promo (général) === */
 .promo-section .btn-secondary {
   display: inline-block;
   margin-top: 8px;
@@ -45,7 +45,7 @@
   filter: brightness(1.05);
 }
 
-/* === Variantes spécifiques === */
+/* === Variantes promos === */
 .promo-section.premiere {
   --promo-bg: linear-gradient(135deg, #fff176, #ffeb3b);
   --btn-bg: linear-gradient(135deg, #fbc02d, #f57f17);
@@ -55,44 +55,52 @@
 .promo-section.halloween {
   --promo-bg: linear-gradient(135deg, #ffe0b2, #ffcc80);
   --btn-bg: linear-gradient(135deg, #6d4c41, #4e342e);
-  --btn-text-color: #fff !important;
+  --btn-text-color: #fff;
 }
 
 .promo-section.tabac {
   --promo-bg: linear-gradient(135deg, #fff8e1, #ffe082);
   --btn-bg: linear-gradient(135deg, #2e7d32, #1b5e20);
-  --btn-text-color: #fff !important;
+  --btn-text-color: #fff;
   border: 2px solid #ffb74d;
 }
 
-/* Texte gris spécifique à la section tabac */
 .promo-section.tabac p,
 .promo-section.tabac strong {
-  color: grey !important; /* priorité sur color général */
+  color: grey !important;
 }
 
-/* === Boutons selon le thème === */
+/* === THEME 1 ===================================================== */
 [data-theme="theme1"] .promo-section .btn-secondary {
   --btn-bg-theme: linear-gradient(135deg, #52b373, #68c985);
+  --btn-text-color: #fff;
 }
 
+/* === THEME 2 ===================================================== */
 [data-theme="theme2"] .promo-section .btn-secondary {
   --btn-bg-theme: linear-gradient(135deg, #ff7f3f, #ffab70);
+  --btn-text-color: #fff;
 }
 
+/* === THEME 3 (Dark mode) ======================================== */
 [data-theme="theme3"] .promo-section .btn-secondary {
   --btn-bg-theme: linear-gradient(135deg, #4a148c, #7b1fa2);
-  --btn-text-color: #1a1a2e; /* plus lisible sur fond foncé */
+  --btn-text-color: #1a1a2e; /* texte foncé par défaut */
 }
 
-/* Liens textuels */
+/* Correction spécifique : bouton tabac en blanc dans le dark mode */
+[data-theme="theme3"] .promo-section.tabac .btn-secondary {
+  --btn-text-color: #fff !important;
+}
+
+/* === Liens textuels === */
 .promo-section a {
   text-decoration: underline;
   font-weight: 700;
   color: var(--link-color, var(--accent-color));
 }
 
-/* Fix pour clics sur mobile */
+/* === Fix mobile === */
 .hero-bg-image {
   pointer-events: none;
   z-index: 0;
