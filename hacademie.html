@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vidéos Formation - Hypnose Olivier</title>
+  <meta name="description" content="Démonstrations d'hypnose moderne par Olivier Royo. Découvrez les effets fascinants de l'hypnose de manière ludique.">
+  <meta name="author" content="Olivier Royo" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
+  <link rel="icon" type="image/png" href="https://school.hacademy.io/5266448/677c581f82284_iconfondnoir.png">
+  <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
+
+  <style>
+    html {
+      scroll-behavior: smooth; /* 👈 rend le scroll fluide automatiquement */
+    }
+
+    :root {
+      --main-bg: linear-gradient(135deg, #000000 0%, #111111 100%);
+      --container-bg: rgba(20, 20, 20, 0.95);
+      --text-color: #f5f5f5;
+      --accent-color: #FDD910;
+      --button-bg: #FDD910;
+      --button-hover: #ffea33;
+      --button-text: #000000;
+      --nav-bg: rgba(0, 0, 0, 0.9);
+      --border-color: #2a2a2a;
+      --shadow: 0 8px 32px rgba(253, 217, 16, 0.15);
+      --gradient-accent: linear-gradient(135deg, #FDD910, #fff278);
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background: var(--main-bg);
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+
+    .navbar {
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      height: 60px;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 40px 25px;
+      background: var(--container-bg);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      font-size: 1.1rem;
+      color: #e0e0e0;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(253, 217, 16, 0.2);
+      border: 1px solid rgba(253, 217, 16, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-wrapper:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(253, 217, 16, 0.4);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    footer {
+      background: rgba(10, 10, 10, 0.9);
+      border-top: 1px solid #222;
+      color: #f5f5f5;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        margin: 30px 10px;
+        padding: 30px 15px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+  <img src="https://d1yei2z3i6k35z.cloudfront.net/5266448/67b773c2211c3_iconhacad-jaune.png" alt="Logo H Academy" style="width: 30px; height: 30px; margin-right: 10px;">
+  H Académie - Vidéos Formation
+</a>
+      <ul class="nav-links">
+        <li><a href="#julien">Julien</a></li>
+        <li><a href="#olivier">Olivier</a></li>
+        <li><a href="#placeholder1">À venir 1</a></li>
+        <li><a href="#placeholder2">À venir 2</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<section id="julien" class="container">
+  <h2>Vidéo Julien</h2>
+  <p>Découvrez Les vidéos enregistrées par Julien Maalouf.</p>
+  <div class="video-grid">
+
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/X8NhoYwy_W4" allowfullscreen></iframe></div>
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Xn7v5t5qrRM" allowfullscreen></iframe></div>
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tr5pkSapNM8" allowfullscreen></iframe></div>
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IlQpxEs6Gfk" allowfullscreen></iframe></div>
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/u61w7qbU7Ow" allowfullscreen></iframe></div>
+
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pYZOtRu4wTE" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/JbINEKy5ulI" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/QmTpzS7hyTI" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/TMXMTcFygyM" allowfullscreen></iframe></div>
+     <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GOUH4JYzIx8" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhD7e8InWr4" allowfullscreen></iframe></div>
+  </div>
+</section>
+
+<section id="olivier" class="container">
+  <h2>Vidéo Olivier</h2>
+  <p>Découvrez Les vidéos enregistrées par Olivier Royo.</p>
+  <div class="video-grid">
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ZCigIFH82dE" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/FCP-blgPtKc" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XWP3_2pBrfA" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_2ME2ewQZfo" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhEmmqL0YR0" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Y3_8Hl7qtO8" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dsQVe4fhelk" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sHvGN0oOau4" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/kjp4kp6MLvk" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/MikVGNM7htY" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/vmeSy4RhJro" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XLaLD1YetjY" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/x526MMHFafk" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2IHuX8VjOe4" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rurlVRkxpKI" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/klnncP6M_0k" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/glX98kEPoF8" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/AmxSQS5Flq4" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OEyAM-dQb0s" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pbFmZ_DpoOY" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tLdchp66URA" allowfullscreen></iframe></div>
+    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/3MH2rdkQR6M" allowfullscreen></iframe></div>
+  </div>
+</section>
+
+
+
+<section id="placeholder1" class="container">
+  <h2>Vidéo à venir</h2>
+  <p>Cette section sera bientôt remplie avec les démonstrations d'une nouvelle personne.</p>
+  <div class="video-grid">
+    -- Coming soon --
+  </div>
+</section>
+
+<section id="placeholder2" class="container">
+  <h2>Vidéo à venir</h2>
+  <p>Cette section sera bientôt remplie avec les démonstrations d'une autre personne.</p>
+  <div class="video-grid">
+    -- Coming soon --
+  </div>
+</section>
+
+
+  <footer>
+    © 2025 <a href="https://school.hacademy.io/">H Academy 2.0</a>
+  </footer>
+</body>
+</html>
