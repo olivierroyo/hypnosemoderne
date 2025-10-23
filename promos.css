@@ -71,6 +71,12 @@
   --text-color: grey !important;
 }
 
+[data-theme="theme3"] .promo-section.tabac p,
+[data-theme="theme3"] .promo-section.tabac strong {
+  color: grey !important;
+}
+
+
 /* === THEME 1 ===================================================== */
 [data-theme="theme1"] .promo-section .btn-secondary {
   --btn-bg-theme: linear-gradient(135deg, #52b373, #68c985);
