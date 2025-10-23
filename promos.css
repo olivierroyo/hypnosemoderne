@@ -67,7 +67,8 @@
 
 .promo-section.tabac p,
 .promo-section.tabac strong {
-  color: grey !important;
+    color: grey !important;
+  --text-color: grey !important;
 }
 
 /* === THEME 1 ===================================================== */
