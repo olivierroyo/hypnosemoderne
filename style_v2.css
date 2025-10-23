@@ -1547,12 +1547,6 @@ fieldset {
     filter: brightness(2.0); /* texte éclairci */
   }
 
-  .promo-section.tabac p,
-  .promo-section.tabac strong,
-  .promo-section.tabac a {
-      filter: brightness(0.5) !important;
-  }
-
 
   .hero::after {
     content: '';
