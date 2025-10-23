@@ -68,6 +68,7 @@
 .promo-section.tabac p,
 .promo-section.tabac strong {
   color: grey;
+  filter: brightness(1.0) 
 }
 
 
