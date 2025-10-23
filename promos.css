@@ -16,7 +16,7 @@
   max-width: 600px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background: var(--promo-bg, linear-gradient(135deg, var(--secondary-color), var(--highlight-color)));
-  color: var(--text-color);
+  color: var(--text-color)!important;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
 }
 
@@ -69,6 +69,7 @@
 .promo-section.tabac strong {
   color: grey;
 }
+
 
 /* === THEME 1 ===================================================== */
 [data-theme="theme1"] .promo-section .btn-secondary {
