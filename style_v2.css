@@ -194,9 +194,11 @@ body {
 }
 
 .logo-img {
-  height: 2.5rem;
-  width: auto;
+  height: 5.5rem;
+  width: 5.5rem;
   margin-right: 10px;
+  border-radius: 50%;
+  background: var(--nav-bg);
 }
 
 .nav-links {
