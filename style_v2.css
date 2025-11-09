@@ -1538,6 +1538,10 @@ fieldset {
     padding: 5px;
   }
 
+ .logo-img {
+    height: 3.5rem;
+  }
+   
   /* === HERO SECTION MOBILE === */
   .hero {
     padding: 60px 0;
