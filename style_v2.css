@@ -199,6 +199,7 @@ body {
    margin-right: 10px;
    border-radius: 50%;
    background-color: var(--nav-bg);
+   //border:1px solid var(--border-color)
 }
 
 .nav-links {
