@@ -128,20 +128,24 @@
       gap: 25px;
     }
 
+    .video-card {
+      background: rgba(30, 30, 30, 0.8);
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid rgba(253, 217, 16, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(253, 217, 16, 0.4);
+    }
+
     .video-wrapper {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 0 15px rgba(253, 217, 16, 0.2);
-      border: 1px solid rgba(253, 217, 16, 0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .video-wrapper:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(253, 217, 16, 0.4);
     }
 
     .video-wrapper iframe {
@@ -151,6 +155,34 @@
       width: 100%;
       height: 100%;
       border: none;
+    }
+
+    .video-info {
+      padding: 12px 15px;
+    }
+
+    .video-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f5f5f5;
+      margin: 0 0 10px 0;
+      line-height: 1.3;
+    }
+
+    .video-labels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .label {
+      background: var(--accent-color);
+      color: #000000;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
     }
 
     footer {
@@ -202,8 +234,9 @@
       <ul class="nav-links">
         <li><a href="#julien">Julien</a></li>
         <li><a href="#olivier">Olivier</a></li>
-        <li><a href="#placeholder1">À venir 1</a></li>
-        <li><a href="#placeholder2">À venir 2</a></li>
+        <li><a href="#sabrina">Sabrina</a></li>
+        <li><a href="#loic">Loic</a></li>
+        <li><a href="#haim">Haim</a></li>
       </ul>
     </div>
   </nav>
@@ -213,34 +246,195 @@
   <h2>Vidéo Julien</h2>
   <p>Découvrez Les vidéos enregistrées par Julien Maalouf.</p>
   <div class="video-grid">
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/yvMbx1mrKO4" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/H6lgfgChafs" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ar_keOvRZyc" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/hF2hoz6Jibc" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iDlpKuuQLJY" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/1y5QaKuLwI8" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/a2aLtg802_A" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://drive.google.com/file/d/1_eZrcYwEHehSVH4lXI5G5MuZAw5EchpW/preview" width="640" height="480" allow="autoplay"></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/B-NclLRfU9s" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iIPGMt1i6aw" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sqXBM1Oxv9U" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/llLg9Tbdmdo" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/PMKb4Z6bVs8" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/J4nWN7ipTx4" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/NO7E29B9ZmU" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/X8NhoYwy_W4" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Xn7v5t5qrRM" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tr5pkSapNM8" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IlQpxEs6Gfk" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/u61w7qbU7Ow" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pYZOtRu4wTE" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/JbINEKy5ulI" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/QmTpzS7hyTI" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/TMXMTcFygyM" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GOUH4JYzIx8" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhD7e8InWr4" allowfullscreen></iframe></div>
-     <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iDlpKuuQLJY" allowfullscreen></iframe></div>
-
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/yvMbx1mrKO4" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #1</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/H6lgfgChafs" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #2</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ar_keOvRZyc" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #3</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/hF2hoz6Jibc" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #4</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iDlpKuuQLJY" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #5</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/1y5QaKuLwI8" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #6</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/a2aLtg802_A" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #7</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://drive.google.com/file/d/1_eZrcYwEHehSVH4lXI5G5MuZAw5EchpW/preview" allow="autoplay"></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #8</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/B-NclLRfU9s" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #9</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iIPGMt1i6aw" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #10</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sqXBM1Oxv9U" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #11</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/llLg9Tbdmdo" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #12</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/PMKb4Z6bVs8" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #13</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/J4nWN7ipTx4" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #14</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/NO7E29B9ZmU" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #15</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/X8NhoYwy_W4" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #16</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Xn7v5t5qrRM" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #17</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tr5pkSapNM8" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #18</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IlQpxEs6Gfk" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #19</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/u61w7qbU7Ow" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #20</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pYZOtRu4wTE" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #21</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/JbINEKy5ulI" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #22</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/QmTpzS7hyTI" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #23</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/TMXMTcFygyM" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #24</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GOUH4JYzIx8" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #25</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhD7e8InWr4" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #26</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iDlpKuuQLJY" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Julien #27</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -248,59 +442,308 @@
   <h2>Vidéo Olivier</h2>
   <p>Découvrez Les vidéos enregistrées par Olivier Royo.</p>
   <div class="video-grid">
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/HRCLz5doIbw" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/B6OqhajbWEw" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/gFcBlOBcLqM" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dexc7AP1MHI" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/4hhfz1ytF0g" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0IVK_FDALlg" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_qu6h1n0nEI" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/BVMZySJtPnM" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Gr6X2xwLQtI" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/O4J_CJTdBzk" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/QnTjmWTeaaw" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/itmKlp854Ps" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/E6ovaxCTdWA" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/6dVf9CTUAUA" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/JUoZVyIcbsI" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ZCigIFH82dE" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/FCP-blgPtKc" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XWP3_2pBrfA" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_2ME2ewQZfo" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhEmmqL0YR0" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Y3_8Hl7qtO8" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dsQVe4fhelk" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sHvGN0oOau4" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/kjp4kp6MLvk" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/MikVGNM7htY" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/vmeSy4RhJro" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XLaLD1YetjY" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/x526MMHFafk" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2IHuX8VjOe4" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rurlVRkxpKI" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/klnncP6M_0k" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/glX98kEPoF8" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/AmxSQS5Flq4" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OEyAM-dQb0s" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pbFmZ_DpoOY" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tLdchp66URA" allowfullscreen></iframe></div>
-    <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/3MH2rdkQR6M" allowfullscreen></iframe></div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/HRCLz5doIbw" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #1</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/B6OqhajbWEw" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #2</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/gFcBlOBcLqM" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #3</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dexc7AP1MHI" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #4</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/4hhfz1ytF0g" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #5</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0IVK_FDALlg" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #6</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_qu6h1n0nEI" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #7</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/BVMZySJtPnM" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #8</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Gr6X2xwLQtI" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #9</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/O4J_CJTdBzk" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #10</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/QnTjmWTeaaw" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #11</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/itmKlp854Ps" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #12</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/E6ovaxCTdWA" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #13</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/6dVf9CTUAUA" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #14</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/JUoZVyIcbsI" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #15</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ZCigIFH82dE" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #16</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/FCP-blgPtKc" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #17</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XWP3_2pBrfA" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #18</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_2ME2ewQZfo" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #19</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhEmmqL0YR0" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #20</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Y3_8Hl7qtO8" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #21</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dsQVe4fhelk" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #22</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sHvGN0oOau4" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #23</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/kjp4kp6MLvk" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #24</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/MikVGNM7htY" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #25</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/vmeSy4RhJro" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #26</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XLaLD1YetjY" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #27</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/x526MMHFafk" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #28</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2IHuX8VjOe4" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #29</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rurlVRkxpKI" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #30</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/klnncP6M_0k" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #31</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/glX98kEPoF8" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #32</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/AmxSQS5Flq4" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #33</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OEyAM-dQb0s" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #34</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pbFmZ_DpoOY" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #35</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tLdchp66URA" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #36</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/3MH2rdkQR6M" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Olivier #37</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 
 
-<section id="placeholder1" class="container">
-  <h2>Vidéo à venir</h2>
-  <p>Cette section sera bientôt remplie avec les démonstrations d'une nouvelle personne.</p>
+<section id="sabrina" class="container">
+  <h2>Vidéo Sabrina</h2>
+  <p>Découvrez Les vidéos enregistrées par Sabrina.</p>
   <div class="video-grid">
-    -- Coming soon --
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/G_yRHNfYiZ8" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Sabrina #1</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="placeholder2" class="container">
-  <h2>Vidéo à venir</h2>
-  <p>Cette section sera bientôt remplie avec les démonstrations d'une autre personne.</p>
+<section id="loic" class="container">
+  <h2>Vidéo Loic</h2>
+  <p>Découvrez Les vidéos enregistrées par Loic.</p>
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tfVY1eC2-LE" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Loic #1</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0Yb4fBNWF4E" allowfullscreen></iframe></div>
+      <div class="video-info">
+        <h3 class="video-title">Vidéo Loic #2</h3>
+        <div class="video-labels"><span class="label">À définir</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="haim" class="container">
+  <h2>Vidéo Haim</h2>
+  <p>Découvrez Les vidéos enregistrées par Haim.</p>
   <div class="video-grid">
     -- Coming soon --
   </div>
