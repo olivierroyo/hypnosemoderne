@@ -414,6 +414,17 @@ body {
   color: var(--text-color);
 }
 
+.container a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s, opacity 0.3s;
+}
+
+.container a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 .container ul {
   list-style: none;
   margin: 30px 0;
@@ -763,6 +774,16 @@ footer {
 .footer-content p {
   margin: 0;
   text-align: left;
+}
+
+.footer-content p a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-content p a:hover {
+  color: var(--accent-color);
 }
 
 .social-links {
