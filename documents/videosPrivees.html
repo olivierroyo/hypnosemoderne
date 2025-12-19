@@ -1,897 +1,294 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vidéos Formation - Hypnose Olivier</title>
-  <meta name="description" content="Démonstrations d'hypnose moderne par Olivier Royo. Découvrez les effets fascinants de l'hypnose de manière ludique.">
-  <meta name="author" content="Olivier Royo" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
-  <link rel="icon" type="image/png" href="https://school.hacademy.io/5266448/677c581f82284_iconfondnoir.png">
-  <script src="https://kit.fontawesome.com/2f363087de.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidéos Formation - Hypnose Olivier</title>
+<meta name="description" content="Démonstrations d'hypnose moderne par Olivier Royo. Découvrez les effets fascinants de l'hypnose de manière ludique.">
+<meta name="author" content="Olivier Royo">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700&display=swap">
+<link rel="icon" type="image/png" href="https://school.hacademy.io/5266448/677c581f82284_iconfondnoir.png">
 
-  <style>
-    html {
-      scroll-behavior: smooth; /* 👈 rend le scroll fluide automatiquement */
-    }
-
-    :root {
-      --main-bg: linear-gradient(135deg, #000000 0%, #111111 100%);
-      --container-bg: rgba(20, 20, 20, 0.95);
-      --text-color: #f5f5f5;
-      --accent-color: #FDD910;
-      --button-bg: #FDD910;
-      --button-hover: #ffea33;
-      --button-text: #000000;
-      --nav-bg: rgba(0, 0, 0, 0.9);
-      --border-color: #2a2a2a;
-      --shadow: 0 8px 32px rgba(253, 217, 16, 0.15);
-      --gradient-accent: linear-gradient(135deg, #FDD910, #fff278);
-    }
-
-    body {
-      font-family: 'Nunito Sans', sans-serif;
-      background: var(--main-bg);
-      color: var(--text-color);
-      margin: 0;
-      line-height: 1.6;
-    }
-
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 1.6rem;
-  font-weight: 700;
-  background: var(--gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-decoration: none;
-}
-
-    .navbar {
-      background: var(--nav-bg);
-      border-bottom: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-      height: 60px;
-    }
-
-    .logo {
-      font-size: 1.6rem;
-      font-weight: 700;
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-
-    .nav-links a {
-      color: var(--text-color);
-      text-decoration: none;
-      font-weight: 600;
-      position: relative;
-      cursor: pointer;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent-color);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 40px 25px;
-      background: var(--container-bg);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border-color);
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      background: var(--gradient-accent);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 1.5rem;
-    }
-
-    p {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 2rem auto;
-      font-size: 1.1rem;
-      color: #e0e0e0;
-    }
-
-    .video-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
-
-    .video-card {
-      background: rgba(30, 30, 30, 0.8);
-      border-radius: 15px;
-      overflow: hidden;
-      border: 1px solid rgba(253, 217, 16, 0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .video-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(253, 217, 16, 0.4);
-    }
-
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-    }
-
-    .video-wrapper iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .video-info {
-      padding: 12px 15px;
-    }
-
-    .video-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #f5f5f5;
-      margin: 0 0 10px 0;
-      line-height: 1.3;
-    }
-
-    .video-labels {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .label {
-      background: var(--accent-color);
-      color: #000000;
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 3px 10px;
-      border-radius: 12px;
-      text-transform: uppercase;
-    }
-
-    footer {
-      background: rgba(10, 10, 10, 0.9);
-      border-top: 1px solid #222;
-      color: #f5f5f5;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .container {
-        margin: 30px 10px;
-        padding: 30px 15px;
-      }
-
-      h2 {
-        font-size: 1.6rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+<style>
+body{font-family:'Nunito Sans',sans-serif;background:#000;margin:0;color:#fff}
+.nav{position:sticky;top:0;background:#111;padding:10px 20px;display:flex;gap:20px;align-items:center;z-index:1000;border-bottom:1px solid #333}
+.nav a{color:#FDD910;text-decoration:none;font-weight:700}
+.filter-bar{padding:15px;display:flex;gap:10px;flex-wrap:wrap;background:#111;border-bottom:1px solid #333}
+.filter-btn{padding:6px 12px;border:1px solid #FDD910;border-radius:8px;background:transparent;color:#FDD910;cursor:pointer;font-size:0.9rem}
+.filter-btn.active{background:#FDD910;color:#000;font-weight:700}
+.container{max-width:1200px;margin:40px auto;padding:25px;background:rgba(20,20,20,.95);border-radius:20px}
+h2{text-align:center;margin-bottom:20px;color:#FDD910}
+h3.section-title{margin:30px 0 10px;color:#FDD910;font-size:1.2rem}
+.video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.card{background:#111;padding:8px;border-radius:10px}
+.video-wrapper{position:relative;padding-bottom:56.25%;border-radius:12px;overflow:hidden;border:1px solid rgba(255,215,0,.4)}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+.badges{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.badge{background:#FDD910;color:#000;padding:2px 8px;border-radius:6px;font-size:0.75rem;font-weight:700}
+.hidden{display:none}
+</style>
 </head>
-
 <body>
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#" class="logo">
-  <img src="https://d1yei2z3i6k35z.cloudfront.net/5266448/67b773c2211c3_iconhacad-jaune.png" alt="Logo H Academy" style="width: 30px; height: 30px; margin-right: 10px;">
-  H Académie - Vidéos Formation
-</a>
-      <ul class="nav-links">
-        <li><a href="#julien">Julien</a></li>
-        <li><a href="#olivier">Olivier</a></li>
-        <li><a href="#sabrina">Sabrina</a></li>
-        <li><a href="#loic">Loic</a></li>
-        <li><a href="#haim">Haim</a></li>
-      </ul>
-    </div>
-  </nav>
 
+<div class="nav">
+<a href="#julien">Julien</a>
+<a href="#olivier">Olivier</a>
+<a href="#sabrina">Sabrina</a>
+<a href="#loic">Loic</a>
+<a href="#haim">Haim</a>
+</div>
 
+<div class="filter-bar">
+<button class="filter-btn active" data-filter="all">Toutes les vidéos</button>
+<button class="filter-btn" data-filter="pratique">Pratique collective</button>
+<button class="filter-btn" data-filter="live">Live</button>
+<button class="filter-btn" data-filter="analyse">Analyse Live</button>
+<button class="filter-btn" data-filter="classique">Salle Classique</button>
+<button class="filter-btn" data-filter="anamnese">Salle Anamnèse</button>
+<button class="filter-btn" data-filter="antiscript">Salle Anti-script</button>
+<button class="filter-btn" data-filter="narrateur">Salle Narrateur</button>
+<button class="filter-btn" data-filter="ni">Ni oui ni tout</button>
+<button class="filter-btn" data-filter="street">Street</button>
+<button class="filter-btn" data-filter="ludique">Ludique</button>
+<button class="filter-btn" data-filter="therapie">Thérapie</button>
+<button class="filter-btn" data-filter="supervision">Supervision</button>
+<button class="filter-btn" data-filter="tabac">Tabac</button>
+<button class="filter-btn" data-filter="seance">Séance</button>
+<button class="filter-btn" data-filter="zen">Zen</button>
+<button class="filter-btn" data-filter="autre">Autre</button>
+</div>
+
+<!-- JULIEN -->
 <section id="julien" class="container">
-  <h2>Vidéo Julien</h2>
-  <p>Découvrez Les vidéos enregistrées par Julien Maalouf.</p>
-  <div class="video-grid">
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dQynoNyFu5M" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Test, hallucinations et confusion</h3>
-        <div class="video-labels"><span class="label">Street</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/yvMbx1mrKO4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #1</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/H6lgfgChafs" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #2</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ar_keOvRZyc" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #3</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/hF2hoz6Jibc" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #4</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iDlpKuuQLJY" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #5</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/1y5QaKuLwI8" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #6</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/a2aLtg802_A" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #7</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://drive.google.com/file/d/1_eZrcYwEHehSVH4lXI5G5MuZAw5EchpW/preview" allow="autoplay"></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #8</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/B-NclLRfU9s" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #9</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iIPGMt1i6aw" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #10</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sqXBM1Oxv9U" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #11</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/llLg9Tbdmdo" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #12</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/PMKb4Z6bVs8" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #13</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/J4nWN7ipTx4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #14</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/NO7E29B9ZmU" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #15</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/X8NhoYwy_W4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #16</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Xn7v5t5qrRM" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #17</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tr5pkSapNM8" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #18</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/IlQpxEs6Gfk" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #19</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/u61w7qbU7Ow" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #20</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pYZOtRu4wTE" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #21</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/JbINEKy5ulI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #22</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/QmTpzS7hyTI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #23</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/TMXMTcFygyM" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #24</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/GOUH4JYzIx8" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #25</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhD7e8InWr4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #26</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/iDlpKuuQLJY" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Julien #27</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-  </div>
+<h2>Vidéo Julien</h2>
+
+<h3 class="section-title">Vidéos enregistrées par Julien Maalouf</h3>
+<div class="video-grid">
+<script>
+const julienVideos = [
+  // Original videos from videosPrivees
+  {id:"dQynoNyFu5M",tags:"street",title:"Test, hallucinations et confusion"},
+  {id:"yvMbx1mrKO4",tags:"autre",title:"Vidéo Julien #1"},
+  {id:"drive:1_eZrcYwEHehSVH4lXI5G5MuZAw5EchpW",tags:"autre",title:"Vidéo Julien #8"},
+  {id:"B-NclLRfU9s",tags:"autre",title:"Vidéo Julien #9"},
+  {id:"iIPGMt1i6aw",tags:"autre",title:"Vidéo Julien #10"},
+  // Pratique Collective (from Vidéos Formation)
+  {id:"H6lgfgChafs",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"ar_keOvRZyc",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"hF2hoz6Jibc",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"1y5QaKuLwI8",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"a2aLtg802_A",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"X8YzZe55NwY",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"EzxaNkW5CDI",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"pLto1-a3Kes",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"sqXBM1Oxv9U",tags:"pratique anamnese",title:"Pratique Anamnèse"},
+  {id:"Wl1tJzavNKQ",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"hwYhtNPBKKg",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"ddWUxTV61po",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"O3T3MubaneM",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"z7SRun7l6DA",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"OF5GIKvKKcw",tags:"pratique classique",title:"Pratique Classique"},
+  // Séances Live (from Vidéos Formation)
+  {id:"llLg9Tbdmdo",tags:"live",title:"Séance Live"},
+  {id:"J4nWN7ipTx4",tags:"live",title:"Séance Live"},
+  {id:"X8NhoYwy_W4",tags:"live",title:"Séance Live"},
+  {id:"tr5pkSapNM8",tags:"live",title:"Séance Live"},
+  {id:"QmTpzS7hyTI",tags:"live",title:"Séance Live"},
+  {id:"GOUH4JYzIx8",tags:"live",title:"Séance Live"},
+  {id:"u61w7qbU7Ow",tags:"live",title:"Séance Live"},
+  {id:"pYZOtRu4wTE",tags:"live",title:"Séance Live"},
+  {id:"JbINEKy5ulI",tags:"live",title:"Séance Live"},
+  {id:"iDlpKuuQLJY",tags:"live",title:"Séance Live"},
+  // Analyse Live (from Vidéos Formation)
+  {id:"PMKb4Z6bVs8",tags:"analyse",title:"Analyse Live"},
+  {id:"NO7E29B9ZmU",tags:"analyse",title:"Analyse Live"},
+  {id:"Xn7v5t5qrRM",tags:"analyse",title:"Analyse Live"},
+  {id:"IlQpxEs6Gfk",tags:"analyse",title:"Analyse Live"},
+  {id:"TMXMTcFygyM",tags:"analyse",title:"Analyse Live"},
+  {id:"OhD7e8InWr4",tags:"analyse",title:"Analyse Live"},
+  // Salle Narrateur (from Vidéos Formation)
+  {id:"vnlC7hvh7pE",tags:"pratique narrateur",title:"Salle Narrateur"}
+];
+
+document.currentScript.insertAdjacentHTML("afterend", julienVideos.map(v => {
+const labels = {street:'Street',ludique:'Ludique',therapie:'Thérapie',supervision:'Supervision',tabac:'Tabac',anamnese:'Anamnèse',seance:'Séance',antiscript:'Anti-script',zen:'Zen',autre:'À définir',pratique:'Pratique',classique:'Classique',live:'Live',analyse:'Analyse Live',narrateur:'Narrateur',ni:'Ni oui ni tout'};
+const badgeList = v.tags.split(' ').map(tag => `<span class="badge">${labels[tag]||tag}</span>`).join('');
+const iframeSrc = v.id.startsWith('drive:')
+  ? `https://drive.google.com/file/d/${v.id.replace('drive:','')}/preview`
+  : `https://www.youtube.com/embed/${v.id}`;
+const allowAttr = v.id.startsWith('drive:') ? 'allow="autoplay"' : 'allowfullscreen';
+return `
+<div class="card video-item" data-category="${v.tags}">
+<div class="badges">${badgeList}</div>
+<div class="video-wrapper"><iframe src="${iframeSrc}" ${allowAttr}></iframe></div>
+</div>`;
+}).join(""));
+</script>
+</div>
 </section>
 
+<!-- OLIVIER -->
 <section id="olivier" class="container">
-  <h2>Vidéo Olivier</h2>
-  <p>Découvrez Les vidéos enregistrées par Olivier Royo.</p>
-  <div class="video-grid">
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/3R0FNrkv54U" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Leila adooooore!!!</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/u9Dp14GZNAo" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Leila petite streethérapie</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">thérapie</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Dylan (a venir)</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dNxH1wltVMI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Emma et sa copine: setup</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/vos5Qb8XAFo" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Emma et sa copine: elle zont kiffé!</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-     <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/g7SwU-amLcw" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Léna</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/K0Gbj6BDwW4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">bravo Colin il Marine: ca marche pas...:</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pPzSPdNedvU" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Monsieur teste: en analyse....</h3>
-        <div class="video-labels"><span class="label">street</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Z9BXzNSRJUQ" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Francoise sur Antony : balade sur la plage</h3>
-        <div class="video-labels"><span class="label">supervision</span><span class="label">ludique</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/qwVn8_Jq-2k" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Tania sur Angelo: seance de bien-être sur un arbre</h3>
-        <div class="video-labels"><span class="label">supervision</span><span class="label">zen</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/oOoKvpjCTYU" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Adeline anamnese n°2</h3>
-        <div class="video-labels"><span class="label">tabac</span><span class="label">anamnèse</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/NMlUi8PZi3I" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Adeline séance n°2</h3>
-        <div class="video-labels"><span class="label">tabac</span><span class="label">séance</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/5TcCPUvR0AY" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Nadege anamnèse</h3>
-        <div class="video-labels"><span class="label">tabac</span><span class="label">anamnèse</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/HRCLz5doIbw" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #1</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/B6OqhajbWEw" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #2</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/gFcBlOBcLqM" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #3</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dexc7AP1MHI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #4</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/4hhfz1ytF0g" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #5</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0IVK_FDALlg" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #6</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_qu6h1n0nEI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #7</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/BVMZySJtPnM" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #8</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Gr6X2xwLQtI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #9</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/O4J_CJTdBzk" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #10</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/QnTjmWTeaaw" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #11</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/itmKlp854Ps" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #12</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/E6ovaxCTdWA" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #13</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/6dVf9CTUAUA" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #14</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/JUoZVyIcbsI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #15</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ZCigIFH82dE" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #16</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/FCP-blgPtKc" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #17</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XWP3_2pBrfA" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #18</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/_2ME2ewQZfo" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #19</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OhEmmqL0YR0" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #20</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/Y3_8Hl7qtO8" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #21</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/dsQVe4fhelk" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #22</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/sHvGN0oOau4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #23</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/kjp4kp6MLvk" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #24</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/MikVGNM7htY" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #25</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/vmeSy4RhJro" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #26</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/XLaLD1YetjY" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #27</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/x526MMHFafk" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #28</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/2IHuX8VjOe4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #29</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/rurlVRkxpKI" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #30</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/klnncP6M_0k" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #31</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/glX98kEPoF8" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #32</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/AmxSQS5Flq4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #33</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/OEyAM-dQb0s" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #34</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/pbFmZ_DpoOY" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #35</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tLdchp66URA" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #36</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/3MH2rdkQR6M" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Olivier #37</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-  </div>
+<h2>Vidéo Olivier</h2>
+
+<h3 class="section-title">Vidéos enregistrées par Olivier Royo</h3>
+<div class="video-grid">
+<script>
+const olivierVideos = [
+  // Original videos from videosPrivees
+  {id:"3R0FNrkv54U",tags:"street ludique",title:"Leila adooooore!!!"},
+  {id:"u9Dp14GZNAo",tags:"street therapie",title:"Leila petite streethérapie"},
+  {id:"dNxH1wltVMI",tags:"street ludique",title:"Emma et sa copine: setup"},
+  {id:"vos5Qb8XAFo",tags:"street ludique",title:"Emma et sa copine: elle zont kiffé!"},
+  {id:"g7SwU-amLcw",tags:"street ludique",title:"Léna"},
+  {id:"K0Gbj6BDwW4",tags:"street ludique",title:"bravo Colin il Marine: ca marche pas...:"},
+  {id:"pPzSPdNedvU",tags:"street ludique",title:"Monsieur teste: en analyse...."},
+  {id:"Z9BXzNSRJUQ",tags:"supervision ludique",title:"Francoise sur Antony : balade sur la plage"},
+  {id:"qwVn8_Jq-2k",tags:"supervision zen",title:"Tania sur Angelo: seance de bien-être sur un arbre"},
+  {id:"oOoKvpjCTYU",tags:"tabac anamnese",title:"Adeline anamnese n°2"},
+  {id:"NMlUi8PZi3I",tags:"tabac seance",title:"Adeline séance n°2"},
+  {id:"5TcCPUvR0AY",tags:"tabac anamnese",title:"Nadege anamnèse"},
+  {id:"4hhfz1ytF0g",tags:"autre",title:"Vidéo Olivier #5"},
+  {id:"0IVK_FDALlg",tags:"autre",title:"Vidéo Olivier #6"},
+  {id:"_qu6h1n0nEI",tags:"autre",title:"Vidéo Olivier #7"},
+  {id:"BVMZySJtPnM",tags:"autre",title:"Vidéo Olivier #8"},
+  {id:"6dVf9CTUAUA",tags:"autre",title:"Vidéo Olivier #14"},
+  {id:"JUoZVyIcbsI",tags:"autre",title:"Vidéo Olivier #15"},
+  // Pratique Anti-script (from Vidéos Formation)
+  {id:"ZCigIFH82dE",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"FCP-blgPtKc",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"XWP3_2pBrfA",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"_2ME2ewQZfo",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"OhEmmqL0YR0",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"Y3_8Hl7qtO8",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"kjp4kp6MLvk",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"MikVGNM7htY",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"vmeSy4RhJro",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"XLaLD1YetjY",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"HRCLz5doIbw",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"B6OqhajbWEw",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"gFcBlOBcLqM",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  {id:"dexc7AP1MHI",tags:"pratique antiscript",title:"Pratique Anti-script"},
+  // Pratique Classique (from Vidéos Formation)
+  {id:"dsQVe4fhelk",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"sHvGN0oOau4",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"klnncP6M_0k",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"glX98kEPoF8",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"Gr6X2xwLQtI",tags:"pratique classique",title:"Pratique Classique"},
+  {id:"O4J_CJTdBzk",tags:"pratique classique",title:"Pratique Classique"},
+  // Pratique Anamnèse (from Vidéos Formation)
+  {id:"x526MMHFafk",tags:"pratique anamnese",title:"Pratique Anamnèse"},
+  {id:"2IHuX8VjOe4",tags:"pratique anamnese",title:"Pratique Anamnèse"},
+  {id:"pbFmZ_DpoOY",tags:"pratique anamnese",title:"Pratique Anamnèse"},
+  {id:"tLdchp66URA",tags:"pratique anamnese",title:"Pratique Anamnèse"},
+  {id:"3MH2rdkQR6M",tags:"pratique anamnese",title:"Pratique Anamnèse"},
+  // Pratique Autre (from Vidéos Formation)
+  {id:"AmxSQS5Flq4",tags:"pratique autre",title:"Pratique Autre"},
+  {id:"OEyAM-dQb0s",tags:"pratique autre",title:"Pratique Autre"},
+  {id:"QnTjmWTeaaw",tags:"pratique autre",title:"Pratique Autre"},
+  {id:"itmKlp854Ps",tags:"pratique autre",title:"Pratique Autre"},
+  {id:"E6ovaxCTdWA",tags:"pratique autre",title:"Pratique Autre"},
+  // Pratique Ni oui ni tout (from Vidéos Formation)
+  {id:"xKuDgZ3E-TI",tags:"pratique ni",title:"Ni oui ni tout"},
+  {id:"ZVSxNhA1OSc",tags:"pratique ni",title:"Ni oui ni tout"},
+  {id:"_n0MBTZugXo",tags:"pratique ni",title:"Ni oui ni tout"},
+  // Séances Live (from Vidéos Formation)
+  {id:"rurlVRkxpKI",tags:"live",title:"Séance Live"}
+];
+
+document.currentScript.insertAdjacentHTML("afterend", olivierVideos.filter(v => v.id).map(v => {
+const labels = {street:'Street',ludique:'Ludique',therapie:'Thérapie',supervision:'Supervision',tabac:'Tabac',anamnese:'Anamnèse',seance:'Séance',antiscript:'Anti-script',zen:'Zen',autre:'Autre',pratique:'Pratique',classique:'Classique',live:'Live',analyse:'Analyse Live',narrateur:'Narrateur',ni:'Ni oui ni tout'};
+const badgeList = v.tags.split(' ').map(tag => `<span class="badge">${labels[tag]||tag}</span>`).join('');
+return `
+<div class="card video-item" data-category="${v.tags}">
+<div class="badges">${badgeList}</div>
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/${v.id}" allowfullscreen></iframe></div>
+</div>`;
+}).join(""));
+</script>
+</div>
 </section>
 
-
-
+<!-- SABRINA -->
 <section id="sabrina" class="container">
-  <h2>Vidéo Sabrina</h2>
-  <p>Découvrez Les vidéos enregistrées par Sabrina.</p>
-  <div class="video-grid">
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/G_yRHNfYiZ8" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Sabrina #1</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-  </div>
+<h2>Vidéo Sabrina</h2>
+
+<h3 class="section-title">Vidéos enregistrées par Sabrina</h3>
+<div class="video-grid">
+<script>
+const sabrinaVideos = [
+  {id:"G_yRHNfYiZ8",tags:"pratique anamnese",title:"Vidéo Sabrina #1"}
+];
+
+document.currentScript.insertAdjacentHTML("afterend", sabrinaVideos.map(v => {
+const labels = {street:'Street',ludique:'Ludique',therapie:'Thérapie',supervision:'Supervision',tabac:'Tabac',anamnese:'Anamnèse',seance:'Séance',antiscript:'Anti-script',zen:'Zen',autre:'Autre',pratique:'Pratique',classique:'Classique',live:'Live',analyse:'Analyse Live',narrateur:'Narrateur',ni:'Ni oui ni tout'};
+const badgeList = v.tags.split(' ').map(tag => `<span class="badge">${labels[tag]||tag}</span>`).join('');
+return `
+<div class="card video-item" data-category="${v.tags}">
+<div class="badges">${badgeList}</div>
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/${v.id}" allowfullscreen></iframe></div>
+</div>`;
+}).join(""));
+</script>
+</div>
 </section>
 
+<!-- LOIC -->
 <section id="loic" class="container">
-  <h2>Vidéo Loic</h2>
-  <p>Découvrez Les vidéos enregistrées par Loic.</p>
-  <div class="video-grid">
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/1uxGjEoUjNM" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">aicha et marie christine </h3>
-        <div class="video-labels"><span class="label">antiscript</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/vPadGey-Qb0" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">cindy et cathy</h3>
-        <div class="video-labels"><span class="label">antiscript</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/gZ6A2DBYbBE" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">deborah et catherine</h3>
-        <div class="video-labels"><span class="label">antiscript</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/tfVY1eC2-LE" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Loic #1</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0Yb4fBNWF4E" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Loic #2</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/ZGIM_d4V9E4" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Loic #2</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/P0IMRXxQ9IA" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Loic #2</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/0dSk5VhcVTA" allowfullscreen></iframe></div>
-      <div class="video-info">
-        <h3 class="video-title">Vidéo Loic #2</h3>
-        <div class="video-labels"><span class="label">À définir</span></div>
-      </div>
-    </div>
-  </div>
+<h2>Vidéo Loic</h2>
+
+<h3 class="section-title">Vidéos enregistrées par Loic</h3>
+<div class="video-grid">
+<script>
+const loicVideos = [
+  {id:"1uxGjEoUjNM",tags:"antiscript",title:"aicha et marie christine"},
+  {id:"vPadGey-Qb0",tags:"antiscript",title:"cindy et cathy"},
+  {id:"gZ6A2DBYbBE",tags:"antiscript",title:"deborah et catherine"},
+  {id:"tfVY1eC2-LE",tags:"autre",title:"Vidéo Loic #1"},
+  {id:"0Yb4fBNWF4E",tags:"autre",title:"Vidéo Loic #2"},
+  {id:"ZGIM_d4V9E4",tags:"autre",title:"Vidéo Loic #3"},
+  {id:"P0IMRXxQ9IA",tags:"autre",title:"Vidéo Loic #4"},
+  {id:"0dSk5VhcVTA",tags:"autre",title:"Vidéo Loic #5"}
+];
+
+document.currentScript.insertAdjacentHTML("afterend", loicVideos.map(v => {
+const labels = {street:'Street',ludique:'Ludique',therapie:'Thérapie',supervision:'Supervision',tabac:'Tabac',anamnese:'Anamnèse',seance:'Séance',antiscript:'Anti-script',zen:'Zen',autre:'Autre',pratique:'Pratique',classique:'Classique',live:'Live',analyse:'Analyse Live',narrateur:'Narrateur',ni:'Ni oui ni tout'};
+const badgeList = v.tags.split(' ').map(tag => `<span class="badge">${labels[tag]||tag}</span>`).join('');
+return `
+<div class="card video-item" data-category="${v.tags}">
+<div class="badges">${badgeList}</div>
+<div class="video-wrapper"><iframe src="https://www.youtube.com/embed/${v.id}" allowfullscreen></iframe></div>
+</div>`;
+}).join(""));
+</script>
+</div>
 </section>
 
+<!-- HAIM -->
 <section id="haim" class="container">
-  <h2>Vidéo Haim</h2>
-  <p>Découvrez Les vidéos enregistrées par Haim.</p>
-  <div class="video-grid">
-    -- Coming soon --
-  </div>
+<h2>Vidéo Haim</h2>
+
+<h3 class="section-title">Vidéos enregistrées par Haim</h3>
+<div class="video-grid">
+-- Coming soon --
+</div>
 </section>
 
+<!-- JS FILTER -->
+<script>
+const buttons=document.querySelectorAll('.filter-btn');
+const videos=document.querySelectorAll('.video-item');
 
-  <footer>
-    © 2025 <a href="https://school.hacademy.io/">H Academy 2.0</a>
-  </footer>
+buttons.forEach(btn=>btn.addEventListener('click',()=>{
+buttons.forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+const filter=btn.dataset.filter;
+videos.forEach(v=>{
+v.classList.remove('hidden');
+if(filter!=='all'&&!v.dataset.category.includes(filter))v.classList.add('hidden');
+});
+}));
+</script>
+
 </body>
 </html>
