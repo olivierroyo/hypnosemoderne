@@ -33,7 +33,16 @@
          </div>
       </nav>
       <!-- Thème Switcher --> 
-      <div class="theme-switcher"> <span>Changer d’état, c’est aussi simple qu’un clic :</span> <button onclick="setTheme('theme1')" title="🌿 Calme — ressourcez-vous.">🌿 Calme</button> <button onclick="setTheme('theme2')" title="☀️ Énergie — naviguez sur le site plein d’énergie.">☀️ Énergie</button> <button onclick="setTheme('theme3')" title="🌙 Rêve éveillé — complètement relaxé et détendu.">🌙 Rêve éveillé</button> </div>
+      <div class="theme-switcher" id="theme-switcher">
+         <button class="switcher-toggle" onclick="toggleSwitcher()" title="Changer de thème">🎨</button>
+         <div class="switcher-content">
+            <button class="switcher-close" onclick="toggleSwitcher()" title="Fermer">×</button>
+            <span>Changer d’état, c’est aussi simple qu’un clic :</span>
+            <button onclick="setTheme('theme1')" title="🌿 Calme — ressourcez-vous.">🌿 Calme</button>
+            <button onclick="setTheme('theme2')" title="☀️ Énergie — naviguez sur le site plein d’énergie.">☀️ Énergie</button>
+            <button onclick="setTheme('theme3')" title="🌙 Rêve éveillé — complètement relaxé et détendu.">🌙 Rêve éveillé</button>
+         </div>
+      </div>
       <header class="hero">
          <!-- https://calendly.com/olivier-hypnose68 -->
          <!-- Promo Première séance <div class="promo-section premiere"> <p>🎉 Offre spéciale : -20% sur votre première séance jusqu’au 31 octobre ! <a href="tarifs.html">Voir les détails</a> </p> <a href="http://hypnogestion.free.nf/book.php?user=3f756a11-95fe-4054-a5d3-020bbaee932c&lang=fr" class="btn-secondary">Réserver</a> </div>--> <!-- Promo Halloween <div class="promo-section halloween"> <p>🎃 Halloween approche : Séance Spéciale Phobie à -20% jusqu’au 31 octobre ! <a href="tarifs.html">Voir les détails</a> </p> <a href="https://calendly.com/olivier-hypnose68" class="btn-secondary">Réserver</a> </div>--> <!-- Promo Mois Sans Tabac <div class="promo-section tabac"> <p>🚭 <strong>Mois Sans Tabac</strong> — Libérez-vous du tabac ce novembre ! <a href="tarifs.html">En savoir plus</a> </p> <a href="https://calendly.com/olivier-hypnose68" class="btn-secondary">Réserver</a> </div>--> 
