@@ -19,6 +19,8 @@
   --shadow: 0 8px 32px rgba(74, 157, 107, 0.1);
   --gradient-accent: linear-gradient(45deg, #52b373, #68c985);
   --star-color: #ffd700;
+  --muted: #6b8a75;
+  --kw-color: #8ff0bb;
 }
 
 /* Theme 1: 🌿 Soothing (Calming nature-inspired) */
@@ -36,6 +38,8 @@
   --border-color: #a8d4b8;
   --shadow: 0 8px 32px rgba(74, 157, 107, 0.1);
   --gradient-accent: linear-gradient(45deg, #52b373, #68c985);
+  --muted: #6b8a75;
+  --kw-color: #8ff0bb;
   --promo-bg: #f3fff6;
   --promo-border: #4a9d6b;
   --promo-badge-bg: #4a9d6b;
@@ -57,6 +61,8 @@
   --border-color: #ffb885;
   --shadow: 0 8px 32px rgba(255, 140, 66, 0.15);
   --gradient-accent: linear-gradient(45deg, #ff7f3f, #ffab70);
+  --muted: #a3744f;
+  --kw-color: #ffb673;
   --promo-bg: #fff5f6;
   --promo-border: #ff3f6c;
   --promo-badge-bg: #ff3f6c;
@@ -78,6 +84,8 @@
   --border-color: #4f4f6b;
   --shadow: 0 8px 32px rgba(187, 134, 252, 0.2);
   --gradient-accent: linear-gradient(45deg, #bb86fc, #d4a8ff);
+  --muted: #a7a7c0;
+  --kw-color: #d4b3ff;
   --promo-bg: rgba(255, 255, 255, 0.08);
   --promo-border: #64b5f6;
   --promo-badge-bg: #64b5f6;
@@ -2010,4 +2018,94 @@ fieldset {
   .hero {
     page-break-after: avoid;
   }
+}
+
+/* =========================
+   TÉMOIGNAGES VIDÉO (grille + mots-clés animés)
+   ========================= */
+.vt-intro {
+  text-align: center;
+  color: var(--muted);
+  margin: -6px auto 28px;
+  max-width: 640px;
+  line-height: 1.5;
+}
+.vt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.vt-card {
+  background: var(--container-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform .25s, box-shadow .25s, background .4s, border-color .4s;
+}
+.vt-card:hover { transform: translateY(-4px); }
+.vt-video { position: relative; background: #000; }
+.vt-video video { display: block; width: 100%; height: auto; border-radius: 18px 18px 0 0; }
+/* Teinte douce du thème sur la vidéo */
+.vt-video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px 18px 0 0;
+  pointer-events: none;
+  background: var(--accent-color);
+  mix-blend-mode: soft-light;
+  opacity: .16;
+}
+[data-theme="theme3"] .vt-video video { filter: brightness(.82) saturate(.9); }
+
+/* Overlay MOTS-CLÉS animés au centre */
+.vt-kw {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9%;
+  pointer-events: none;
+  z-index: 3;
+}
+.vt-kw .kw {
+  display: inline-block;
+  font-family: ui-rounded, "SF Pro Rounded", "Quicksand", "Nunito", "Hiragino Maru Gothic ProN", system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: .002em;
+  font-size: clamp(1.35rem, 4.8vw, 2.5rem);
+  color: var(--kw-color);
+  padding: .42em .72em;
+  border-radius: .7em;
+  background: rgba(15, 18, 26, .42);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, .45);
+  opacity: 0;
+  transform: translateY(10px) scale(.96);
+  transition: opacity .28s ease, transform .28s cubic-bezier(.2, .8, .2, 1);
+}
+.vt-kw .kw.show { opacity: 1; transform: translateY(0) scale(1); }
+
+.vt-body { padding: 18px 20px 22px; }
+.vt-quote { font-size: 1.02rem; line-height: 1.5; color: var(--text-color); }
+.vt-quote::before { content: "« "; }
+.vt-quote::after { content: " »"; }
+.vt-name {
+  margin-top: 12px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.vt-card .vt-mobile { display: none; }
+@media (max-width: 560px) {
+  .vt-card .vt-desktop { display: none; }
+  .vt-card .vt-mobile { display: block; }
 }
