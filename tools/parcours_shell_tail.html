@@ -1,0 +1,68 @@
+
+</script>
+   <script>
+      // Déchiffrement du format OpenSSL : "Salted__" + sel(8) + AES-256-CBC,
+      // clé+IV dérivés par PBKDF2-SHA256 (310 000 itérations, 48 octets).
+      const MAGIC = "OKHYPNO::";
+      const STORE_KEY = "parcours_pw";
+
+      async function decrypt(password) {
+         const b64 = document.getElementById("payload").textContent.replace(/\s+/g, "");
+         const raw = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+         const header = new TextDecoder().decode(raw.slice(0, 8));
+         if (header !== "Salted__") throw new Error("format");
+         const salt = raw.slice(8, 16);
+         const keyMaterial = await crypto.subtle.importKey(
+            "raw", new TextEncoder().encode(password), "PBKDF2", false, ["deriveBits"]
+         );
+         const bits = new Uint8Array(await crypto.subtle.deriveBits(
+            { name: "PBKDF2", salt: salt, iterations: 310000, hash: "SHA-256" },
+            keyMaterial, 384
+         ));
+         const key = await crypto.subtle.importKey(
+            "raw", bits.slice(0, 32), "AES-CBC", false, ["decrypt"]
+         );
+         const plainBuf = await crypto.subtle.decrypt(
+            { name: "AES-CBC", iv: bits.slice(32, 48) }, key, raw.slice(16)
+         );
+         const text = new TextDecoder().decode(plainBuf);
+         if (!text.startsWith(MAGIC)) throw new Error("badpw");
+         return text.slice(MAGIC.length);
+      }
+
+      async function tryOpen(password, remember) {
+         const btn = document.getElementById("go");
+         btn.disabled = true;
+         btn.textContent = "Déchiffrement…";
+         try {
+            const html = await decrypt(password);
+            if (remember) {
+               try { localStorage.setItem(STORE_KEY, password); } catch (e) {}
+            }
+            document.open();
+            document.write(html);
+            document.close();
+         } catch (e) {
+            try { localStorage.removeItem(STORE_KEY); } catch (e2) {}
+            btn.disabled = false;
+            btn.textContent = "Ouvrir";
+            document.getElementById("err").style.display = "block";
+            document.getElementById("pw").select();
+         }
+      }
+
+      document.getElementById("unlock-form").addEventListener("submit", e => {
+         e.preventDefault();
+         const pw = document.getElementById("pw").value;
+         if (pw) tryOpen(pw, document.getElementById("remember").checked);
+      });
+
+      // Ouverture automatique si le mot de passe est mémorisé sur l'appareil
+      (function () {
+         let saved = null;
+         try { saved = localStorage.getItem(STORE_KEY); } catch (e) {}
+         if (saved) tryOpen(saved, false);
+      })();
+   </script>
+</body>
+</html>

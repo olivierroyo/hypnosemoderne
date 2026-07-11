@@ -1,356 +1,422 @@
 <!DOCTYPE html>
 <html lang="fr">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Olivier Royo Hypnothérapeute Vcard</title>
-      <link rel="icon" type="image/png" href="./icon/hand-holding-hand-solid.svg">
-      <script src="https://cdn.tailwindcss.com"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-      <style>
-         .lang-content { display: none; }
-         .active { display: block !important; }
-         .flag-button {
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Olivier Royo — Hypnothérapeute</title>
+   <meta name="description" content="Olivier Royo, hypnothérapeute — hypnose moderne, rapide et sur-mesure. Contact, rendez-vous et démonstrations en vidéo." />
+   <meta name="theme-color" content="#52b373" />
+   <link rel="icon" type="image/svg+xml" href="./icon/hand-holding-hand-solid.svg" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+   <style>
+      :root {
+         --bg: linear-gradient(135deg, #f0f8f5 0%, #e8f5f0 100%);
+         --card-bg: #ffffff;
+         --text: #2d5a3d;
+         --muted: #6b8a75;
+         --accent: #4a9d6b;
+         --btn: #52b373;
+         --btn-hover: #45a065;
+         --border: #a8d4b8;
+         --shadow: 0 8px 32px rgba(74, 157, 107, 0.14);
+         --grad: linear-gradient(135deg, #52b373, #2d8a5c);
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: var(--bg);
+         color: var(--text);
+         min-height: 100vh;
+         padding: 16px 12px 48px;
+      }
+      .card {
+         max-width: 560px;
+         margin: 0 auto;
+         background: var(--card-bg);
+         border-radius: 24px;
+         box-shadow: var(--shadow);
+         overflow: hidden;
+      }
+
+      /* ---- En-tête ---- */
+      .hero {
+         background: var(--grad);
+         padding: 18px 20px 64px;
+         position: relative;
+      }
+      .lang-switch {
+         display: flex;
+         justify-content: flex-end;
+         gap: 10px;
+      }
+      .lang-switch button {
+         font-size: 22px;
+         line-height: 1;
+         background: rgba(255, 255, 255, 0.25);
+         border: 2px solid transparent;
+         border-radius: 10px;
+         padding: 5px 8px;
          cursor: pointer;
-         transition: transform 0.2s ease;
-         }
-         .flag-button:hover {
-         transform: scale(1.1);
-         }
-         .footer-section {
-         background-color: #f8f9fa;
-         padding: 20px 0;
-         }
-         .social-icons a {
-         margin: 0 10px;
-         color: #555;
-         font-size: 24px;
-         transition: color 0.3s ease;
-         }
-         .social-icons a:hover {
-         color: #007bff;
-         }
-         .slider-nav-item, .text-link {
-            display: inline-block;
-            transition: transform 0.2s ease;
-         }
-         .slider-nav-item:hover, .text-link:hover {
-            transform: translateY(-2px);
-         }
-         .btn {
-            transition: transform 0.2s ease;
-         }
-         .btn:hover {
-            transform: translateY(-2px);
-         }
-         /* Exemples de couleurs spécifiques */
-         .Facebook-color { color: #3b5998; }
-         .Instagram-color { color: #e4405f; }
-         .Twitter-color { color: #1da1f2; }
-         .Linkedin-color { color: #0077b5; }
-         .Youtube-color { color: #ff0000; }
-         .Skype-color { color: #00aff0; }
-         .Website-color { color: #333; }
-         .profile-header {
-         background-color: #fff;
-         padding: 30px 0;
-         border-bottom: 1px solid #eee;
-         }
-         .profile-image img {
-         border: 4px solid #ddd;
+         transition: transform 0.15s ease, border-color 0.15s ease;
+      }
+      .lang-switch button:hover { transform: scale(1.1); }
+      .lang-switch button.selected {
+         border-color: #ffffff;
+         background: rgba(255, 255, 255, 0.45);
+      }
+      .profile {
+         text-align: center;
+         margin-top: -46px;
+         padding: 0 20px;
+      }
+      .profile img {
+         width: 132px;
+         height: 132px;
+         border-radius: 50%;
          object-fit: cover;
-         transition: transform 0.3s ease;
-         }
-         .profile-image img:hover {
-         transform: scale(1.05);
-         }
-         .grid a img {
-            transition: transform 0.3s ease;
-         }
-         .grid a:hover img {
-            transform: scale(1.05);
-         }
-      </style>
-   </head>
-   <body class="bg-gray-100 text-gray-800">
-      <div class="max-w-5xl mx-auto p-4">
-         <div class="bg-white rounded-2xl shadow-md overflow-hidden">
-            <!-- Sélecteur avec icônes -->
-            <div class="flex justify-end space-x-4 p-4">
-               <img src="https://flagcdn.com/w40/fr.png" alt="Français" class="w-8 flag-button" data-lang="fr">
-               <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-8 flag-button" data-lang="en">
-               <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="w-8 flag-button" data-lang="de">
-            </div>
-            <!-- FRANÇAIS -->
-            <div class="lang-content lang-fr active">
-               <div class="p-6 text-center">
-                  <!-- Section profil  -->
-                  <div class="profile-header text-center">
-                     <div class="profile-image mx-auto w-40 h-40 rounded-full overflow-hidden border-4 border-blue-200 shadow-md transition-transform duration-300 hover:scale-105">
-                        <img src="./img/olivier_royo.png" alt="Profil Olivier Royo" class="w-full h-full object-cover">
-                     </div>
-                     <h1 class="mt-4 text-3xl font-bold text-blue-800">Olivier Royo</h1>
-                    
-                     <p class="text-gray-600 text-lg italic"> Pour une hypnose moderne, rapide, sur-mesure et à votre écoute</p>
-                    <!--  <p class="text-gray-600 text-lg italic">Magicien • Créateur • Conteur de rêves</p>-->
-                  </div>
-               </div>
-               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-                  <a href="img/papa_etan.png" target="_ext">
-                  <img src="img/papa_etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Nicolas" />
-                  </a>
-                  <a href="img/salome.png" target="_bale">
-                  <img src="img/salome.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Salome" />
-                  </a>
-                  <a href="img/etan.png" target="_back">
-                  <img src="img/etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="etan" />
-                  </a>
-               </div>
-               <div class="p-6 space-y-6">
-                  <h2 class="text-xl font-semibold">Présentation</h2>
-                  <p>Hypnothérapeute passionné, j’utilise l’hypnose rapide pour des changements profonds et rapides. Des séances courtes et efficaces, adaptées à votre rythme de vie, pour un mieux-être concret dès les premières rencontres.</p>
-                  <h2 class="text-xl font-semibold">Sur le Web</h2>
-                  <div class="space-y-1">
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-globe text-gray-700 w-6"></i>
-                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Mon Site web
-                        </a>
-                     </p>
-                    <!-- <p class="flex items-center space-x-2">
-                        <i class="fas fa-link text-gray-700"></i>
-                        <a href="http://olivier.royo.free.fr/index.php" target="_magie">mon coté magique</a>
-                     </p>-->
-                  </div>
-                 
-                  <h2 class="text-xl font-semibold">Réseaux sociaux</h2>
-                  <div class="space-y-1 social-icons">
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.youtube.com/@olivierhypnose" target="_youtube" class="slider-nav-item">
-                        <i class="fab fa-youtube Youtube-color text-2xl"></i> @olivierhypnose
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.facebook.com/profile.php?id=61579428603085" target="_facebook" class="slider-nav-item">
-                        <i class="fab fa-facebook Facebook-color text-2xl"></i> Olivier Hypnose Moderne 
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.tiktok.com/@hypnosemoderneolivier" target="_tiktok" class="slider-nav-item">
-                          <i class="fab fa-tiktok Tiktok-color text-2xl" ></i> @hypnosemoderneolivier
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.instagram.com/hypnosemoderneolivier/" target="_instagram" class="slider-nav-item">
-                        <i class="fab fa-instagram Instagram-color text-2xl"></i> @hypnosemoderneolivier
-                        </a>
-                     </p>
-                    <!-- <p class="flex items-center space-x-2">
-                        <a href="https://www.linkedin.com/in/olivier-royo-50479a99/" target="_linkedin" class="slider-nav-item">
-                        <i class="fab fa-linkedin Linkedin-color text-2xl"></i> Linkedin (TODO: mettre le bon compte)
-                        </a>
-                     </p>-->
-                  </div>
+         border: 5px solid #ffffff;
+         box-shadow: 0 6px 18px rgba(45, 90, 61, 0.25);
+         background: #fff;
+      }
+      .profile h1 {
+         margin-top: 10px;
+         font-size: 26px;
+         color: var(--text);
+      }
+      .profile .role {
+         color: var(--accent);
+         font-weight: 600;
+         font-size: 15px;
+         margin-top: 2px;
+      }
+      .profile .tagline {
+         color: var(--muted);
+         font-style: italic;
+         font-size: 15px;
+         margin-top: 8px;
+      }
 
-                   <h2 class="text-xl font-semibold">Contact</h2>
-                  <div class="space-y-1">
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-phone text-gray-700"></i>
-                        <a href="tel:+33663483300" class="text-blue-600 text-link">+33 6 63 48 33 00</a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="mailto:olivier.hypnose68@gmail.com?subject=Contact hypnothérapie;body=Bonjour, "" class="text-blue-600 text-link">olivier.hypnose68@gmail.com</a>
-                     </p>
-                  </div>
+      /* ---- Actions rapides ---- */
+      .actions {
+         display: grid;
+         grid-template-columns: repeat(2, 1fr);
+         gap: 10px;
+         padding: 20px;
+      }
+      .actions a {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         padding: 13px 10px;
+         border-radius: 14px;
+         text-decoration: none;
+         font-weight: 600;
+         font-size: 14.5px;
+         background: #f2f9f5;
+         color: var(--text);
+         border: 1px solid var(--border);
+         transition: transform 0.15s ease, background 0.15s ease;
+      }
+      .actions a:hover { transform: translateY(-2px); background: #e8f5ee; }
+      .actions a.primary {
+         background: var(--btn);
+         border-color: var(--btn);
+         color: #ffffff;
+      }
+      .actions a.primary:hover { background: var(--btn-hover); }
+      .actions a i { font-size: 16px; }
 
-               </div>
-            </div>
-            <!-- ENGLISH -->
-            <div class="lang-content lang-en">
-               <div class="p-6 text-center">
-                  <!-- Section profil  -->
-                  <div class="profile-header text-center">
-                     <div class="profile-image mx-auto w-40 h-40 rounded-full overflow-hidden border-4 border-blue-200 shadow-md transition-transform duration-300 hover:scale-105">
-                        <img src="./img/olivier_royo.png" alt="Profil Olivier Royo" class="w-full h-full object-cover">
-                     </div>
-                     <h1 class="mt-4 text-3xl font-bold text-blue-800">Olivier Royo</h1>
-                     <p class="text-gray-600 text-lg italic">For modern, fast, personalized hypnosis tailored to your needs</p>
-                  </div>
-               </div>
-               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-                  <a href="img/papa_etan.png" target="_ext">
-                  <img src="img/papa_etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Nicolas" />
-                  </a>
-                  <a href="img/salome.png" target="_bale">
-                  <img src="img/salome.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Salome" />
-                  </a>
-                  <a href="img/etan.png" target="_back">
-                  <img src="img/etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="etan" />
-                  </a>
-               </div>
-               <div class="p-6 space-y-6">
-                  <h2 class="text-xl font-semibold">Presentation</h2>
-                  <p>
-                     As a passionate hypnotherapist, I use rapid hypnosis for profound and rapid changes. Short and effective sessions, adapted to your lifestyle, for tangible improvements in well-being from the very first sessions.
-                  </p>
-                  <h2 class="text-xl font-semibold">On the Web</h2>
-                  <div class="space-y-1">
-                    <p class="flex items-center space-x-2">
-                        <i class="fas fa-globe text-gray-700 w-6"></i>
-                        <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        My Website
-                        </a>
-                     </p>
-                  </div>
-                 
-                  <h2 class="text-xl font-semibold mt-6">Social Medias</h2>
-                  <div class="space-y-1 social-icons">
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.youtube.com/@olivierhypnose" target="_youtube" class="slider-nav-item">
-                        <i class="fab fa-youtube Youtube-color text-2xl"></i> @olivierhypnose
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.facebook.com/profile.php?id=61579428603085" target="_facebook" class="slider-nav-item">
-                        <i class="fab fa-facebook Facebook-color text-2xl"></i> Olivier Hypnose Moderne 
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.tiktok.com/@hypnosemoderneolivier" target="_tiktok" class="slider-nav-item">
-                          <i class="fab fa-tiktok Tiktok-color text-2xl" ></i> @hypnosemoderneolivier
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.instagram.com/hypnosemoderneolivier/" target="_instagram" class="slider-nav-item">
-                        <i class="fab fa-instagram Instagram-color text-2xl"></i> @hypnosemoderneolivier
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.linkedin.com/in/olivier-royo-50479a99/" target="_linkedin" class="slider-nav-item">
-                        <i class="fab fa-linkedin Linkedin-color text-2xl"></i> Linkedin (TODO: Enter the correct account)
-                        </a>
-                     </p>
-                  </div>
+      /* ---- Sections ---- */
+      section { padding: 6px 20px 18px; }
+      section h2 {
+         font-size: 17px;
+         color: var(--text);
+         margin-bottom: 10px;
+         display: flex;
+         align-items: center;
+         gap: 8px;
+      }
+      section h2::after {
+         content: "";
+         flex: 1;
+         height: 1px;
+         background: var(--border);
+         opacity: 0.6;
+      }
+      .presentation p { color: var(--muted); line-height: 1.55; font-size: 15px; }
 
-                   <h2 class="text-xl font-semibold">Contact</h2>
-                  <div class="space-y-1">
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-phone text-gray-700"></i>
-                        <a href="tel:+33663483300" class="text-blue-600 text-link">+33 6 63 48 33 00</a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600 text-link">olivier.royo@gmail.com</a>
-                     </p>
-                  </div>
+      .socials {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 10px;
+      }
+      .socials a {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         text-decoration: none;
+         color: var(--text);
+         font-size: 14px;
+         font-weight: 500;
+         background: #f2f9f5;
+         border: 1px solid var(--border);
+         border-radius: 999px;
+         padding: 8px 14px;
+         transition: transform 0.15s ease;
+      }
+      .socials a:hover { transform: translateY(-2px); }
+      .socials i.fa-youtube { color: #ff0000; }
+      .socials i.fa-facebook { color: #3b5998; }
+      .socials i.fa-tiktok { color: #010101; }
+      .socials i.fa-instagram { color: #e4405f; }
 
-               </div>
-            </div>
-            <!-- DEUTSCH -->
-            <div class="lang-content lang-de">
-               <div class="p-6 text-center">
-                  <!-- Section profil  -->
-                  <div class="profile-header text-center">
-                     <div class="profile-image mx-auto w-40 h-40 rounded-full overflow-hidden border-4 border-blue-200 shadow-md transition-transform duration-300 hover:scale-105">
-                        <img src="./img/olivier_royo.png" alt="Profil Olivier Royo" class="w-full h-full object-cover">
-                     </div>
-                     <h1 class="mt-4 text-3xl font-bold text-blue-800">Olivier Royo</h1>
-                     <p class="text-gray-600 text-lg italic">Für moderne, schnelle und individuelle Hypnose, die auf Ihre Bedürfnisse zugeschnitten ist.</p>
-                  </div>
-               </div>
-               <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
-                  <a href="img/papa_etan.png" target="_ext">
-                  <img src="img/papa_etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Nicolas" />
-                  </a>
-                  <a href="img/salome.png" target="_bale">
-                  <img src="img/salome.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="Salome" />
-                  </a>
-                  <a href="img/etan.png" target="_back">
-                  <img src="img/etan.png" class="rounded-lg shadow-sm object-cover w-full h-48" alt="etan" />
-                  </a>
-               </div>
-               <div class="p-6 space-y-6">
-                  <h2 class="text-xl font-semibold">Präsentation</h2>
-                  <p>
-                    Als leidenschaftliche Hypnotherapeutin nutze ich Schnellhypnose für tiefgreifende und schnelle Veränderungen. Kurze und effektive Sitzungen, angepasst an Ihren Lebensstil, für spürbares Wohlbefinden ab der ersten Sitzung.
-                  </p>
-                  <h2 class="text-xl font-semibold">Im Web</h2>
-                  <div class="space-y-1">
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-globe text-gray-700 w-6"></i>
-                         <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                         Meine Website
-                         </a>
-                     </p>
+      /* ---- Carrousel vidéos ---- */
+      .video-strip {
+         display: flex;
+         gap: 12px;
+         overflow-x: auto;
+         scroll-snap-type: x mandatory;
+         padding: 4px 2px 12px;
+         -webkit-overflow-scrolling: touch;
+      }
+      .video-strip::-webkit-scrollbar { height: 6px; }
+      .video-strip::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+      .video-card {
+         flex: 0 0 210px;
+         scroll-snap-align: start;
+         text-decoration: none;
+         color: var(--text);
+         background: #f7fbf9;
+         border: 1px solid var(--border);
+         border-radius: 14px;
+         overflow: hidden;
+         transition: transform 0.15s ease;
+      }
+      .video-card:hover { transform: translateY(-3px); }
+      .thumb {
+         position: relative;
+         aspect-ratio: 16 / 9;
+         background: #dcefe4;
+      }
+      .thumb img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+         display: block;
+      }
+      .thumb .play {
+         position: absolute;
+         inset: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+      }
+      .thumb .play i {
+         font-size: 34px;
+         color: #ffffff;
+         text-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+      }
+      .video-card p {
+         font-size: 12.5px;
+         line-height: 1.35;
+         padding: 8px 10px 10px;
+         display: -webkit-box;
+         -webkit-line-clamp: 2;
+         -webkit-box-orient: vertical;
+         overflow: hidden;
+      }
+      .channel-link {
+         display: inline-flex;
+         align-items: center;
+         gap: 8px;
+         margin-top: 2px;
+         text-decoration: none;
+         font-weight: 600;
+         font-size: 14px;
+         color: var(--accent);
+      }
+      .channel-link:hover { text-decoration: underline; }
 
-                  </div>
-                  <h2 class="text-xl font-semibold mt-6">Soziale Medien</h2>
-                  <div class="space-y-1 social-icons">
-                    <p class="flex items-center space-x-2">
-                        <a href="https://www.youtube.com/@olivierhypnose" target="_youtube" class="slider-nav-item">
-                        <i class="fab fa-youtube Youtube-color text-2xl"></i> @olivierhypnose
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.facebook.com/profile.php?id=61579428603085" target="_facebook" class="slider-nav-item">
-                        <i class="fab fa-facebook Facebook-color text-2xl"></i> Olivier Hypnose Moderne 
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.tiktok.com/@hypnosemoderneolivier" target="_tiktok" class="slider-nav-item">
-                          <i class="fab fa-tiktok Tiktok-color text-2xl" ></i> @hypnosemoderneolivier
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.instagram.com/hypnosemoderneolivier/" target="_instagram" class="slider-nav-item">
-                        <i class="fab fa-instagram Instagram-color text-2xl"></i> @hypnosemoderneolivier
-                        </a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <a href="https://www.linkedin.com/in/olivier-royo-50479a99/" target="_linkedin" class="slider-nav-item">
-                        <i class="fab fa-linkedin Linkedin-color text-2xl"></i> Linkedin (TODO: Richtiges Konto eingeben)
-                        </a>
-                     </p>
-                  </div>
-                  <h2 class="text-xl font-semibold">Kontakt</h2>
-                  <div class="space-y-1">
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-phone text-gray-700"></i>
-                        <a href="tel:+33663483300" class="text-blue-600 text-link">+33 6 63 48 33 00</a>
-                     </p>
-                     <p class="flex items-center space-x-2">
-                        <i class="fas fa-envelope text-gray-700"></i>
-                        <a href="mailto:olivier.royo@gmail.com" class="text-blue-600 text-link">olivier.royo@gmail.com</a>
-                     </p>
-                  </div>
-               </div>
-            </div>
+      /* ---- Pied de page ---- */
+      footer {
+         text-align: center;
+         color: var(--muted);
+         font-size: 12.5px;
+         padding: 26px 12px 10px;
+      }
+
+      /* ---- Bascule de langue ---- */
+      .lang-content { display: none; }
+      .lang-content.active { display: block; }
+      span.lang-content.active { display: inline; }
+
+      @media (max-width: 380px) {
+         .actions { grid-template-columns: 1fr; }
+      }
+   </style>
+</head>
+<body>
+   <div class="card">
+      <!-- En-tête + sélecteur de langue -->
+      <div class="hero">
+         <div class="lang-switch">
+            <button type="button" data-lang="fr" class="selected" title="Français" aria-label="Français">🇫🇷</button>
+            <button type="button" data-lang="en" title="English" aria-label="English">🇬🇧</button>
+            <button type="button" data-lang="de" title="Deutsch" aria-label="Deutsch">🇩🇪</button>
          </div>
       </div>
-      <footer class="footer-section">
-         <div class="container text-center">
-            <p class="text-muted small">© 2025 Olivier Royo. Tous droits réservés.</p>
-         </div>
-      </footer>
-      <div style="position: fixed; right: 50px; bottom: 40px; z-index: 1; margin-top: 40px;">
-         <a href="./vcard/olivier_royo_hypnotherapeute.vcf" class="btn btn-sm btn-dark animate-up-2 ml-3" style="box-shadow: 0px 10px 14.1px 0.9px rgb(0 0 0 / 24%), 0px 4px 19.6px 0.4px rgb(0 0 0 / 16%);"><i class="far fa-address-card" aria-hidden="true"></i>
-         Save Contact Data    </a>
+
+      <div class="profile">
+         <img src="./img/olivier_royo.png" alt="Olivier Royo, hypnothérapeute" />
+         <h1>Olivier Royo</h1>
+         <p class="role">
+            <span class="lang-content lang-fr active">Hypnothérapeute</span>
+            <span class="lang-content lang-en">Hypnotherapist</span>
+            <span class="lang-content lang-de">Hypnosetherapeut</span>
+         </p>
+         <p class="tagline">
+            <span class="lang-content lang-fr active">Pour une hypnose moderne, rapide, sur-mesure et à votre écoute</span>
+            <span class="lang-content lang-en">Modern, fast, personalized hypnosis tailored to your needs</span>
+            <span class="lang-content lang-de">Moderne, schnelle und individuelle Hypnose, ganz auf Sie zugeschnitten</span>
+         </p>
       </div>
-      <script>
-         document.querySelectorAll('.flag-button').forEach(button => {
-           button.addEventListener('click', () => {
-             const lang = button.dataset.lang;
-         
-             // Cacher toutes les sections
-             document.querySelectorAll('.lang-content').forEach(content => {
-               content.classList.remove('active');
-             });
-         
-             // Afficher la section de la langue sélectionnée
-             document.querySelector(`.lang-${lang}`).classList.add('active');
-           });
+
+      <!-- Actions rapides -->
+      <div class="actions">
+         <a class="primary" href="http://hypnogestion.free.nf/book.php?user=3f756a11-95fe-4054-a5d3-020bbaee932c&amp;lang=fr" target="_rdv" rel="noopener">
+            <i class="fas fa-calendar-check"></i>
+            <span class="lang-content lang-fr active">Prendre RDV</span>
+            <span class="lang-content lang-en">Book a session</span>
+            <span class="lang-content lang-de">Termin buchen</span>
+         </a>
+         <a class="primary" href="./vcard/olivier_royo_hypnotherapeute.vcf" download>
+            <i class="far fa-address-card"></i>
+            <span class="lang-content lang-fr active">Enregistrer le contact</span>
+            <span class="lang-content lang-en">Save contact</span>
+            <span class="lang-content lang-de">Kontakt speichern</span>
+         </a>
+         <a href="tel:+33663483300">
+            <i class="fas fa-phone"></i>
+            <span>+33 6 63 48 33 00</span>
+         </a>
+         <a href="mailto:olivier.hypnose68@gmail.com?subject=Contact%20hypnoth%C3%A9rapie&amp;body=Bonjour%2C%20">
+            <i class="fas fa-envelope"></i>
+            <span class="lang-content lang-fr active">Écrire un e-mail</span>
+            <span class="lang-content lang-en">Send an e-mail</span>
+            <span class="lang-content lang-de">E-Mail schreiben</span>
+         </a>
+         <a href="https://olivierroyo.github.io/hypnosemoderne/" target="_hypnosemoderne" rel="noopener" style="grid-column: 1 / -1;">
+            <i class="fas fa-globe"></i>
+            <span class="lang-content lang-fr active">Mon site web — hypnose moderne</span>
+            <span class="lang-content lang-en">My website — modern hypnosis</span>
+            <span class="lang-content lang-de">Meine Website — moderne Hypnose</span>
+         </a>
+      </div>
+
+      <!-- Présentation -->
+      <section class="presentation">
+         <h2>
+            <span class="lang-content lang-fr active">Présentation</span>
+            <span class="lang-content lang-en">About</span>
+            <span class="lang-content lang-de">Über mich</span>
+         </h2>
+         <div class="lang-content lang-fr active">
+            <p>Hypnothérapeute passionné, j’utilise l’hypnose rapide pour des changements profonds et durables. Des séances courtes et efficaces, adaptées à votre rythme de vie, pour un mieux-être concret dès les premières rencontres.</p>
+         </div>
+         <div class="lang-content lang-en">
+            <p>As a passionate hypnotherapist, I use rapid hypnosis for profound and lasting change. Short, effective sessions adapted to your lifestyle, with tangible improvements from the very first meetings.</p>
+         </div>
+         <div class="lang-content lang-de">
+            <p>Als leidenschaftlicher Hypnosetherapeut nutze ich Schnellhypnose für tiefgreifende und nachhaltige Veränderungen. Kurze, effektive Sitzungen, angepasst an Ihren Lebensrhythmus, für spürbares Wohlbefinden ab den ersten Terminen.</p>
+         </div>
+      </section>
+
+      <!-- Réseaux sociaux -->
+      <section>
+         <h2>
+            <span class="lang-content lang-fr active">Réseaux sociaux</span>
+            <span class="lang-content lang-en">Social media</span>
+            <span class="lang-content lang-de">Soziale Medien</span>
+         </h2>
+         <div class="socials">
+            <a href="https://www.youtube.com/@olivierhypnose" target="_youtube" rel="noopener"><i class="fab fa-youtube"></i> @olivierhypnose</a>
+            <a href="https://www.facebook.com/profile.php?id=61579428603085" target="_facebook" rel="noopener"><i class="fab fa-facebook"></i> Olivier Hypnose Moderne</a>
+            <a href="https://www.tiktok.com/@hypnosemoderneolivier" target="_tiktok" rel="noopener"><i class="fab fa-tiktok"></i> @hypnosemoderneolivier</a>
+            <a href="https://www.instagram.com/hypnosemoderneolivier/" target="_instagram" rel="noopener"><i class="fab fa-instagram"></i> @hypnosemoderneolivier</a>
+         </div>
+      </section>
+
+      <!-- Démonstrations en vidéo -->
+      <section>
+         <h2>
+            <span class="lang-content lang-fr active">L’hypnose en vidéo</span>
+            <span class="lang-content lang-en">Hypnosis on video</span>
+            <span class="lang-content lang-de">Hypnose im Video</span>
+         </h2>
+         <div class="video-strip" id="video-strip"></div>
+         <a class="channel-link" href="https://www.youtube.com/@olivierhypnose" target="_youtube" rel="noopener">
+            <i class="fab fa-youtube"></i>
+            <span class="lang-content lang-fr active">Voir toutes les vidéos sur la chaîne</span>
+            <span class="lang-content lang-en">See all videos on the channel</span>
+            <span class="lang-content lang-de">Alle Videos auf dem Kanal ansehen</span>
+         </a>
+      </section>
+   </div>
+
+   <footer>© 2026 Olivier Royo ·
+      <span class="lang-content lang-fr active">Tous droits réservés</span>
+      <span class="lang-content lang-en">All rights reserved</span>
+      <span class="lang-content lang-de">Alle Rechte vorbehalten</span>
+   </footer>
+
+   <script>
+      // --- Vidéos de démonstration (mêmes vidéos que la page hypnose.html) ---
+      const videos = [
+         { id: "JgONVbKeCc0", t: "À Strasbourg, une séance d’hypnose de rue exceptionnelle !" },
+         { id: "olQVQDRXrgI", t: "Hallucination totale à Colmar : un selfie avec Adèle" },
+         { id: "TzmTsoUuO3E", t: "Arrêt sur image sous hypnose à Strasbourg 😵‍💫" },
+         { id: "mYydBjAZ8CU", t: "Hypnose de rue : la ville disparaît" },
+         { id: "U1SlY8KDUb0", t: "Son frère devient le meilleur frère du monde ✨" },
+         { id: "ZfpsWYLHs_A", t: "Voir sa star préférée… en string rose 😂" },
+         { id: "Bw1GGMW6YnI", t: "Hypnose en visio : un paquet de mouchoirs devient un téléphone 📱" },
+         { id: "nj7qV6iY8jA", t: "Hypnose en visio : amnésie du chiffre 4" },
+         { id: "GFrnMCdsHlU", t: "Devenir magicien en hypnose 🪄" }
+      ];
+      const strip = document.getElementById("video-strip");
+      videos.forEach(v => {
+         const a = document.createElement("a");
+         a.className = "video-card";
+         a.href = "https://www.youtube.com/watch?v=" + v.id;
+         a.target = "_youtube";
+         a.rel = "noopener";
+         a.innerHTML =
+            '<div class="thumb">' +
+            '<img loading="lazy" src="https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg" alt="" />' +
+            '<span class="play"><i class="fas fa-circle-play"></i></span>' +
+            "</div><p></p>";
+         a.querySelector("p").textContent = v.t;
+         strip.appendChild(a);
+      });
+
+      // --- Bascule de langue (mémorisée sur l'appareil) ---
+      function setLang(lang) {
+         document.querySelectorAll(".lang-content").forEach(el => {
+            el.classList.toggle("active", el.classList.contains("lang-" + lang));
          });
-      </script>
-   </body>
+         document.querySelectorAll(".lang-switch button").forEach(btn => {
+            btn.classList.toggle("selected", btn.dataset.lang === lang);
+         });
+         document.documentElement.lang = lang;
+         try { localStorage.setItem("vcard-lang", lang); } catch (e) {}
+      }
+      document.querySelectorAll(".lang-switch button").forEach(btn => {
+         btn.addEventListener("click", () => setLang(btn.dataset.lang));
+      });
+      try {
+         const saved = localStorage.getItem("vcard-lang");
+         if (saved && ["fr", "en", "de"].includes(saved)) setLang(saved);
+      } catch (e) {}
+   </script>
+</body>
 </html>

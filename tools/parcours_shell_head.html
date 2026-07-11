@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="robots" content="noindex, nofollow" />
+   <title>🌀 Mémo protégé</title>
+   <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         background: linear-gradient(135deg, #f0f8f5 0%, #e8f5f0 100%);
+         min-height: 100vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 20px;
+         color: #2d5a3d;
+      }
+      .box {
+         background: #fff;
+         border-radius: 20px;
+         box-shadow: 0 8px 32px rgba(74, 157, 107, 0.15);
+         padding: 34px 28px;
+         width: 100%;
+         max-width: 380px;
+         text-align: center;
+      }
+      .box .logo { font-size: 44px; }
+      .box h1 { font-size: 20px; margin: 10px 0 4px; }
+      .box p.hint { color: #6b8a75; font-size: 13.5px; margin-bottom: 18px; }
+      input[type="password"] {
+         width: 100%;
+         padding: 12px 14px;
+         font-size: 16px;
+         border: 1px solid #a8d4b8;
+         border-radius: 12px;
+         outline: none;
+      }
+      input[type="password"]:focus { border-color: #52b373; }
+      label.remember {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         gap: 7px;
+         font-size: 13.5px;
+         color: #6b8a75;
+         margin: 14px 0;
+         cursor: pointer;
+      }
+      button {
+         width: 100%;
+         padding: 12px;
+         font-size: 16px;
+         font-weight: 600;
+         color: #fff;
+         background: #52b373;
+         border: none;
+         border-radius: 12px;
+         cursor: pointer;
+      }
+      button:hover { background: #45a065; }
+      button:disabled { opacity: 0.6; cursor: wait; }
+      .error {
+         color: #c0392b;
+         font-size: 13.5px;
+         margin-top: 12px;
+         display: none;
+      }
+   </style>
+</head>
+<body>
+   <div class="box">
+      <div class="logo">🌀</div>
+      <h1>Mémo protégé</h1>
+      <p class="hint">Cette page est chiffrée. Saisis le mot de passe pour l’ouvrir.</p>
+      <form id="unlock-form">
+         <input type="password" id="pw" autocomplete="current-password" autofocus placeholder="Mot de passe" />
+         <label class="remember"><input type="checkbox" id="remember" /> Se souvenir sur cet appareil</label>
+         <button type="submit" id="go">Ouvrir</button>
+         <p class="error" id="err">Mot de passe incorrect.</p>
+      </form>
+   </div>
+   <script type="text/plain" id="payload">
