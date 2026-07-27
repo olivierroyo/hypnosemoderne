@@ -2111,7 +2111,7 @@ fieldset {
 }
 
 /* --- Mise en avant de la section (pub) --- */
-#temoignages { scroll-margin-top: 90px; }
+#temoignages, #demos { scroll-margin-top: 90px; }
 
 .vt-featured {
   position: relative;
