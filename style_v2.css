@@ -2109,3 +2109,52 @@ fieldset {
   .vt-card .vt-desktop { display: none; }
   .vt-card .vt-mobile { display: block; }
 }
+
+/* --- Mise en avant de la section (pub) --- */
+#temoignages { scroll-margin-top: 90px; }
+
+.vt-featured {
+  position: relative;
+  border: 1px solid var(--accent-color);
+  overflow: hidden;
+}
+.vt-featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: var(--gradient-accent);
+}
+
+.vt-badge {
+  display: table;
+  margin: 0 auto 18px;
+  background: var(--gradient-accent);
+  color: var(--button-text);
+  font-weight: 700;
+  font-size: .82rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 7px 18px;
+  border-radius: 50px;
+}
+
+.vt-note {
+  text-align: center;
+  font-size: .9rem;
+  opacity: .8;
+  margin: 24px auto 0;
+  max-width: 640px;
+}
+.vt-cta {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.hero-vt-cta {
+  margin-top: 32px;
+  position: relative;
+  z-index: 5;
+}
