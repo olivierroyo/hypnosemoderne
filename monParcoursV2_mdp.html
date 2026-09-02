@@ -1,0 +1,3289 @@
+<!DOCTYPE html>
+<html lang="fr">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>🌀 Mon Parcours Multi (LOCAL avec mots de passe)</title>
+      <style>
+         /* — Styles existants (inchangés) — */
+         body { font-family: sans-serif; background: #f9f9f9; padding: 30px; }
+         body > a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+         }
+          body > a:hover {
+            transform: scale(1.05);a
+         }
+         .tree ul { list-style-type: none; margin: 0; padding-left: 20px; position: relative; }
+         .tree li { position: relative; padding-left: 30px; }
+         .tree > ul > li:first-child:not([class*="color-"])::before{ display: none; }
+         .tree li:not(:last-child)::before {
+         content: "";
+         position: absolute;
+         top: 0;
+         left: -6px;
+         width: 2px;
+         bottom: 0; /* ← nouvelle méthode au lieu de height: 100% */
+         background: currentColor;
+         }
+         .tree li::after {
+         content: ""; position: absolute; top: -8px; left: -6px; width: 45px; height: 20px;
+         border-left: 2px solid #ccc; border-bottom: 2px solid #ccc; border-radius: 0 0 0 10px;
+         background: transparent; pointer-events: none; z-index: 1;
+         }
+         .node-label {
+         display: flex;
+         align-items: center; /* centre verticalement */
+         gap: 5px;
+         padding: 4px 6px;
+         border-radius: 4px;
+         user-select: none;
+         }
+         .node-label:hover { background: #e1f5fe; }
+         .arrow::before {
+         content: ""; display: inline-block; width: 0; height: 0;
+         border-style: solid; border-width: 6px 0 6px 8px;
+         border-color: transparent transparent transparent black;
+         transition: transform 0.2s;
+         }
+         .expanded > .node-label .arrow::before { transform: rotate(90deg); }
+         .collapsed > ul { display: none; }
+         .leaf .arrow { visibility: hidden; }
+         .triangle-bg {
+         display: inline-flex; align-items: center; justify-content: center;
+         background-color: #ccc; border-radius: 10px;
+         width: 18px; height: 18px; vertical-align: middle;
+         }
+         .node-label:hover .triangle-bg { background-color: #b2ebf2; }
+         .tree li.leaf::after { width: 60px; }
+         /* === COULEURS === */
+         .tree li.color-blue::before, .tree li.color-blue li::before { background: blue; }
+         .tree li.color-blue::after, .tree li.color-blue li::after { border-left-color: blue; border-bottom-color: blue; }
+         .tree li.color-blue > .node-label > .triangle-bg { background-color: #cce5ff; }
+         .tree li.color-blue > .node-label:hover > .triangle-bg { background-color: #99ccff; }
+         .tree li.color-red::before, .tree li.color-red li::before { background: red; }
+         .tree li.color-red::after, .tree li.color-red li::after { border-left-color: red; border-bottom-color: red; }
+         .tree li.color-red > .node-label > .triangle-bg { background-color: #ffcccc; }
+         .tree li.color-red > .node-label:hover > .triangle-bg { background-color: #ff9999; }
+         .tree li.color-green::before, .tree li.color-green li::before { background: green; }
+         .tree li.color-green::after, .tree li.color-green li::after { border-left-color: green; border-bottom-color: green; }
+         .tree li.color-green > .node-label > .triangle-bg { background-color: #ccffcc; }
+         .tree li.color-green > .node-label:hover > .triangle-bg { background-color: #99ff99; }
+         .tree li.color-orange::before, .tree li.color-orange li::before { background: orange; }
+         .tree li.color-orange::after, .tree li.color-orange li::after { border-left-color: orange; border-bottom-color: orange; }
+         .tree li.color-orange > .node-label > .triangle-bg { background-color: #ffe0b2; }
+         .tree li.color-orange > .node-label:hover > .triangle-bg { background-color: #ffcc80; }
+         .tree li.color-purple::before, .tree li.color-purple li::before { background: purple; }
+         .tree li.color-purple::after, .tree li.color-purple li::after { border-left-color: purple; border-bottom-color: purple; }
+         .tree li.color-purple > .node-label > .triangle-bg { background-color: #e1bee7; }
+         .tree li.color-purple > .node-label:hover > .triangle-bg { background-color: #ce93d8; }
+         .tree li.color-teal::before, .tree li.color-teal li::before { background: teal; }
+         .tree li.color-teal::after, .tree li.color-teal li::after { border-left-color: teal; border-bottom-color: teal; }
+         .tree li.color-teal > .node-label > .triangle-bg { background-color: #b2dfdb; }
+         .tree li.color-teal > .node-label:hover > .triangle-bg { background-color: #80cbc4; }
+         .tree li.color-yellow::before, .tree li.color-yellow li::before { background: goldenrod; }
+         .tree li.color-yellow::after, .tree li.color-yellow li::after { border-left-color: goldenrod; border-bottom-color: goldenrod; }
+         .tree li.color-yellow > .node-label > .triangle-bg { background-color: #fff9c4; }
+         .tree li.color-yellow > .node-label:hover > .triangle-bg { background-color: #fff59d; }
+         .tree li.color-pink::before, .tree li.color-pink li::before { background: hotpink; }
+         .tree li.color-pink::after, .tree li.color-pink li::after { border-left-color: hotpink; border-bottom-color: hotpink; }
+         .tree li.color-pink > .node-label > .triangle-bg { background-color: #f8bbd0; }
+         .tree li.color-pink > .node-label:hover > .triangle-bg { background-color: #f48fb1; }
+         .tree li.color-brown::before, .tree li.color-brown li::before { background: sienna; }
+         .tree li.color-brown::after, .tree li.color-brown li::after { border-left-color: sienna; border-bottom-color: sienna; }
+         .tree li.color-brown > .node-label > .triangle-bg { background-color: #d7ccc8; }
+         .tree li.color-brown > .node-label:hover > .triangle-bg { background-color: #bcaaa4; }
+         .tree > ul > li { color: gray; }
+         .tree > ul > li::after { border-left-color: gray; border-bottom-color: gray; }
+         .tree > ul > li > .node-label > .triangle-bg { background-color: #ccc; }
+         .tree > ul > li > .node-label:hover > .triangle-bg { background-color: #bbb; }
+         .arrow, .icon-description {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         width: 18px;
+         height: 18px;
+         font-size: 14px;
+         line-height: 1;
+         vertical-align: middle;
+         flex-shrink: 0;
+         }
+         /* Pour bien uniformiser la flèche (triangle) */
+         .arrow::before {
+         display: inline-block;
+         width: 0;
+         height: 0;
+         border-style: solid;
+         border-width: 6px 0 6px 8px;
+         border-color: transparent transparent transparent black;
+         transition: transform 0.2s;
+         }
+         /* Ajout style pour icône description */
+         .icon-description {
+         cursor: pointer;
+         margin-left: 8px;
+         transition: transform 0.2s ease;
+         /* Plus besoin de position relative */
+         }
+         .icon-description:hover {
+          transform: scale(1.2);
+         }
+         .node-link {
+         text-decoration: underline;
+         color: #1565c0;
+         font-weight: 500;
+         }
+         .node-link:hover {
+         text-decoration: none;
+         color: #0d47a1;
+         }
+         .badge-link {
+         background-color: #e3f2fd;
+         color: #1565c0;
+         font-size: 11px;
+         font-weight: bold;
+         border-radius: 4px;
+         padding: 2px 6px;
+         margin-left: 6px;
+         }
+         .tooltip-box {
+         position: absolute;
+         top: 24px;
+         left: 0;
+         color: #212121;
+         background: #fff8c6;
+         border: 1px solid #aaa;
+         border-radius: 8px;
+         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+         padding: 16px 20px;
+         padding-right: 40px; /* <-- Ajout d'un espace pour le bouton ❌ */
+         z-index: 1000;
+         font-size: 15px;
+         line-height: 1.6;
+         min-width: 250px;
+         max-width: 780px;
+         white-space: normal;
+         word-wrap: break-word;
+         font-family: system-ui, sans-serif;
+         }
+         .tooltip-box ul {
+         list-style-type: disc;
+         margin-top: 10px;
+         margin-bottom: 10px;
+         padding-left: 20px;
+         position: static !important;
+         margin-left: 0 !important;
+         }
+         .tooltip-box li {
+         margin-bottom: 4px;
+         position: static !important;
+         padding-left: 0 !important;
+         margin-left: 0 !important;
+         }
+         .tooltip-box li::before,
+         .tooltip-box li::after {
+         content: none !important;
+         display: none !important;
+         }
+         .tooltip-box b {
+         color: #333;
+         }
+         .tooltip-box button {
+         position: absolute;
+         top: 8px;
+         right: 8px;
+         background: none;
+         border: none;
+         font-size: 18px;
+         cursor: pointer;
+         color: #444;
+         }
+         .tooltip-box button:hover {
+         color: #000;
+         }
+         .tooltip-box img {
+         max-width: 100%;
+         height: auto;
+         border-radius: 8px;
+         margin-top: 8px;
+         display: block;
+         }
+         .node-label .image-tooltip-preview {
+         position: relative;
+         display: inline-block;
+         }
+         .node-label .image-tooltip-preview img {
+         max-width: 40px;
+         max-height: 40px;
+         border-radius: 4px;
+         }
+         .highlighted-anchor > .node-label {
+         background-color: #ffff99;
+         border: 2px solid #f9a825;
+         box-shadow: 0 0 8px #f9a825aa;
+         transition: background-color 0.3s ease;
+         }
+         .highlighted-match > .node-label {
+         background-color: #fff176;
+         border: 1px solid #fbc02d;
+         box-shadow: 0 0 5px #fbc02daa;
+         }
+         /* === New styles for controls === */
+         .tree-controls {
+         background-color: #f0f4f8;
+         padding: 16px;
+         border-radius: 8px;
+         margin-bottom: 20px;
+         display: flex;
+         flex-wrap: wrap;
+         align-items: center;
+         gap: 16px;
+         }
+         .tree-controls .search-group {
+         display: flex;
+         align-items: center;
+         gap: 12px;
+         flex-grow: 1;
+         }
+         .tree-controls input[type="text"] {
+         padding: 8px 12px;
+         width: 300px;
+         font-size: 15px;
+         border: 1px solid #ccc;
+         border-radius: 4px;
+         }
+         .tree-controls .checkbox-label {
+         display: flex;
+         align-items: center;
+         gap: 6px;
+         cursor: pointer;
+         }
+         .tree-controls .button-group {
+         display: flex;
+         gap: 10px;
+         }
+         .tree-controls button {
+         padding: 8px 14px;
+         font-size: 14px;
+         border: 1px solid #b0bec5;
+         background-color: #ffffff;
+         color: #37474f;
+         border-radius: 4px;
+         cursor: pointer;
+         transition: background-color 0.2s, box-shadow 0.2s;
+         }
+         .tree-controls button:hover {
+         background-color: #eceff1;
+         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+         }
+         .tooltip-box ul {
+         list-style-type: disc;
+         }
+         /* Sélecteur pour les 
+         <ul>
+         imbriqués dans un 
+         <li>
+            */
+            .tooltip-box ul ul {
+            list-style-type: circle; /* ou 'disc', 'decimal', etc. selon ce que tu veux */
+            }
+            .tooltip-box ul ul ul {
+            list-style-type: square; /* ou 'disc', 'decimal', etc. selon ce que tu veux */
+            }
+      </style>
+      <link rel="stylesheet" href="responsive.css">
+   </head>
+   <body>
+  <div style="display: flex; align-items: center; gap: 20px;">
+    <!-- QR code cliquable -->
+    <a href="https://olivierroyo.github.io/hypnosemoderne/vcard.html" target="_vcard" style="cursor:pointer; display:block; border:0;">
+      <img src="qr/hyonolivier_by.png" style="width: 150px;" alt="Olivier Royo">
+    </a>
+
+    <!-- Diplôme cliquable pour voir en grand -->
+    <a href="./documents/diplome/olivier_h_academie.jpg" target="_olivier_hacademie">
+      <img src="./documents/diplome/olivier_h_academie.jpg" style="width: 150px;" alt="Diplôme H Academie">
+    </a>
+    <a href="./documents/diplome/olivier_practicien.png" target="_olivier_practicien">
+      <img src="./documents/diplome/olivier_practicien.png" style="width: 150px;" alt="Diplôme Practicien">
+    </a>
+    <a href="./documents/diplome/olivier_hypnose.png" target="_olivier_hypnose">
+      <img src="./documents/diplome/olivier_hypnose.png" style="width: 150px;" alt="Diplôme Hypnose">
+    </a>
+    <a href="./documents/diplome/olivier_douleurs.png" target="_olivier_douleur">
+      <img src="./documents/diplome/olivier_douleurs.png" style="width: 150px;" alt="Diplôme Douleur">
+    </a>
+    <a href="./documents/diplome/olivier_phobies.png" target="_olivier_phobies">
+      <img src="./documents/diplome/olivier_phobies.png" style="width: 150px;" alt="Diplôme Phobies">
+    </a>
+    <a href="./documents/diplome/olivier_poids.png" target="_olivier_poids">
+      <img src="./documents/diplome/olivier_poids.png" style="width: 150px;" alt="Diplôme Poids">
+    </a>
+    <a href="./documents/diplome/olivier_spirit.png" target="_olivier_regressive">
+      <img src="./documents/diplome/olivier_spirit.png" style="width: 150px;" alt="Diplôme Régressive">
+    </a>
+    <a href="./documents/diplome/olivier_psychopathologie.png" target="_diplome_psychopathologie">
+      <img src="./documents/diplome/olivier_psychopathologie.png" style="width: 150px;" alt="Diplôme Psychopathologie">
+    </a>
+      <a href="./documents/diplome/olivier_regression.png" target="_diplome_regression">
+      <img src="./documents/diplome/olivier_regression.png" style="width: 150px;" alt="Diplôme Regression">
+    </a>
+     <a href="./documents/diplome/diplome_gentil.jpeg" target="_diplome_gentil">
+      <img src="./documents/diplome/diplome_gentil.jpeg" style="width: 150px;" alt="Diplôme Gentil">
+    </a>
+
+  </div>
+   <h2>🌀 Mon Parcours Multi</h2>
+   <div class="tree-controls">
+   <div class="search-group">
+   <input type="text" id="tree-search" placeholder="🔍 Rechercher..." />
+   <label class="checkbox-label">
+   <input type="checkbox" id="include-descriptions" />
+   <span>Inclure les descriptions</span>
+   </label>
+   </div>
+   <div class="button-group">
+   <button id="expand-all">Tout déplier</button>
+   <button id="collapse-all">Tout replier</button>
+   </div>
+   </div>
+   <label for="tree-selector">Choisir une arborescence :</label>
+   <select id="tree-selector">
+   <option value="">La Formation</option>
+   <option value="arbre_spectacles.xml">Les Spectacles</option>
+   <option value="projet_rouge.xml">Projet Rouge</option>
+   </select>
+   <div class="tree" id="tree-container"></div>
+   <!-- XML intégré (exemple) -->
+   <script type="text/xml" id="xml-data">
+      <node label="Racine">
+        <node label="Hypnose Efficiente, rapide et impromptue" _color="blue" >
+          <description>
+            <![CDATA[
+        Utilisation efficace de l’hypnose sur individus ou groupes, à tout moment et lieu
+        ]]>
+          </description>
+          <node label="Simple et efficace">
+            <description>
+              <![CDATA[
+        Techniques directes, accessibles, utilisables dans le monde réel
+        ]]>
+            </description>
+            <node label="Aucune expérience requise">
+              <description>
+                <![CDATA[
+        Techniques simples, puissantes, testées sur des milliers de personnes
+        ]]>
+              </description>
+            </node>
+            <node label="Portabilité">
+              <description>
+                <![CDATA[
+        Peuvent s’appliquer partout où le sujet peut entendre l’hypnotiseur
+        ]]>
+              </description>
+            </node>
+            <node label="Hypnose comme art">
+              <description>
+                <![CDATA[
+        Importance de la pratique, de l’observation et de la maîtrise progressive
+        ]]>
+              </description>
+            </node>
+          </node>
+          <node label="Nature de l’hypnose">
+            <node label="Même discipline partout">
+              <description>
+                <![CDATA[
+        L’hypnose est la même en cabinet, en soirée ou sur un terrain de sport
+        ]]>
+              </description>
+            </node>
+            <node label="Hypnose sans cadre spécial">
+              <description>
+                <![CDATA[
+        Pas besoin d’un fauteuil confortable ni d’ambiance relaxante pour hypnotiser
+        ]]>
+              </description>
+            </node>
+            <node label="Perception subjective de la réalité">
+              <description>
+                <![CDATA[
+        La réalité est une conscience malléable, modifiable par l’hypnose.Étatiste, socio-cognitive, néodissociative
+        ]]>
+              </description>
+            </node>
+            <node label="Une définition intégrative de l'hypnose">
+              <description>
+                <![CDATA[
+        Haim définition: Une construction socio-cognitive articulée autour de trois processus observables.
+        ]]>
+              </description>
+              <node label="Permet d'évaluer l'hypnose par des critères concrets et perceptibles, et non par des notions floues ou subjectives."/>
+              <node label="Les 3 piliers de toute hypnose efficace">
+                <description>
+                  <![CDATA[
+        Sans l’un de ces trois piliers, l’état hypnotique n’est pas complet.
+        ]]>
+                </description>
+                <node label="Désagentivité" >
+                  <description>
+                    <![CDATA[
+        <ul><li>Si la personne garde le sentiment d'être totalement aux commandes, l'hypnose est superficielle</li><li>Il doit y avoir une bascule où Le sujet ressent que les réponses sont automatiques, comme générées par une force externe</li><li>"Ça se fait tout seul" est un bon indicateur de réussite</li></ul>
+        ]]>
+                  </description>
+                </node>
+                <node label="Imagination automatique" >
+                  <description>
+                    <![CDATA[
+        <ul><li>L'effort mental empêche l'installation de l'état hypnotique</li><li>L'hypnose se caractérise par un imaginaire fluide, spontané</li><li>Pas besoin de "forcer" pour ressentir ou visualiser</li><li>les images mentales émergent sans effort conscient</li></ul>
+        ]]>
+                  </description>
+                </node>
+                <node label="Tunnelisation attentionnelle" >
+                  <description>
+                    <![CDATA[
+        Renforce l’effet de la suggestion car:<ul><li>L’attention se fixe sur une seule idée ou directive (ex: la voix de l'hypnotiseur)</li><li>Les stimuli extérieurs sont ignorés, le reste devient secondaire, distant, presque inexistant</li><li>Le sujet doit être absorbé, concentré</li></ul>
+        ]]>
+                  </description>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node label="Polyvalence de l’hypnose">
+            <description>
+              <![CDATA[
+       Hypnose pour amuser, soulager ou influencer.
+        ]]>
+            </description>
+            <node label="La rue">
+              <description>
+                <![CDATA[
+        Rue, magasins, bureau, restaurant, club...
+        ]]>
+              </description>
+            </node>
+            <node label="La scène"/>
+            <node label="Hypnothérapie">
+              <description>
+                <![CDATA[
+        Phobie, stress, addictions, soulagement rapide...
+        ]]>
+              </description>
+            </node>
+            <node label="Auto-hypnose">
+              <description>
+                <![CDATA[
+        L'auto-hypnose, c'est la capacité à induire soi-même, en totale autonomie, un <b>état modifié de conscience</b> (EMC) pour accéder à ses ressources intérieures et faciliter un changement positif. C'est une <b>compétence qui s'apprend</b> : tout le monde peut y arriver avec de la pratique. En cabinet, on parle d'<b>éducation à l'auto-hypnose</b> : on rend le consultant autonome pour qu'il prolonge le travail entre les séances.
+        <h3>À quoi ça sert&nbsp;?</h3>
+        <ul>
+        <li>Gérer le stress et l'anxiété (couper le cycle des pensées anxieuses)</li>
+        <li>Améliorer le sommeil (passage des ondes bêta aux ondes alpha, puis thêta/delta)</li>
+        <li>Soulager la douleur (prolonge une technique hypno-antalgique apprise en séance)</li>
+        <li>Renforcer un objectif : confiance, examen, prise de parole, arrêt du tabac…</li>
+        <li>Réactiver un ancrage-ressource (calme, focus, énergie) à volonté</li>
+        </ul>
+        <b>Toujours un objectif précis</b> : l'auto-hypnose sans but n'est que de la relaxation.
+        ]]>
+              </description>
+              <node label="Les 6 étapes de la pratique">
+                <description>
+                  <![CDATA[
+        Trame à transmettre au consultant (à adapter, ce n'est pas un protocole figé).
+        ]]>
+                </description>
+                <node label="1. Préparation">
+                  <description>
+                    <![CDATA[
+        <ul><li>Un endroit calme, confortable, sans dérangement — téléphone coupé</li><li>Une petite musique douce possible</li><li>Choisir un moment où l'on est détendu&nbsp;: <b>éviter</b> juste après un repas lourd ou en grande fatigue (risque de s'endormir — sans gravité, mais moins bénéfique)</li></ul>
+        ]]>
+                  </description>
+                </node>
+                <node label="2. Relaxation">
+                  <description>
+                    <![CDATA[
+        Réduire les tensions physiques et mentales&nbsp;:<ul><li>Respiration profonde (la cohérence cardiaque est un excellent point d'entrée)</li><li>Détente musculaire progressive</li><li>Visualisation d'un lieu de bien-être</li><li>Se concentrer sur sa respiration et relâcher consciemment chaque partie du corps, en laissant faire l'inconscient</li></ul>
+        ]]>
+                  </description>
+                </node>
+                <node label="3. Auto-induction">
+                  <description>
+                    <![CDATA[
+        Faire basculer de l'état ordinaire vers l'EMC&nbsp;:<ul><li>Fixation d'un point</li><li>Décompte lent (10 → 0)</li><li>Escalier / ascenseur qui descend</li></ul>Objectif&nbsp;: atteindre l'<b>état alpha</b>, où l'esprit est plus ouvert aux auto-suggestions.
+        ]]>
+                  </description>
+                </node>
+                <node label="4. Auto-suggestions positives">
+                  <description>
+                    <![CDATA[
+        Se répéter des affirmations liées à l'objectif. Voir la règle de formulation dans le nœud suivant.
+        ]]>
+                  </description>
+                </node>
+                <node label="5. Travail (optionnel selon l'objectif)">
+                  <description>
+                    <![CDATA[
+        Là où se place le travail thérapeutique proprement dit, en plus ou à la place des simples suggestions&nbsp;:<ul><li>Futurisation positive</li><li>Métaphores</li><li>Réification (transformation d'une douleur/émotion localisée)</li></ul>
+        ]]>
+                  </description>
+                </node>
+                <node label="6. Réassociation (retour)">
+                  <description>
+                    <![CDATA[
+        Revenir à l'état de conscience ordinaire, ici et maintenant&nbsp;:<ul><li>Compter à rebours, ou remonter un escalier / remonter à la surface</li><li>Prendre le temps de revenir <b>pleinement</b> avant de reprendre ses activités — surtout avant de conduire ou travailler (ne pas rester «&nbsp;dans le gaz&nbsp;»)</li></ul>
+        ]]>
+                  </description>
+                </node>
+              </node>
+              <node label="Bien formuler ses auto-suggestions">
+                <description>
+                  <![CDATA[
+        Trois règles&nbsp;: <b>positif</b>, <b>présent</b>, <b>spécifique</b>.
+        <ul>
+        <li>Pas «&nbsp;je ne suis pas stressé&nbsp;» → «&nbsp;je suis détendu, calme, et je parle posément&nbsp;»</li>
+        <li>Pas «&nbsp;je ne bégaye pas&nbsp;» → «&nbsp;je parle clairement, mes propos sont clairs&nbsp;»</li>
+        </ul>
+        L'inconscient ne traite pas bien la négation&nbsp;: formuler ce que l'on <b>veut</b>, jamais ce que l'on fuit.
+        ]]>
+                </description>
+              </node>
+              <node label="Éducation à l'auto-hypnose (cadre thérapeutique)">
+                <description>
+                  <![CDATA[
+        Dès qu'on confie au patient une <b>technique avancée</b> (ex. hypno-antalgique&nbsp;: réification, lâcher-prise, matière apaisante), on l'<b>éduque à l'auto-hypnose</b> pour qu'il soit autonome entre les séances.
+        <ul>
+        <li>Ancrer un mot ou un geste déclencheur pour retrouver rapidement l'EMC</li>
+        <li>Donner une «&nbsp;prescription&nbsp;»&nbsp;: combien de fois par jour / semaine (ex. quelques séances d'auto-hypnose + cohérence cardiaque quotidienne)</li>
+        <li>Insister sur la <b>régularité</b>&nbsp;: elle améliore l'entrée en transe et l'efficacité des suggestions</li>
+        </ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Rassurer &amp; points de vigilance">
+                <description>
+                  <![CDATA[
+        <ul>
+        <li>L'expérience varie d'une personne à l'autre&nbsp;; des séances sont plus ou moins «&nbsp;réussies&nbsp;», c'est normal</li>
+        <li>Aucun risque de rester «&nbsp;bloqué&nbsp;» ou dans un coma hypnotique — on peut toujours revenir</li>
+        <li>Ce n'est pas un substitut à un suivi médical&nbsp;; garder les contre-indications habituelles à l'esprit</li>
+        <li>La progression vient de la <b>pratique constante</b>, pas de la perfection du premier essai</li>
+        </ul>
+        ]]>
+                </description>
+              </node>
+            </node>
+            <node label="Divertissement et interactions sociales">
+              <description>
+                <![CDATA[
+        Soirée ou événement
+        ]]>
+              </description>
+            </node>
+            <node label="Manipulation contextuelle (ingénierie hypnotique)">
+              <description>
+                <![CDATA[
+       Influencer des gens pour obtenir objets, informations ou actions
+        ]]>
+              </description>
+            </node>
+          </node>
+          <node label="Obstacle fréquent">
+            <node label="Méthode trop longue">
+              <description>
+                <![CDATA[
+       Relaxation, induction,...
+        ]]>
+              </description>
+            </node>
+            <node label="Peur de l'échec">
+              <description>
+                <![CDATA[
+        Beaucoup d’hypnothérapeutes évitent ces situations par manque d’aisance
+        ]]>
+              </description>
+            </node>
+            <node label="Pas d’anamnèse">
+              <description>
+                <![CDATA[
+       dans le cadre thérapeutique
+        ]]>
+              </description>
+            </node>
+          </node>
+        </node>
+        <node label="Les Bases et les pilliers" _color="red" >
+          <description>
+            <![CDATA[
+        Ce qu'il faut savoir pour pratiquer
+        ]]>
+          </description>
+          <node label="La Philosophie de l’Hypnotiseur">
+            <node label="Être Hypnotisteur" >
+              <description>
+                <![CDATA[
+        Avoir confiance absolue, en croyant en ses capacités, congruence, expertise. Jouer le rôle jusqu'à maîtrise
+        ]]>
+              </description>
+              <node label="Incarnez L’Hypnotiseur">
+                <description>
+                  <![CDATA[
+        <ul><li>Ne soyez pas juste un hypnotiseur, mais L’Hypnotiseur</li><li>Affichez une confiance absolue, de la cohérence, et une expertise apparente</li><li>Au début, il faut parfois "jouer un rôle" (faire semblant) jusqu'à incarner pleinement cette posture</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Croire en soi et en son sujet">
+                <description>
+                  <![CDATA[
+        <ul><li>Croyez que vous êtes le meilleur et que vous êtes un naturellement doué pour l’hypnose</li><li>Croyez aussi que votre sujet est réceptif et capable d’entrer en hypnose</li><li>Attendez-vous à réussir, cette croyance influence fortement le résultat</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Hypnotisez tout le monde">
+                <description>
+                  <![CDATA[
+        <ul><li>Les amis et la famille peuvent être plus difficiles à hypnotiser car ils vous connaissent trop bien</li><li>Mais n’abandonnez pas : ils peuvent parfois devenir vos meilleurs sujets</li><li>Tentez d’hypnotiser tout le monde, sans exception, dès qu’ils sont consentants</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Trouver son 'singe hypnotique'">
+                <description>
+                  <![CDATA[
+        Un sujet récurrent et très réceptif peut devenir un excellent partenaire d’entraînement, voire un complice pour les démonstrations
+        ]]>
+                </description>
+              </node>
+            </node>
+            <node label="La réalité est malléable"/>
+            <node label="L'hypnose est outil de changement infini"/>
+            <node label="La perception de la réalité de chaque individu est, par définition, subjective et partielle"/>
+            <node label="Chaque être humain possède en lui le pouvoir de transformer ses perceptions"/>
+            <node label="S'améliore en continu" >
+              <description>
+                <![CDATA[
+        Il est essentiel de rechercher en permanence:<ul><li>L'efficience</li><li>La rapidité</li><li>Ne rien perdre en profondeur</li><li>Chercher l’échec</li><li>Analyser les séances</li></ul>
+        ]]>
+              </description>
+            </node>
+          </node>
+          <node label="Triangle 3C (CCT)" anchor="ancre-3c">
+            <description>
+              <![CDATA[
+        Le triangle 3C est un outil d’analyse, de progression et d’état d’esprit. Il vous accompagnera tout au long de votre parcours. Gardez-le à l’esprit à chaque séance. Posez-vous les bonnes questions. Et souvenez-vous : <b>La technique seule ne suffit pas. C’est l’alliance de la confiance, du contexte et de la technique qui crée une hypnose puissante et authentique</b>
+        <h3>La puissance du cadre</h3>
+      La méthode fonctionne particulièrement bien lorsque deux éléments sont réunis :
+      <ul>
+      <li>Confiance entre le praticien et le sujet.</li>
+      <li>Contexte approprié (calme, sécurité, disponibilité).</li>
+      </ul>
+      
+      <h3>L’importance de la Compétence</h3>
+      Quand la confiance et le cadre sont déjà en place:
+      <ul>
+      <li>Le travail se joue alors au niveau de la compétence, qui devient le levier principal d’efficacité.</li>
+      </ul>
+        ]]>
+            </description>
+            <node label="La Confiance: &lt;i&gt;Convaincu pour être convaincant&lt;/i&gt;" >
+              <description>
+                <![CDATA[
+        L’hypnose est un jeu de conviction : plus vous êtes convaincu, plus vos suggestions seront crédibles, puissantes et efficaces. Votre énergie influence celle que le sujet est prêt à recevoir
+        ]]>
+              </description>
+              <node label="La confiance commence par soi">
+                <description>
+                  <![CDATA[
+        <ul><li>L’hypnose ne peut fonctionner que si l’hypnotiseur croit en ses propres suggestions</li><li>Il est normal de manquer d’assurance au début, mais il faut la projeter malgré tout</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Deux formes de confiance">
+                <description>
+                  <![CDATA[
+        <b>Intérieure</b> : ce que vous ressentez<br><b>Perçue</b> : ce que vous dégagez et que le sujet perçoit<br><ul><li>Même si vous doutez, l’important est de montrer de la stabilité extérieure</li><li>Le sujet perçoit immédiatement le doute ou l’hésitation</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="La confiance inspire l’accord hypnotique">
+                <description>
+                  <![CDATA[
+        Sans confiance mutuelle, il ne peut y avoir de lâcher prise du sujet
+        ]]>
+                </description>
+              </node>
+              <node label="Analogie: un chirurgien hésitant n’inspire pas confiance — un hypnotiseur non plus." />
+              <node label="10 Commandements">
+                <description>
+                  <![CDATA[
+        <ol><li>Parlez avec clarté et fluidité</li><li>Adoptez un rythme précis</li><li>Contrôlez votre espace personnel</li><li>Alignez gestes et paroles</li><li>Respirez régulièrement</li><li>Donnez vos instructions avec fermeté</li><li>Utilisez le flou artistique à bon escient</li><li>Affichez une posture assurée</li><li>Soyez attentif aux réactions du sujet</li><li>Réagissez vite et avec souplesse</li></ol>
+        ]]>
+                </description>
+              </node>
+            </node>
+            <node label="Contexte: &lt;i&gt;Vers l'Hyper-Hypnotique&lt;/i&gt;" >
+              <description>
+                <![CDATA[
+        Plonger le sujet dans une bulle de concentration maximise l'efficacité des suggestions. Le cadre influence directement la réceptivité hypnotique.
+        ]]>
+              </description>
+              <node label="Maîtriser le temps">
+                <description>
+                  <![CDATA[
+        Assurez-vous que le sujet soit mentalement disponible, sans contrainte temporelle<br/><ul><li>S'il pense à l'heure ou à un rendez-vous, il ne pourra pas se relâcher</li><li>Offrez un cadre clair : chronomètre, durée définie, promesse de fin précise</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Gérer les suggestions parasites">
+                <description>
+                  <![CDATA[
+        Les perturbations peuvent casser la transe<br/><ul><li>Bruits ambiants, réactions du public ou interruptions sont des suggestions involontaires</li><li>Restez calme et donnez l'impression que tout est prévu</li><li>Sécurisez votre sujet émotionnellement</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Tout est suggestion">
+                <description>
+                  <![CDATA[
+        Chaque élément peut influencer le sujet<br/><ul><li>Un regard, une parole, un geste peuvent être interprétés comme des suggestions</li><li>Encadrez les résistances sans les souligner</li><li>Poursuivez avec fluidité, même si un sujet ne réagit pas</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Hypnose &amp; effet placebo">
+                <description>
+                  <![CDATA[
+        L'hypnose repose sur l'effet contextuel<br/><ul><li>Comme le placebo, le cadre et l'attente créent l'effet</li><li>À la différence près : vous ne mentez pas, vous activez le pouvoir des attentes et des mots</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="En résumé">
+                <description>
+                  <![CDATA[
+        <ul><li>Créez un cadre rassurant et sans distraction</li><li>Gérez les perturbations sans perdre le contrôle apparent</li><li>Considérez tout comme une suggestion : ambiance, mots, gestes</li><li>Nourrissez l'attente pour faciliter le changement hypnotique</li></ul>
+        ]]>
+                </description>
+              </node>
+            </node>
+            <node label="La Compétence: &lt;i&gt;Anciennement Technique&lt;/i&gt;" >
+              <description>
+                <![CDATA[
+        La technique est essentielle mais reste secondaire face à la conviction, la confiance et la présence. Elle est au service de l'intuition et de la relation, non l'inverse
+        ]]>
+              </description>
+              <node label="Compétence ≠ efficacité automatique">
+                <description>
+                  <![CDATA[
+        Une technique seule ne garantit pas le succès<br/><ul><li>Des protocoles longs et complexes peuvent devenir un obstacle</li><li>Trop de structure nuit à la spontanéité et à la connexion</li><li>L'art hypnotique repose davantage sur l'instinct que sur des scripts</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Leçon d'humilité : l'exemple du jeune hypnotiseur">
+                <description>
+                  <![CDATA[
+        Un jeune de 14 ans hypnotise efficacement avec une technique simple et directe<br/><ul><li>Il applique les conseils avec conviction, sans doutes ni complications mentales</li><li>Il incarne naturellement la confiance et la suggestion directe</li><li>La conviction est plus puissante que la complexité technique</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="La technique n’est rien sans">
+                <description>
+                  <![CDATA[
+        Sans ces éléments, la technique perd sa puissance
+        ]]>
+                </description>
+                <node label="Conviction" />
+                <node label="Confiance" />
+                <node label="Engagement" /></node>
+              <node label="L'efficience hypnotique">
+                <description>
+                  <![CDATA[
+        Notre approche vise la simplicité efficace<br/><ul><li>L'efficience = aller droit au but, sans précipitation ni lenteur inutile</li><li>Induire un état hypnotique peut prendre moins de 3 à 5 minutes dans la majorité des cas</li><li>L'important, ce n'est pas la durée de l'induction mais la résonance des suggestions</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="À retenir">
+                <description>
+                  <![CDATA[
+        <ul><li>La technique est un outil, pas une finalité</li><li>Apprenez-la, puis laissez-la s'intégrer naturellement</li><li>L'efficacité vient de votre présence, pas du protocole</li><li>C'est la confiance qui donne de la force à vos suggestions</li></ul>
+        ]]>
+                </description>
+              </node>
+            </node>
+          </node>
+          <node label="Le Protocole A.D.I.S.S" >
+            <description>
+              <![CDATA[
+        induire les trois processus (<b>désagentivité, imagination automatique, tunnelisation attentionnelle</b>) aussi <b>rapidement</b> et <b>efficacement</b> que possible. Il sert à guider la personne vers ce que l’on appelle la phase de <b>résonance</b>. C’est dans cette phase que les changements profonds peuvent émerger
+        ]]>
+            </description>
+            <node label="A - Accord">
+              <description>
+                <![CDATA[
+        Établir une entente claire avec le sujet sur le déroulement de la séance et obtenir son consentement actif<br/>
+        <b>L’hypnose commence au moment de l’accord </b><h3>Objectifs</h3><ul><li>Créer un climat de confiance</li><li>Clarifier les attentes et les objectifs du sujet</li><li>Obtenir un engagement du sujet à suivre les instructions sans résistance</li></ul><h3>Actions</h3><ul><li><b>Discussion Préliminaire</b> : Poser des questions ouvertes pour comprendre les perceptions et les préoccupations du sujet</li><li><b>Explication</b> : Décrire brièvement ce qu'est l'hypnose et ce qu'elle n'est pas</li></ul><h3>Script</h3><ul><li>Tu vas aller en Hypnose, tu vas te sentir comment selon toi ?</li><li>Imagine-toi sous hypnose… Qu’est-ce que tu ressentirais ?</li><li>Ce n’est pas vraiment ça. Je te propose un petit jeu d’imagination, et selon comment tu réagis, on continuera. Ça te va ?</li><li>Tu écouteras mes suggestions et tu ne seras ni pour ni contre</li></ul>
+        ]]>
+              </description>
+            </node>
+            <node label="D - Désagentivité: Perte rapide du sentiment d’agentivité, jeux hypnotiques">
+              <description>
+                <![CDATA[
+        Amener le sujet à ressentir que certaines de ses actions ou réactions se produisent automatiquement, sans contrôle conscient<br/><h3>Objectifs</h3><ul><li>Induire une expérience initiale de perte de contrôle volontaire</li><li>Préparer le sujet à accepter des suggestions plus profondes</li></ul><h3>Actions</h3><ul><li><b>Tests Idéomoteurs</b> : Exercices comme les doigts aimantés, les mains qui se rapprochent</li><li><b>Catalepsie Rapide</b> : Provoquer un blocage des doigts ou des mains</li><li><b>Observation</b> : Noter les signes de réceptivité pour adapter les suggestions</li></ul>    <h3>script Doigts aimantés</h3> <ul><li>Tu imagines tes index collés…</li><li>Tu n’es ni pour ni contre :Si tu es pour, tu risques de forcer.Si tu es contre, c’est que tu ressens quelque chose, mais tu t’y opposes.
+      Donc tu te laisses juste aller.</li><li>De quelle couleur sont-ils ?</li><li>Plus on essaie de lutter, moins on y arrive.</li><li>Ils n’ont qu’une envie : se coller.Collés, soudés, cimentés.</li><li>Tu sens que tu es ni pour ni contre, que tu laisses passer la suggestion ?C’est la colle de ton esprit.</li><li><ul>Je vais compter jusqu’à 3 :<li>1… Collés, soudés</li><li>2… Ils sont bloqués.</li><li>3… Plus tu essaies de décoller les doigts, plus tu as envie de les laisser comme ça.</li></ul></li><li>Comme si ton esprit puissant les bloquait et les soudait dans cette position.
+      Il est désormais impossible de les bouger.</li><li>Qu’est-ce que tu ressens ?</li><li>Est-ce que ça te rassure sur l’hypnose ?</li><li>Tu es consciente quand même ?</li></ul>
+        ]]>
+              </description>
+            </node>
+            <node label="I - Induction préliminaire: Ruptures de pattern courtes et longues, approfondissement" >
+              <description>
+                <![CDATA[
+        L’induction permet de faire passer une personne d’un état A (ordinaire) à un état B (modifié).<br>
+        Relaxation n’est pas l’hypnose : ce sont deux concepts différents.
+      <br/><h3>Objectifs</h3><ul><li>Profondir la transe hypnotique</li><li>Augmenter la suggestibilité du sujet</li></ul><h3>Actions</h3><ul><li><b>Techniques d'Induction Rapide</b> : Utiliser des ruptures de pattern ou des chocs hypnotiques</li><li><b>Approfondissement</b> : Guider le sujet à travers une visualisation comme la descente d’un escalier<ul>
+      <li>Tu descends la 1ère marche → Ton corps se relâche, se détend 10 fois plus.</li>
+      <li>2ème marche → Parfaitement détendue.</li>
+      <li>3ème marche → Très bien comme ça.</li>
+      </ul></li><ul><li><b>Ancrage</b> : Introduire un mot-clé ou un geste qui facilitera les inductions futures. Par exemple, le mot "dors":<ul>
+      <li>Chaque fois que je dirai le mot « dors » en te touchant l’épaule, tu repartiras dans cet état de relaxation profonde.
+      </li>
+      </ul></li></ul><h3>Script</h3><ul><li>Dans quelques instants, tu vas te relaxer profondément.</li><li>Ça te dirait de te détendre tellement fort que tu vas presque tomber au sol ?</li><li>Je vais compter jusqu’à 3. À 3, tu sentiras que tu plonges au fond de toi-même.
+      Et je serai là pour te rattraper.</li><li>1… 2… et 3 maintenant ! (on tire sur le bras)</li><li>Tu peux te laisser aller, partir profondément à l’intérieur de toi, maintenant.</li><li>Relaxée, détendue, au fond de toi-même</li></ul>
+        ]]>
+              </description>
+              <node label="Rupture de pattern: le saut">
+              <description>
+                <![CDATA[
+       <h3>Rupture de pattern : clé de l’induction</h3>
+      L’entrée réelle dans l’hypnose = rupture de pattern.<br>
+      Il s’agit d’une interruption soudaine d’un comportement ou d’une séquence attendue.<br>
+      Cette rupture crée une confusion mentale temporaire, rendant le cerveau plus réceptif aux suggestions.<br>
+      
+      <h3>Objectif</h3>
+      <ul>
+      <li>Créer un moment de déséquilibre cognitif.</li>
+      <li>Ouvrir une fenêtre de suggestibilité accrue chez le sujet.</li>
+      </ul>
+      <h3>Exemples de ruptures de pattern efficaces</h3>
+      <ul>
+      <li>Tirer légèrement sur le bras du sujet.</li>
+      <li>Rapprocher les mains du sujet plus rapidement que prévu.</li>
+      <li>Claquer des doigts en touchant l’épaule.</li>
+      <li>Introduire un silence inattendu.</li>
+      <li>Changer subitement le volume de la voix.</li>
+      <li>Accentuer un mot de façon brutale (par exemple, en claquant des doigts).</li>
+      </ul>
+        ]]>
+              </description>
+            </node>
+                     <node label="induction par attraction des doigts">
+              <description>
+                <![CDATA[
+      
+      voir: <a href="#ancre-doigts-magnétiques" class="node-link"> "Phénomènes hypnotiques / Catalepsie / Les doigts magnétiques"</a>
+        ]]>
+              </description>
+            </node>
+                             <node label="induction par mouvement oculaire rapide (MOR)">
+              <description>
+                <![CDATA[
+        
+      <ul>
+      <li>Technique rapide et fluide, idéale pour les réinductions.</li>
+      <li>Utilise le mouvement des yeux pour induire l’état hypnotique.</li>
+      <li>Allez jusqu’à <b>l’extrême droite et gauche</b> du champ visuel pour une efficacité maximale.</li>
+      <li>Exploite la dissociation entre le mouvement volontaire (suivre du regard) et l’entrée soudaine en transe.</li>
+      <li>Efficace chez les sujets déjà hypnotisés auparavant ou familiers avec l’état d’hypnose.</li>
+      <li>Simple à mettre en œuvre : un geste (mouvement de doigt) + un mot déclencheur (« dors »).</li>
+      </ul>
+        ]]>
+              </description>
+            </node>
+                             <node label="induction lévitation - pesanteur">
+              <description>
+                <![CDATA[
+      voir: <a href="#ancre-levitation-pesanteur" class="node-link"> "Phénomènes hypnotiques / Mouvements idéomoteurs / Lévitation-Pesanteur"</a>
+        ]]>
+              </description>
+            </node>
+                             <node label="induction à la poignée de main">
+              <description>
+                <![CDATA[
+      <h3>La poignée de main détournée</h3>
+      <ul>
+      <li>Induction <b>emblématique</b> de l'académie.</li>
+      <li>Très efficace comme <b>réinduction</b>.</li>
+      <li>Peut être utilisée dès la première séance avec les sujets expérimentés.</li>
+      <li>Utilise une <b>rupture de pattern</b> (interruption du geste attendu), ce qui surprend le cerveau.</li>
+      <li><b>Déclenche une transe instantanée</b> avec un mot d’ordre : « Tu dors maintenant. »</li>
+      <li>Crée une <b>réceptivité immédiate à la suggestion</b>.</li>
+      <li>Popularisée par <b>Milton H. Erickson</b>, démontrant qu’il utilisait aussi des techniques rapides et directes.</li>
+      </ul>
+        ]]>
+              </description>
+            </node>
+      
+            </node>
+            <node label="S - Suggestion(s): Maîtriser 11 suggestions clés" >
+              <description>
+                <![CDATA[
+        Proposer des idées, des images ou des commandes que le sujet va accepter et intégrer<br/><h3>Objectifs</h3><ul><li>Atteindre les objectifs de la séance (thérapie, divertissement, apprentissage)</li><li>Faire vivre au sujet des expériences hypnotiques spécifiques</li></ul><h3>Actions</h3><ul><li><b>Suggestions Directes</b> : Donner des instructions claires (par exemple, "Votre bras devient léger comme une plume")</li><li><b>Suggestions Indirectes</b> : Utiliser des métaphores ou des histoires pour guider le subconscient</li><li><b>Adaptation</b> : Personnaliser les suggestions en fonction des réactions du sujet</li></ul><b>Script: Suggestion de collage au sol</b> :
+      <ul>
+      <li> Maintenant, tu vas te souder au sol.</li>
+      <li>C’est toi-même qui vas y arriver.</li>
+      <li>Ouvre les yeux maintenant : tu réalises à quel point tu es collée au sol.</li>
+      <li>Click → Ouvre les yeux.</li>
+      <li>Ça va ? Tu te sens comment ?</li>
+      <li>Il y a un truc que j’aime bien: Plus tu essaies de te décoller, plus tu as envie de rigoler.
+      </li>
+      <li>OK. Maintenant tout se décolle.
+      </li>
+      
+      </ul>
+        ]]>
+              </description>
+            </node>
+            <node label="S - Sortie: Sortie du processus, suggestions d’éveil" >
+              <description>
+                <![CDATA[
+                L’éveil est l’une des étapes les plus importantes d’une séance d’hypnose. Il ne s’agit pas simplement de "réveiller" le sujet, mais de <b>le guider vers une sortie harmonieuse et progressive de l’état hypnotique</b>.
+        <br/><h3>Objectifs</h3><ul><li>Ramener le sujet à l'état de conscience normal de manière sécurisée et positive</li><li>S'assurer que le sujet se sent bien et intégré</li></ul><h3>Actions</h3><ul><li><b>Réveil Progressif</b> : Compter de 1 à 5 en suggérant un retour à la pleine conscience</li><li><b>Suggestions Positives</b> : Renforcer le bien-être, la confiance en soi, l'énergie</li><li><b>Vérification</b> : Demander au sujet comment il se sent et répondre à ses éventuelles questions</li>
+          <li><b>Note</b>: Nous ne savons pas encore avec certitude tous les effets potentiels d’un réveil mal fait. Par prudence, il est donc essentiel d’apporter une attention particulière à cette phase finale </li></ul>
+        ]]>
+              </description>
+      
+      <node label="La suggestion" >
+        <description>
+        <![CDATA[
+          <h3>Pourquoi apprendre les deux ?</h3>
+          Certaines situations peuvent nécessiter l’une ou l’autre. Par exemple :
+           <ul>
+              <li>Si, pendant la séance, vous avez utilisé l’image d’un alter ego, il est préférable d’éviter de
+          réutiliser ce même concept pour le réveil, afin de ne pas créer de confusion. Dans ce cas, le
+          décompte sera plus approprié.</li>
+              <li>Inversement, si la séance a été très symbolique ou émotionnelle, la suggestion de l’alter ego permet
+          un retour à soi plus doux et plus cohérent avec le travail effectué.</li>
+          </ul>
+          En ayant ces deux suggestions dans votre boîte à outils, vous pourrez vous adapter facilement à toutes les
+          situations, pour garantir un réveil sûr, fluide et respectueux de votre sujet.
+        ]]>
+        </description>
+        <node label="L’alter ego" >
+            <description>
+            <![CDATA[
+            Cette technique est aussi élégante qu’efficace. Elle consiste à faire visualiser au sujet une version de lui-même, identique en tout point, mais totalement sortie de l’état hypnotique.
+            <ul>
+            <li>Ferme les yeux maintenant. Imagine une version de toi, juste en face. C’est une copie parfaite de toi-même.</li>
+            <li>Sauf que cette version-là n’est plus sous hypnose. Elle est déjà sortie du processus hypnotique, </li>
+            <li>et elle est exactement dans l’état dans lequel tu aimerais être maintenant : calme, énergique, confiant... </li>
+            <li>Tu la vois ? Dans quelques instants, tu vas fusionner avec cette version de toi.</li>
+            <li>En même temps, tu garderas seulement ce qui t’a été utile, bon et intéressant pendant cette séance. Le reste, tu peux le laisser partir.</li>
+            <li>À mon signal, tu feras un pas pour rejoindre cette version de toi.</li>
+            <li>1... 2... 3... Vas-y, fais un pas. Inspire profondément. Et quand tu sentiras que la fusion est complète, tu pourras ouvrir les yeux.</li> </ul>
+            <b>Conseil important</b>: dans cette suggestion, évitez de forcer un état particulier au sujet. Ne dites pas "tu seras comme ci ou comme ça". Laissez-lui la liberté de choisir l’état dans lequel il souhaite se retrouver. Ce respect de son autonomie est fondamental pour un réveil harmonieux.
+           ]]>
+            </description>
+        </node>
+        <node label="Le décompte de 3 à 0" >
+            <description>
+            <![CDATA[
+            <ul>
+            <li>Tu ne prendras en compte que les choses positives, utiles pour toi que tu as
+            vécues lors de cette séance</li>
+            <li>Je vais compter jusqu’à 3…</li>
+            <li>À 3, tu ouvriras les yeux, pleinement réveillée, en forme, et tu ne garderas en mémoire que ce qui est positif, utile et bon pour toi.
+            </li>
+            <li>1 – Tu reprends conscience de ton corps.</li>
+            <li>2 – Tu ramènes tout ce qui te fait du bien.</li>
+            <li>3 – Tu ouvres les yeux, présente, légère, et bien.</li>
+            </ul>
+            ]]>
+            </description>
+        </node>
+      </node>
+            </node>
+          </node>
+          <node label="On va plus loin – approfondissement !" _color="yellow">
+             <description>
+                  <![CDATA[
+                  il s’agit d’intensifier l’état hypnotique du sujet, en renforçant la <b>désagentivité </b>(perte de contrôle volontaire), la <b>tunnelisation intentionnelle </b>(focalisation de l’attention), et l’<b>imagination</b>
+      automatique</b> (activation spontanée de processus mentaux imaginatifs).
+      <ul>
+      <li>A faire juste après l’<b>induction préliminaire</b>. </li>
+      <li>L’approfondissement permet de <b>renforcer rapidement</b> l’état hypnotique.</li>
+      <li>Utilisez des images mentales simples et efficaces, comme <b>l’escalier</b> ou <b>la salle de contrôle</b>.</li>
+      </ul>
+      
+      <h3>Exemple</h3>
+      <i>« Tu vas maintenant imaginer un escalier composé de trois marches. Tu es tout en haut de cet escalier, et tu
+      te sens déjà bien, calme, relaxé. Cet escalier te conduit vers un espace très particulier : la salle de contrôle de ton cerveau. C’est un lieu où tu peux réguler, ajuster, transformer tes ressentis, tes capacités, tout ce que tu es capable de faire ou de ressentir. Quand tu te sens prêt, descends la première marche, et sens ton corps se détendre dix fois plus. Puis la deuxième marche, en relâchant encore davantage toutes les tensions. Enfin,
+      la troisième marche, dans un état de calme et de concentration totale. À mon signal, tu entreras dans cette salle de contrôle. Mais avant cela, je dois te dire une chose :
+      Dans cette salle, tu restes maître. Tu peux vivre toutes les suggestions qui sont utiles, intéressantes ou amusantes pour toi. Si une suggestion ne t’apporte rien ou ne t’amuse pas, tu pourras simplement l’ignorer. En revanche, si ce que je te propose te semble ludique, enrichissant ou te permet d’évoluer, alors tu pourras t’autoriser à vivre cette expérience pleinement.
+      Si tu es d’accord avec ça, fais-moi un signe de tête... Parfait. 1... 2... 3... maintenant. Tu entres dans la salle de contrôle. »</i><br>
+      « je vais te guider vers un endroit special, un salle ou tu aura un contole sur ton inconscient, ou tu pourras faire des choses extra. pour cela il faudra rentrer dansl a salle du controle de ton cerveau, elle se trouve la haut , en haut de 3 marches....»</i>
+      
+      <h3>N’hésitez pas à dire </h3>
+      <ul>
+      <li>de plus en plus profondément</li>
+      <li>profondément endormi</li>
+      <li>profondément à l’intérieur</li>
+      <li>dix fois plus profondément</li>
+      </ul>
+      Ces expressions sont ancrées dans l’esprit collectif presque aussi profondément que le mot <b> dors</b>
+        ]]>
+                </description>
+              <node label="Ancrage">
+                <description>
+                  <![CDATA[
+      Un ancrage, c’est un <b> stimulus </b> sensoriel (son, image, mot, geste, toucher, sensations, etc.) qui <b>déclenche automatiquement</b> un état interne ou <b> une réaction émotionnelle</b>  (détente, confiance , énergie, etc)
+        <br><i>C’est un peu comme quand une chanson te ramène instantanément à un souvenir précis.</i>
+      
+      
+      <h3> En hypnose, à quoi ça sert ? </h3>
+      Créer un raccourci émotionnel volontaire pour :
+      <ul><li>retrouver le calme instantanément</li>
+      <li>réveiller la motivation</li>
+      <li>sortir d’un blocage émotionnel</li>
+      <li>installer un état ressource</li>
+      </ul>
+      <h3>Comment créer un ancrage (technique de base)</h3>
+      <ul>
+      <li>Choisir un état émotionnel positif (ex : confiance, calme, énergie)</li>
+      <li>Faire revivre cet état au client → en transe ou par visualisation intense</li>
+      <li>Associer un stimulus précis au pic émotionnel (ex : toucher un doigt, dire un mot, serrer le poing)</li>
+      <li>Répéter 2 à 3 fois pour renforcer l’ancrage</li>
+      <li>Tester l’ancrage → refaire le geste ou le mot pour voir si l’état revient</li>
+      </ul>
+      <h3>Types d’ancrages possibles </h3>
+      <ul>
+      <li>Kinesthésique : geste, toucher (ex : main sur le cœur)</li>
+      <li>Auditif : mot, phrase, bruit</li>
+      <li>Visuel : image, couleur, symbole</li>
+      <li>Olfactif / gustatif : odeur, goût (plus rare mais très puissants)</li>
+      </ul>
+      <h3>Bonnes pratiques </h3>
+      <ul>
+      <li>L’ancrage doit être précis, unique et répétable</li>
+      <li>Plus l’émotion est intense, plus l’ancrage est fort</li>
+      <li>Éviter les gestes déjà liés à autre chose (ex : croiser les bras)</li>
+      </ul>
+      
+      <h3>Utilisation en auto-hypnose</h3>
+      <ul><li>Tu peux toi-même créer des ancrages de calme, de focus ou de sommeil, à activer à volonté en situation réelle.</li> </ul>
+        ]]>
+                </description>
+                <node label=" Le fractionnement">
+                <description>
+                  <![CDATA[
+         <ul>
+        <li>Ex : ouvrir puis refermer les yeux = <strong>ex: aller deux fois plus profondément</strong>.</li>
+        <li>répétez avec des suggestions nouvelles</li>
+        <li>Très efficace pour renforcer l’état.</li>
+        <li><strong>Gérer leur regard</strong> (yeux dans les yeux ou fixation d’un objet).</li>
+      </ul>
+        ]]>
+                </description>
+              </node>
+               <node label="Le compte à rebours hypnotique">
+                <description>
+                  <![CDATA[
+         <ul>
+        <li>Compter de 5 à 0 en associant chaque chiffre à un approfondissement.</li>
+        <li>Métaphore :  <em>cible de tir à l’arc</em> (on s’y approche, puis on la traverse).</li>
+        <li>Alternative : simple compte à rebours + phrase répétée mentalement:
+          <ul>
+            <li>« Je vais de plus en plus profondément»</li>
+            <li>« Je double ma relaxation»</li>
+          </ul>
+        </li>
+      </ul>
+        ]]>
+                </description>
+              </node>
+             <node label="Autres métaphores efficaces">
+                <description>
+                  <![CDATA[
+      
+      Descendre un escalier, ou un ascenseur vers un état plus profond.<br>
+      ⚠️ Attention : ne pas faire une visualisation trop longue ou trop complexe (ex. jardin + plage + escalier = surcharge).
+        ]]>
+                </description>
+              </node>
+                       <node label="Ancrage de retour à la transe">
+                <description>
+                  <![CDATA[
+      Chaque fois que je dis le mot <strong>dors</strong>, tu retourneras dans cet état d’hypnose, <strong>deux fois plus profondément qu’avant</strong>.
+      <br>
+      Crée un ancrage post-hypnotique puissant.
+        ]]>
+                </description>
+              </node>
+                                 <node label="Suggestion avec mouvement">
+                <description>
+                  <![CDATA[
+                  EX: <b>lévitation de la main</b>
+      <ul>
+        <li>Touche le dos de la main → elle se lève seule → plus elle monte, plus la personne plonge.</li>
+        <strong>Cible visuelle</strong> = visage ou front → attente claire = quand la main touche, l’état est renforcé.
+        <li><strong>Important</strong> : tester les réponses automatiques et associer les mouvements à une sensation.</li>
+        
+      </ul>
+        ]]>
+                </description>
+              </node>
+              </node>
+            <node label="Boucles">
+                <description>
+                  <![CDATA[
+       
+      Ces phrases créent une <b>boucle paradoxale</b> (feedback loop) qui <b>intensifie l’hypnose</b> . Elles construisent des <b>associations circulaires</b> qui s'auto-renforcent. Certaines sont <b>temporaires</b>, d’autres peuvent durer.
+      <ul><li>Plus tu remarques que tes yeux papillonnent, plus tu plonges profondément — et plus tu plonges profondément, plus tes yeux papillonnent</li>
+      <liPlus tu te laisses aller, plus tu te sens bien… et plus tu te sens bien, plus tu te laisses aller.</li>
+      <li>Même si tu te demandes jusqu’à quel point tu es descendu, tu peux continuer à plonger plus profondément détendu</li>
+      <li>Alors que ton corps bouge et se relâche <i>(posez une main sur l’épaule du sujet et bercez-le doucement pour favoriser la détente musculaire)</i>, tu plonges de plus en plus profondément à mesure qu’il se détend</li>
+      <li>C’est ça... Tes jambes te soutiennent, même pendant que tu continues à te détendre de plus en plus</li>
+      <li>Plus tu essaieras de décoller tes doigts (ou tes mains), moins tu y arriveras</li>
+      </ul>
+        ]]>
+                </description>
+              </node>
+            <node label="Chaines">
+                <description>
+                  <![CDATA[
+        
+      La chaîne consiste à relier <b>plusieurs ancrages</b ou états de façon séquentielle pour créer un processus global ou un parcours intérieur.
+      <br>
+      Il s’agit d’une succession d’étapes dans laquelle chaque ancrage prépare le terrain pour le suivant, permettant ainsi d’amener progressivement le sujet vers un état profond ou un changement plus global.
+      
+      <h3>Chaîne vs chaine</h3>
+      Une chaîne (basée sur une continuité) est plus puissante et engageante qu’un simple lien ponctuel.
+      
+      <h3>Caractéristiques principales</h3>
+      <ul>
+      <li><b>Processus Séquentiel </b>: Contrairement à un ancrage isolé, la chaîne implique plusieurs points d’ancrage liés les uns aux autres pour former un continuum d’états.</li>
+      
+      </li><b>Complexité et Progression </b>: Cette méthode est souvent utilisée pour accompagner le sujet dans un voyage intérieur où chaque étape bâtit sur la précédente. Par exemple, un praticien pourra guider quelqu’un d’abord vers la relaxation générale, ensuite vers un état de concentration accrue, et enfin vers un état de ressource ou de transformation.</li>
+      
+      <li><b>Utilisation </b>: Utile pour structurer des séances plus longues ou complexes, pour induire des changements progressifs ou renforcer en profondeur l’état souhaité.</li></ul>
+      
+      <h3>Exemple</h3>
+      <ul>
+      <li>“Et à chaque respiration… tu peux sentir tes paupières devenir un peu plus lourdes… juste un peu…”</li>
+      <li>“Et ce léger poids dans tes paupières peut t’amener à ressentir une forme de calme… un calme qui s’installe doucement dans tout ton visage…”</li>
+      <li>“Et à mesure que ce calme s’installe… il est possible que tes pensées deviennent plus lentes… comme si elles flottaient doucement, sans attache…”</li>
+      <li>“Et pendant que les pensées ralentissent… peut-être que tu as cette impression de flotter… ou de t’enfoncer… ou même de ne plus savoir exactement où est ton corps…”
+      </li>
+      </ul>
+      
+      
+        ]]>
+                </description>
+              </node>
+      <node label="auto-suggestion inconsciente" >
+              <description>
+                 <![CDATA[
+      <b>Les signes qui échappent à la conscience du sujet.</b><br>
+      Exemple:
+      <ul>
+      <li>Vous rearquez des yeux qui papillonnent</li>
+      <li>Formulez une suggestion: « Tes yeux vont commencer à papilloner... tu vas te sentir plus chaud... »</li>
+      <li>Le sujet remarque, l'attribue à votre influence, le phénomène s’amplifie. </li>
+      <li>Dialogue interne inconscient: « Je deviens plus chaud ? Est-ce qu’il le voit ? Mes yeux tremblent, je ne peux pas les arrêter. Je dois être hypnotisé. »</li>
+      <li>Cela crée une boucle de rétroaction qui amplifie l’effet.</li>
+      </ul>
+               
+        ]]>
+              </description>
+            </node>
+      
+            </node>
+      
+      <node label="Les Fusibles">
+                <description>
+                  <![CDATA[
+      <ul>
+      <li><b>Indispensables</b> dans toute séance pour garantir un cadre <b>sécurisant et respectueux.</b></li>
+      <li><b>Deux fusibles</b> doivent être utilisés systématiquement (approfondissement et sortie).</li>
+      <li><b>Protège</b> l'intégrité et le confort du volontaire, même en <b>cas d’erreur</b> ou de <b>formulation maladroite.</b></li>
+      <li>Fait la différence entre une séance <b>hasardeuse</b> et une séance <b>maîtrisée</b>.</li>
+      <li>Permet au sujet de rester <b>acteur de son expérience</b> et de garder le contrôle.</li>
+      </ul>
+        ]]>
+                </description>
+              <node label="fusible d’approfondissement">
+                <description>
+                  <![CDATA[
+      Renforce la <b>sécurité intérieure</b> de la personne, lui donne le <b>pouvoir de choisir</b>, et lui permet de rester <b>alignée avec elle-même</b> tout au long de la séance.<br><br>
+      <i>« Je vais compter jusqu’à trois. Et à trois, tu vas entrer dans cette salle particulière, la salle de contrôle de ton cerveau.
+      Mais avant cela, je veux te dire quelque chose d’important :
+      Dans cette salle, <b>tu pourras vivre seulement ce qui est utile, intéressant, amusant, et bénéfique pour ton évolution.
+      Si une suggestion ne te convient pas, si ce n’est ni important, ni drôle, ni intéressant pour toi, alors tu pourras tout simplement l’ignorer ou la refuser.
+      En revanche, si ce que je te propose te paraît juste, pertinent, amusant ou porteur de changement dans le sens que toi tu veux, alors tu pourras vivre pleinement cette suggestion.</b>
+      Et si tu es d’accord avec cela, fais-moi simplement un petit signe de tête. »</i>
+        ]]>
+                </description>
+              
+            </node>
+            <node label="fusible de sortie">
+                <description>
+                  <![CDATA[
+      Ce  fusible est placé juste avant la sortie de transe. Il permet à la personne de ne <b>conserver que le positif </b>de ce qu’elle a vécu, et de laisser partir tout le reste. <br><br>
+      <i>
+      « Dans quelques instants, tu vas fusionner avec cette version de toi-même qui a vécu cette expérience.
+      Et en même temps, tu vas garder seulement ce qui a été bon, utile et intéressant pour toi lors de cette séance. Tout le reste, tu peux simplement le laisser partir, comme si tu le mettais à la poubelle.
+      Et en fusionnant avec cette version de toi, tu vas sortir du processus hypnotique, te reconnecter pleinement à toi-même, et te sentir vraiment bien.
+      Je vais maintenant compter jusqu’à trois, et à trois, tu pourras faire un pas en avant, totalement présent(e), calme et plein(e) d’énergie. »</i>
+      <br><br>
+      <i>
+      « Tu peux être faire de ce que tu as vécu et de ce que tu nous a fait vivre »</i>
+        ]]>
+                </description>
+              
+            </node>
+            <node label="fusible de l'inattendu">
+                <description>
+                  <![CDATA[
+      Fusible de sécurité, à placer juste après l’induction, permettant au sujet de revenir immédiatement à l’état d’éveil en cas d’urgence ou d’interruption, renforçant ainsi le sentiment de sécurité dès le début de la séance. <br><br>
+      <b>En présentiel: </b>
+      <i>
+      « Bien entendu, si une urgence devait survenir pendant la séance – comme un incendie ou tout autre danger – vous vous réveillerez immédiatement, parfaitement alerte et capable de réagir de façon appropriée. »</i>
+      <br><br>
+      <b>En visioconférence: </b>
+      <i>
+      « Bien entendu, si une urgence devait survenir pendant cette séance à distance – comme une coupure de connexion, un bruit inquiétant autour de vous ou toute situation inhabituelle – vous sortirez immédiatement de l’état d’hypnose, parfaitement alerte, calme et capable de réagir de manière appropriée. </i>
+        ]]>
+                </description>
+              
+            </node>
+            </node>
+      
+          <node label="Comment détecter l'état hypnotique (résonance)" _color="orange">
+            
+              <node label="Signes Généraux">
+                <description>
+                  <![CDATA[
+        <ul><li><b>Lourdeur de tête</b>: avec une légère pression vers l’avant, les muscles du cou peuvent se détendre, rendant la tête difficile à soulever.</li><li><b>Respiration</b>: parfois plus rapide, mais le plus souvent plus profonde et régulière, comme pendant un sommeil paisible.</li><li><b>Montée de température</b>: un changement dans la circulation sanguine peut être perceptible, selon la carnation. C’est un bon indicateur qu’un changement d’état s’est produit.</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Les yeux">
+                <description>
+                  <![CDATA[
+        <ul><li><b>Paupières papillonnantes(qui battent ou tremblent)</b>: similaire aux mouvements oculaires rapides (REM) pendant le rêve. Cela peut être très visible chez une personne hypnotisée. Vous pouvez suggérer que ce mouvement s’intensifie – ce qu’il fera souvent.</li><li><b>Lacrimation</b>: plus d’humidité autour des yeux. Si les yeux sont ouverts, ils peuvent sembler vitreux.</li><li><b>M</b>ouvement <b>O</b>culaire <b>R</b>apide</li><li><b>Yeux roulants (vers le haut)</b>: si vous ne le voyez pas directement, vous pouvez parfois distinguer le blanc des yeux pendant que les paupières clignent. Certaines inductions commencent avec les yeux dirigés vers le haut – une position dans laquelle il est difficile d’ouvrir les yeux</li><li><b>Vacillements</b></li></ul>
+        ]]>
+                </description>
+              
+            </node>
+          </node>
+        </node>
+        <node label="Phénomènes hypnotiques" _color="purple">
+          <node label="Catalepsie" >
+            <description>
+              <![CDATA[
+              La catalepsie est un phénomène hypnotique où un muscle ou un groupe de muscles est bloqué uniquement par suggestion mentale.
+              <h3>Effet principal</h3>
+              <ul>
+                <li><b>Elle provoque une sensation de désagentivité:</b>Le sujet ressent qu’il n’a plus le contrôle volontaire de son corps.</li> 
+                <li>Étape clé vers un état hypnotique profond.</li> 
+              </ul>
+               <h3>Importance de la maîtrise</h3>
+              <ul>
+                <li>Le praticien doit devenir expert en catalepsie.</li> 
+                <li>Plus il est à l’aise avec cette technique, plus il peut induire rapidement une résonance hypnotique chez ses sujets.</li> 
+              </ul>
+      
+        ]]>
+            </description>
+            <node label="Coller les yeux" image="./img/mp/catalepsie_yeux.png">
+                  <description>
+                  <![CDATA[
+                  <img src="./img/mp/catalepsie_yeux.png">
+                    <h3>Définition et objectif</h3>
+                    <ul>
+                    <li>Consiste à suggérer que les paupières sont collées.</li>
+                    <li>Très simple pas trop d'effort de la part du sujet.</li>
+                    </ul>
+                    <h3>Moment d’utilisation</h3>
+                    <ul>
+                    <li>Généralement utilisée en début de l'induction.</li>
+                    <li>Sert à induire l’état hypnotique en döbut de séance.</li>
+                    <li>Interessant si on veut se focaliser sur le haut du corps (ex: la parole).</li>
+                    </ul>
+                     <h3>Script</h3>
+                  <ul>
+                      <li>Fermes les yeux, et imagine une colle qui fixe tes paupières></li> 
+                      <li>tu peux lui donner une couleur. Maintenant au compte de 3. cette colle va sècher.</li> 
+                      <li>1, la colle se faufille sous tes paupières, 2 elle commence a se solidifier, 3 tes paupères sont collées, soudées , cimentées.  </li> 
+                      <li>Ta super colle a agit. Impossible des les decoller</li> 
+                      <li>C est comme si tu n avais plus qu une seule paupière.</li> 
+                      <li>etc.</li> 
+                  </ul>
+                  ]]>
+                 </description>
+            </node>
+      
+            <node label="Les doigts magnétiques" image="./img/mp/3.1.2.png" anchor="ancre-doigts-magnétiques">
+      
+                  <description>
+                  <![CDATA[
+                    <ul>
+                      <li><b>99 % des gens réussissent </b>cet exercice en <b>2 à 20 secondes maximum</b></li> 
+                      <li><b>Ne pas expliquer:</b> la base physiologique pour préserver l’impact de la suggestion.</li> 
+                      <li><b>Croire que c’est vous (l’Hypnotiseur) </b>qui faites advenir le phénomène.</li> 
+                      <li><b>Ne pas mentionner</b>  qu’il faut serrer les mains (bien que ce soit essentiel), pour maintenir l’illusion de suggestion pure.</li> 
+                  </ul>
+                  <h3>Utilité et enchaînement</h3>
+                  <ul>
+                      <li>Très utile comme premier test de suggestibilité ou comme première démonstration hypnotique.</li> 
+                      <li>Peut servir de transition vers des tests plus marquants (ex. : Mains magnétiques, Bras rigide).</li> 
+                      <li>Peut aussi servir de préambule direct à une induction hypnotique.</li> 
+                  </ul>
+                   <h3>Script</h3>
+                  <ul>
+                      <li>OK, essayons quelque chose. Un simple exercice pour activer votre pouvoir de concentration. J’aimerais que vous placiez vos mains devant vous comme ceci.<img src="./img/mp/3.1.1.png"></li> 
+                      <li>Maintenant, pouvez-vous entrelacer vos mains, paumes contre paumes et pouces croisés, bien serrés.</li> 
+                      <li>Maintenant, pliez les coudes comme si vous faisiez une prière désespérée. Vous pouvez en faire une pendant que vous y êtes si vous voulez.</li> 
+                      <li>Maintenant, redressez vos premiers doigts, vos index, bien droits, à environ un centimètre l’un de l’autre.<img src="./img/mp/3.1.2.png"></li> 
+                      <li>Maintenant, regardez l’espace entre ces doigts, pas mes doigts mais vos doigts, et concentrez-vous, car dans un instant vos doigts vont se rapprocher et se toucher, exactement comme s’ils étaient des aimants, voilà, ils commencent à tressaillir, de plus en plus près, et dès que ces doigts se touchent, vous pouvez fermer les yeux et vous détendre.</li> 
+                      <li>Ouvrez les yeux. Génial, cela me montre que vous pouvez vous concentrer.</li> 
+                  </ul>
+                  ]]>
+                 </description>
+            </node>
+             <node label="Les Mains magnétiques" image="./img/mp/3.2.2.png">
+                  <description>
+                  <![CDATA[
+                   <h3>Objectif de l’exercice</h3>
+                      <ul>
+                      <li>Provoquer le rapprochement automatique des mains par suggestion, comme si des forces magnétiques invisibles agissaient.</li>
+                      <li>Repose moins sur la mécanique corporelle que l’exercice des doigts magnétiques et davantage sur la concentration et l’imagination.</li>
+                      </ul>
+                      <h3>Présentation et déroulement</h3>
+                      <ul>
+                      <li>Démontrer d’abord ce que le sujet doit faire (gestes + résultat attendu).</li>
+                      <li>S’enchaîne logiquement après les doigts magnétiques.</li>
+                      <li>Peut se faire yeux ouverts, mais il est plus efficace de proposer une fermeture des yeux justifiée (ex. : "pour mieux utiliser ton imagination").</li>
+                      <li>La fermeture des yeux facilite l’imaginaire et permet d’observer des signes d’hypnose (ex. : mouvements oculaires rapides / REM).</li>
+                      </ul>
+                      <h3>Rôle de l’Hypnotiseur</h3>
+                      <ul>
+                      <li>Croire fermement que c’est vous qui créez l’effet.</li>
+                      <li>S’approprier les bras du sujet, les considérer comme des extensions de votre volonté.</li>
+                      <li>Maintenir une attente claire et confiante que le phénomène va se produire.</li>
+                      </ul>
+                      <h3>Composante physiologique</h3>
+                      <ul>
+                      <li>Il existe un léger effet musculaire naturel (fatigue des bras tendus), mais le succès repose essentiellement sur la suggestion.</li>
+                      </ul>
+                      <h3>Utilité de l’exercice</h3>
+                      <ul>
+                      <li>Renforce la confiance du sujet en ses capacités de réponse hypnotique.</li>
+                      <li>Permet de valider la réceptivité du sujet.</li>
+                      <li>Offre une transition naturelle vers une induction :</li>
+                      <ul>
+                        <li><b>Exemple</b> : quand les mains se touchent → la tête tombe en avant → entrée en transe profonde.</li>
+                        <li>Ou : renforcement de la suggestibilité et détente ("Tu réagis bien, tu vas entrer facilement en hypnose").</li>
+                        </ul>
+                      </ul>
+      
+                  ]]>
+                 </description>
+            </node>
+            <node label="Coller le sujet au sol" image="./img/mp/catalepsie_colle_sol.png">
+                  <description>
+                  <![CDATA[
+                  <img src="./img/mp/catalepsie_colle_sol.png">
+                    <h3>Définition et objectif</h3>
+                    <ul>
+                    <li>Consiste à suggérer que le corps entier est collé au sol, immobilisé.</li>
+                    <li>Crée une sensation de lourdeur extrême, comme si le corps était fixé, incapable de bouger.</li>
+                    </ul>
+                    <h3>Moment d’utilisation</h3>
+                    <ul>
+                    <li>Généralement utilisée juste après une induction préliminaire.</li>
+                    <li>Sert à renforcer l’état hypnotique déjà engagé.</li>
+                    </ul>
+                    <h3>Effet recherché</h3>
+                    <ul>
+                    <li>Produit une immobilisation globale.</li>
+                    <li>Renforce fortement la désagentivité (perte de contrôle volontaire perçue par le sujet).</li>
+                    <li>Sert de validation d’un état hypnotique profond.</li>
+                    </ul>
+                  ]]>
+                 </description>
+            </node>
+          </node>
+          <node label="Mouvements idéomoteurs" >
+            <description>
+              <![CDATA[
+       Mouvements inconscients (tête, doigts...)<ul>
+        <li><b>Définition :</b>La suggestion idéomotrice déclenche un mouvement corporel automatique à partir d’une suggestion verbale
+      <li><b>Mécanisme :</b> Elle repose sur un lien direct entre l’imaginaire et la motricité</li> 
+      <li><b>Effet :</b> La réaction physique est involontaire</li> 
+      <li><b>Utilité :</b> Elle est utile pour favoriser la désagentivité, c’est-à-dire aider le sujet à lâcher le contrôle volontaire et entrer dans un état hypnotique</li> 
+       </ul>
+        ]]>
+            </description>
+            <node label="L’attraction des mains" image="./img/mp/3.1.1.png">
+      
+                  <description>
+                  <![CDATA[
+                  <img src="./img/mp/3.1.1.png">
+                    <ul>
+                      <li><b>Nature de la suggestion:</b> Simple et très efficace, elle consiste à faire imaginer deux aimants puissants dans les paumes, attirant les mains l'une vers l'autre.</li> 
+                      <li><b>Personnalisation:</b> On demande au sujet d’associer une couleur à chaque aimant, ce qui renforce l’impact de la suggestion.</li> 
+                      <li><b>Principe: </b>Plus la suggestion est adaptée à la représentation mentale du sujet, plus elle est efficace.</li> 
+                      <li><b>Effet:</b> Cette technique induit souvent un mouvement involontaire et amorce un état de réceptivité accrue.</li> 
+       </ul>
+                  ]]>
+                 </description>
+            </node>
+             <node label="La perte d’équilibre" image="./img/mp/ideomoteur_equilibre.png">
+                  <description>
+                  <![CDATA[
+                  <img src="./img/mp/ideomoteur_equilibre.png">
+                     <ul>
+                      <li><b>But de la suggestion:</b> Induire une légère perte d’équilibre en suggérant une attirance vers l’avant, l’arrière, droite, gauche</li> 
+                      <li><b>Utilité:</b> Particulièrement efficace pour les sujets qui ont du mal à lâcher prise, car elle favorise une sensation de relâchement et de désengagement du contrôle conscient.</li> 
+                      <li><b>Moment d'utilisation</b>: Appliquée après la phase d’accord et avant l’induction hypnotique proprement dite, pendant la désagentivité.</li> 
+                      <li><b>Effet recherché</b>: Aide à faciliter la permissivité mentale, surtout chez les sujets résistants.</li> </ul> 
+                  ]]>
+                 </description>
+            </node>
+             <node label="Main au front" image="./img/mp/4.4.2.png" link="https://youtube.com/watch?v=x85prwKYgOQ">
+      
+                  <description>
+                  <![CDATA[
+                  <img src="./img/mp/4.4.2.png">
+                    <ul>
+                      <li><b>Nature de la suggestion:</b>  Simple, rapide et flexible.</li> 
+                      <li><b>Personnalisation:</b> On Peut être adaptée selon la posture ou la disposition du sujet (main utilisée, paume ou dos de la main).</li> 
+                      <li><b>Procedure: </b>
+                        <ul>
+                          <li>Le sujet regarde sa propre main, tenue par l’hypnotiseur à environ 30 cm de son visage.</li> 
+                          <li>Le regard doit être fixé sur un point précis de la main (éviter qu’il regarde toute la main ou l’hypnotiseur).</li> 
+                          <li>Le bras est levé naturellement par le poignet, tenu légèrement.</li> 
+                          <li>Le bras est doucement déplacé vers le visage, jusqu’à ce qu’un “verrouillage” naturel se produise (le bras tient tout seul).</li> 
+                          <li>Si le bras ne se verrouille pas : rappeler la focalisation sur le point et maintenir une attente positive du résultat.</li> 
+                          </ul>
+                          </li> 
+                      <li><b>finaliser l’induction:</b> <ul>
+                          <li>Passer la main devant les yeux → "Fermez les yeux et dormez maintenant".</li> 
+                          <li>Compter de 3 à 0 → main descend sur les genoux → transe plus profonde.</li> 
+                          <li>"Quand votre main touche votre visage, vos yeux se ferment..."</li> 
+                          </ul>
+                      </li> 
+                    </ul>
+                  ]]>
+                 </description>
+            </node>
+              <node label="Lévitation - Pesanteur" image="./img/mp/ideomoteur_levitation-pesanteur.png" anchor="ancre-levitation-pesanteur"> 
+                  <description>
+                  <![CDATA[
+                  <img src="./img/mp/ideomoteur_levitation-pesanteur.png">
+                    <ul>
+      <li><b>Approche progressive</b>, idéale pour les personnes stressées ou appréhensives.</li>
+      <li>Utilise un <b>contraste corporel</b> : un bras devient de plus en plus <b>lourd </b> (ex. : sable, boule de métal), l’autre de plus en plus <b>léger </b> (ex. : ballons d’hélium).</li>
+      <li>Favorise la <b>dissociation corporelle </b>, facilitant la détente.</li>
+      <li>Induit une <b>relaxation profonde </b> physique et mentale.</li>
+      <li>Le <b>contact </b> du bras lourd avec la <b>cuisse</b> déclenche une sensation de <b>relâchement total</b>, que l’on <b>généralise</b> ensuite au <b>reste du corps</b>.</li>
+      </ul>
+                  ]]>
+                 </description>
+            </node>
+          </node>
+          <node label="Amnésie" >
+            <description>
+              <![CDATA[
+       Ce n’est pas "effacer" un souvenir, mais <b>suspendre l’accès que la personne a à ce souvenir</b>.
+      Autrement dit, la personne ne sait plus ce qu’elle sait. Elle est momentanément incapable d’accéder à une information qu’elle connaît pourtant. On parle alors de <b>dysfonctionnement métacognitif temporaire</b>, c’est-à-dire une perturbation dans la capacité à "savoir qu’on sait".
+      Cette forme d’amnésie hypnotique repose donc sur une dissociation entre le souvenir et la capacité d’y accéder consciemment.
+      Cette <b>perte temporaire de repère</b> peut être déroutante pour le sujet, mais elle reste inoffensive et <b>totalement réversible</b>, à condition bien sûr de toujours accompagner la suggestion d’un bon réveil.
+      
+        ]]>
+            </description>
+            <node label="un chiffre" >
+            <description>
+              <![CDATA[
+       <ul>
+        <li>Tu vas maintenant te rendre dans la salle de contrôle de tes souvenirs.</li>
+        <li>C’est un espace intérieur où tu peux gérer toutes tes connaissances, tous tes apprentissages, tout ce que tu as appris depuis ta naissance.</li>
+        <li>Une fois que tu y es, fais-moi un signe de tête...</li>
+        <li>Très bien.</li>
+        <li>Dans cette salle, tu as la capacité unique de contróler tes souvenirs.</li>
+        <li>Ce que nous allons faire maintenant, c’est suspendre l’accès à une information très simple : le chiffre 7. Regarde, tu vois toutes les informations liées au chiffre 7 ? Quand elles sont présentes et accessibles, fais-moi un signe.</li>
+        <li>Tu arrives aussi à les entendre ? Parfait.</li>
+        <li>Maintenant, tu vas simplement couper ces connexions. Tu vas faire en sorte de ne plus les voir, ne plus les entendre, et de perdre cette sensation de savoir ce qu’est ce chiffre.</li>
+        <li>Quand cette information sera complètement inaccessible, visuellement, auditivement, et même sensoriellement, fais-moi un signe.</li>
+        <li>Très bien.</li>
+        <li>À mon signal, tu vas ouvrir les yeux. Et à ce moment-là, il te sera impossible de te souvenir du chiffre qui vient après 6. Même si quelqu’un te le dit, ton cerveau n’y aura plus accès.</li>
+        <li>1... 2... 3... Ouvre les yeux.</li>
+        <li>À ce moment-là, vous pouvez proposer: 
+           <ul>
+            <li>de compter à voix haute</li>
+            <li>Combien de nains dans Blanche-Neige ? </li>
+            <li>calculer: 2+3, 5+2, ...</li>
+            <li>Combien de jours y a-t-il dans une semaine?</li>
+            <li>Quel chiffre vient après 6?</li>
+          <li>le jeu des 7 familles, les 7 merveilles du monde, les 7 péchés,...</li>
+        </ul>
+      </li>
+        <li>Observez alors l’effet : le chiffre 7 semble littéralement avoir disparu.</li>
+        <li>"Très bien, dans un instant je vais compter jusqu’à 3. Et à 3, tu pourras retrouver pleinement cette information.</li>
+        <li>1... 2... 3... Ça y est, le chiffre revient. Tu peux à nouveau y accéder facilement. </li>
+      </ul>
+        ]]>
+            </description>
+          </node>
+          </node>
+          <node label="Hallucinations" >
+            <description>
+              <![CDATA[
+       Perceptions sensorielles erronées.
+        ]]>
+            </description>
+          </node>
+          <node label="Dissociation" />
+          <node label="Hypermnesie" >
+            <description>
+              <![CDATA[
+       Meilleure Séparation esprit/corps
+        ]]>
+            </description>
+          </node>
+          <node label="Régression" >
+            <description>
+              <![CDATA[
+       Retour à des comportements antérieurs
+        ]]>
+            </description>
+          </node>
+          <node label="Revivification" >
+            <description>
+              <![CDATA[
+       Revécu d'événements passés
+        ]]>
+            </description>
+          </node>
+          <node label="Analgesie" >
+            <description>
+              <![CDATA[
+       <description>
+      Une suggestion analgésique est une formulation hypnotique visant à atténuer ou éliminer la douleur.
+      
+      Elle agit comme un antidouleur psychologique, en mobilisant l’imaginaire et la concentration du sujet.
+      
+      <h3> Efficacité reconnue</h3>
+      L’hypnose est validée scientifiquement pour la gestion de la douleur, y compris en milieu médical.
+      
+      Elle permet parfois de réduire jusqu’à 70 % des anesthésiques nécessaires lors d’interventions.
+      
+      <h3>Référence fiable</h3>
+      Le <a href='https://www.inserm.fr/rapport/evaluation-de-lefficacite-de-la-pratique-de-lhypnose-2015/' target="_l’INSERM">rapport de l’INSERM </a>sur l’hypnose est recommandé pour approfondir le sujet (source sérieuse et documentée).Si le lien est inaccessible: <a href='./documents/inserm-rapportthematique-evaluationefficacitehypnose-2015.pdf' target="_l’INSERM_doc">rapport de l’INSERM pdf</a>
+        ]]>
+            </description>
+              <node label="Détourner l'attention" >
+            <description>
+              <![CDATA[
+      <h3>Principe fondamental</h3>
+      <b>Le cerveau interprète la douleur en fonction de notre attention</b>:il arrive qu’on se blesse sans s’en rendre compte, et ce n’est qu’en voyant la blessure qu’on commence à ressentir la douleur.
+      <ul>
+      <li>L’attention amplifie la douleur, tandis que s’en détacher la réduit voire la fait disparaître.</li>
+      <li>La perception de la douleur dépend fortement de la focalisation mentale.</li>
+      </ul>
+      
+      <h3>Objectif</h3>
+      <ul>
+      <li>Créer une immersion sensorielle positive, détournant la conscience de la zone douloureuse.</li>
+      <li>orienter l’attention ailleurs que sur la douleur.</li>
+      <li>Faire en sorte que la douleur devienne moins présente mentalement, voire absente.</li>
+      </ul>
+      <h3>Mise en pratique</h3>
+      Transporter mentalement le sujet dans un lieu agréable et relaxant:<br>
+      « Ferme les yeux, et commence à imaginer une porte face à toi. Une porte qui mène à un endroit parfaitement relaxant. Peut-être une salle de repos, un spa intérieur, un lieu hors du temps où tu te sens bien, en sécurité.
+      Imagine-toi poser la main sur la poignée. Au compte de trois, tu ouvriras cette porte et tu entreras dans cet espace de détente absolue.
+      1... 2... 3.
+      Tu entres maintenant dans cette salle. Tu ressens immédiatement un relâchement dans tout ton corps. Les tensions s’évacuent. Tu t’installes confortablement dans ce lieu et tu sens ta respiration s’apaiser. Les sensations désagréables commencent à s’estomper... »</i></li>
+      </ul>
+      
+      
+        ]]>
+            </description>
+          </node>
+            <node label="Remplacement" >
+            <description>
+              <![CDATA[
+      C'est un <b>détournement</b> d’attention et la <b>transformation</b> de la douleur en une
+      autre sensation beaucoup plus agréable(plaisir, chaleur,...) 
+      <ul>
+      <li>Fonctionne très bien sur des personnes réceptives à la visualisation et aux sensations corporelles. </li>
+      <li>Le sujet mobilise ses propres ressources internes pour transformer activement son ressenti.</li>
+      </ul>
+      <i>« Je vais te proposer maintenant quelque chose de particulier : tu vas imaginer que tu peux sourire... depuis n’importe quelle partie de ton corps. Commence par sourire avec ta bouche. Ressens ce que ça fait, ce petit plaisir subtil.
+      Maintenant, imagine que tu peux envoyer ce sourire ailleurs : dans ton dos, dans ton ventre, dans ton bras. Là où tu ressens des tensions ou une douleur.
+      Imagine ce sourire se déplacer, s’installer, et transformer la sensation désagréable en une sensation douce, apaisante, comme une onde qui réchauffe.
+      Tu peux même donner une couleur à cette sensation agréable. Peut-être un jaune lumineux, une couleur qui évoque la joie, la détente. Et tu laisses cette couleur se diffuser, jusqu’à ce que toutes les zones inconfortables soient baignées dans cette énergie. »</i>
+      
+      
+        ]]>
+            </description>
+          </node>
+          </node>
+          <node label="Anesthésie" >
+            <description>
+              <![CDATA[
+       Perte totale de sensibilité
+        ]]>
+            </description>
+          </node>
+          <node label="Distorsion temporelle" >
+            <description>
+              <![CDATA[
+       Perception altérée du temps
+        ]]>
+            </description>
+          </node>
+        </node>
+        <node label="Trucs  &amp; astuces en séance" _color="green">
+          <description>
+            <![CDATA[
+       Déroulement de la séance
+        ]]>
+          </description>
+          
+          <node label="Discours pré-hypnotique" >
+              <description>
+                <![CDATA[
+                <b>l’hypnose commence dès le moment où vous en parlez</b><br>
+                C’est un <b>échange naturel</b> et fluide qui prépare mentalement le volontaire à l’expérience hypnotique.<br>
+                Il permet de commencer l’hypnose <b>sans</b> que la personne en <b>ait forcément conscience</b>.<br>
+                  <h3>Objectifs</h3>
+      <ul>
+      <li>Créer une alliance de confiance avec le sujet.</li>
+      <li>Activer son imaginaire et l’amener à se projeter dans l’expérience hypnotique.</li>
+      </ul>
+      <h3>Les 3 étapes clés du discours pré-hypnotique</h3>
+      <ul>
+        <li>Le brise-glace :
+        <ul>
+            <li>Question simple mais puissante : <b>« Pour toi, c’est quoi l’hypnose ? »</b></li>
+            <li>Permet de comprendre les croyances, attentes ou peurs du sujet.</li>
+        </ul>
+        </li>
+      <li>La question pré-hypnotique :
+      <ul><li>Fait appel à l’imagination :<b> « Si tu t’imaginais maintenant sous hypnose, que ressentirais-tu ? »</b></li>
+      <li>Encouragez-le à donner des détails <b>sensoriels, émotionnels, imaginaires.</b>
+      <ul>
+      <li>Tu te sentirais comment ?</li>
+      <li>Tu verrais quoi ?</li>
+      <li>Ton corps réagirait comment ?</li>
+      <li>Et mentalement, ça ferait quoi ?</li>
+      </ul>
+      </li></ul></li>
+      <li>La reformulation et le yes set :
+      <ul><li>Reformulez ce que dit le sujet pour obtenir des accords successifs ("oui").
+      <ul>
+      <li>Donc, si je comprends bien, pour toi l’hypnose, c’est un état où tu te sentirais un peu comme... une coquille vide ?</li>
+      <li>Et tu aurais la sensation d’être influencé par une force extérieure ?</li>
+      </ul>
+      </li>
+      <li>Le yes set facilite l’acceptation des suggestions à venir.</ul></li>
+      </ul>
+                 <h3>5 actions utiles</h3>
+                  <ul><li>Enlever la peur</li><li>Éliminer les idées fausses</li><li>Augmenter l'attente</li><li>Stimuler l'imagination</li><li>Prendre le contrôle</li></ul>
+                   ]]>
+              </description>
+              <node label="Pitch d'ascenseur" >
+              <description>
+                <![CDATA[
+       Comme dans un ascenseur, vous avez quelques étages — quelques secondes — pour Expliquer l’hypnose de façon simple, rapide et captivante, éveiller la curiosité et donner envie , avant que les portes ne s’ouvrent.
+        ]]>
+              </description>
+            </node>
+            <node label="Prise rapide du contrôle">
+              <description>
+                <![CDATA[
+                <ul>
+       <li>Ordres simples pour montrer qui contrôle, ex : position physique du sujet </li>
+         <li>Induction rapide pour prendre contrôle avant peur, avec techniques Instant Induction, Jacquin Power Induction, Handshake  Induction</li>
+      </ul>
+        ]]>
+              </description>
+            
+          </node>
+          
+          </node>
+      <node label="forcez" >
+         <description>
+                <![CDATA[
+      Ne laissez pas le choix du fait que le sujet va être hypnotisé:
+         <ul>
+       <li>Tu penses être sous hypnose en 5 ouo 3 minutes?</li>
+      <li>Dans 3 minutes tu sers sous hypnose, tu penses que ca fera quoi?</li>
+      </ul>
+      ]]>
+              </description>
+            
+          </node>
+
+      <node label="le trou de mémoire" >
+         <description>
+                <![CDATA[
+     La crainte de ne plus savoir quoi faire, ou dire durant la scéance d induction. Comme l effet d un trou de mémoire ou le blanc au théâtre
+<br><b>Technique secrète</b> : tu ne sais plus quoi dire, regarde le volontaire dans les yeux, et arrête de parler, après avoir coupé au milieu d'une phrase
+Il ne saura pas ce qu'il se passe, et dans sa confusion, pourrait s'endormir spontanément, ou du moins, sentir une pression colossale sur ce temps
+Et le temps qu'il s'effondre, tu auras trouvé de quoi broder
+(c'est pas une blague, quand je suis très fatigué, et ai du mal à aligner mes idées, je fais parfois ça, et c'est violent)
+      ]]>
+              </description>
+            
+          </node>
+      
+            <node label="Mots utiles" >
+         <description>
+                <![CDATA[
+      <h3>Transition et Liaison</h3>
+      Ils adoucissent le langage et maintiennent le flux hypnotique :
+      <ul>
+      <li>Imagine… ( préférez le concret: "tu vois")</li>
+      <li>Maintenant…</li>
+      <li>Encore…</li>
+      <li>Comme si…</li>
+      </ul>
+      
+      <h3>Encourage la relaxation et la transe</h3>
+      Ils évoquent des états internes agréables et profonds :
+      <ul>
+      <li>Calme</li>
+      <li>Détendu</li>
+      <li>Relâché</li>
+      <li>Profond</li>
+      <li>Confortable</li>
+      <li>Sécurisé</li>
+      <li>Paisible</li>
+      </ul>
+      
+      <h3>Rythme et tempo</h3>
+      Pour induire une cadence hypnotique dans la voix et le mental du sujet :
+      <ul>
+      <li>Maintenant</li>
+      <li>Progressivement</li>
+      <li>À ton rythme</li>
+      <li>Encore plus</li>
+      <li>de plus en plus et de mieux en mieux</li>
+      <li>Colés, soudés, cimentés</li>
+      </ul>
+      
+      <h3>Pour un flou hypnotique</h3>
+      Ils désorientent légèrement le mental conscient tout en laissant place à l’imagination :
+      <ul>
+      <li>Quelque chose…</li>
+      <li>Tu ne sais pas exactement comment…</li>
+      <li>Il se passe…</li>
+      <li>Tu remarques…</li>
+      
+      </ul>
+      
+      <h3>Exemples de phrases hypnotiques courtes</h3>
+      <ul>
+      <li>Tu n’as rien à faire… juste écouter…</li>
+      <li>Ton inconscient sait déjà comment faire…</li>
+      <li>Tu peux commencer à te détendre… maintenant…</li>
+      <li>Il n’est pas nécessaire de comprendre… pour que ça fonctionne…</li>
+      <li>Tu peux le sentir… ou juste l’imaginer…</li>
+      <li>Et pendant que tu écoutes… quelque chose change déjà…</li>
+      <li>Et pendant que tu écoutes… quelque chose change déjà…</li>
+      </ul>
+        ]]>
+              </description>
+       
+      </node>
+      <node label="Sujets difficiles" >
+         <description>
+                <![CDATA[
+                 <h3>Adapter sa pratique à chaque contexte</h3>
+                 <b>Chaque séance est unique </b>: le contexte, la personne, l’environnement peuvent influencer l’expérience.
+      
+      <h3>Étape 1 : Questionner pour comprendre</h3>
+      <ul>
+      <li>Poser une question calme et sans jugement : « Comment as-tu réussi à… ? »</li>
+      <li>Objectif : identifier les mécanismes mentaux (souvent inconscients) utilisés par le sujet.</li>
+      <li>Observer attentivement : mots, gestes, micro-signaux.</li>
+      </ul>
+      <h3> Étape 2 : S’adapter au feedback</h3>
+      <ul>
+      <li>Ajuster posture, rythme et suggestions selon la réponse verbale ou non-verbale.</li>
+      <li>Si réponse floue ou absente → reformuler :
+      <ul><li>« Comment pourrais-tu faire pour que tes deux mains restent collées ? »</li>
+      <li>« Qu’est-ce que tu pourrais imaginer de suffisamment puissant pour que ça fonctionne ? »</li>
+      </ul>
+      </li>
+      <li>Ne pas forcer → ouvrir la voie à l’imaginaire.</li>
+      </ul>
+      <h3>Étape 3 : Utiliser les échelles subjectives</h3>
+      <ul>
+      <li>Demander au sujet d’évaluer : « Sur une échelle de 0 à 10, à combien tes mains sont-elles collées ? »</li>
+      <li>Utiliser cette mesure pour ajuster les suggestions.</li>
+      <li>« On est ä 4. Qu est ce que tu pourrais imaginer pour monter ä 8 ? »(corde, colle, aimant, etc.).</li>
+      <li>L’imaginaire du sujet devient moteur de l’expérience.</li>
+      </ul>
+                <h3>Testez:</h3>
+                <ul>
+                  <li><a href="#ancre-3c" class="node-link"> "3C"</a>
+                  <ul>
+                  <li>Confiance : Le sujet a-t-il confiance en vous, en lui, en l’expérience ?</li>
+                  <li>Contexte : Le cadre est-il favorable à l’expérience hypnotique ?</li>
+                  <li>Compétence : Est-ce la bonne méthode, adaptée à cette personne ?</li>
+                  </ul>
+                  </li>
+                  <li>tester différents environnements ou approches pour affiner sa pratique.</li>
+                  <li>Une <b>absence de réaction est déjà une forme de réaction</b> : un signal à observer et à interpréter.</li>
+                  <li>Vérifier VAKOG (Visuelle,Auditif,Kinesthésique,Olfactif,Gustatif)</li>
+       <li>Une induction plus douce </li>
+         <li>Une auto-suggestion inconsciente </li>
+         <li>sceptique:"c'est physique, c est normal que ca colle." -> sugerer que ca va s'eloigner maintenant </li>
+      </ul>
+        ]]>
+              </description>
+       
+      </node>
+         
+            <node label="L'echec" >
+         <description>
+                <![CDATA[
+      <h3>Accueillir l’échec comme un levier d’apprentissage</h3>
+      <ul>
+      <li><b>Ne pas fuir</b> l’échec : chaque tentative est une <b>opportunité de progresser.</b>
+      <li>Si une suggestion ne fonctionne pas → <b>observer, ajuster, recommencer</b>.
+      </ul>
+      <h3> Préserver la motivation du sujet</h3>
+      <ul>
+      <li>Ne jamais dire : « Vous n’êtes pas hypnotisable ».
+      <ul>
+      <li><b>Risque </b>: freiner la progression et compromettre le travail d’un autre praticien.</li>
+      <li><b>Préférer dire</b> : « Le contexte n’était peut-être pas le bon aujourd’hui, on réessaiera plus tard. »</li></ul></li>
+      </ul>
+      <h3>Développer sa solidité de praticien</h3>
+      <ul>
+      <li><b>Répétition, écoute</b> et <b>adaptation</b>  sont les clés.</li>
+      <b>Objectif </b>: pouvoir accompagner<b> tous types de profils</b>  efficacement.</li></ul>
+        ]]>
+              </description>
+       </node>
+      </node>
+      
+        <node label="Risques &amp; Surprises" _color="red">
+          <node label="Ca dérape" >
+            <description>
+               <![CDATA[
+                Parfois, une séance d’hypnose ne se déroule pas exactement comme prévu.  
+                Le sujet peut vivre des réactions <b>intenses, imprévues ou déstabilisantes</b> qui sortent du cadre habituel du protocole.  
+                Ces « dérapages » ne sont pas forcément dangereux, mais ils exigent de l’hypnotiseur une <b>présence attentive</b>, une <b>adaptation rapide</b> et des <b>techniques de stabilisation</b>.
+      
+                <h3>Pourquoi ça arrive ?</h3>
+                <p>
+                  Ces réactions sont souvent liées à l’<b>intensité émotionnelle</b> des souvenirs ou aux
+                  <b>mécanismes inconscients de protection</b>.  
+                  Elles peuvent aussi survenir si le sujet est très fatigué, anxieux ou influencé par des croyances personnelles.
+                </p>
+      
+                <h3>La clé : accueillir et recadrer</h3>
+                <p>
+                  Chaque dérapage est une <b>opportunité de travail</b> si l’on sait l’accompagner avec calme, bienveillance et méthode.  
+                  L’important est de <b>ramener la personne dans un état sûr et confortable</b> avant de poursuivre ou conclure la séance.
+                </p>
+              ]]>
+            </description>
+      <node label="Je ne suis pas hypnotisable" >
+  <description>
+    <![CDATA[
+      Dire « <b>Je ne suis pas hypnotisable</b> » est une affirmation fréquente, souvent liée à des <b>croyances</b> ou à une <b>attente particulière</b> vis-à-vis de l’hypnose.
+      En réalité, la grande majorité des personnes peuvent expérimenter des états hypnotiques, mais l’<b>expérience</b> et la <b>réceptivité</b> varient selon chacun.
+
+      <h3>Comment comprendre ? Que faire ?</h3>
+      <ol>
+        <li>Clarifier les idées reçues
+          <ul>
+            <li>Expliquer que l’hypnose n’est pas un pouvoir mais un état naturel.</li>
+            <li>Préciser que chacun vit l’hypnose à sa façon (relaxation, concentration, imagination...).</li>
+          </ul>
+        </li>
+        <li>Favoriser la confiance
+          <ul>
+            <li>Créer un climat rassurant et collaboratif.</li>
+            <li>Montrer que la personne garde toujours le contrôle.</li>
+          </ul>
+        </li>
+        <li>Explorer la motivation
+          <ul>
+            <li>Demander ce que la personne attend ou redoute de l’hypnose.</li>
+            <li>Reformuler ses besoins pour mieux adapter la séance.</li>
+          </ul>
+        </li>
+         <li><b>Transformer ses réactions en induction</b>
+          <ul>
+            <li>Se servir du sourire : « Et quand je vais te demander de lever la main, ça va te faire sourire. »</li>
+            <li>Puis varier : « Maintenant, sans ce sourire, lève ta main… et ressens l’apaisement. »</li>
+            <li>Associer progressivement ces réponses naturelles à des états de détente et d’attention intérieure.</li>
+          </ul>
+        </li>
+        <li><b>Baisse la garde</b>
+          <ul>
+            <li>Lui faire baisser la garde : « Bon, on va arrêter là. Tu as de bonnes réactions, c’est sûr que ça marchera la prochaine fois. »</li>
+            <li>« Tu as quelque chose d’assez fort pour lâcher prise. Donc ça, c’est très bon pour toi. »</li>
+            <li>Puis : « Est-ce que tu préfères que je pousse plus fort, ou est-ce que tu veux qu’on s’arrête là ? »</li>
+          </ul>
+        </li>
+        <li>Proposer une expérience douce
+          <ul>
+            <li>Commencer par des exercices simples de respiration ou d’imagerie.</li>
+            <li>Laisser la personne constater elle-même les effets sans pression.</li>
+          </ul>
+        </li>
+        <li>Respecter le rythme
+          <ul>
+            <li>Ne jamais forcer : l’hypnose reste une démarche volontaire.</li>
+            <li>Accepter que certaines personnes aient besoin de plus de temps.</li>
+          </ul>
+        </li>
+      </ol>
+    ]]>
+  </description>
+  <node label="Aphantasie" >
+  <description>
+    <![CDATA[
+      <img src="./img/mp/aphantasie.webp">
+      L’<b>aphantasie</b> est la difficulté, voire l’impossibilité, de créer des <b>images mentales</b>.  
+      Une personne aphantasique peut très bien comprendre les suggestions hypnotiques, mais ne « voit » pas les scènes dans sa tête.  
+      Cela ne signifie pas qu’elle n’est pas réceptive à l’hypnose : elle utilisera d’autres <b>canaux sensoriels</b>.
+
+      <h3>Comment accompagner une personne aphantasique ?</h3>
+      <ol>
+        <li>Changer de canal sensoriel
+          <ul>
+            <li>Utiliser le ressenti corporel (« sens ta main devenir plus légère »).</li>
+            <li>Travailler sur les sons, les sensations, les émotions, plutôt que sur les images.</li>
+          </ul>
+        </li>
+        <li>Valider l’expérience
+          <ul>
+            <li>Rassurer : « Il n’est pas nécessaire de voir quelque chose pour vivre l’hypnose. »</li>
+            <li>Encourager la personne à s’appuyer sur ce qu’elle <b>ressent</b> plutôt que sur ce qu’elle « devrait » imaginer.</li>
+          </ul>
+        </li>
+        <li>Observer et utiliser les réactions
+          <ul>
+            <li>Noter les micro-mouvements, sourires, changements de respiration.</li>
+            <li>S’appuyer dessus : « Remarquez comme ce simple mouvement change déjà votre état intérieur. »</li>
+          </ul>
+        </li>
+        <li>Proposer des métaphores sensorielles
+          <ul>
+            <li>Exemples : « Comme quand on ferme les yeux dans un bain chaud », « Comme une musique qui apaise ». </li>
+            <li>Associer ces évocations à un état de détente et d’ouverture.</li>
+          </ul>
+        </li>
+        <li>Respecter la singularité
+          <ul>
+            <li>Ne pas insister sur la visualisation si elle est difficile.</li>
+            <li>Adapter le langage pour que la personne se sente comprise et incluse.</li>
+          </ul>
+        </li>
+      </ol>
+    ]]>
+  </description>
+</node>
+
+</node>
+
+            <node label = "Abréaction" image="./img/mp/abreaction.png" link="https://youtu.be/cwntwBiihdk?t=154"> 
+              <description>
+              <![CDATA[
+                <img src="./img/mp/abreaction.png">
+                L’abréaction est une <b>réaction émotionnelle intense</b> qui surgit lorsque la personne revit un souvenir ou une expérience chargée affectivement.
+                Cela peut se manifester par des <b>pleurs</b>, des <b>tremblements</b>, de la<b> colère</b>, de l’<b>angoisse</b>, voire des sensations physiques fortes.
+                Elle correspond souvent à une libération d’émotions refoulées.
+      
+                <h3>Comment gérer ? Que faire ?</h3>
+                <ol>
+                  <li>Rester calme et sécurisant
+                    <ul>
+                      <li>Adopter une voix douce, stable.</li>
+                      <li>Assurer à la personne qu’elle est en sécurité et que vous êtes là.</li>
+                    </ul>
+                  </li>
+                  <li>Accompagner, pas bloquer
+                    <ul>
+                      <li>Laisser l’émotion s’exprimer sans chercher à la couper brutalement.</li>
+                      <li>Éviter les jugements ou les interprétations immédiates.</li>
+                    </ul>
+                  </li><li>Ramener au présent
+                    <ul>
+                      <li>Utiliser des phrases d’ancrage : « Vous êtes ici, maintenant, en sécurité ».</li>
+                      <li>Suggérer de respirer lentement, de sentir ses appuis (mains, pieds).</li>
+                    </ul>
+                  </li><li>Stabiliser avant de poursuivre
+                    <ul>
+                      <li>Attendre que la respiration, la voix et le tonus musculaire reviennent à la normale.</li>
+                      <li>Revenir sur un état neutre ou positif avant de clore la séance.</li>
+                    </ul>
+                  </li><li>Après-coup
+                    <ul>
+                      <li>Proposer un temps de parole pour intégrer l’expérience.</li>
+                      <li>Évaluer si un suivi complémentaire est nécessaire.</li>
+                    </ul>
+                  </li>
+                </ol>
+              ]]>
+              </description>
+            </node>
+            <node label = "Dissociation excessive"> 
+              <description>
+                <![CDATA[
+                  La <b>dissociation excessive</b> se produit lorsque la personne se sent <b>trop détachée</b> de son corps ou de la réalité.  
+                  Elle peut avoir l’impression d’observer la scène « de l’extérieur », de flotter ou de ne plus ressentir son corps.  
+                  Cet état, s’il est trop profond, peut rendre difficile le suivi de la séance.<br>
+                  C’est comme si, au lieu de s’installer sur un siège pour regarder un film, la personne se retrouvait dans un autre cinéma sans savoir comment revenir.
+      
+                  <h3>Comment gérer ? Que faire ?</h3>
+                  <ol>
+                    <li>Renforcer l’ancrage corporel
+                      <ul>
+                        <li>Inviter à bouger doucement les mains, les pieds.</li>
+                        <li>Diriger l’attention vers les sensations physiques présentes.</li>
+                      </ul>
+                    </li>
+                    <li>Réactiver le lien
+                      <ul>
+                        <li>Utiliser des questions simples : « Où es-tu ? Que vois-tu ? »</li>
+                        <li>Parler d’éléments concrets de l’environnement immédiat.</li>
+                      </ul>
+                    </li>
+                    <li>Ramener progressivement
+                      <ul>
+                        <li>Amener doucement à reprendre conscience du corps et de l’espace.</li>
+                        <li>Maintenir un ton de voix rassurant et stable.</li>
+                      </ul>
+                    </li>
+                    <li>Stabiliser avant de poursuivre
+                      <ul>
+                        <li>Confirmer que la personne se sent reconnectée.</li>
+                        <li>Reprendre la séance seulement si le confort est revenu.</li>
+                      </ul>
+                    </li>
+                  </ol>
+                ]]>
+              </description>
+            </node>
+      
+            <node label = "Glissement etat non souhaite"> 
+              <description>
+                <![CDATA[
+                  Le <b>glissement vers un état non souhaité</b> survient lorsque la personne passe dans un état qui ne permet plus de travailler efficacement,  
+                  comme l’endormissement, le rêve éveillé déconnecté de la séance ou un état de distraction profonde.<br>
+                  C’est comme si, en pleine discussion, la personne prenait un train… mais pour une autre ville que celle prévue.
+      
+                  <h3>Comment gérer ? Que faire ?</h3>
+                  <ol>
+                    <li>Réactiver l’attention
+                      <ul>
+                        <li>Parler avec un ton plus dynamique et affirmé.</li>
+                        <li>Utiliser un comptage ascendant ou un rythme plus rapide dans la voix.</li>
+                      </ul>
+                    </li>
+                    <li>Stimuler légèrement le corps
+                      <ul>
+                        <li>Inviter à ouvrir les yeux, bouger les mains ou se redresser.</li>
+                        <li>Proposer une respiration plus ample et énergique.</li>
+                      </ul>
+                    </li>
+                    <li>Revenir à un état optimal
+                      <ul>
+                        <li>Redonner des consignes claires et simples pour relancer la séance.</li>
+                        <li>Recentrer sur l’objectif hypnotique initial.</li>
+                      </ul>
+                    </li>
+                    <li>Prévenir les rechutes
+                      <ul>
+                        <li>Maintenir un rythme et un ton qui gardent l’attention vivante.</li>
+                        <li>Vérifier régulièrement la présence mentale de la personne.</li>
+                      </ul>
+                    </li>
+                  </ol>
+                ]]>
+              </description>
+            </node>
+      
+          </node>
+          <node label="Morale et éthique" >
+            <node label="Risques et dangers liés à l'hypnose" >
+              <description>
+                <![CDATA[
+       Sous hypnose, certaines vulnérabilités cognitives peuvent être exploitées. Voici les principaux risques identifiés :
+        ]]>
+              </description>
+              <node label="Suspension du sens critique">
+                <description>
+                  <![CDATA[
+       <ul><li>Les suggestions peuvent être acceptées sans filtre rationnel</li><li>Le sujet agit parfois sur des idées qu’il n’aurait pas validées en pleine conscience</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Acceptation aveugle des directives">
+                <description>
+                  <![CDATA[
+       <ul><li>L’état hypnotique induit une exécution automatique des suggestions</li><li>L’inconscient peut toujours refuser, mais l’acceptation implicite est forte</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Exploitation des failles cognitives naturelles">
+                <description>
+                  <![CDATA[
+       <ul><li>Confusion, émotion intense, surcharge mentale, rire, ivresse ou jeu peuvent court-circuiter le jugement</li><li>L’hypnotiseur peut créer artificiellement ces états pour augmenter la suggestibilité</li></ul>
+        ]]>
+                </description>
+              </node>
+              <node label="Potentiel de manipulation">
+                <description>
+                  <![CDATA[
+       <ul><li>Une personne sous hypnose peut suivre des suggestions non éthiques si elles semblent normales dans le contexte</li><li>Cela implique une responsabilité importante pour l’hypnotiseur</li></ul>
+        ]]>
+                </description>
+              </node>
+            </node>
+            
+      
+      <node label="Expériences controversées">
+      <description>
+      <![CDATA[
+      Exploration des pratiques d'hypnose en dehors des cadres classiques, parfois éthiquement discutables. 
+      Elles peuvent être fascinantes mais nécessitent une vigilance éthique et une grande prudence.
+      
+      <br>
+       <b>L’hypnose peut influencer le comportement social, et il est essentiel de respecter la dignité et le consentement du participant. </b>
+      
+      ]]>
+      </description>
+      
+      <node label="Voler des objets">
+      <description>
+      <![CDATA[
+        C’est une suggestion que je faisais sur scène inspirée d’une vidéo d’Anthony Jacquin <i>«Dans un instant je vous rappellerai que je vous ai prêté la montre que une vous avez au poignet et vous serez heureux de me la rendre car l’honnêteté est une valeur importante et vous y êtes attaché.»</i> et 5’ après vous demandez à la personne de vous rendre votre montre et elle le fait en s’excusant de l’avoir gardée si longtemps. Attention à ne pas oublier de la lui rendre à la fin.
+      ]]>
+      </description>
+      </node>
+      
+      <node label="Mentalisme" >
+      <description>
+      <![CDATA[
+        <h3>Techniques pour créer l’illusion de lecture de pensées ou prédiction d’actions. </h3>
+        Le mentalisme combine observation, psychologie et hypnotisme pour donner l’impression de lire dans l’esprit d’autrui.  
+        <br><b>Exemple</b> : le mentaliste prédit que le participant choisira un mot précis parmi une liste.
+      ]]>
+      </description>
+      </node>
+      
+      <node label="Séduction rapide" description="">
+      <description>
+      <![CDATA[
+        Influencer l’attirance ou le comportement affectif.
+        Cette pratique tente de créer une proximité ou une attraction accélérée.  
+        <br><b>Exemple</b> : un participant ressent une affinité immédiate pour une personne en suivant des suggestions sur le langage corporel et la confiance.
+      ]]>
+      </description>
+      </node>
+      
+      <node label="Vente persuasive">
+      <description>
+      <![CDATA[
+        <h3>influencer les décisions d’achat </h3>
+        L’hypnose peut rendre des arguments commerciaux plus convaincants en jouant sur l’attention et les émotions.  
+        <br><b>Exemple</b> : un vendeur utilise des mots et un rythme hypnotique pour augmenter l’attrait perçu d’un produit, poussant le client à acheter presque automatiquement.
+      ]]>
+      </description>
+      </node>
+      
+      <node label="Payer avec des déchets" >
+      <description>
+      <![CDATA[
+      <h3>Inciter le sujet à utiliser des objets inhabituels pour des transactions. </h3>
+        Une expérience provocatrice qui teste la flexibilité comportementale.  
+        <br><b>Exemple</b> : le sujet tente de régler un café avec une canette vide sous suggestion, montrant comment l’influence peut modifier des comportements socialement codés.
+      ]]>
+      </description>
+      </node>
+      
+      <node label="Créer de l'invisibilité sociale">
+      <description>
+      <![CDATA[
+       <h3>Faire percevoir au sujet qu’il est ignoré ou invisible dans un groupe</h3>
+        Par des suggestions, le sujet peut ressentir un sentiment d’invisibilité sociale.  
+        <br><b>Exemple</b> : lors d’un exercice, les participants autour du sujet agissent normalement mais il perçoit qu’ils ne le voient pas, illustrant la puissance des perceptions induites.
+      ]]>
+      </description>
+      </node>
+      
+      <node label="Moquer ou ridiculiser" >
+      <description>
+      <![CDATA[
+      <h3>Provoquer des comportements humoristiques au détriment du participant</h3>
+      Ce type de suggestion provoque des réactions incontrôlables comme le rire ou des gestes absurdes, avec l’intention de surprendre ou de ridiculiser le sujet.  
+      <br>
+      <br><b>Exemple</b> : le participant éclate de rire de manière exagérée lorsqu’on lui fait imaginer une situation absurde, ou réalise un geste ridicule sous suggestion.  
+      
+      ]]>
+      </description>
+      </node>
+      </node>
+      
+      </node>
+      
+        </node>
+        <node label="L'hypnose non verbale" _color="teal">
+          <node label="TODO"/></node>
+      <node label="L'hypnose conversationelle" _color="blue">
+      <description>
+      <![CDATA[
+      L’hypnose conversationnelle est une forme d’hypnose <b>indirecte</b> qui utilise le langage, le ton, le rythme et la structure des phrases pour amener une personne à un état de <b>réceptivité accrue</b>, souvent sans induction formelle.
+      Popularisée par <b>Milton H. Erickson</b>, elle repose sur la communication subtile et l’art de formuler des suggestions implicites.
+      
+      <h3>Principes </h3>
+      <ul>
+        <li><b>Langage permissif :</b> proposer plutôt qu’ordonner — "Tu pourrais remarquer que..."</li>
+        <li><b>Méta-modèle inversé :</b> langage volontairement flou que l’esprit complète</li>
+        <li><b>Pacing & Leading :</b> énoncer des faits évidents, puis guider vers une suggestion</li>
+        <li><b>Ancrages :</b> associer mots/gestes à des états émotionnels pour les déclencher plus tard</li>
+        <li><b>Métaphores :</b> raconter des histoires contenant des suggestions implicites</li>
+      </ul>
+      <h3>Objectifs</h3>
+      
+      <ul>
+        <li><b>Thérapeutiques :</b> réduire l’anxiété, gérer la douleur, favoriser le changement</li>
+        <li><b>Relationnels :</b> instaurer la confiance, améliorer la communication</li>
+        <li><b>Commerciaux :</b> créer de l’adhésion à une idée ou un produit (avec éthique)</li>
+      </ul>
+      <h3>Exemples d'applications</h3>
+      
+      <ul>
+        <li><b>En thérapie :</b> relaxation et changement de perception</li>
+        <li><b>En vente :</b> formuler des récits ou questions qui guident vers la décision</li>
+        <li><b>En coaching :</b> intégrer des suggestions positives dans la conversation</li>
+      </ul>
+      <h3>Précautions</h3>
+      <ul>
+        <li>Utiliser avec <b>éthique</b>, éviter toute manipulation malveillante</li>
+        <li>Respecter les limites personnelles de l’interlocuteur</li>
+        <li>Connaître la psychologie humaine et les règles déontologiques avant de pratiquer</li>
+      </ul>
+      ]]>
+      </description>
+      <node label="Techniques détaillées">
+      <description>
+      <![CDATA[
+      <h3>Exemples de formulations pour pratiquer l’hypnose conversationnelle</h3>
+      <ul>
+        <li><b>Langage permissif :</b> 
+          <ul>
+            <li>“Tu pourrais remarquer que…”</li>
+            <li>“Si tu veux, tu peux déjà te rendre compte que…”</li>
+          </ul>
+        </li>
+        <li><b>Pacing & Leading :</b>
+          <ul>
+            <li>“Tu es assis ici, tu m’écoutes… et tu peux déjà sentir un certain apaisement.”</li>
+            <li>“Tu respires, tu bouges légèrement, et pendant ce temps… tu commences à imaginer…”</li>
+          </ul>
+        </li>
+        <li><b>Métaphores :</b>
+          <ul>
+            <li>“C’est comme un voyage en train, parfois on ne sait pas exactement où l’on va, mais on sent qu’on avance vers quelque chose de mieux.”</li>
+          </ul>
+        </li>
+        <li><b>Ancrages verbaux :</b>
+          <ul>
+            <li>Répéter un mot clé avec le même ton et la même intention pour créer une association (ex. “calme”, “confiance”).</li>
+          </ul>
+        </li>
+        <li><b>Double lien :</b>
+          <ul>
+            <li>Proposer deux options qui mènent toutes deux à l’objectif : “Tu préfères fermer les yeux maintenant… ou dans quelques secondes ?”</li>
+          </ul>
+        </li>
+        <li><b>Utilisation des silences :</b>
+          <ul>
+            <li>Marquer des pauses pour permettre à l’esprit d’intégrer les suggestions.</li>
+          </ul>
+        </li>
+      </ul>
+      <p>💡 Astuce : toujours adapter ces techniques au contexte et au rythme de l’interlocuteur.</p>
+      ]]>
+      </description>
+      </node>
+      
+      
+      
+      </node>
+      
+        <node label="L Hypnothérapie" _color="pink">
+      <node label="hspace.fr de Haim" link="https://hspace.fr/generate-praticien" >
+       <description>
+              <![CDATA[ lapinblanc ]]>
+      </description>
+ </node>
+            <node label="permis hypnose (jeu)" link="https://permis.julienmaalouf.fr/" >
+       <description>
+              <![CDATA[ jeu de Julien : S@tufl'hypnot1ste ]]>
+      </description>
+ </node>
+      
+
+      <node label="Législation"> <description>
+              <![CDATA[
+<h2>Législation et cadre d’exercice</h2>
+<h3>✅ 1. Le terme « thérapeute » ou « hypnothérapeute » est-il réservé au domaine médical ? Est-il juridiquement encadré ?</h3>
+<p>
+En France:
+</p>
+<ul>
+  <li>Le <b>terme « thérapeute » n’est PAS un titre protégé</b> par la loi.</li>
+  <li>Le terme <i>« hypnothérapeute »</i> <b>non plus</b>, contrairement à <i>« médecin », « psychologue », « psychothérapeute », « psychiatre », « infirmier »,</i> etc., qui sont <b>des titres réservés</b>.</li>
+</ul>
+      👉 <b>Cela signifie que, juridiquement, n’importe qui peut utiliser les termes “thérapeute”, “hypnothérapeute”, “coach”, etc.</b>
+Toutefois, l’usage ne doit pas laisser croire que tu es un professionnel de santé si ce n’est pas le cas (cela serait un <b>délit d’usurpation de titre</b> ou <b>d’exercice illégal de la médecine)</b>.
+
+
+<h3>✅ 2. Faut-il être dans le domaine médical pour se proclamer hypnothérapeute ?</h3>
+<h4>❌ Non, la loi ne l’exige pas.</h4>
+
+Tu n’as pas besoin :
+<ul>
+  <li>d’être médecin,</li>
+  <li>ni d’être psychologue,</li>
+   <li>ni d’avoir une formation médicale.</li>
+</ul>
+<b>MAIS</b> tu dois respecter deux règles importantes :
+
+<h4>✔ Ne jamais faire d’acte réservé aux professionnels de santé</h4>
+Exemples interdits si tu n’es pas médecin / psy :
+<ul>
+  <li>poser un diagnostic médical,</li>
+  <li>promettre de “guérir” une maladie,</li>
+  <li>demander de modifier ou arrêter un traitement,</li>
+  <li>prendre en charge des troubles psychiatriques lourds sans encadrement médical.</li>
+</ul>
+
+<h4>✔ Ne pas induire le public en erreur</h4>
+Tu dois être clair sur :
+<ul>
+  <li>ta formation (non médicale),</li>
+  <li>le fait que tu n’es pas professionnel de santé,</li>
+  <li>ton domaine d’intervention : bien-être, accompagnement, gestion du stress, etc.</li>
+</ul>
+
+
+<h3>🟦 Important : “hypnopraticien”, “praticien en hypnose” et “hypnothérapeute” ne sont pas réglementés</h3>
+Bien que non protégés, <b>le terme “hypnothérapeute” peut prêter à confusion</b>, car il contient “thérapeute”, ce qui évoque un soin.
+Beaucoup de praticiens non-médicaux utilisent plutôt :
+<ul>
+  <li>Praticien en hypnose</li>
+  <li>Hypnopraticien</li>
+  <li>Praticien en hypnose ericksonienne</li>
+</ul>
+Ces titres sont plus sûrs juridiquement et plus transparents pour le public.
+      
+
+<h3>🟢 En résumé :</h3>
+Question	Réponse:
+      <ul>
+  <li>Le terme « thérapeute » est-il réservé ?	❌ Non, ce n’est pas un titre protégé.</li>
+  <li>Le terme « hypnothérapeute » est-il réservé ?	❌ Non, mais attention à ne pas faire croire que tu es soignant.</li>
+  <li>Faut-il être médical pour se dire hypnothérapeute ?	❌ Non, mais il faut respecter les règles d'exercice.</li>
+</ul>
+
+   ]]>
+            </description></node>
+      
+          <node label="Ancrage thérapeutique"> <description>
+              <![CDATA[
+      <h3>L’ancrage de l’état de bien-être</h3>
+      Ici, l’objectif est de créer un espace intérieur de détente et d’y associer <b>un symbole</b> personnel ainsi qu’un
+      <b>geste</b> simple, permettant d’y revenir à volonté.<br>
+      🔑 <i>Pourquoi un mot et un geste ?.</i>
+      <b>Réduit les risques d’activation involontaire</b> dans les gestes du quotidien.
+      <h3>Exmple de protocole</h3>
+      <ul>
+      <li><b>Induction </b>: Le sujet entre dans un état de relaxation confortable.</li>
+      <li><b>Suggestion </b>: On lui propose d’imaginer une porte. Derrière cette porte se trouve un lieu parfaitement
+      apaisant, un espace personnel de calme et de détente : une salle de relaxation, un spa, un paysage,
+      etc.</li>
+      <li><b>Exploration du lieu </b>: Le sujet ouvre la porte, découvre cet endroit et s’y installe. Dans ce lieu,
+      toutes les tensions disparaissent naturellement.</li>
+      <li><b>Installation de l’ancrage </b>: On lui propose d’associer ce lieu à un geste physique (par exemple,
+      serrer les poings) et à un symbole personnel (une rivière, une couleur, une image, un fruit... peu
+      importe tant que cela lui parle).</li>
+      <li><b>Renforcement </b>: Le sujet répète ce geste en pensant à son symbole, pendant qu’il est pleinement
+      connecté à l’état de bien-être.</li>
+      <li><b>Vérification </b>: Plus tard dans la séance, on lui propose de refaire le geste et de penser à son symbole,
+      pour voir si l’effet de relaxation revient spontanément.</li>
+      </ul>
+      <h3>Exemple de mise en situation</h3>
+      « Imagine une porte devant toi. Cette porte mène à un endroit profondément relaxant, un lieu dans lequel toutes les tensions disparaissent. Quand tu es prêt, ouvre cette porte et pénètre dans ce lieu de détente absolue. Explore cet endroit, installe-toi confortablement, et ressens cette sensation de bien-être grandir en toi. Maintenant, pense à un symbole qui représente cet état, et choisis un geste simple à associer. Dès que tu feras ce geste en pensant à ce symbole, tu pourras retrouver cet état de détente. On va le faire ensemble... »
+      
+      
+        ]]>
+            </description></node>
+
+      <node label="tabac" link="./documents/tabac/Test_de_Fagerstroem.pdf">
+  <description>
+    <![CDATA[
+      <h2>Test de Fagerström – Dépendance à la nicotine</h2>
+      <p>
+        Le <b>Test de Fagerström</b> est un questionnaire standardisé utilisé pour évaluer 
+        le niveau de dépendance à la nicotine chez les personnes qui fument. Il permet de déterminer 
+        la gravité de la dépendance et d'adapter les stratégies d'arrêt du tabac.
+      </p>
+
+      <h3>Objectifs du test</h3>
+      <ul>
+        <li>Évaluer la dépendance physique à la nicotine.</li>
+        <li>Identifier le degré de besoin de fumer dès le réveil ou dans certaines situations.</li>
+        <li>Orienter le choix des interventions pour l'arrêt du tabac (thérapie, substituts nicotiniques, hypnose).</li>
+      </ul>
+
+      <h3>Exemples de questions</h3>
+      <p>Le questionnaire comporte généralement 6 à 7 questions, telles que :</p>
+      <ul>
+        <li>Combien de cigarettes fumez-vous par jour ?</li>
+        <li>Quelle est la première cigarette que vous fumez après le réveil ?</li>
+        <li>Est-il difficile de ne pas fumer dans des lieux où c’est interdit ?</li>
+        <li>Fumez-vous davantage le matin que le reste de la journée ?</li>
+      </ul>
+
+      <h3>Interprétation des résultats</h3>
+      <p>
+        Chaque réponse reçoit un score, qui est additionné pour obtenir un score total :
+      </p>
+      <ul>
+        <li>Score 0-2 : dépendance faible</li>
+        <li>Score 3-5 : dépendance modérée</li>
+        <li>Score 6-7 : dépendance forte</li>
+        <li>Score 8 ou plus : dépendance très forte</li>
+      </ul>
+
+      <p>
+        Ce test est un outil précieux pour les thérapeutes et les patients afin d'adapter le 
+        suivi et les interventions pour arrêter de fumer, y compris dans le cadre d’une approche 
+        par hypnose ou thérapies comportementales.
+      </p>
+    ]]>
+  </description>
+</node>
+<node label="alcool" link="./documents/alcool/AUDIT.pdf">
+  <description>
+    <![CDATA[
+      <h2>Checklist : Sevrage d’alcool – Suis-je à risque ?</h2>
+      
+      <p>Répondez honnêtement à ces questions pour évaluer si un arrêt de l’alcool peut être fait seul ou nécessite un encadrement médical :</p>
+
+      <ol>
+        <li>
+          Bois-tu de l’alcool tous les jours (ou presque) depuis plus de 3 semaines ?
+          <ul>
+            <li>🔹 Oui → sevrage médical conseillé</li>
+            <li>🔹 Non → tu peux probablement arrêter seul(e), avec un suivi si besoin</li>
+          </ul>
+        </li>
+
+        <li>
+          Ressens-tu des tremblements, sueurs, anxiété, ou insomnie quand tu ne bois pas pendant 24 h ?
+          <ul>
+            <li>🔹 Oui → ton corps montre une dépendance physique → avis médical nécessaire</li>
+            <li>🔹 Non → le risque de sevrage grave est faible</li>
+          </ul>
+        </li>
+
+        <li>
+          Bois-tu plus de 2 verres par jour (femme) ou 3 verres par jour (homme) en moyenne ?
+          <ul>
+            <li>🔹 Oui → ton organisme est habitué à un apport régulier → arrêt accompagné conseillé</li>
+            <li>🔹 Non → arrêt autonome possible avec soutien moral</li>
+          </ul>
+        </li>
+
+        <li>
+          As-tu déjà eu une crise de manque, convulsion, hallucination ou confusion en arrêtant l’alcool ?
+          <ul>
+            <li>🔹 Oui → urgence médicale, ne pas arrêter seul(e)</li>
+            <li>🔹 Non → poursuis la réflexion sereinement</li>
+          </ul>
+        </li>
+
+        <li>
+          Te sens-tu prêt(e) à demander de l’aide si tu ressens des symptômes physiques ou émotionnels ?
+          <ul>
+            <li>🔹 Oui → c’est un très bon signe</li>
+            <li>🔹 Non → essaie d’en parler à ton médecin ou à une personne de confiance avant de commencer</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Interprétation rapide :</h3>
+      <ul>
+        <li>0–1 réponse “Oui” → arrêt seul possible, mais avec hydratation, repos et accompagnement psychologique.</li>
+        <li>2–3 réponses “Oui” → arrêter progressivement et consulter un médecin pour sécuriser la démarche.</li>
+        <li>4–5 réponses “Oui” → ne pas arrêter sans encadrement médical (risque de sevrage sévère).</li>
+      </ul>
+
+      <h3>Symptômes du manque et risques liés à un sevrage brutal</h3>
+      <p>Arrêter brutalement l’alcool après une consommation importante peut entraîner :</p>
+      <ul>
+        <li>Tremblements, sueurs, anxiété, insomnie</li>
+        <li>Palpitations, hypertension</li>
+        <li>Crises convulsives (épileptiques)</li>
+        <li>Délirium tremens : confusion, hallucinations, agitation extrême, fièvre, risque vital</li>
+        <li>Malaise, évanouissement, voire coma ou décès en cas de sevrage non encadré</li>
+      </ul>
+
+      <p>➡️ C’est pourquoi un sevrage doit toujours être encadré par un professionnel de santé si la consommation est régulière et importante.</p>
+    ]]>
+  </description>
+</node>
+<node label="Douleurs" >
+  <description>
+    <![CDATA[]]>
+  </description>
+  <node label="Test HAD" link="https://www.psyblanchard.fr/QCMHAD.php" >
+  <description>
+    <![CDATA[]]>
+  </description>
+</node>
+</node>
+<node label="Insomnies" >
+  <description>
+    <![CDATA[
+      <ol>
+      <li><b>Éviter les levers avec la TV.</b>
+La lumière et la stimulation maintiennent le cerveau en mode éveil. Si tu dois te lever, privilégier un livre doux, une lumière tamisée, quelque chose de monotone et rassurant.</li>
+
+ <li><b>Changer certaines habitudes.</b>
+Parfois, modifier l’environnement aide à “réinitialiser” le cerveau. On pourrait envisager temporairement de dormir dans une autre pièce ou de transformer l’espace pour créer une sensation de nouveau départ, moins associée aux nuits difficiles.</li>
+
+ <li><b> Il est très probable que tu dormes plus que tu ne le penses.</b>
+Beaucoup de personnes en insomnie ont des micro-sommeils ou des phases légères dont elles ne gardent aucun souvenir. Pour objectiver cela et rassurer le mental, on pourrait envisager de monitorer ton sommeil avec une montre connectée pendant quelques semaines.</li>
+
+ <li><b>Travailler sur la pression du sommeil.</b>
+Plus on veut dormir, plus le système d’alerte s’active. On va continuer à apprendre à sortir de la lutte contre la nuit. L’objectif n’est pas “réussir à dormir”, mais redevenir neutre face à l’éveil nocturne. Le sommeil revient quand la pression baisse.</li>
+
+ <li><b>Chercher aussi les points positifs de la nuit, en lien avec notre première séance.</b>
+Tu m’as surtout partagé ce qui a été difficile, et c’est important. Mais j’aimerais aussi que tu prennes un moment pour observer ce qui montre déjà un mouvement depuis notre première séance : tu n’as pas fait de sieste, tu as respecté le lever matinal, tu t’es relevée plutôt que de rester à lutter longtemps dans le lit, et tu t’es recouchée ensuite. Ce sont des ajustements concrets qui vont dans le bon sens.</li>
+
+ <li><b>Profiter de la journée pour remettre le corps en mouvement.</b>
+Il fait beau aujourd’hui, et comme l’angoisse entretient souvent la tension intérieure, une balade à l’air libre ou une activité physique douce pourrait vraiment t’aider. Marcher, t’exposer à la lumière naturelle, mobiliser le corps… tout cela envoie au système nerveux un signal de régulation. En plus, cela favorise une “bonne fatigue” physiologique, saine, différente de l’épuisement nerveux, et prépare naturellement le terrain pour la nuit suivante.
+</li>
+      
+<h2>Pour t’aider, tu peux te poser quelques questions :</h2>
+      <ul>
+    <li>Est-ce que je me suis endormie, même brièvement, sans m’en rendre compte ?</li>
+    <li>Ai-je ressenti un moment de détente, même court, dans la nuit ?</li>
+    <li>Ai-je mieux géré mes pensées qu’avant ?</li>
+    <li>Ai-je réagi différemment de d’habitude face au réveil ?</li>
+    <li>Qu’est-ce que j’ai fait cette nuit que je n’aurais peut-être pas fait avant la séance ?</li>
+       </ul>
+
+Même dans une nuit compliquée, il y a des signes de progression. Les repérer permet d’ancrer les bénéfices de la séance et d’aider ton cerveau à intégrer que quelque chose est déjà en train de changer.
+Même si cette nuit a été difficile, elle ne définit pas la suite. Le corps sait dormir. On va l’aider à retrouver cette confiance.
+
+Je suis avec toi dans ce processus. Et parfois, quand un premier mouvement est lancé, le fait de poursuivre dans cette dynamique permet de consolider encore plus profondément les changements en cours… Nous pourrons voir ensemble, au bon moment, comment continuer à accompagner cette évolution
+      ]]>
+  </description>
+
+
+      <node label="règle 3-2-1" >
+  <description>
+    <![CDATA[
+
+
+
+  La <strong>règle 3-2-1</strong> est une petite méthode simple souvent conseillée contre l’insomnie. Elle sert surtout à <strong>préparer ton corps et ton cerveau au sommeil</strong>.</p>
+<p>👉 Concrètement :</p>
+<h3>🕒 3 heures avant de dormir</h3>
+<p>➡️ <strong>Arrêter de manger</strong></p>
+<ul>
+<li>
+<p>La digestion garde ton corps “actif”</p>
+</li>
+<li>
+<p>Elle peut gêner l’endormissement (température + hormones)</p>
+</li>
+</ul>
+<h3>🕑 2 heures avant</h3>
+<p>➡️ <strong>Stop aux activités stimulantes</strong></p>
+<ul>
+<li>
+<p>travail, stress, écrans intenses, décisions</p>
+</li>
+<li>
+<p>le but : calmer le cerveau progressivement</p>
+</li>
+</ul>
+<h3>🕐 1 heure avant</h3>
+<p>➡️ <strong>Zéro écran</strong></p>
+<ul>
+<li>
+<p>la lumière bleue bloque la mélatonine (hormone du sommeil)</p>
+</li>
+<li>
+<p>privilégier : lecture, musique calme, respiration</p>
+</li>
+</ul>
+<p>➡️ Cette routine aide à réduire les réveils et facilite l’endormissement <span><span><span>Linternaute.com</span><span>+1</span></span></span></a></span></span></p>
+<hr>
+<h2>⚠️ Important (souvent oublié)</h2>
+<ul>
+<li>
+<p>Ce n’est <strong>pas magique</strong> : ça améliore l’hygiène de sommeil, mais ne suffit pas toujours en cas d’insomnie forte <span><span>Linternaute.com</span></span></span></a></span></span></p>
+</li>
+<li>
+<p>Si tu dors mal malgré ça → il peut y avoir <strong>stress, anxiété, rythme décalé, ou trouble du sommeil</strong></p>
+</li>
+</ul>
+<hr>
+<h2>💡 Petit bonus (très efficace avec le 3-2-1)</h2>
+<ul>
+<li>
+<p>Se coucher et se lever à heures fixes</p>
+</li>
+<li>
+<p>Éviter café/alcool le soir</p>
+</li>
+<li>
+<p>Chambre sombre + fraîche</p>
+</li>
+<li>
+<p>Si tu ne dors pas → ne reste pas à lutter dans le lit</p>
+</li>
+</ul>
+
+
+
+  ]]>
+       </description></node>
+
+      
+      </node>
+<node label="fiches-ide" link="https://www.fiches-ide.fr/fiches/cours-par-ue/">
+  <description>
+    <![CDATA[<h2>FICHES IDE</h2>
+<b>Site internet pour infirmiers et étudiants infirmiers mais pas que !</b>
+Révisez et mémorisez vos cours de manière ludique : fiches synthétiques, cartes mentales, schémas, quizz & bien d’autres ! ]]>
+  </description>
+</node>
+
+      
+        </node>
+        <node label="Auto-hypnose" _color="yellow">
+          <description>
+              <![CDATA[
+      <h2><strong>Auto-hypnose — définition et fonctionnement</strong></h2>
+      <p>L’auto-hypnose est une <strong>technique de modification volontaire de son état de conscience</strong> qui permet d’entrer dans un état hypnotique sans l’intervention d’un hypnotiseur.<br>
+      Dans cet état, l’attention est focalisée, la perception du temps peut se modifier, et l’esprit devient plus réceptif aux suggestions, aux visualisations et à l’exploration intérieure.</p>
+      <p>C’est une forme d’<strong>auto-guidage mental</strong> où l’on utilise des images, des sensations et des pensées pour influencer positivement son corps, ses émotions et ses comportements.</p>
+      <hr>
+      <h3><strong>Caractéristiques principales :</strong></h3>
+      <ol>
+      <li><strong>Initiée par soi-même</strong></p>
+      <ul>
+      <li>Pas besoin d’une autre personne ; on peut utiliser sa voix intérieure, une visualisation ou un enregistrement audio.</li>
+      </ul>
+      </li>
+      <li><strong>État modifié de conscience</strong></p>
+      <ul>
+      <li>Différent de l’état d’éveil habituel : la pensée critique se calme, l’imaginaire prend plus de place.</li>
+      </ul>
+      </li>
+      <li><strong>Objectif spécifique</strong></p>
+      <ul>
+      <li>Relaxation, gestion de la douleur, développement personnel, créativité, préparation mentale, changement d’habitudes, etc.</li>
+      </ul>
+      </li>
+      <li><strong>Capacité naturelle</strong></p>
+      <ul>
+      <li>Tout le monde expérimente des états proches (rêveries, absorption dans un film, moments de « pilote automatique »).</li>
+      </ul>
+      </li>
+      </ol>
+      <hr>
+      
+      <h3><strong>Bienfaits possibles</strong></h3>
+      <ul>
+      <li>Réduction du stress et de l’anxiété</li>
+      <li>Gestion de la douleur</li>
+      <li>Amélioration du sommeil</li>
+      <li>Meilleure concentration et motivation</li>
+      <li>Développement de nouvelles habitudes ou comportements</li>
+      </ul>
+      <hr>
+      
+      
+                ]]></description>
+          <node label="Déroulement typique">
+                   <description>
+              <![CDATA[
+      <h3><strong>Déroulement typique d’une séance d’auto-hypnose</strong></h3>
+      <ol>
+      <li><strong>Préparation</strong></li>
+      <ul>
+      <li>S’installer confortablement dans un endroit calme.</li>
+      <li>Décider d’un objectif clair (« me détendre profondément », « renforcer ma confiance », « me concentrer »).</li>
+      </ul>
+      </li>
+      <li><strong>Induction</strong></p>
+      <ul>
+      <li>Utiliser un procédé pour entrer en transe : respiration lente, comptage, fixation d’un point, visualisation.</li>
+      </ul>
+      </li>
+      <li><strong>Approfondissement</strong></p>
+      <ul>
+      <li>Imaginer descendre un escalier, flotter, marcher dans un lieu paisible…</li>
+      <li>Laisser le corps se détendre davantage.</li>
+      </ul>
+      </li>
+      <li><strong>Suggestions / travail hypnotique</strong></p>
+      <ul>
+      <li>Se répéter des phrases positives ou imaginer des scénarios aidants.</li>
+      <li>Exemples : « Je sens mon corps léger et détendu », « Je suis confiant et calme dans toutes les situations ».</li>
+      </ul>
+      </li>
+      <li><strong>Réveil</strong></p>
+      <ul>
+      <li>Compter à rebours, s’étirer, reprendre conscience progressivement.</li>
+      <li>Ramener avec soi les effets positifs.</li>
+      </ul>
+      </li>
+      </ol>
+      <hr>
+      ]]></description></node>
+          <node label="Pour aller plus loin — vidéos &amp; docs">
+            <description>
+              <![CDATA[
+      Ressources externes fiables pour apprendre / faire pratiquer l'auto-hypnose.
+        ]]>
+            </description>
+            <node label="Kévin Finel (ARCHE) — Auto-hypnose 1/8 : découvrir (avec exercice)" link="https://www.youtube.com/watch?v=uJcY2AGfOMQ"/>
+            <node label="Kévin Finel (ARCHE) — Auto-hypnose 5/8 : franchir ses peurs" link="https://www.youtube.com/watch?v=la340-ZI7mM"/>
+            <node label="Kévin Finel (ARCHE) — Playlist « Auto-hypnose pour les débutants »" link="https://www.youtube.com/playlist?list=PL7tv16TOX9yobtxHmwzdad2pJfa3lpgYT"/>
+            <node label="Olivier Lockert (IFHE) — Apprendre l'auto-hypnose" link="https://www.youtube.com/watch?v=WRU4CjPZtmA"/>
+            <node label="Olivier Lockert — L'auto-hypnose pour les débutants (article)" link="https://olivier-lockert.com/2020/04/27/lauto-hypnose-pour-les-debutants/"/>
+            <node label="Chaîne ARCHE Formation (cabinets publics, soirées auto-hypnose)" link="https://www.youtube.com/channel/UCBKeWMYPRmSbVes0kVUm9Qg"/>
+            <node label="INSERM 2015 — Évaluation de l'efficacité de l'hypnose (PDF, pour rassurer)" link="./documents/inserm-rapportthematique-evaluationefficacitehypnose-2015.pdf"/>
+          </node>
+
+        </node>
+        <node label="En Spectacle" _color="green">
+        
+           <description>
+              <![CDATA[
+               <h2>Création d'un spectacle d'hypnose</h2>
+                Pour créer un spectacle d’hypnose, il faut penser à plusieurs aspects : le <b>scénario</b>, la <b>progression des hypnotisations</b>, le <b>rythme</b>, les <b>interactions avec le public</b>, et surtout la <b>sécurité et le respect des participants</b>.
+                <h2>1. Définir le concept</h2>
+                <ul>
+                  <li><b>Thème principal :</b> humoristique, mystérieux, absurde, interactif…</li>
+                  <li><b>Exemples :</b> « une journée à l’école des super-héros », « les métiers impossibles », « le monde à l’envers »</li>
+                  <li><b>Durée totale :</b> 60 à 90 minutes</li>
+                  <li><b>Nombre de participants :</b> 5 à 15 volontaires selon la taille du public</li>
+                </ul>
+                <h2>2. Structurer le spectacle</h2>
+                Un spectacle d’hypnose suit souvent un rythme en trois actes :
+                <h3>Introduction et pré-hypnose</h3>
+                <ul>
+                  <li>Accueil et interaction avec le public</li>
+                  <li>Briser la glace avec quelques tests de suggestibilité simples pour identifier les personnes réceptives</li>
+                  <li>Démonstration rapide d’un état hypnotique léger pour instaurer la confiance</li>
+                </ul>
+                <h3>Séance d’hypnose principale</h3>
+                <ul>
+                  <li>Mise en état hypnotique des participants</li>
+                  <li>Succession de sketches ou de “numéros” :
+                    <ul>
+                      <li>Actions absurdes ou drôles (danser, chanter, oublier un mot…)</li>
+                      <li>Jeux de rôle ou scénarios interactifs avec le public</li>
+                    </ul>
+                  </li>
+                  <li>Varier les suggestions : certaines physiques, d’autres mentales.</li>
+                </ul>
+                <h3>Conclusion</h3>
+                <ul>
+                  <li>Réveil des participants en douceur</li>
+                  <li>Moments de gratitude et d’humour pour clore le spectacle</li>
+                  <li>Eventuellement une “numéro final” spectaculaire mais sûr</li>
+                </ul>
+               <h2>3. Exemples de numéros / suggestions</h2>
+               <ul>
+                  <li>Chaque fois que tu entends une cloche, tu crois que tu es un chat</li>
+                  <li>Quand tu prends ce stylo, tu penses que c’est une baguette magique</li>
+                  <li>Tu oublies ton prénom pendant 30 secondes</li>
+                  <li>À chaque fois que quelqu’un dit « bonjour », tu te mets à danser</li>
+                </ul>
+                <p>(À adapter selon le public et la réceptivité des participants)</p>
+               <h2>4. Règles importantes</h2>
+                <ul>
+                  <li>Demander toujours le <b>consentement</b> des volontaires</li>
+                  <li><b>Ne jamais ridiculiser</b> ni forcer quelqu’un</li>
+                  <li>Maintenir une <b>atmosphère légère et humoristique</b></li>
+                  <li>Avoir toujours un plan pour réveiller quelqu’un rapidement si nécessaire</li>
+                </ul>
+              ]]>
+            </description>
+        </node>
+      
+      
+        <node label="Références &amp; Littérature" _color="brown" >
+          <description>
+            <![CDATA[
+       Ce <b>dossier brun</b> contient une archive ZIP importante
+        ]]>
+          </description>
+        
+          <node label="Reality is Plastic" link="./documents/Reality is Plastic.pdf"/>
+          <node label="Reality is Plastic francais" link="./documents/Reality is Plastic_fr.pdf"/>
+         <node label="Hypnose sur séniors avec maladie neuroévolutive" link="./documents/memoire-agee-neuroevolutive.pdf" />
+      <node label="Addiction. Prévention" link="https://www.infodrog.ch/fr/ressources.html" />
+            <node label="hypnose-express David Vigneron" link="https://hypnose-express.learnybox.com" _color="blue">
+       <description>
+            <![CDATA[
+      - Identifiant : rogde@orange.fr
+- Mot de passe : RG1984!
+        ]]> </description>
+        </node>
+        <node label="Praticien en EFT Classeur de formation" link="./documents/romy/classeur_praticien_eft.pdf" >
+      
+            <description>
+              <![CDATA[
+       L’apport de l’hypnose pour soulager l’anxiété de patients âgés souffrant d’une maladie neuroévolutive à un stade sévère
+      et de troubles du comportement productifs
+        ]]>
+            </description>
+          </node>
+         
+        </node>
+                <node label="Mon Cabinet">
+            <node label="Hypnose Moderne" link="https://olivierroyo.github.io/hypnosemoderne/" >
+              <description>
+                <![CDATA[
+       mon site
+        ]]>
+              </description>
+            </node>
+            <node label="carte de visite" link="https://olivierroyo.github.io/hypnosemoderne/vcard.html"/>
+            <node label="Gestion des qr codes: qrplanet (SANS pub)" link="https://qrplanet.com"/>
+        </node>
+
+       <node label="praticienPro">
+         <node label="hypno gestion" link="https://dash.infinityfree.com/accounts/if0_41213743" >
+           <description>
+             <![CDATA[
+                 mPjyTwJFz2L old : fR0lA7yU3kQ9vM2
+             ]]>
+            </description>
+         </node>
+        </node>
+      
+        <node label="Liens" _color="brown" >
+          <description>
+            <![CDATA[
+       Ce <b>dossier brun</b> contient une archive ZIP importante
+        ]]>
+          </description>
+          <node label="Roue de l'infortune" link="https://spinthewheel.io/wheels/LhLkg9b87K459T8VNLsZcz0xJmU9MQ%3D%3D"/>
+          <node label="H.academy" link="https://www.skool.com/haim-levi-academy-7507"/>
+          <node label="carte des membres" link="https://framacarte.org/en/map/les-hypnos_209436#7/47.070/2.747"/>
+          <node label="Fresha" link="https://partners.fresha.com/calendar"/>
+        <node label="Notions de base - H.academy" link="./documents/Notions de base - H.academy.pdf"/>
+          <node label="Mois 1 Le Parcous - H.academy" link="./documents/Mois 1 Le Parcous - H.academy.pdf"/>
+          <node label="Mois 2 Le Parcous - H.academy" link="./documents/Mois 2 Le Parcous - H.academy.pdf"/>
+       <node label="Pancarte Hypnose de rue" link="./documents/Pancarte_olivier_qrplanet.com.pdf" />
+          <node label="Pancarte Hypnose de rue editable" link="./documents/Pancarte_olivier.docx" />
+      
+        <node label="vidéos privées" link="https://parcours.julienmaalouf.fr/">
+       <description>
+            <![CDATA[
+       S@tufl'hypnot1ste
+        ]]> </description>
+        </node>
+      
+         <node label="vidéos privées (unofficial)" link="https://olivierroyo.github.io/hypnosemoderne/documents/videosPrivees.html"/>
+
+
+
+      
+
+
+      
+
+        </node>
+        <node label="A explorer" _color="yellow">
+           <node label="Process Communication Model (PCM)" link="https://fr.wikipedia.org/wiki/Process_Communication_Model"/>
+      
+          <node label="VAKOG" link="https://fr.wikipedia.org/wiki/VAKOG">
+            
+            <description>
+              <![CDATA[
+       V= Visuelle,A= Auditif,K= Kinesthésique,O= Olfactif,G = Gustatif
+        ]]>
+            </description>
+          </node>
+           <node label="how2hypnotise" link="https://www.youtube.com/@how2hypnotise/videos"/>
+           
+          <node label="gaia meditation" link="https://www.facebook.com/groups/2383059111906235">        <description>
+              <![CDATA[
+      Pas vraiment lié, juste pour ouverture d'esprit
+        ]]>
+            </description></node>
+      
+      </node>
+
+ <node label="Deprecated" _color="black">
+            <node label="Gestion des formulaires" link="https://formspree.io/forms/xovlqrgg/overview"/>
+            <node label="Gestion des rendez-vous" link="https://calendly.com/olivier-royo/"/>
+            <node label="Gestion des qr codes: me-qr (avec pub)" link="https://me-qr.com"/>
+       </node>
+       </node>
+      
+   </script>
+   <script>
+      const container = document.getElementById("tree-container");
+      
+      function createTreeFromXML(xmlNode, inheritedColor = '') {
+        const ul = document.createElement('ul');
+      
+        for (let child of xmlNode.children) {
+          if (child.tagName.toLowerCase() !== 'node' || !child.hasAttribute('label')) continue;
+      
+          const li = document.createElement('li');
+      
+      //anchor
+      if (child.hasAttribute('anchor')) {
+      const anchor = child.getAttribute('anchor');
+      li.dataset.anchor = anchor;
+      li.id = anchor;  // tu peux garder aussi l'id si tu veux
+      }
+      
+          let currentColor = inheritedColor;
+      
+          if (child.hasAttribute('_color')) {
+            currentColor = child.getAttribute('_color');
+          }
+          if (currentColor) li.classList.add('color-' + currentColor);
+      
+          const label = document.createElement('div');
+          label.className = 'node-label';
+      
+          const arrow = document.createElement('span');
+          arrow.className = 'arrow triangle-bg';
+      
+          const labelText = child.getAttribute('label') || 'Sans nom';
+      const linkUrl = child.getAttribute('link');
+      
+      let text;
+      if (linkUrl) {
+      text = document.createElement('a');
+      text.href = linkUrl;
+      text.target = '_blank';
+      text.rel = 'noopener noreferrer';
+      text.textContent = labelText;
+      text.classList.add('node-link');
+      
+      const badge = document.createElement('span');
+      badge.className = 'badge-link';
+      badge.textContent = 'Lien';
+      text.appendChild(badge);
+      } else {
+      text = document.createElement('span');
+      text.innerHTML = labelText;
+      }
+      label.appendChild(arrow);
+      
+      const imageSrc = child.getAttribute('image');
+      if (imageSrc) {
+      const wrapper = document.createElement('span');
+      wrapper.className = 'image-tooltip-preview';
+      
+      const previewImg = document.createElement('img');
+      previewImg.src = imageSrc;
+      previewImg.alt = 'aperçu';
+      
+      const hoverImg = document.createElement('img');
+      hoverImg.src = imageSrc;
+      hoverImg.alt = 'Aperçu agrandi';
+      hoverImg.style.position = 'absolute';
+      hoverImg.style.top = '100%';
+      hoverImg.style.left = '0';
+      hoverImg.style.marginTop = '6px';
+      hoverImg.style.width = 'auto';
+      hoverImg.style.maxWidth = '90vw';
+      hoverImg.style.maxHeight = '70vh';
+      hoverImg.style.border = '1px solid #ccc';
+      hoverImg.style.borderRadius = '8px';
+      hoverImg.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+      hoverImg.style.zIndex = '999';
+      hoverImg.style.display = 'none';
+      hoverImg.style.background = '#fff';
+      hoverImg.style.padding = '6px';
+      
+      
+      wrapper.appendChild(previewImg);
+      wrapper.appendChild(hoverImg);
+      wrapper.style.position = 'relative';
+      wrapper.style.display = 'inline-block';
+      
+      wrapper.addEventListener('mouseenter', () => {
+      hoverImg.style.display = 'block';
+      });
+      
+      wrapper.addEventListener('mouseleave', () => {
+      hoverImg.style.display = 'none';
+      });
+      
+      label.appendChild(wrapper);
+      }
+      
+         
+          label.appendChild(text);
+      
+      
+          // Tooltip info
+          const descriptionNode = Array.from(child.children).find(el => el.tagName.toLowerCase() === 'description');
+      if (descriptionNode) {
+      const html = descriptionNode.textContent;
+      
+      // 🔽 Stocke une version texte dans data-description
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      const plainText = tempDiv.textContent || '';
+      li.dataset.description = plainText.toLowerCase(); // tout en minuscule pour la recherche
+      
+      const infoIcon = document.createElement('span');
+      infoIcon.textContent = 'ℹ️';
+            infoIcon.title = 'Afficher la description';
+            infoIcon.classList.add('icon-description');
+      
+            let tooltip;
+      
+            infoIcon.addEventListener('click', (event) => {
+              event.stopPropagation();
+      
+              // Si tooltip déjà affiché, on le ferme
+              if (tooltip) {
+                tooltip.remove();
+                tooltip = null;
+                return;
+              }
+      
+              // Crée tooltip
+              tooltip = document.createElement('div');
+      tooltip.className = 'tooltip-box';
+      
+      // Bouton fermer
+      const closeBtn = document.createElement('button');
+      closeBtn.textContent = '❌';
+      closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      tooltip.remove();
+      tooltip = null;
+      });
+      
+      tooltip.appendChild(closeBtn);  // Ajoute d'abord le bouton
+      tooltip.insertAdjacentHTML('beforeend', html); // Puis le HTML de description
+      
+              closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                tooltip.remove();
+                tooltip = null;
+              });
+      
+              // Ajoute tooltip dans body pour position absolue globale
+              document.body.appendChild(tooltip);
+      
+              // Positionne tooltip sous l'icône info
+              const rect = infoIcon.getBoundingClientRect();
+              tooltip.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+              tooltip.style.left = (rect.left + window.scrollX) + 'px';
+            });
+      
+            label.appendChild(infoIcon);
+          }
+      
+          li.appendChild(label);
+      
+          // Vérifie si cet élément a des enfants <node>
+          const hasChildNodes = Array.from(child.children).some(el => el.tagName.toLowerCase() === 'node');
+          if (hasChildNodes) {
+            li.classList.add('collapsed');
+            const subtree = createTreeFromXML(child, currentColor);
+            li.appendChild(subtree);
+      
+            label.addEventListener('click', () => {
+              li.classList.toggle('collapsed');
+              li.classList.toggle('expanded');
+            });
+          } else {
+            li.classList.add('leaf');
+          }
+      
+          ul.appendChild(li);
+        }
+        return ul;
+      }
+      
+      function loadTreeFromXMLString(xmlText) {
+        const xmlDoc = new DOMParser().parseFromString(xmlText, "text/xml");
+        container.innerHTML = '';
+        container.appendChild(createTreeFromXML(xmlDoc.documentElement));
+      
+      }
+      
+      // Chargement arborescence intégrée au départ
+      const embeddedXml = document.getElementById("xml-data").textContent.trim();
+      loadTreeFromXMLString(embeddedXml);
+      
+      
+      // Sélecteur : charger fichier XML via fetch
+      document.getElementById("tree-selector").addEventListener("change", (e) => {
+        const selectedFile = e.target.value;
+        if (!selectedFile) {
+          loadTreeFromXMLString(embeddedXml);
+          return;
+        }
+      
+        fetch(`arborescences/${selectedFile}`)
+          .then(res => {
+            if (!res.ok) throw new Error("Fichier non trouvé");
+            return res.text();
+          })
+          .then(xmlText => loadTreeFromXMLString(xmlText))
+          .catch(err => {
+            alert("Erreur lors du chargement du fichier XML.");
+            console.error(err);
+          });
+      });
+      
+      
+      // Fonction pour ouvrir récursivement les parents d'un li (node)
+      function openParents(li) {
+      if (!li) return;
+      li.classList.remove('collapsed');
+      li.classList.add('expanded');
+      const parentLi = li.parentElement.closest('li');
+      if (parentLi) openParents(parentLi);
+      }
+      
+      // Fonction pour trouver le li correspondant à un anchor (id)
+      function findNodeByAnchor(anchor) {
+      return [...container.querySelectorAll('li')].find(li => {
+      // on récupère le node-label span > texte ou attribut anchor
+      const nodeDiv = li.querySelector('.node-label');
+      if (!nodeDiv) return false;
+      
+      // Le label span contient parfois un texte, on cherche attribut anchor dans la data
+      // Dans ton code, tu peux stocker l'ancre en data-anchor sur le li lors de la création
+      
+      return li.dataset.anchor === anchor;
+      });
+      }
+      
+      // Modification : stocker les ancre en data-anchor dans createTreeFromXML
+      // A rajouter dans la boucle pour chaque node ayant un attribut anchor
+      // Juste après const li = document.createElement('li');
+      /*
+      if (child.hasAttribute('anchor')) {
+      li.dataset.anchor = child.getAttribute('anchor');
+      }
+      */
+      
+      // Ajout gestion clic sur les liens d’ancre
+      document.body.addEventListener('click', e => {
+      const link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      
+      const anchor = link.getAttribute('href').slice(1); // enlève '#'
+      const targetLi = findNodeByAnchor(anchor);
+      
+      if (targetLi) {
+      e.preventDefault();
+      
+      // Ouvre parents du node target
+      openParents(targetLi);
+      
+      // Scroll vers le node
+      targetLi.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Ajoute un style temporaire pour mise en avant
+      targetLi.classList.add('highlighted-anchor');
+      
+      // Enlève le style après 3s
+      setTimeout(() => {
+        targetLi.classList.remove('highlighted-anchor');
+      }, 3000);
+      }
+      });
+      
+      function handleSearch() {
+      const query = document.getElementById("tree-search").value.trim().toLowerCase();
+      const includeDescriptions = document.getElementById("include-descriptions").checked;
+      
+      // Supprimer anciens surlignages
+      [...container.querySelectorAll('li.highlighted-match')].forEach(li => {
+      li.classList.remove('highlighted-match');
+      });
+      
+      if (query.length < 3) return;
+      
+      const matches = [...container.querySelectorAll('li')].filter(li => {
+      const label = li.querySelector('.node-label');
+      const labelText = label ? label.textContent.toLowerCase() : '';
+      
+      const matchesLabel = labelText.includes(query);
+      
+      let matchesDescription = false;
+      
+      if (includeDescriptions) {
+        const descText = li.dataset.description || '';
+        if (descText.includes(query)) {
+          matchesDescription = true;
+        }
+      }
+      
+      return matchesLabel || matchesDescription;
+      });
+      
+      matches.forEach(li => {
+      li.classList.add('highlighted-match');
+      openParents(li);
+      });
+      
+      if (matches.length > 0) {
+      matches[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      }
+      
+      document.getElementById("tree-search").addEventListener("input", handleSearch);
+      document.getElementById("include-descriptions").addEventListener("change", handleSearch);
+      document.getElementById("collapse-all").addEventListener("click", collapseAll);
+      document.getElementById("expand-all").addEventListener("click", expandAll);
+      
+      // Fonction pour tout déplier (supprime collapsed, ajoute expanded)
+      function expandAll() {
+      const allCollapsed = container.querySelectorAll('li.collapsed');
+      allCollapsed.forEach(li => {
+      li.classList.remove('collapsed');
+      li.classList.add('expanded');
+      });
+      }
+      
+      // Fonction pour tout replier (supprime expanded, ajoute collapsed)
+      function collapseAll() {
+      const allExpanded = container.querySelectorAll('li.expanded');
+      allExpanded.forEach(li => {
+      li.classList.remove('expanded');
+      li.classList.add('collapsed');
+      });
+      }
+      
+      
+   </script>
+   </body>
+</html>
