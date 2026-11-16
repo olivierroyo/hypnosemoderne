@@ -1,0 +1,19 @@
+.DS_Store
+**/.DS_Store
+
+# Source en clair du mémo protégé (ne jamais committer)
+_private/
+
+# Documents de travail (ebooks, supports de formation, diplômes) — gardés hors du dépôt public
+# → ~/Documents/ebooks/hypnose/_site_perso/
+documents/
+hacademie/
+
+# Jamais dans le dépôt public (16/11/2026 : fuite du fichier mdp → historique effacé)
+*mdp*
+*decripted*
+*decrypted*
+* copy.*
+monParcours*
+arborescences/
+tools/

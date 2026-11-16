@@ -1,0 +1,80 @@
+/* ============================================================
+   responsive.css — adaptations mobile/tablette de monParcoursV2.html
+   Chargé après le bloc <style> intégré : ne modifie rien au-delà
+   des points de rupture ci-dessous.
+   ============================================================ */
+
+/* --- Tablette --- */
+@media (max-width: 900px) {
+  body { padding: 18px; }
+
+  /* Bandeau du haut (QR + diplômes) : autoriser le retour à la ligne */
+  body > div:first-of-type {
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    justify-content: center;
+  }
+  body > div:first-of-type img { width: 110px !important; }
+
+  .tooltip-box { max-width: 90vw; }
+}
+
+/* --- Mobile --- */
+@media (max-width: 700px) {
+  body { padding: 10px; }
+
+  h2 { font-size: 1.25em; }
+
+  body > div:first-of-type img { width: 84px !important; }
+
+  /* Contrôles de recherche empilés, pleine largeur */
+  .tree-controls { padding: 10px; gap: 10px; }
+  .tree-controls .search-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .tree-controls input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px; /* évite le zoom automatique iOS */
+  }
+  .tree-controls .button-group { width: 100%; }
+  .tree-controls .button-group button { flex: 1; }
+
+  #tree-selector {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    margin: 6px 0 12px;
+  }
+
+  /* Arbre : indentation réduite pour gagner de la largeur */
+  .tree ul { padding-left: 10px; }
+  .tree li { padding-left: 18px; }
+  .tree li::after { width: 24px; }
+  .tree li.leaf::after { width: 28px; }
+
+  /* Cibles tactiles plus généreuses */
+  .node-label { padding: 7px 6px; }
+  .icon-description { width: 24px; height: 24px; font-size: 17px; }
+
+  /* Infobulles : fenêtre fixe lisible plutôt qu'ancrée au nœud */
+  .tooltip-box {
+    position: fixed !important;
+    top: 8vh !important;
+    left: 4vw !important;
+    right: 4vw !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    max-height: 78vh;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+}
+
+/* --- Très petits écrans --- */
+@media (max-width: 400px) {
+  body > div:first-of-type img { width: 70px !important; }
+  .tree li { padding-left: 14px; }
+}

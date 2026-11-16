@@ -1,0 +1,109 @@
+/* === Section promo générale === */
+.promo-section {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+  padding: 20px 18px;
+  margin: 25px auto;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  max-width: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: var(--promo-bg, linear-gradient(135deg, var(--secondary-color), var(--highlight-color)));
+  color: var(--text-color)!important;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.promo-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* === Boutons promo (général) === */
+.promo-section .btn-secondary {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--btn-text-color, #fff);
+  background: var(--btn-bg-theme, var(--btn-bg, linear-gradient(135deg, var(--primary-color), var(--accent-color))));
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.promo-section .btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  filter: brightness(1.05);
+}
+
+/* === Variantes promos === */
+.promo-section.premiere {
+  --promo-bg: linear-gradient(135deg, #fff176, #ffeb3b);
+  --btn-bg: linear-gradient(135deg, #fbc02d, #f57f17);
+  --btn-text-color: #000;
+}
+
+.promo-section.halloween {
+  --promo-bg: linear-gradient(135deg, #ffe0b2, #ffcc80);
+  --btn-bg: linear-gradient(135deg, #6d4c41, #4e342e);
+  --btn-text-color: #fff;
+}
+
+.promo-section.tabac {
+  --promo-bg: linear-gradient(135deg, #fff8e1, #ffe082);
+  --btn-bg: linear-gradient(135deg, #2e7d32, #1b5e20);
+  --btn-text-color: #fff;
+  border: 2px solid #ffb74d;
+}
+
+.promo-section.tabac p,
+.promo-section.tabac strong {
+  color: grey;
+  filter: brightness(1.0) 
+}
+
+
+/* === THEME 1 ===================================================== */
+[data-theme="theme1"] .promo-section .btn-secondary {
+  --btn-bg-theme: linear-gradient(135deg, #52b373, #68c985);
+  --btn-text-color: #fff;
+}
+
+/* === THEME 2 ===================================================== */
+[data-theme="theme2"] .promo-section .btn-secondary {
+  --btn-bg-theme: linear-gradient(135deg, #ff7f3f, #ffab70);
+  --btn-text-color: #fff;
+}
+
+/* === THEME 3 (Dark mode) ======================================== */
+[data-theme="theme3"] .promo-section .btn-secondary {
+  --btn-bg-theme: linear-gradient(135deg, #4a148c, #7b1fa2);
+  --btn-text-color: #1a1a2e; /* texte foncé par défaut */
+}
+
+/* Correction spécifique : bouton tabac en blanc dans le dark mode */
+[data-theme="theme3"] .promo-section.tabac .btn-secondary {
+  --btn-text-color: #fff !important;
+}
+
+/* === Liens textuels === */
+.promo-section a {
+  text-decoration: underline;
+  font-weight: 700;
+  color: var(--link-color, var(--accent-color));
+}
+
+/* === Fix mobile === */
+.hero-bg-image {
+  pointer-events: none;
+  z-index: 0;
+}
