@@ -181,7 +181,11 @@
   function init() {
     // If consent already given and accepted, don't block
     if (hasConsent() && getConsent()) {
-      return; // Content loads normally
+      // Consent déjà donné : charger les vidéos déclarées en data-src (jamais chargées avant accord)
+      document.querySelectorAll('iframe[data-src]:not([src])').forEach(function (iframe) {
+        iframe.src = iframe.dataset.src;
+      });
+      return;
     }
 
     // Block third-party content
